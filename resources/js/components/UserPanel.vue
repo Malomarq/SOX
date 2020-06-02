@@ -37,19 +37,19 @@
                             <div class="card-body">
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="list-account" role="tabpanel"
-                                         aria-labelledby="list-account-list">1
+                                         aria-labelledby="list-account-list">account
                                     </div>
                                     <div class="tab-pane fade" id="list-orders" role="tabpanel"
-                                         aria-labelledby="list-orders-list">2
+                                         aria-labelledby="list-orders-list">orders
                                     </div>
                                     <div class="tab-pane fade" id="list-messages" role="tabpanel"
-                                         aria-labelledby="list-messages-list">3
+                                         aria-labelledby="list-messages-list">notifications
                                     </div>
                                     <div class="tab-pane fade" id="list-designs" role="tabpanel"
-                                         aria-labelledby="list-designs-list">4
+                                         aria-labelledby="list-designs-list">designs
                                     </div>
                                     <div class="tab-pane fade" id="list-delaccount" role="tabpanel"
-                                         aria-labelledby="list-delaccount-list">5
+                                         aria-labelledby="list-delaccount-list">delete account
                                     </div>
                                 </div>
                             </div>

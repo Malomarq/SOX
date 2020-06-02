@@ -84795,7 +84795,7 @@ var staticRenderFns = [
                     "aria-labelledby": "list-account-list"
                   }
                 },
-                [_vm._v("1\n                                ")]
+                [_vm._v("account\n                                ")]
               ),
               _vm._v(" "),
               _c(
@@ -84808,7 +84808,7 @@ var staticRenderFns = [
                     "aria-labelledby": "list-orders-list"
                   }
                 },
-                [_vm._v("2\n                                ")]
+                [_vm._v("orders\n                                ")]
               ),
               _vm._v(" "),
               _c(
@@ -84821,7 +84821,7 @@ var staticRenderFns = [
                     "aria-labelledby": "list-messages-list"
                   }
                 },
-                [_vm._v("3\n                                ")]
+                [_vm._v("notifications\n                                ")]
               ),
               _vm._v(" "),
               _c(
@@ -84834,7 +84834,7 @@ var staticRenderFns = [
                     "aria-labelledby": "list-designs-list"
                   }
                 },
-                [_vm._v("4\n                                ")]
+                [_vm._v("designs\n                                ")]
               ),
               _vm._v(" "),
               _c(
@@ -84847,7 +84847,7 @@ var staticRenderFns = [
                     "aria-labelledby": "list-delaccount-list"
                   }
                 },
-                [_vm._v("5\n                                ")]
+                [_vm._v("delete account\n                                ")]
               )
             ]
           )
@@ -98250,8 +98250,8 @@ var EventBus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\Sox-app\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\Sox-app\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\sox\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\sox\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
