@@ -1,0 +1,90 @@
+<template>
+    <div>
+        <b-row class="justify-content-center">
+            <b-col cols="12" md="4" v-for="item in products.data"
+                   :key="item.id"
+                   class="mb-5"
+            >
+                <b-card class="text-center cardindex">
+                    <a v-bind:href="'product?id=' + item.idArt"><b-card-img-lazy fluid top :src="'storage/articles/' + item.image" class="imgindex"/></a>
+                </b-card>
+            </b-col>
+        </b-row>
+
+        <!--<page-number align="center" :data="products" @pagination-change-page="allproducts">
+        </page-number>-->
+        <pagination  :pagination="products"
+                     @paginate="allproducts()"
+                     :offset="4">
+        </pagination>
+    </div>
+</template>
+
+<script>
+
+    import Pagination from './Pagination.vue';
+    import EventBus from "../event-bus";
+
+    const axios = require('axios').default;
+    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
+
+    export default {
+
+        components: {
+            Pagination
+        },
+
+        data() {
+            return {
+                products: {
+                    total: 0,
+                    per_page: 2,
+                    from: 1,
+                    to: 0,
+                    current_page: 1
+                },
+
+                /**
+                 * Pagination
+                 */
+
+                offset: 4,
+
+                /**
+                 * Filters
+                 */
+
+                filter: 'default',
+                colorfilter: '-',
+            }
+        },
+
+        mounted() {
+            var self = this;
+            EventBus.$on('colorfilter', function (data) {
+                self.colorfilter = data;
+                self.products.current_page = 1;
+                self.allproducts();
+            });
+            this.allproducts();
+        },
+
+        methods: {
+            allproducts(page) {
+                axios.get(`api/products?page=${this.products.current_page}`, {
+                    params: {
+                        'pubkey': pubkey,
+                        'order': this.filter,
+                        'colorfilter': this.colorfilter,
+                    }
+                })
+                    .then((response) => {
+                        this.products = response.data;
+                    });
+
+                window.scrollTo(0, 0);
+            }
+        }
+    }
+
+</script>
