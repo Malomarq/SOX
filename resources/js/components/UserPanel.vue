@@ -37,11 +37,13 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="tab-content" id="nav-tabContent">
+
+                                    <!--ACCOUNT-->
                                     <div class="tab-pane fade show active" id="list-account" role="tabpanel"
                                          aria-labelledby="list-account-list">
 
                                         <div class="panuseracctit ml-3 mt-3">{{accounttext1}}</div>
-                                        <div class="row">
+                                        <div class="row my-3">
 
                                             <div class="col-12 col-md-6 text-center">
                                                 <div class="container py-5">
@@ -67,50 +69,59 @@
                                             </div>
                                         </div>
 
-                                        <div class="panuseracctit ml-3 mt-3">{{accounttext2}}</div>
-                                        <div class="row">
 
-                                        </div>
+                                        <div class="row my-3">
 
-                                        <div class="panuseracctit ml-3 mt-3">{{accounttext3}}</div>
-                                        <div class="row">
                                             <div class="col-12 col-md-6">
-                                                <div class="container">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1">Password</label>
-                                                        <input type="password" class="form-control"
-                                                               id="exampleInputPassword1" placeholder="Password">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1">Password</label>
-                                                        <input type="password" class="form-control"
-                                                               id="exampleInputPassword1" placeholder="Password">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1">Password</label>
-                                                        <input type="password" class="form-control"
-                                                               id="exampleInputPassword1" placeholder="Password">
-                                                    </div>
-                                                </div>
+                                                <div class="panuseracctit ml-3 mt-3">{{accounttext2}}</div>
                                             </div>
                                             <div class="col-12 col-md-6">
+                                                <div class="panuseracctit ml-3 mt-3">{{accounttext3}}</div>
                                                 <div class="container">
-                                                    <button>GUardar</button>
+                                                    <form @submit.prevent="updatePass">
+                                                        <div class="form-group">
+                                                            <label>{{currentpass}}</label>
+                                                            <!--<input type="password" class="form-control"
+                                                                   id="exampleInputPassword1" placeholder="Password">-->
+                                                            <eye-pass modelprop="vmcurpass"></eye-pass>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>{{newpass}}</label>
+                                                            <!--<input type="password" class="form-control"
+                                                                   id="exampleInputPassword1" placeholder="Password">-->
+                                                            <eye-pass modelprop="vmnewpass"></eye-pass>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>{{confirmpass}}</label>
+                                                            <!--<input type="password" class="form-control"
+                                                                   id="exampleInputPassword1" placeholder="Password">-->
+                                                            <eye-pass modelprop="vmconfpass"></eye-pass>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-primary">{{txtbut}}</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
 
+                                    <!--ORDERS-->
                                     <div class="tab-pane fade" id="list-orders" role="tabpanel"
                                          aria-labelledby="list-orders-list">orders
                                     </div>
+
+                                    <!--NOTIFICATIONS-->
                                     <div class="tab-pane fade" id="list-messages" role="tabpanel"
                                          aria-labelledby="list-messages-list">notifications
                                     </div>
+
+                                    <!--DESIGNS-->
                                     <div class="tab-pane fade" id="list-designs" role="tabpanel"
                                          aria-labelledby="list-designs-list">designs
                                     </div>
+
+                                    <!--DELETE-->
                                     <div class="tab-pane fade" id="list-delaccount" role="tabpanel"
                                          aria-labelledby="list-delaccount-list">delete account
                                     </div>
@@ -122,15 +133,21 @@
             </div>
         </div>
     </div>
+    </div>
 </template>
 
 <script>
+
+    import EventBus from "../event-bus";
+    import EyePassLogin from "./EyePassLogin";
 
     const axios = require('axios').default;
     const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
-
+        components:{
+            EyePassLogin
+        },
         props: {
 
             idu: '',
@@ -147,11 +164,12 @@
             name: '',
             lastname: '',
             accounttext2: '',
+
             accounttext3: '',
-        },
-        mounted() {
-            console.log('user panel montado');
-            this.finduser();
+            currentpass: '',
+            newpass: '',
+            confirmpass: '',
+            txtbut: '',
         },
         computed: {
             iduser() {
@@ -164,8 +182,31 @@
                     name: '',
                     lastname: '',
                     email: ''
-                }]
+                }],
+
+                // models
+                vmcurpass: '',
+                vmnewpass: '',
+                vmconfpass: '',
             }
+        },
+        mounted() {
+            var self = this;
+            console.log('user panel montado');
+            this.finduser();
+            EventBus.$on('inputval', function(data){
+                if(data[1] === 'vmcurpass'){
+                    self.vmcurpass = data[0];
+                }
+
+                if(data[1] === 'vmnewpass'){
+                    self.vmnewpass = data[0];
+                }
+
+                if(data[1] === 'vmconfpass'){
+                    self.vmconfpass = data[0];
+                }
+            });
         },
         methods: {
             finduser() {
@@ -179,6 +220,17 @@
                     this.user[0].lastname = response.data[0].lastname;
                     this.user[0].email = response.data[0].email;
                 })
+            },
+
+            updatePass(){
+                axios.post('api/fake', {
+                    'pubkey': pubkey,
+                    'curpass': this.vmcurpass,
+                    'newpass': this.vmnewpass,
+                    'confpass': this.vmconfpass
+                }).then((response) => {
+                   console.log(response.data);
+                });
             }
         }
     }

@@ -61,5 +61,9 @@ return
         'lbpanusdel'                => 'Eliminar cuenta',
         'lbpanusacc1'               => 'Editar info',
         'lbpanusacc2'               => 'Cambiar contraseña',
+        'lbpanuscurpass'            => 'Contraseña actual',
+        'lbpanusnewpass'            => 'Nueva contraseña',
+        'lbpanusconfpass'           => 'Confirmar contraseña',
+        'lbsavebutton'              => 'Guardar',
 
     ];

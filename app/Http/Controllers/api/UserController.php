@@ -19,4 +19,9 @@ class UserController extends Controller
         return response()->json(User::select('name', 'lastname', 'email')
             ->where('idUser', $req->iduser)->get());
     }
+
+    public function fake(Request $req){
+
+        return response()->json([$req->all()]);
+    }
 }

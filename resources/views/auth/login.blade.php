@@ -54,7 +54,7 @@
 
                             <div class="form-group">
                                 <!--<eye-pass newclass="form-control" campopass="@lang('messages.lbregpass')"></eye-pass>-->
-                                    <eye-pass campopass="@lang('messages.lbregpass')"></eye-pass>
+                                    <eye-pass namepass="password" campopass="@lang('messages.lbregpass')"></eye-pass>
                             </div>
 
                             <button type="submit" class="btn btn-primary">

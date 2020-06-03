@@ -2091,6 +2091,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -2105,16 +2106,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    campopass: {} //newclass: ''  MIRAR REGISTRO,
-
-  },
-  methods: {
-    showPass: function showPass() {
-      this.lock = !this.lock;
-      this.eyepass = this.lock ? 'password' : 'text';
-    }
+    campopass: {},
+    namepass: '',
+    //newclass: ''  MIRAR REGISTRO,
+    modelprop: ''
   },
   data: function data() {
     return {
@@ -2122,8 +2122,22 @@ __webpack_require__.r(__webpack_exports__);
       eyepass: 'password'
     };
   },
+  computed: {
+    getmodel: function getmodel() {
+      return this.modelprop;
+    }
+  },
   mounted: function mounted() {
     console.log('eye pass login component mounted');
+  },
+  methods: {
+    showPass: function showPass() {
+      this.lock = !this.lock;
+      this.eyepass = this.lock ? 'password' : 'text';
+    },
+    inputvalue: function inputvalue() {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('inputval', [this.$refs.inputpass.value, this.getmodel]);
+    }
   }
 });
 
@@ -3682,6 +3696,8 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
+/* harmony import */ var _EyePassLogin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EyePassLogin */ "./resources/js/components/EyePassLogin.vue");
 //
 //
 //
@@ -3808,10 +3824,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    EyePassLogin: _EyePassLogin__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   props: {
     idu: '',
     //panel
@@ -3825,11 +3859,11 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     name: '',
     lastname: '',
     accounttext2: '',
-    accounttext3: ''
-  },
-  mounted: function mounted() {
-    console.log('user panel montado');
-    this.finduser();
+    accounttext3: '',
+    currentpass: '',
+    newpass: '',
+    confirmpass: '',
+    txtbut: ''
   },
   computed: {
     iduser: function iduser() {
@@ -3842,8 +3876,30 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         name: '',
         lastname: '',
         email: ''
-      }]
+      }],
+      // models
+      vmcurpass: '',
+      vmnewpass: '',
+      vmconfpass: ''
     };
+  },
+  mounted: function mounted() {
+    var self = this;
+    console.log('user panel montado');
+    this.finduser();
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$on('inputval', function (data) {
+      if (data[1] === 'vmcurpass') {
+        self.vmcurpass = data[0];
+      }
+
+      if (data[1] === 'vmnewpass') {
+        self.vmnewpass = data[0];
+      }
+
+      if (data[1] === 'vmconfpass') {
+        self.vmconfpass = data[0];
+      }
+    });
   },
   methods: {
     finduser: function finduser() {
@@ -3858,6 +3914,16 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         _this.user[0].name = response.data[0].name;
         _this.user[0].lastname = response.data[0].lastname;
         _this.user[0].email = response.data[0].email;
+      });
+    },
+    updatePass: function updatePass() {
+      axios.post('api/fake', {
+        'pubkey': pubkey,
+        'curpass': this.vmcurpass,
+        'newpass': this.vmnewpass,
+        'confpass': this.vmconfpass
+      }).then(function (response) {
+        console.log(response.data);
       });
     }
   }
@@ -82096,14 +82162,16 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("input", {
+      ref: "inputpass",
       staticClass: "form-control",
       attrs: {
         id: "password",
         type: _vm.eyepass,
-        name: "password",
+        name: _vm.namepass,
         required: "",
         placeholder: _vm.campopass
-      }
+      },
+      on: { blur: _vm.inputvalue }
     })
   ])
 }
@@ -84857,7 +84925,7 @@ var render = function() {
                           _vm._v(_vm._s(_vm.accounttext1))
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "row my-3" }, [
                           _c(
                             "div",
                             { staticClass: "col-12 col-md-6 text-center" },
@@ -84939,17 +85007,94 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "panuseracctit ml-3 mt-3" }, [
-                          _vm._v(_vm._s(_vm.accounttext2))
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "panuseracctit ml-3 mt-3" }, [
-                          _vm._v(_vm._s(_vm.accounttext3))
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(5)
+                        _c("div", { staticClass: "row my-3" }, [
+                          _c("div", { staticClass: "col-12 col-md-6" }, [
+                            _c(
+                              "div",
+                              { staticClass: "panuseracctit ml-3 mt-3" },
+                              [_vm._v(_vm._s(_vm.accounttext2))]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-12 col-md-6" }, [
+                            _c(
+                              "div",
+                              { staticClass: "panuseracctit ml-3 mt-3" },
+                              [_vm._v(_vm._s(_vm.accounttext3))]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "container" }, [
+                              _c(
+                                "form",
+                                {
+                                  on: {
+                                    submit: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.updatePass($event)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group" },
+                                    [
+                                      _c("label", [
+                                        _vm._v(_vm._s(_vm.currentpass))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("eye-pass", {
+                                        attrs: { modelprop: "vmcurpass" }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group" },
+                                    [
+                                      _c("label", [
+                                        _vm._v(_vm._s(_vm.newpass))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("eye-pass", {
+                                        attrs: { modelprop: "vmnewpass" }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group" },
+                                    [
+                                      _c("label", [
+                                        _vm._v(_vm._s(_vm.confirmpass))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("eye-pass", {
+                                        attrs: { modelprop: "vmconfpass" }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "form-group" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-primary",
+                                        attrs: { type: "submit" }
+                                      },
+                                      [_vm._v(_vm._s(_vm.txtbut))]
+                                    )
+                                  ])
+                                ]
+                              )
+                            ])
+                          ])
+                        ])
                       ]
                     ),
                     _vm._v(" "),
@@ -85061,67 +85206,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "mr-3 panusernav" }, [
       _c("i", { staticClass: "fas fa-times-circle fa-lg" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12 col-md-6" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-              _vm._v("Password")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "password",
-                id: "exampleInputPassword1",
-                placeholder: "Password"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-              _vm._v("Password")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "password",
-                id: "exampleInputPassword1",
-                placeholder: "Password"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-              _vm._v("Password")
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "password",
-                id: "exampleInputPassword1",
-                placeholder: "Password"
-              }
-            })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12 col-md-6" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("button", [_vm._v("GUardar")])
-        ])
-      ])
     ])
   }
 ]

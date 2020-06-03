@@ -51,5 +51,9 @@ return
         'lbpanusdel'                => 'Delete account',
         'lbpanusacc1'               => 'Edit info',
         'lbpanusacc2'               => 'Change password',
+        'lbpanuscurpass'            => 'Current password',
+        'lbpanusnewpass'            => 'New password',
+        'lbpanusconfpass'           => 'Confirm password',
+        'lbsavebutton'              => 'Save',
 
     ];
