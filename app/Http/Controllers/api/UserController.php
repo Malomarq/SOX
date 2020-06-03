@@ -13,4 +13,10 @@ class UserController extends Controller
 
         return response()->json(User::select('idUser', 'name', 'lastname', 'email')->get());
     }
+
+    public function findUser(Request $req){
+
+        return response()->json(User::select('name', 'lastname', 'email')
+            ->where('idUser', $req->iduser)->get());
+    }
 }

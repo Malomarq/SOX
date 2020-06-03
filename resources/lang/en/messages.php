@@ -48,6 +48,8 @@ return
         'lbpanusord'                => 'Your orders',
         'lbpanusnot'                => 'Notifications',
         'lbpanusdes'                => 'Your designs',
-        'lbpanusdel'                => 'Delete account'
+        'lbpanusdel'                => 'Delete account',
+        'lbpanusacc1'               => 'Edit info',
+        'lbpanusacc2'               => 'Change password',
 
     ];

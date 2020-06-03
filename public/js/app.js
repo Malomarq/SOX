@@ -3745,16 +3745,121 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
+
+var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
+    idu: '',
+    //panel
     account: '',
     orders: '',
     notif: '',
     designs: '',
-    delaccount: ''
+    delaccount: '',
+    // account
+    accounttext1: '',
+    name: '',
+    lastname: '',
+    accounttext2: '',
+    accounttext3: ''
   },
   mounted: function mounted() {
     console.log('user panel montado');
+    this.finduser();
+  },
+  computed: {
+    iduser: function iduser() {
+      return this.idu;
+    }
+  },
+  data: function data() {
+    return {
+      user: [{
+        name: '',
+        lastname: '',
+        email: ''
+      }]
+    };
+  },
+  methods: {
+    finduser: function finduser() {
+      var _this = this;
+
+      axios.get('api/findUser', {
+        params: {
+          'pubkey': pubkey,
+          'iduser': this.iduser
+        }
+      }).then(function (response) {
+        _this.user[0].name = response.data[0].name;
+        _this.user[0].lastname = response.data[0].lastname;
+        _this.user[0].email = response.data[0].email;
+      });
+    }
   }
 });
 
@@ -84727,7 +84832,191 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(5)
+          _c("div", { staticClass: "col-12 col-md-8 my-2 my-md-5" }, [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "tab-content",
+                    attrs: { id: "nav-tabContent" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-pane fade show active",
+                        attrs: {
+                          id: "list-account",
+                          role: "tabpanel",
+                          "aria-labelledby": "list-account-list"
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "panuseracctit ml-3 mt-3" }, [
+                          _vm._v(_vm._s(_vm.accounttext1))
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col-12 col-md-6 text-center" },
+                            [
+                              _c("div", { staticClass: "container py-5" }, [
+                                _c("div", { staticClass: "row" }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-12 col-md-6 panuseraccsubtit"
+                                    },
+                                    [_vm._v(_vm._s(_vm.name))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-12 col-md-6" },
+                                    [_vm._v(_vm._s(_vm.user[0].name))]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "row" }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-12 col-md-6 panuseraccsubtit"
+                                    },
+                                    [_vm._v(_vm._s(_vm.lastname))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-12 col-md-6" },
+                                    [_vm._v(_vm._s(_vm.user[0].lastname))]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "row" }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-12 col-md-6 panuseraccsubtit"
+                                    },
+                                    [_vm._v("email")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-12 col-md-6" },
+                                    [_vm._v(_vm._s(_vm.user[0].email))]
+                                  )
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "d-none d-md-block col-md-5 text-center"
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "container bg-dark rounded" },
+                                [
+                                  _c("b-card-img-lazy", {
+                                    staticClass: "imgindex",
+                                    attrs: { fluid: "", src: "./img/logo2.svg" }
+                                  })
+                                ],
+                                1
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "panuseracctit ml-3 mt-3" }, [
+                          _vm._v(_vm._s(_vm.accounttext2))
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "panuseracctit ml-3 mt-3" }, [
+                          _vm._v(_vm._s(_vm.accounttext3))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(5)
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-pane fade",
+                        attrs: {
+                          id: "list-orders",
+                          role: "tabpanel",
+                          "aria-labelledby": "list-orders-list"
+                        }
+                      },
+                      [_vm._v("orders\n                                ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-pane fade",
+                        attrs: {
+                          id: "list-messages",
+                          role: "tabpanel",
+                          "aria-labelledby": "list-messages-list"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "notifications\n                                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-pane fade",
+                        attrs: {
+                          id: "list-designs",
+                          role: "tabpanel",
+                          "aria-labelledby": "list-designs-list"
+                        }
+                      },
+                      [_vm._v("designs\n                                ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-pane fade",
+                        attrs: {
+                          id: "list-delaccount",
+                          role: "tabpanel",
+                          "aria-labelledby": "list-delaccount-list"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "delete account\n                                "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ])
         ])
       ])
     ])
@@ -84778,79 +85067,59 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-md-8 my-2 my-md-5" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c(
-            "div",
-            { staticClass: "tab-content", attrs: { id: "nav-tabContent" } },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "tab-pane fade show active",
-                  attrs: {
-                    id: "list-account",
-                    role: "tabpanel",
-                    "aria-labelledby": "list-account-list"
-                  }
-                },
-                [_vm._v("account\n                                ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "tab-pane fade",
-                  attrs: {
-                    id: "list-orders",
-                    role: "tabpanel",
-                    "aria-labelledby": "list-orders-list"
-                  }
-                },
-                [_vm._v("orders\n                                ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "tab-pane fade",
-                  attrs: {
-                    id: "list-messages",
-                    role: "tabpanel",
-                    "aria-labelledby": "list-messages-list"
-                  }
-                },
-                [_vm._v("notifications\n                                ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "tab-pane fade",
-                  attrs: {
-                    id: "list-designs",
-                    role: "tabpanel",
-                    "aria-labelledby": "list-designs-list"
-                  }
-                },
-                [_vm._v("designs\n                                ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "tab-pane fade",
-                  attrs: {
-                    id: "list-delaccount",
-                    role: "tabpanel",
-                    "aria-labelledby": "list-delaccount-list"
-                  }
-                },
-                [_vm._v("delete account\n                                ")]
-              )
-            ]
-          )
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 col-md-6" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+              _vm._v("Password")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "password",
+                id: "exampleInputPassword1",
+                placeholder: "Password"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+              _vm._v("Password")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "password",
+                id: "exampleInputPassword1",
+                placeholder: "Password"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+              _vm._v("Password")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "password",
+                id: "exampleInputPassword1",
+                placeholder: "Password"
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12 col-md-6" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("button", [_vm._v("GUardar")])
         ])
       ])
     ])

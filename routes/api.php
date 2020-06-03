@@ -28,6 +28,7 @@ Route::middleware('api.auth')->group(function (){
     Route::post('/update', 'api\ArticleController@update');
 
     Route::get('/listUsers', 'api\UserController@listAll');
+    Route::get('findUser', 'api\UserController@findUser');
 
     Route::get('/listAdmins', 'api\AdminController@listAdmins');
     Route::get('/findAdmin', 'api\AdminController@findAdmin');

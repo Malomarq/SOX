@@ -58,6 +58,8 @@ return
         'lbpanusord'                => 'Tus pedidos',
         'lbpanusnot'                => 'Notificaciones',
         'lbpanusdes'                => 'Tus diseños',
-        'lbpanusdel'                => 'Eliminar cuenta'
+        'lbpanusdel'                => 'Eliminar cuenta',
+        'lbpanusacc1'               => 'Editar info',
+        'lbpanusacc2'               => 'Cambiar contraseña',
 
     ];
