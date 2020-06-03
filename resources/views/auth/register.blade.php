@@ -98,36 +98,41 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row px-3">
 
-                        <div class="input-group px-3">
-                            <div class="input-group-prepend">
+                    <!--<div class="input-group px-3">
+
+                        <div class="input-group-prepend">
                                 <span class="input-group-text iconlogin"><i class="fas fa-lock"></i></span>
                             </div>
-                            <input id="password" type="password"
+                        <input id="password" type="password"
                                    class="form-control @error('password') is-invalid @enderror" name="password"
-                                   required autocomplete="new-password" placeholder="@lang('messages.lbregpass')">
-                        <!--<eye-pass newclass="form-control @error('password') is-invalid @enderror"
-                                          campopass="@lang('messages.lbregpass')"></eye-pass>-->
+                                   required autocomplete="new-password" placeholder="@lang('messages.lbregpass')">-->
+                            <eye-pass customclass="form-control @error('password') is-invalid @enderror"
+                                      namepass="password" campopass="@lang('messages.lbregpass')"></eye-pass>
 
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                        {{--@error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror--}}
+
+                    <!--</div>-->
                     </div>
 
-                    <div class="form-group row">
 
-                        <div class="input-group px-3">
-                            <div class="input-group-prepend">
+                    <div class="form-group row px-3">
+
+                    <!--<div class="input-group">
+                        <div class="input-group-prepend">
                                 <span class="input-group-text iconlogin"><i class="fas fa-check"></i></span>
                             </div>
                             <input id="password-confirm" type="password" class="form-control"
                                    name="password_confirmation" required autocomplete="new-password"
-                                   placeholder="@lang('messages.lbregconfpass')">
-                        </div>
+                                   placeholder="@lang('messages.lbregconfpass')">-->
+                    <eye-pass customclass="form-control" namepass="password_confirmation"
+                                      campopass="@lang('messages.lbregconfpass')"></eye-pass>
+                    <!--</div>-->
                     </div>
 
                     <div class="form-group row mb-0">
@@ -137,6 +142,11 @@
                             </button>
                         </div>
                     </div>
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </form>
             </div>
         </div>

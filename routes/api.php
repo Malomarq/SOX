@@ -29,7 +29,7 @@ Route::middleware('api.auth')->group(function (){
 
     Route::get('/listUsers', 'api\UserController@listAll');
     Route::get('findUser', 'api\UserController@findUser');
-    Route::post('/fake', 'api\UserController@fake');
+    Route::post('/updatePass', 'api\UserController@updatePass');
 
     Route::get('/listAdmins', 'api\AdminController@listAdmins');
     Route::get('/findAdmin', 'api\AdminController@findAdmin');

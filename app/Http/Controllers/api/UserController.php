@@ -20,7 +20,9 @@ class UserController extends Controller
             ->where('idUser', $req->iduser)->get());
     }
 
-    public function fake(Request $req){
+    public function updatePass(Request $req){
+
+        //validaciones
 
         return response()->json([$req->all()]);
     }

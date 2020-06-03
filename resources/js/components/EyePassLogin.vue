@@ -1,17 +1,15 @@
 <template>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <b-link href="#" class="input-group-text iconlogin" @click="showPass">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <b-link href="#" class="input-group-text iconlogin" @click="showPass">
             <span class=""><i :class="{'fas':true,
 								'fa-eye-slash':lock,
 								'fa-eye':!lock}"/></span>
-            </b-link>
+                </b-link>
+            </div>
+            <input :type="eyepass" :name="namepass" required :placeholder="campopass"
+                   :class="customclass" @blur="inputvalue" ref="inputpass">
         </div>
-        <input id="password" :type="eyepass" :name="namepass" required :placeholder="campopass"
-        class="form-control" @blur="inputvalue" ref="inputpass">
-        <!--class="form-control" :v-model="modelprop">-->
-               <!--:class="newclass" >-->
-    </div>
 </template>
 
 <script>
@@ -21,31 +19,29 @@
         props: {
             campopass: {},
             namepass: '',
-            //newclass: ''  MIRAR REGISTRO,
-
+            customclass: '',
             modelprop: '',
         },
-        data(){
+        data() {
             return {
-                lock    : true,
+                lock: true,
                 eyepass: 'password',
-            } ;
+            };
         },
         computed: {
-            getmodel(){
+            getmodel() {
                 return this.modelprop;
-            }
+            },
         },
         mounted() {
             console.log('eye pass login component mounted');
         },
-        methods:{
-            showPass: function()
-            {
-                this.lock     = !this.lock ;
-                this.eyepass = (this.lock)?'password':'text' ;
+        methods: {
+            showPass: function () {
+                this.lock = !this.lock;
+                this.eyepass = (this.lock) ? 'password' : 'text';
             },
-            inputvalue(){
+            inputvalue() {
                 EventBus.$emit('inputval', [this.$refs.inputpass.value, this.getmodel]);
             }
         },

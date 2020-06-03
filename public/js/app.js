@@ -2106,14 +2106,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     campopass: {},
     namepass: '',
-    //newclass: ''  MIRAR REGISTRO,
+    customclass: '',
     modelprop: ''
   },
   data: function data() {
@@ -3835,7 +3833,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -3880,7 +3877,8 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       // models
       vmcurpass: '',
       vmnewpass: '',
-      vmconfpass: ''
+      vmconfpass: '' // errors
+
     };
   },
   mounted: function mounted() {
@@ -3917,7 +3915,8 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       });
     },
     updatePass: function updatePass() {
-      axios.post('api/fake', {
+      axios.post('api/updatePass', {
+        '_token': this.$csrfToken,
         'pubkey': pubkey,
         'curpass': this.vmcurpass,
         'newpass': this.vmnewpass,
@@ -82163,9 +82162,8 @@ var render = function() {
     _vm._v(" "),
     _c("input", {
       ref: "inputpass",
-      staticClass: "form-control",
+      class: _vm.customclass,
       attrs: {
-        id: "password",
         type: _vm.eyepass,
         name: _vm.namepass,
         required: "",
@@ -85044,7 +85042,10 @@ var render = function() {
                                       ]),
                                       _vm._v(" "),
                                       _c("eye-pass", {
-                                        attrs: { modelprop: "vmcurpass" }
+                                        attrs: {
+                                          customclass: "form-control",
+                                          modelprop: "vmcurpass"
+                                        }
                                       })
                                     ],
                                     1
@@ -85059,7 +85060,10 @@ var render = function() {
                                       ]),
                                       _vm._v(" "),
                                       _c("eye-pass", {
-                                        attrs: { modelprop: "vmnewpass" }
+                                        attrs: {
+                                          customclass: "form-control",
+                                          modelprop: "vmnewpass"
+                                        }
                                       })
                                     ],
                                     1
@@ -85074,7 +85078,10 @@ var render = function() {
                                       ]),
                                       _vm._v(" "),
                                       _c("eye-pass", {
-                                        attrs: { modelprop: "vmconfpass" }
+                                        attrs: {
+                                          customclass: "form-control",
+                                          modelprop: "vmconfpass"
+                                        }
                                       })
                                     ],
                                     1

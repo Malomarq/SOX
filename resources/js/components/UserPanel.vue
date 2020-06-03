@@ -7,28 +7,28 @@
                         <div class="list-group" id="list-tab" role="tablist">
                             <a class="list-group-item list-group-item-action active" id="list-account-list"
                                data-toggle="list" href="#list-account" role="tab" aria-controls="account">
-                                <span class="mr-3 panusernav"><i class="fas fa-user-circle fa-lg"></i></span>
+                                <span class="mr-3 panusernav"><i class="fas fa-user-circle fa-lg"/></span>
                                 {{account}}
                             </a>
                             <a class="list-group-item list-group-item-action" id="list-orders-list" data-toggle="list"
                                href="#list-orders" role="tab" aria-controls="orders">
-                                <span class="mr-3 panusernav"><i class="fas fa-dolly fa-lg"></i></span>
+                                <span class="mr-3 panusernav"><i class="fas fa-dolly fa-lg"/></span>
                                 {{orders}}
                             </a>
                             <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
                                href="#list-messages" role="tab" aria-controls="messages">
-                                <span class="mr-3 panusernav"><i class="fas fa-envelope fa-lg"></i></span>
+                                <span class="mr-3 panusernav"><i class="fas fa-envelope fa-lg"/></span>
                                 {{notif}}
                             </a>
                             <a class="list-group-item list-group-item-action" id="list-designs-list" data-toggle="list"
                                href="#list-designs" role="tab" aria-controls="designs">
-                                <span class="mr-3 panusernav"><i class="fas fa-socks fa-lg"></i></span>
+                                <span class="mr-3 panusernav"><i class="fas fa-socks fa-lg"/></span>
                                 {{designs}}
                             </a>
                             <a class="list-group-item list-group-item-action" id="list-delaccount-list"
                                data-toggle="list"
                                href="#list-delaccount" role="tab" aria-controls="delaccount">
-                                <span class="mr-3 panusernav"><i class="fas fa-times-circle fa-lg"></i></span>
+                                <span class="mr-3 panusernav"><i class="fas fa-times-circle fa-lg"/></span>
                                 {{delaccount}}
                             </a>
                         </div>
@@ -83,19 +83,19 @@
                                                             <label>{{currentpass}}</label>
                                                             <!--<input type="password" class="form-control"
                                                                    id="exampleInputPassword1" placeholder="Password">-->
-                                                            <eye-pass modelprop="vmcurpass"></eye-pass>
+                                                            <eye-pass customclass="form-control" modelprop="vmcurpass"/>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>{{newpass}}</label>
                                                             <!--<input type="password" class="form-control"
                                                                    id="exampleInputPassword1" placeholder="Password">-->
-                                                            <eye-pass modelprop="vmnewpass"></eye-pass>
+                                                            <eye-pass customclass="form-control" modelprop="vmnewpass"/>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>{{confirmpass}}</label>
                                                             <!--<input type="password" class="form-control"
                                                                    id="exampleInputPassword1" placeholder="Password">-->
-                                                            <eye-pass modelprop="vmconfpass"></eye-pass>
+                                                            <eye-pass customclass="form-control" modelprop="vmconfpass"/>
                                                         </div>
                                                         <div class="form-group">
                                                             <button type="submit" class="btn btn-primary">{{txtbut}}</button>
@@ -132,7 +132,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </template>
 
@@ -188,6 +187,9 @@
                 vmcurpass: '',
                 vmnewpass: '',
                 vmconfpass: '',
+
+                // errors
+
             }
         },
         mounted() {
@@ -223,7 +225,8 @@
             },
 
             updatePass(){
-                axios.post('api/fake', {
+                axios.post('api/updatePass', {
+                    '_token': this.$csrfToken,
                     'pubkey': pubkey,
                     'curpass': this.vmcurpass,
                     'newpass': this.vmnewpass,
