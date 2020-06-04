@@ -2257,6 +2257,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EyePassLogin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EyePassLogin */ "./resources/js/components/EyePassLogin.vue");
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -2443,11 +2445,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+
+
+
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    EyePassLogin: _EyePassLogin__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: {
     /**
      *  Component visible
@@ -2508,7 +2515,17 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     };
   },
   mounted: function mounted() {
+    var self = this;
     this.listAdmins();
+    _event_bus__WEBPACK_IMPORTED_MODULE_1__["default"].$on('inputval', function (data) {
+      if (data[1] === 'mdcrepass') {
+        self.mdcrepass = data[0];
+      }
+
+      if (data[1] === 'mduppass') {
+        self.mduppass = data[0];
+      }
+    });
   },
   methods: {
     /**
@@ -82383,20 +82400,15 @@ var render = function() {
                 [
                   _c("div", { staticClass: "card-header" }, [_vm._v("Admin")]),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "card-body text-white" },
-                    [
-                      _c("h7", { staticClass: "card-title" }, [
-                        _vm._v(_vm._s(item.name) + " " + _vm._s(item.lastname))
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [
-                        _vm._v(_vm._s(item.email))
-                      ])
-                    ],
-                    1
-                  )
+                  _c("div", { staticClass: "card-body text-white" }, [
+                    _c("h6", { staticClass: "card-title" }, [
+                      _vm._v(_vm._s(item.name) + " " + _vm._s(item.lastname))
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "card-text" }, [
+                      _vm._v(_vm._s(item.email))
+                    ])
+                  ])
                 ]
               )
             }),
@@ -82543,37 +82555,27 @@ var render = function() {
                               : _vm._e()
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "form-group" }, [
-                            _c("label", [_vm._v("Password")]),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.mdcrepass,
-                                  expression: "mdcrepass"
+                          _c(
+                            "div",
+                            { staticClass: "form-group" },
+                            [
+                              _c("label", [_vm._v("Password")]),
+                              _vm._v(" "),
+                              _c("eye-pass", {
+                                attrs: {
+                                  customclass: "form-control",
+                                  modelprop: "mdcrepass"
                                 }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { type: "password", required: "" },
-                              domProps: { value: _vm.mdcrepass },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.mdcrepass = $event.target.value
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.showErrPass
-                              ? _c("small", { staticClass: "text-danger" }, [
-                                  _vm._v(_vm._s(_vm.errPass))
-                                ])
-                              : _vm._e()
-                          ]),
+                              }),
+                              _vm._v(" "),
+                              _vm.showErrPass
+                                ? _c("small", { staticClass: "text-danger" }, [
+                                    _vm._v(_vm._s(_vm.errPass))
+                                  ])
+                                : _vm._e()
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
                           _vm._m(4)
                         ]
@@ -82691,35 +82693,22 @@ var render = function() {
                             })
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "form-group" }, [
-                            _c("label", [_vm._v("Password")]),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.mduppass,
-                                  expression: "mduppass"
+                          _c(
+                            "div",
+                            { staticClass: "form-group" },
+                            [
+                              _c("label", [_vm._v("Password")]),
+                              _vm._v(" "),
+                              _c("eye-pass", {
+                                attrs: {
+                                  customclass: "form-control",
+                                  modelprop: "mduppass",
+                                  campopass: "contraseña"
                                 }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "password",
-                                id: "exampleInputPassword1",
-                                placeholder: "contraseña"
-                              },
-                              domProps: { value: _vm.mduppass },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.mduppass = $event.target.value
-                                }
-                              }
-                            })
-                          ]),
+                              })
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
                           _vm.showErrorUpdate
                             ? _c("div", { staticClass: "form-group" }, [

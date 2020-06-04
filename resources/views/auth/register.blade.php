@@ -40,7 +40,6 @@
 
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-
                     <div class="form-group row">
 
                         <div class="input-group px-3">
@@ -80,7 +79,6 @@
                     </div>
 
                     <div class="form-group row">
-
                         <div class="input-group px-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text iconlogin"><i class="fas fa-at"></i></span>
@@ -99,40 +97,21 @@
                     </div>
 
                     <div class="form-group row px-3">
+                        <eye-pass customclass="form-control @error('password') is-invalid @enderror"
+                                  namepass="password" campopass="@lang('messages.lbregpass')"></eye-pass>
 
-                    <!--<div class="input-group px-3">
-
-                        <div class="input-group-prepend">
-                                <span class="input-group-text iconlogin"><i class="fas fa-lock"></i></span>
-                            </div>
-                        <input id="password" type="password"
-                                   class="form-control @error('password') is-invalid @enderror" name="password"
-                                   required autocomplete="new-password" placeholder="@lang('messages.lbregpass')">-->
-                            <eye-pass customclass="form-control @error('password') is-invalid @enderror"
-                                      namepass="password" campopass="@lang('messages.lbregpass')"></eye-pass>
-
-                        {{--@error('password')
+                        <!--TODO corregir que no se muestra este span aunque sale en el DOM-->
+                        @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                        @enderror--}}
-
-                    <!--</div>-->
+                        @enderror
                     </div>
 
 
                     <div class="form-group row px-3">
-
-                    <!--<div class="input-group">
-                        <div class="input-group-prepend">
-                                <span class="input-group-text iconlogin"><i class="fas fa-check"></i></span>
-                            </div>
-                            <input id="password-confirm" type="password" class="form-control"
-                                   name="password_confirmation" required autocomplete="new-password"
-                                   placeholder="@lang('messages.lbregconfpass')">-->
-                    <eye-pass customclass="form-control" namepass="password_confirmation"
-                                      campopass="@lang('messages.lbregconfpass')"></eye-pass>
-                    <!--</div>-->
+                        <eye-pass customclass="form-control" namepass="password_confirmation"
+                                  campopass="@lang('messages.lbregconfpass')"></eye-pass>
                     </div>
 
                     <div class="form-group row mb-0">
@@ -142,11 +121,6 @@
                             </button>
                         </div>
                     </div>
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
                 </form>
             </div>
         </div>

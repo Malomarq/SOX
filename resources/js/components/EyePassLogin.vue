@@ -1,15 +1,15 @@
 <template>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <b-link href="#" class="input-group-text iconlogin" @click="showPass">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <b-link href="#" class="input-group-text iconlogin" @click="showPass">
             <span class=""><i :class="{'fas':true,
 								'fa-eye-slash':lock,
 								'fa-eye':!lock}"/></span>
-                </b-link>
-            </div>
-            <input :type="eyepass" :name="namepass" required :placeholder="campopass"
-                   :class="customclass" @blur="inputvalue" ref="inputpass">
+            </b-link>
         </div>
+        <input :type="eyepass" :name="namepass" required :placeholder="campopass"
+               :class="customclass" @blur="inputvalue" ref="inputpass">
+    </div>
 </template>
 
 <script>

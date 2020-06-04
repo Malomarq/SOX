@@ -26,7 +26,7 @@
                 <div class="card text-white bg-info mb-3" style="max-width: 18rem;" v-for="item in itemsAd" :key="item.idUser">
                     <div class="card-header">Admin</div>
                     <div class="card-body text-white">
-                        <h7 class="card-title">{{ item.name }} {{item.lastname}}</h7>
+                        <h6 class="card-title">{{ item.name }} {{item.lastname}}</h6>
                         <p class="card-text">{{item.email}}</p>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input v-model="mdcrepass" type="password" class="form-control" required>
+                                    <eye-pass customclass="form-control" modelprop="mdcrepass"></eye-pass>
                                     <small v-if="showErrPass" class="text-danger">{{errPass}}</small>
                                 </div>
                                 <div class="form-group">
@@ -109,8 +109,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input v-model="mduppass" type="password" class="form-control"
-                                           id="exampleInputPassword1" placeholder="contraseña">
+                                    <eye-pass customclass="form-control" modelprop="mduppass" campopass="contraseña"></eye-pass>
 
                                 </div>
                                 <div v-if="showErrorUpdate" class="form-group">
@@ -187,10 +186,16 @@
 
 <script>
 
+    import EyePassLogin from "./EyePassLogin";
+    import EventBus from "../event-bus";
+
     const axios = require('axios').default;
     const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
+        components: {
+            EyePassLogin
+        },
 
         props: {
 
@@ -267,7 +272,17 @@
         },
 
         mounted() {
+            var self = this;
             this.listAdmins();
+            EventBus.$on('inputval', function(data){
+                if(data[1] === 'mdcrepass') {
+                    self.mdcrepass = data[0];
+                }
+
+                if(data[1] === 'mduppass') {
+                    self.mduppass = data[0];
+                }
+            });
         },
 
         methods: {
