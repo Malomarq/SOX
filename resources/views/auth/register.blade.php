@@ -100,11 +100,10 @@
                         <eye-pass customclass="form-control @error('password') is-invalid @enderror"
                                   namepass="password" campopass="@lang('messages.lbregpass')"></eye-pass>
 
-                        <!--TODO corregir que no se muestra este span aunque sale en el DOM-->
                         @error('password')
-                        <span class="invalid-feedback" role="alert">
+                        <small class="text-danger">
                             <strong>{{ $message }}</strong>
-                        </span>
+                        </small>
                         @enderror
                     </div>
 
