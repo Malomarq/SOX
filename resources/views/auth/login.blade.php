@@ -45,7 +45,7 @@
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>@lang('messages.lbformlog')</strong>
                                     </span>
                                     @enderror
                                 </div>

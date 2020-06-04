@@ -74,28 +74,59 @@
 
                                             <div class="col-12 col-md-6">
                                                 <div class="panuseracctit ml-3 mt-3">{{accounttext2}}</div>
+                                                <div class="container py-3">
+                                                    <form @submit.prevent="updateInfo">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text rounded-left iconlogin"><i class="fas fa-user"></i></span>
+                                                                </div>
+                                                                <input type="text" class="form-control" :placeholder="name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text rounded-left iconlogin"><i class="fas fa-user-tag"></i></span>
+                                                                </div>
+                                                                <input type="text" class="form-control" :placeholder="lastname">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text rounded-left iconlogin"><i class="fas fa-at"></i></span>
+                                                                </div>
+                                                                <input type="email" class="form-control" placeholder="email">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-primary">{{txtbut}}</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="panuseracctit ml-3 mt-3">{{accounttext3}}</div>
-                                                <div class="container">
+                                                <div class="container py-3">
                                                     <form @submit.prevent="updatePass">
                                                         <div class="form-group">
-                                                            <label>{{currentpass}}</label>
-                                                            <!--<input type="password" class="form-control"
+                                                            <!--<label>{{currentpass}}</label>
+                                                            <input type="password" class="form-control"
                                                                    id="exampleInputPassword1" placeholder="Password">-->
-                                                            <eye-pass customclass="form-control" modelprop="vmcurpass"/>
+                                                            <eye-pass customclass="form-control" modelprop="vmcurpass" :campopass="currentpass"/>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>{{newpass}}</label>
-                                                            <!--<input type="password" class="form-control"
+                                                            <!--<label>{{newpass}}</label>
+                                                            <input type="password" class="form-control"
                                                                    id="exampleInputPassword1" placeholder="Password">-->
-                                                            <eye-pass customclass="form-control" modelprop="vmnewpass"/>
+                                                            <eye-pass customclass="form-control" modelprop="vmnewpass" :campopass="newpass"/>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>{{confirmpass}}</label>
-                                                            <!--<input type="password" class="form-control"
+                                                            <!--<label>{{confirmpass}}</label>
+                                                            <input type="password" class="form-control"
                                                                    id="exampleInputPassword1" placeholder="Password">-->
-                                                            <eye-pass customclass="form-control" modelprop="vmconfpass"/>
+                                                            <eye-pass customclass="form-control" modelprop="vmconfpass" :campopass="confirmpass"/>
                                                         </div>
                                                         <div class="form-group">
                                                             <button type="submit" class="btn btn-primary">{{txtbut}}</button>

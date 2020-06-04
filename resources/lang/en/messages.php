@@ -51,9 +51,14 @@ return
         'lbpanusdel'                => 'Delete account',
         'lbpanusacc1'               => 'Edit info',
         'lbpanusacc2'               => 'Change password',
-        'lbpanuscurpass'            => 'Current password',
-        'lbpanusnewpass'            => 'New password',
-        'lbpanusconfpass'           => 'Confirm password',
+        'lbpanuscurpass'            => 'current password',
+        'lbpanusnewpass'            => 'new password',
+        'lbpanusconfpass'           => 'confirm password',
         'lbsavebutton'              => 'Save',
+        'lbformregname'             => 'Name may not be greater than 50 characters',
+        'lbformreglastname'         => 'Lastname may not be greater than 50 characters',
+        'lbformregemail'            => 'Email is already in use',
+        'lbformregpass'             => 'Password must be at least 8 characters',
+        'lbformlog'                 => 'These credentials do not match our records'
 
     ];

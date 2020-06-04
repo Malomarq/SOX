@@ -3850,6 +3850,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -85000,7 +85031,63 @@ var render = function() {
                               "div",
                               { staticClass: "panuseracctit ml-3 mt-3" },
                               [_vm._v(_vm._s(_vm.accounttext2))]
-                            )
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "container py-3" }, [
+                              _c(
+                                "form",
+                                {
+                                  on: {
+                                    submit: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.updateInfo($event)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("div", { staticClass: "form-group" }, [
+                                    _c("div", { staticClass: "input-group" }, [
+                                      _vm._m(5),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        staticClass: "form-control",
+                                        attrs: {
+                                          type: "text",
+                                          placeholder: _vm.name
+                                        }
+                                      })
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "form-group" }, [
+                                    _c("div", { staticClass: "input-group" }, [
+                                      _vm._m(6),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        staticClass: "form-control",
+                                        attrs: {
+                                          type: "text",
+                                          placeholder: _vm.lastname
+                                        }
+                                      })
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(7),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "form-group" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-primary",
+                                        attrs: { type: "submit" }
+                                      },
+                                      [_vm._v(_vm._s(_vm.txtbut))]
+                                    )
+                                  ])
+                                ]
+                              )
+                            ])
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-12 col-md-6" }, [
@@ -85010,7 +85097,7 @@ var render = function() {
                               [_vm._v(_vm._s(_vm.accounttext3))]
                             ),
                             _vm._v(" "),
-                            _c("div", { staticClass: "container" }, [
+                            _c("div", { staticClass: "container py-3" }, [
                               _c(
                                 "form",
                                 {
@@ -85026,14 +85113,11 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
-                                      _c("label", [
-                                        _vm._v(_vm._s(_vm.currentpass))
-                                      ]),
-                                      _vm._v(" "),
                                       _c("eye-pass", {
                                         attrs: {
                                           customclass: "form-control",
-                                          modelprop: "vmcurpass"
+                                          modelprop: "vmcurpass",
+                                          campopass: _vm.currentpass
                                         }
                                       })
                                     ],
@@ -85044,14 +85128,11 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
-                                      _c("label", [
-                                        _vm._v(_vm._s(_vm.newpass))
-                                      ]),
-                                      _vm._v(" "),
                                       _c("eye-pass", {
                                         attrs: {
                                           customclass: "form-control",
-                                          modelprop: "vmnewpass"
+                                          modelprop: "vmnewpass",
+                                          campopass: _vm.newpass
                                         }
                                       })
                                     ],
@@ -85062,14 +85143,11 @@ var render = function() {
                                     "div",
                                     { staticClass: "form-group" },
                                     [
-                                      _c("label", [
-                                        _vm._v(_vm._s(_vm.confirmpass))
-                                      ]),
-                                      _vm._v(" "),
                                       _c("eye-pass", {
                                         attrs: {
                                           customclass: "form-control",
-                                          modelprop: "vmconfpass"
+                                          modelprop: "vmconfpass",
+                                          campopass: _vm.confirmpass
                                         }
                                       })
                                     ],
@@ -85202,6 +85280,47 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "mr-3 panusernav" }, [
       _c("i", { staticClass: "fas fa-times-circle fa-lg" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("span", { staticClass: "input-group-text rounded-left iconlogin" }, [
+        _c("i", { staticClass: "fas fa-user" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("span", { staticClass: "input-group-text rounded-left iconlogin" }, [
+        _c("i", { staticClass: "fas fa-user-tag" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "input-group" }, [
+        _c("div", { staticClass: "input-group-prepend" }, [
+          _c(
+            "span",
+            { staticClass: "input-group-text rounded-left iconlogin" },
+            [_c("i", { staticClass: "fas fa-at" })]
+          )
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "email", placeholder: "email" }
+        })
+      ])
     ])
   }
 ]
@@ -98550,7 +98669,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************************************!*\
   !*** ./resources/js/components/UserPanel.vue?vue&type=template&id=4a6e5a9e& ***!
   \******************************************************************************/
-/*! exports provided: render, staticRenderFns */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

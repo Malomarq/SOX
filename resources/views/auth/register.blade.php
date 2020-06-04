@@ -53,7 +53,7 @@
 
                             @error('name')
                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>@lang('messages.lbformregname')</strong>
                                     </span>
                             @enderror
                         </div>
@@ -72,7 +72,7 @@
 
                             @error('name')
                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>@lang('messages.lbformreglastname')</strong>
                                     </span>
                             @enderror
                         </div>
@@ -90,7 +90,7 @@
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>@lang('messages.lbformregemail')</strong>
                                     </span>
                             @enderror
                         </div>
@@ -102,7 +102,7 @@
 
                         @error('password')
                         <small class="text-danger">
-                            <strong>{{ $message }}</strong>
+                            <strong>@lang('messages.lbformregpass')</strong>
                         </small>
                         @enderror
                     </div>

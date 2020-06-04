@@ -61,9 +61,14 @@ return
         'lbpanusdel'                => 'Eliminar cuenta',
         'lbpanusacc1'               => 'Editar info',
         'lbpanusacc2'               => 'Cambiar contraseña',
-        'lbpanuscurpass'            => 'Contraseña actual',
-        'lbpanusnewpass'            => 'Nueva contraseña',
-        'lbpanusconfpass'           => 'Confirmar contraseña',
+        'lbpanuscurpass'            => 'contraseña actual',
+        'lbpanusnewpass'            => 'nueva contraseña',
+        'lbpanusconfpass'           => 'confirmar contraseña',
         'lbsavebutton'              => 'Guardar',
+        'lbformregname'             => 'El nombre no puede contener más de 50 caracteres',
+        'lbformreglastname'         => 'El apellido no puede contener más de 50 caracteres',
+        'lbformregemail'            => 'El valor del campo email ya está en uso',
+        'lbformregpass'             => 'La contraseña debe contener al menos 8 caracteres',
+        'lbformlog'                 => 'Estas credenciales no coinciden con nuestros registros'
 
     ];
