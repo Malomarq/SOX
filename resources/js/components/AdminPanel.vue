@@ -100,7 +100,7 @@
             users: '',
             articles: '',
             orders: '',
-            contact: ''
+            contact: '',
         },
 
         data() {

@@ -49,6 +49,7 @@ class AdminController extends Controller
 
         $user->name = ($req->name)? $req->name : $user->name;
         $user->lastname = ($req->lastname)? $req->lastname : $user->lastname;
+
         $user->password = ($req->pass)? Hash::make($req->pass) : $user->password;
 
         $user->save();

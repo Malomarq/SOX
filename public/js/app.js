@@ -3885,9 +3885,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 
@@ -3911,11 +3908,15 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     name: '',
     lastname: '',
     accounttext2: '',
+    upinfoerr: '',
     accounttext3: '',
     currentpass: '',
     newpass: '',
     confirmpass: '',
-    txtbut: ''
+    txtbut: '',
+    uppasscurrerr: '',
+    uppassnewerr: '',
+    uppassconferr: ''
   },
   computed: {
     iduser: function iduser() {
@@ -82533,7 +82534,7 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "form-group" }, [
-                            _c("label", [_vm._v("Name")]),
+                            _c("label", [_vm._v("Nombre")]),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -82565,7 +82566,7 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group" }, [
-                            _c("label", [_vm._v("Lastname")]),
+                            _c("label", [_vm._v("Apellido")]),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -82597,7 +82598,7 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group" }, [
-                            _c("label", [_vm._v("Email address")]),
+                            _c("label", [_vm._v("Email")]),
                             _vm._v(" "),
                             _c("input", {
                               directives: [
@@ -82640,7 +82641,7 @@ var render = function() {
                             "div",
                             { staticClass: "form-group" },
                             [
-                              _c("label", [_vm._v("Password")]),
+                              _c("label", [_vm._v("Contraseña")]),
                               _vm._v(" "),
                               _c("eye-pass", {
                                 attrs: {
@@ -82708,7 +82709,7 @@ var render = function() {
                             _c(
                               "label",
                               { attrs: { for: "exampleInputText1" } },
-                              [_vm._v("Name")]
+                              [_vm._v("Nombre")]
                             ),
                             _vm._v(" "),
                             _c("input", {
@@ -82743,7 +82744,7 @@ var render = function() {
                             _c(
                               "label",
                               { attrs: { for: "exampleInputText2" } },
-                              [_vm._v("Lastname")]
+                              [_vm._v("Apellido")]
                             ),
                             _vm._v(" "),
                             _c("input", {
@@ -82778,13 +82779,12 @@ var render = function() {
                             "div",
                             { staticClass: "form-group" },
                             [
-                              _c("label", [_vm._v("Password")]),
+                              _c("label", [_vm._v("Contraseña")]),
                               _vm._v(" "),
                               _c("eye-pass", {
                                 attrs: {
                                   customclass: "form-control",
-                                  modelprop: "mduppass",
-                                  campopass: "contraseña"
+                                  modelprop: "mduppass"
                                 }
                               })
                             ],
@@ -85162,11 +85162,7 @@ var render = function() {
                                         _c(
                                           "small",
                                           { staticClass: "text-danger" },
-                                          [
-                                            _vm._v(
-                                              "Datos incorrectos. Recuerda que name y lastname deben\n                                                            tener como máximo 50 caracteres"
-                                            )
-                                          ]
+                                          [_vm._v(_vm._s(_vm.upinfoerr))]
                                         )
                                       ])
                                     : _vm._e(),
@@ -85255,11 +85251,7 @@ var render = function() {
                                         _c(
                                           "small",
                                           { staticClass: "text-danger" },
-                                          [
-                                            _vm._v(
-                                              "Datos incorrectos. Recuerda que las contraseñas deben tener como\n                                                        mínimo 8 caracteres"
-                                            )
-                                          ]
+                                          [_vm._v(_vm._s(_vm.uppasscurrerr))]
                                         )
                                       ])
                                     : _vm._e(),
@@ -85269,11 +85261,7 @@ var render = function() {
                                         _c(
                                           "small",
                                           { staticClass: "text-danger" },
-                                          [
-                                            _vm._v(
-                                              "Datos incorrectos. Nueva contraseña y Confirmación de contraseña\n                                                        no coinciden"
-                                            )
-                                          ]
+                                          [_vm._v(_vm._s(_vm.uppassnewerr))]
                                         )
                                       ])
                                     : _vm._e(),
@@ -85283,11 +85271,7 @@ var render = function() {
                                         _c(
                                           "small",
                                           { staticClass: "text-danger" },
-                                          [
-                                            _vm._v(
-                                              "Datos incorrectos. Contraseña actual no coincide"
-                                            )
-                                          ]
+                                          [_vm._v(_vm._s(_vm.uppassconferr))]
                                         )
                                       ])
                                     : _vm._e(),

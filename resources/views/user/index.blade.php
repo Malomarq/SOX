@@ -22,7 +22,9 @@
                 lastname="@lang('messages.lbreglastname')" accounttext2="@lang('messages.lbpanusacc1')"
                 accounttext3="@lang('messages.lbpanusacc2')" currentpass="@lang('messages.lbpanuscurpass')"
                 newpass="@lang('messages.lbpanusnewpass')" confirmpass="@lang('messages.lbpanusconfpass')"
-                txtbut="@lang('messages.lbsavebutton')"
+                txtbut="@lang('messages.lbsavebutton')" upinfoerr="@lang('messages.lbpanuserrinfo')"
+                uppasscurrerr="@lang('messages.lbpanuscurrerr')" uppassnewerr="@lang('messages.lbpanusnewerr')"
+                uppassconferr="@lang('messages.lbpanusconferr')"
     ></user-panel>
 
 @endsection

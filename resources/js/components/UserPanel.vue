@@ -93,8 +93,7 @@
                                                             </div>
                                                         </div>
                                                         <div v-if="showErrorUpdateInfo" class="form-group">
-                                                            <small class="text-danger">Datos incorrectos. Recuerda que name y lastname deben
-                                                                tener como máximo 50 caracteres</small>
+                                                            <small class="text-danger">{{upinfoerr}}</small>
                                                         </div>
                                                         <div class="form-group">
                                                             <button type="submit" class="btn btn-primary">{{txtbut}}</button>
@@ -125,15 +124,13 @@
                                                             <eye-pass customclass="form-control" modelprop="vmconfpass" :campopass="confirmpass"/>
                                                         </div>
                                                         <div v-if="showErrorUpdatePass" class="form-group">
-                                                            <small class="text-danger">Datos incorrectos. Recuerda que las contraseñas deben tener como
-                                                            mínimo 8 caracteres</small>
+                                                            <small class="text-danger">{{uppasscurrerr}}</small>
                                                         </div>
                                                         <div v-if="showErrorUpdatePassMatch" class="form-group">
-                                                            <small class="text-danger">Datos incorrectos. Nueva contraseña y Confirmación de contraseña
-                                                            no coinciden</small>
+                                                            <small class="text-danger">{{uppassnewerr}}</small>
                                                         </div>
                                                         <div v-if="showErrorUpdatePassCurr" class="form-group">
-                                                            <small class="text-danger">Datos incorrectos. Contraseña actual no coincide</small>
+                                                            <small class="text-danger">{{uppassconferr}}</small>
                                                         </div>
                                                         <div class="form-group">
                                                             <button type="submit" class="btn btn-primary">{{txtbut}}</button>
@@ -201,12 +198,15 @@
             name: '',
             lastname: '',
             accounttext2: '',
-
+            upinfoerr: '',
             accounttext3: '',
             currentpass: '',
             newpass: '',
             confirmpass: '',
             txtbut: '',
+            uppasscurrerr: '',
+            uppassnewerr: '',
+            uppassconferr: ''
         },
         computed: {
             iduser() {

@@ -69,6 +69,14 @@ return
         'lbformreglastname'         => 'El apellido no puede contener más de 50 caracteres',
         'lbformregemail'            => 'El valor del campo email ya está en uso',
         'lbformregpass'             => 'La contraseña debe contener al menos 8 caracteres',
-        'lbformlog'                 => 'Estas credenciales no coinciden con nuestros registros'
+        'lbformlog'                 => 'Estas credenciales no coinciden con nuestros registros',
+        'lbpanuserrinfo'            => 'Datos incorrectos. Recuerda que name y lastname deben tener
+                                        como máximo 50 caracteres',
+        'lbpanuscurrerr'            => 'Datos incorrectos. Recuerda que las contraseñas deben tener como
+                                        mínimo 8 caracteres',
+        'lbpanusnewerr'             => 'Datos incorrectos. Nueva contraseña y Confirmación de contraseña
+                                        no coinciden',
+        'lbpanusconferr'            => 'Datos incorrectos. Contraseña actual no coincide',
+
 
     ];

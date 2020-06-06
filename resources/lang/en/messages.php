@@ -59,6 +59,10 @@ return
         'lbformreglastname'         => 'Lastname may not be greater than 50 characters',
         'lbformregemail'            => 'Email is already in use',
         'lbformregpass'             => 'Password must be at least 8 characters',
-        'lbformlog'                 => 'These credentials do not match our records'
+        'lbformlog'                 => 'These credentials do not match our records',
+        'lbpanuserrinfo'            => 'Error. Name and lastname may not be greater than 50 characters',
+        'lbpanuscurrerr'            => 'Error. Password must be at least 8 characters',
+        'lbpanusnewerr'             => 'Error. New password and confirm password don\'t match',
+        'lbpanusconferr'            => 'Error. Current password don\'t match',
 
     ];

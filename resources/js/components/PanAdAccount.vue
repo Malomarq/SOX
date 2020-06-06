@@ -48,23 +48,23 @@
 
                             <form id="createform" @submit.prevent="createAd">
                                 <div class="form-group">
-                                    <label>Name</label>
+                                    <label>Nombre</label>
                                     <input v-model="mdcrename" type="text" class="form-control" required>
                                     <small v-if="showErrName" class="text-danger">{{errName}}</small>
                                 </div>
                                 <div class="form-group">
-                                    <label>Lastname</label>
+                                    <label>Apellido</label>
                                     <input v-model="mdcrelastname" type="text" class="form-control" required>
                                     <small v-if="showErrLastname" class="text-danger">{{errLastname}}</small>
                                 </div>
                                 <div class="form-group">
-                                    <label>Email address</label>
+                                    <label>Email</label>
                                     <input name="inpemail" v-model="mdcreemail" type="email" class="form-control"
                                            aria-describedby="emailHelp" required @blur="checkEmail">
                                     <small v-if="showErrEmail" class="form-text text-danger">{{errEmail}}</small>
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
+                                    <label>Contraseña</label>
                                     <eye-pass customclass="form-control" modelprop="mdcrepass"></eye-pass>
                                     <small v-if="showErrPass" class="text-danger">{{errPass}}</small>
                                 </div>
@@ -97,19 +97,19 @@
 
                             <form id="updateform" @submit.prevent="updateAd">
                                 <div class="form-group">
-                                    <label for="exampleInputText1">Name</label>
+                                    <label for="exampleInputText1">Nombre</label>
                                     <input type="text" v-model="mdupname" class="form-control" id="exampleInputText1"
                                            aria-describedby="emailHelp" :placeholder="placename">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputText2">Lastname</label>
+                                    <label for="exampleInputText2">Apellido</label>
                                     <input type="text" v-model="mduplastname" class="form-control"
                                            id="exampleInputText2" aria-describedby="emailHelp"
                                            :placeholder="placelastname">
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <eye-pass customclass="form-control" modelprop="mduppass" campopass="contraseña"></eye-pass>
+                                    <label>Contraseña</label>
+                                    <eye-pass customclass="form-control" modelprop="mduppass"></eye-pass>
 
                                 </div>
                                 <div v-if="showErrorUpdate" class="form-group">
@@ -209,7 +209,7 @@
              *  Admin's id
              */
 
-            idad: ''
+            idad: '',
         },
 
         computed: {
@@ -366,7 +366,7 @@
                     'idad': this.idadmin,
                     'name': this.mdupname,
                     'lastname': this.mduplastname,
-                    'pass': this.mduppass,
+                    'pass': this.mduppass
                 }).then((response) => {
 
                     if (response.data['pass'] == 'filled') {
