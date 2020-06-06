@@ -3876,15 +3876,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -82265,7 +82256,6 @@ var render = function() {
       attrs: {
         type: _vm.eyepass,
         name: _vm.namepass,
-        required: "",
         placeholder: _vm.campopass
       },
       on: { blur: _vm.inputvalue }

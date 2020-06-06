@@ -106,21 +106,12 @@
                                                 <div class="container py-3">
                                                     <form @submit.prevent="updatePass">
                                                         <div class="form-group">
-                                                            <!--<label>{{currentpass}}</label>
-                                                            <input type="password" class="form-control"
-                                                                   id="exampleInputPassword1" placeholder="Password">-->
                                                             <eye-pass customclass="form-control" modelprop="vmcurpass" :campopass="currentpass"/>
                                                         </div>
                                                         <div class="form-group">
-                                                            <!--<label>{{newpass}}</label>
-                                                            <input type="password" class="form-control"
-                                                                   id="exampleInputPassword1" placeholder="Password">-->
                                                             <eye-pass customclass="form-control" modelprop="vmnewpass" :campopass="newpass"/>
                                                         </div>
                                                         <div class="form-group">
-                                                            <!--<label>{{confirmpass}}</label>
-                                                            <input type="password" class="form-control"
-                                                                   id="exampleInputPassword1" placeholder="Password">-->
                                                             <eye-pass customclass="form-control" modelprop="vmconfpass" :campopass="confirmpass"/>
                                                         </div>
                                                         <div v-if="showErrorUpdatePass" class="form-group">

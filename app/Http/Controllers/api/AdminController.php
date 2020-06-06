@@ -44,9 +44,6 @@ class AdminController extends Controller
 
         $user = User::find($req->idad);
 
-
-        // TODO pedir contraseña actual y validar que es correcta para poder cambiarla
-
         $user->name = ($req->name)? $req->name : $user->name;
         $user->lastname = ($req->lastname)? $req->lastname : $user->lastname;
 

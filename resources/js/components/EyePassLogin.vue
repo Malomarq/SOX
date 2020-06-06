@@ -7,7 +7,7 @@
 								'fa-eye':!lock}"/></span>
             </b-link>
         </div>
-        <input :type="eyepass" :name="namepass" required :placeholder="campopass"
+        <input :type="eyepass" :name="namepass" :placeholder="campopass"
                :class="customclass" @blur="inputvalue" ref="inputpass">
     </div>
 </template>
