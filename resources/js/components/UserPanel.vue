@@ -81,7 +81,7 @@
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text rounded-left iconlogin"><i class="fas fa-user"></i></span>
                                                                 </div>
-                                                                <input type="text" class="form-control" :placeholder="name">
+                                                                <input v-model="vmname" type="text" class="form-control" :placeholder="name">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -89,16 +89,12 @@
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text rounded-left iconlogin"><i class="fas fa-user-tag"></i></span>
                                                                 </div>
-                                                                <input type="text" class="form-control" :placeholder="lastname">
+                                                                <input v-model="vmlastname" type="text" class="form-control" :placeholder="lastname">
                                                             </div>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <div class="input-group-prepend">
-                                                                    <span class="input-group-text rounded-left iconlogin"><i class="fas fa-at"></i></span>
-                                                                </div>
-                                                                <input type="email" class="form-control" placeholder="email">
-                                                            </div>
+                                                        <div v-if="showErrorUpdateInfo" class="form-group">
+                                                            <small class="text-danger">Datos incorrectos. Recuerda que name y lastname deben
+                                                                tener como máximo 50 caracteres</small>
                                                         </div>
                                                         <div class="form-group">
                                                             <button type="submit" class="btn btn-primary">{{txtbut}}</button>
@@ -127,6 +123,17 @@
                                                             <input type="password" class="form-control"
                                                                    id="exampleInputPassword1" placeholder="Password">-->
                                                             <eye-pass customclass="form-control" modelprop="vmconfpass" :campopass="confirmpass"/>
+                                                        </div>
+                                                        <div v-if="showErrorUpdatePass" class="form-group">
+                                                            <small class="text-danger">Datos incorrectos. Recuerda que las contraseñas deben tener como
+                                                            mínimo 8 caracteres</small>
+                                                        </div>
+                                                        <div v-if="showErrorUpdatePassMatch" class="form-group">
+                                                            <small class="text-danger">Datos incorrectos. Nueva contraseña y Confirmación de contraseña
+                                                            no coinciden</small>
+                                                        </div>
+                                                        <div v-if="showErrorUpdatePassCurr" class="form-group">
+                                                            <small class="text-danger">Datos incorrectos. Contraseña actual no coincide</small>
                                                         </div>
                                                         <div class="form-group">
                                                             <button type="submit" class="btn btn-primary">{{txtbut}}</button>
@@ -215,12 +222,18 @@
                 }],
 
                 // models
+                vmname: '',
+                vmlastname: '',
+
                 vmcurpass: '',
                 vmnewpass: '',
                 vmconfpass: '',
 
                 // errors
-
+                showErrorUpdateInfo: false,
+                showErrorUpdatePass: false,
+                showErrorUpdatePassMatch: false,
+                showErrorUpdatePassCurr: false,
             }
         },
         mounted() {
@@ -259,11 +272,45 @@
                 axios.post('api/updatePass', {
                     '_token': this.$csrfToken,
                     'pubkey': pubkey,
+                    'idUser': this.iduser,
                     'curpass': this.vmcurpass,
                     'newpass': this.vmnewpass,
                     'confpass': this.vmconfpass
                 }).then((response) => {
-                   console.log(response.data);
+                    // TODO modificar url final
+                    location.href = 'http://localhost/Sox-app/public/logout';
+                }).catch((error) => {
+                    if(error.response.data['error'] === 'validate'){
+                        this.showErrorUpdatePass = true;
+                    } else {
+                        this.showErrorUpdatePass = false;
+                    }
+
+                    if(error.response.data['error'] === 'new-conf'){
+                        this.showErrorUpdatePassMatch = true;
+                    } else {
+                        this.showErrorUpdatePassMatch = false;
+                    }
+
+                    if(error.response.data['error'] === 'curr'){
+                        this.showErrorUpdatePassCurr = true;
+                    } else {
+                        this.showErrorUpdatePassCurr = false;
+                    }
+                });
+            },
+
+            updateInfo(){
+                axios.post('api/updateInfo', {
+                    '_token': this.$csrfToken,
+                    'pubkey': pubkey,
+                    'idUser': this.iduser,
+                    'name': this.vmname,
+                    'lastname': this.vmlastname,
+                }).then((response) => {
+                    location.reload();
+                }).catch((error) => {
+                    this.showErrorUpdateInfo = true;
                 });
             }
         }

@@ -3881,6 +3881,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3923,10 +3930,16 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         email: ''
       }],
       // models
+      vmname: '',
+      vmlastname: '',
       vmcurpass: '',
       vmnewpass: '',
-      vmconfpass: '' // errors
-
+      vmconfpass: '',
+      // errors
+      showErrorUpdateInfo: false,
+      showErrorUpdatePass: false,
+      showErrorUpdatePassMatch: false,
+      showErrorUpdatePassCurr: false
     };
   },
   mounted: function mounted() {
@@ -3963,14 +3976,51 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       });
     },
     updatePass: function updatePass() {
+      var _this2 = this;
+
       axios.post('api/updatePass', {
         '_token': this.$csrfToken,
         'pubkey': pubkey,
+        'idUser': this.iduser,
         'curpass': this.vmcurpass,
         'newpass': this.vmnewpass,
         'confpass': this.vmconfpass
       }).then(function (response) {
-        console.log(response.data);
+        // TODO modificar url final
+        location.href = 'http://localhost/Sox-app/public/logout';
+      })["catch"](function (error) {
+        if (error.response.data['error'] === 'validate') {
+          _this2.showErrorUpdatePass = true;
+        } else {
+          _this2.showErrorUpdatePass = false;
+        }
+
+        if (error.response.data['error'] === 'new-conf') {
+          _this2.showErrorUpdatePassMatch = true;
+        } else {
+          _this2.showErrorUpdatePassMatch = false;
+        }
+
+        if (error.response.data['error'] === 'curr') {
+          _this2.showErrorUpdatePassCurr = true;
+        } else {
+          _this2.showErrorUpdatePassCurr = false;
+        }
+      });
+    },
+    updateInfo: function updateInfo() {
+      var _this3 = this;
+
+      axios.post('api/updateInfo', {
+        '_token': this.$csrfToken,
+        'pubkey': pubkey,
+        'idUser': this.iduser,
+        'name': this.vmname,
+        'lastname': this.vmlastname
+      }).then(function (response) {
+        location.reload();
+      })["catch"](function (error) {
+        _this3.showErrorUpdateInfo = true;
       });
     }
   }
@@ -85050,10 +85100,27 @@ var render = function() {
                                       _vm._m(5),
                                       _vm._v(" "),
                                       _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.vmname,
+                                            expression: "vmname"
+                                          }
+                                        ],
                                         staticClass: "form-control",
                                         attrs: {
                                           type: "text",
                                           placeholder: _vm.name
+                                        },
+                                        domProps: { value: _vm.vmname },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.vmname = $event.target.value
+                                          }
                                         }
                                       })
                                     ])
@@ -85064,16 +85131,45 @@ var render = function() {
                                       _vm._m(6),
                                       _vm._v(" "),
                                       _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.vmlastname,
+                                            expression: "vmlastname"
+                                          }
+                                        ],
                                         staticClass: "form-control",
                                         attrs: {
                                           type: "text",
                                           placeholder: _vm.lastname
+                                        },
+                                        domProps: { value: _vm.vmlastname },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.vmlastname = $event.target.value
+                                          }
                                         }
                                       })
                                     ])
                                   ]),
                                   _vm._v(" "),
-                                  _vm._m(7),
+                                  _vm.showErrorUpdateInfo
+                                    ? _c("div", { staticClass: "form-group" }, [
+                                        _c(
+                                          "small",
+                                          { staticClass: "text-danger" },
+                                          [
+                                            _vm._v(
+                                              "Datos incorrectos. Recuerda que name y lastname deben\n                                                            tener como máximo 50 caracteres"
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    : _vm._e(),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "form-group" }, [
                                     _c(
@@ -85153,6 +85249,48 @@ var render = function() {
                                     ],
                                     1
                                   ),
+                                  _vm._v(" "),
+                                  _vm.showErrorUpdatePass
+                                    ? _c("div", { staticClass: "form-group" }, [
+                                        _c(
+                                          "small",
+                                          { staticClass: "text-danger" },
+                                          [
+                                            _vm._v(
+                                              "Datos incorrectos. Recuerda que las contraseñas deben tener como\n                                                        mínimo 8 caracteres"
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _vm.showErrorUpdatePassMatch
+                                    ? _c("div", { staticClass: "form-group" }, [
+                                        _c(
+                                          "small",
+                                          { staticClass: "text-danger" },
+                                          [
+                                            _vm._v(
+                                              "Datos incorrectos. Nueva contraseña y Confirmación de contraseña\n                                                        no coinciden"
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _vm.showErrorUpdatePassCurr
+                                    ? _c("div", { staticClass: "form-group" }, [
+                                        _c(
+                                          "small",
+                                          { staticClass: "text-danger" },
+                                          [
+                                            _vm._v(
+                                              "Datos incorrectos. Contraseña actual no coincide"
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    : _vm._e(),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "form-group" }, [
                                     _c(
@@ -85299,27 +85437,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "input-group-prepend" }, [
       _c("span", { staticClass: "input-group-text rounded-left iconlogin" }, [
         _c("i", { staticClass: "fas fa-user-tag" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "input-group" }, [
-        _c("div", { staticClass: "input-group-prepend" }, [
-          _c(
-            "span",
-            { staticClass: "input-group-text rounded-left iconlogin" },
-            [_c("i", { staticClass: "fas fa-at" })]
-          )
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "email", placeholder: "email" }
-        })
       ])
     ])
   }
@@ -98669,7 +98786,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************************************!*\
   !*** ./resources/js/components/UserPanel.vue?vue&type=template&id=4a6e5a9e& ***!
   \******************************************************************************/
-/*! no static exports found */
+/*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
