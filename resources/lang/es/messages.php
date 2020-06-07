@@ -83,6 +83,7 @@ return
         'lbpanusdelmess3'           => 'Introduce tu contraseña para eliminar tu cuenta',
         'lbpanusdelmess4'           => 'Este proceso es irreversible',
         'lbpanusdelbut'             => 'Cancelar',
+        'lbprodmodal'               => 'Para poder comprar, primero tienes que iniciar sesión',
 
 
     ];

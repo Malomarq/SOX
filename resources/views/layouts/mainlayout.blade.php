@@ -136,7 +136,11 @@
                     <ul class="nav navbar-nav mx-auto searchbar py-2">
                         <searchbar searchtext="@lang('messages.lbsearch')"></searchbar>
                     </ul>
+                    <!--TODO ordenar al minimizar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <shopping-bag></shopping-bag>
+                        </li>
                         <li class="nav-item dropdown dropleft">
                             <a class="nav-link text-dark infotag" href="#" id="navbarDropdownMenuLink"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

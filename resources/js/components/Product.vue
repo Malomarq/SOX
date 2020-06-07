@@ -39,7 +39,7 @@
 
                         <b-col cols="4">
                             <b-row>
-                                <b-button size="lg" variant="dark">{{lbprodbut}}</b-button>
+                                <b-button type="button" size="lg" variant="dark" @click="addToCart">{{lbprodbut}}</b-button>
                             </b-row>
                         </b-col>
                     </b-row>
@@ -47,6 +47,21 @@
             </b-row>
         </b-container>
 
+        <div class="modal fade" id="modal-cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <p>{{lbprodmod}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -61,7 +76,8 @@
             art: {},
             lbprodsize: {},
             lbprodtot: {},
-            lbprodbut: {}
+            lbprodbut: {},
+            lbprodmod: '',
         },
 
         mounted() {
@@ -89,16 +105,20 @@
 
             showProduct() {
                 axios.get('api/product/'+ this.art, {
-
                     params: {
                         'pubkey': pubkey,
                     }
-                })
-
-
-                    .then((response) => {
+                }).then((response) => {
                     this.prod = response.data;
-                })
+                });
+            },
+
+            addToCart(){
+                if(this.user === ''){
+                    $('#modal-cart').modal('show');
+                } else {
+
+                }
             }
         }
     }

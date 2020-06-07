@@ -37,7 +37,7 @@ return
         'lbregbann2'                => 'Design your own Sox',
         'lbprodsize'                => 'Size',
         'lbprodtot'                 => 'Total',
-        'lbprodbut'                 => 'Add to cart',
+        'lbprodbut'                 => 'Add to bag',
         'lbpanadacc'                => 'Account',
         'lbpanadusers'              => 'Users',
         'lbpanadprods'              => 'Products',
@@ -70,5 +70,6 @@ return
         'lbpanusdelmess3'           => 'Enter your password to delete your account',
         'lbpanusdelmess4'           => 'This process is irreversible',
         'lbpanusdelbut'             => 'Cancel',
+        'lbprodmodal'               => 'You have to log in before add Sox to the cart',
 
     ];

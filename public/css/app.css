@@ -20380,6 +20380,12 @@ a[class*=linkpanad]:focus {
   background-color: crimson;
 }
 
+.shopcartpill {
+  position: relative;
+  left: -23.5px;
+  top: 10px;
+}
+
 .fbcol {
   color: #3b5998;
 }

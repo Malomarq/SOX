@@ -49,6 +49,7 @@ Vue.component('orders', require('./components/PanAdOrd.vue').default);
 Vue.component('contacts', require('./components/PanAdCon.vue').default);
 Vue.component('user-panel', require('./components/UserPanel.vue').default);
 Vue.component('pagination', require('./components/Pagination.vue').default);
+Vue.component('shopping-bag', require('./components/ShoppingBag.vue').default);
 
 //Vue.component('page-number', require('laravel-vue-pagination'));
 
