@@ -75,4 +75,34 @@ class UserController extends Controller
 
         return response()->json('User updated', 200);
     }
+
+    public function checkPass(Request $req){
+
+        $validate = Validator::make($req->all(),
+            [
+                'pass' => 'string|min:8|nullable'
+            ]);
+
+        if ($validate->fails()) {
+            return response()->json(['message' => 'Validation fails', 'error' => 'validate'], 422);
+        }
+
+        $user = User::find($req->idUser);
+
+        if (Hash::check($req->pass, $user->password)) {
+            return response()->json('ok', 200);
+        } else {
+            return response()->json(['message' => 'Not match', 'error' => 'match'], 422);
+        }
+
+    }
+
+    public function deleteUser(Request $req){
+
+        $user = User::find($req->idUser);
+        $user->delete();
+
+        return response()->json('Ok', 200);
+
+    }
 }

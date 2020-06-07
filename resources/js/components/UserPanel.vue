@@ -79,24 +79,31 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-prepend">
-                                                                    <span class="input-group-text rounded-left iconlogin"><i class="fas fa-user"></i></span>
+                                                                    <span
+                                                                        class="input-group-text rounded-left iconlogin"><i
+                                                                        class="fas fa-user"></i></span>
                                                                 </div>
-                                                                <input v-model="vmname" type="text" class="form-control" :placeholder="name">
+                                                                <input v-model="vmname" type="text" class="form-control"
+                                                                       :placeholder="name">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-prepend">
-                                                                    <span class="input-group-text rounded-left iconlogin"><i class="fas fa-user-tag"></i></span>
+                                                                    <span
+                                                                        class="input-group-text rounded-left iconlogin"><i
+                                                                        class="fas fa-user-tag"></i></span>
                                                                 </div>
-                                                                <input v-model="vmlastname" type="text" class="form-control" :placeholder="lastname">
+                                                                <input v-model="vmlastname" type="text"
+                                                                       class="form-control" :placeholder="lastname">
                                                             </div>
                                                         </div>
                                                         <div v-if="showErrorUpdateInfo" class="form-group">
                                                             <small class="text-danger">{{upinfoerr}}</small>
                                                         </div>
                                                         <div class="form-group">
-                                                            <button type="submit" class="btn btn-primary">{{txtbut}}</button>
+                                                            <button type="submit" class="btn btn-primary">{{txtbut}}
+                                                            </button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -106,13 +113,16 @@
                                                 <div class="container py-3">
                                                     <form @submit.prevent="updatePass">
                                                         <div class="form-group">
-                                                            <eye-pass customclass="form-control" modelprop="vmcurpass" :campopass="currentpass"/>
+                                                            <eye-pass customclass="form-control" modelprop="vmcurpass"
+                                                                      :campopass="currentpass"/>
                                                         </div>
                                                         <div class="form-group">
-                                                            <eye-pass customclass="form-control" modelprop="vmnewpass" :campopass="newpass"/>
+                                                            <eye-pass customclass="form-control" modelprop="vmnewpass"
+                                                                      :campopass="newpass"/>
                                                         </div>
                                                         <div class="form-group">
-                                                            <eye-pass customclass="form-control" modelprop="vmconfpass" :campopass="confirmpass"/>
+                                                            <eye-pass customclass="form-control" modelprop="vmconfpass"
+                                                                      :campopass="confirmpass"/>
                                                         </div>
                                                         <div v-if="showErrorUpdatePass" class="form-group">
                                                             <small class="text-danger">{{uppasscurrerr}}</small>
@@ -124,7 +134,8 @@
                                                             <small class="text-danger">{{uppassconferr}}</small>
                                                         </div>
                                                         <div class="form-group">
-                                                            <button type="submit" class="btn btn-primary">{{txtbut}}</button>
+                                                            <button type="submit" class="btn btn-primary">{{txtbut}}
+                                                            </button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -149,7 +160,45 @@
 
                                     <!--DELETE-->
                                     <div class="tab-pane fade" id="list-delaccount" role="tabpanel"
-                                         aria-labelledby="list-delaccount-list">delete account
+                                         aria-labelledby="list-delaccount-list">
+
+                                        <div class="panuseracctit ml-3 mt-3">{{deltext1}}</div>
+                                        <div class="row my-3">
+                                            <div class="col-12 col-md-8">
+                                                <div class="container text-justify">
+                                                    <div><b>{{deltext2}}</b></div>
+                                                    <div>{{deltext3}}</div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="col-6 col-md-3 mt-3 mt-md-0 mx-auto rounded text-center panusdelic"
+                                                @mouseenter="movedelicon" @mouseleave="stopdelicon">
+                                                <span class="px-3"><i
+                                                    :class="{'my-4 fas fa-trash-alt fa-3x': true, 'fa-spin': showdelicon}"/></span>
+                                            </div>
+                                        </div>
+                                        <div class="row my-3">
+                                            <div class="col-12 col-md-6">
+                                                <div class="container text-justify">
+                                                    <div><b>{{deltext4}}</b></div>
+                                                    <div class="form-group mt-2">
+                                                        <eye-pass customclass="form-control"
+                                                                  modelprop="vmdelpass"/>
+                                                    </div>
+                                                    <div v-if="showErrorDelPassLen" class="form-group">
+                                                        <small class="text-danger">{{uppasscurrerr}}</small>
+                                                    </div>
+                                                    <div v-if="showErrorDelPassMatch" class="form-group">
+                                                        <small class="text-danger">{{uppassconferr}}</small>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-warning" @click="checkpass">
+                                                            {{txtbut}}
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -158,6 +207,30 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="user-delete" tabindex="-1" role="dialog"
+             aria-labelledby="modalCenterTitleDelete" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitleDelete">{{mdelheader}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="font-weight-bold text-uppercase">{{mdeltext1}}</p>
+                        <p>{{mdeltext2}}</p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">{{mdelbut}}</button>
+                        <button type="button" class="btn btn-primary" @click="confirmDelUser">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -170,7 +243,7 @@
     const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
-        components:{
+        components: {
             EyePassLogin
         },
         props: {
@@ -197,7 +270,17 @@
             txtbut: '',
             uppasscurrerr: '',
             uppassnewerr: '',
-            uppassconferr: ''
+            uppassconferr: '',
+
+            // delete
+            deltext1: '',
+            deltext2: '',
+            deltext3: '',
+            deltext4: '',
+            mdelheader: '',
+            mdeltext1: '',
+            mdeltext2: '',
+            mdelbut: '',
         },
         computed: {
             iduser() {
@@ -212,6 +295,8 @@
                     email: ''
                 }],
 
+                showdelicon: false,
+
                 // models
                 vmname: '',
                 vmlastname: '',
@@ -220,32 +305,48 @@
                 vmnewpass: '',
                 vmconfpass: '',
 
+                vmdelpass: '',
+
                 // errors
                 showErrorUpdateInfo: false,
                 showErrorUpdatePass: false,
                 showErrorUpdatePassMatch: false,
                 showErrorUpdatePassCurr: false,
+                showErrorDelPassLen: false,
+                showErrorDelPassMatch: false,
             }
         },
         mounted() {
             var self = this;
             console.log('user panel montado');
             this.finduser();
-            EventBus.$on('inputval', function(data){
-                if(data[1] === 'vmcurpass'){
+            EventBus.$on('inputval', function (data) {
+                if (data[1] === 'vmcurpass') {
                     self.vmcurpass = data[0];
                 }
 
-                if(data[1] === 'vmnewpass'){
+                if (data[1] === 'vmnewpass') {
                     self.vmnewpass = data[0];
                 }
 
-                if(data[1] === 'vmconfpass'){
+                if (data[1] === 'vmconfpass') {
                     self.vmconfpass = data[0];
+                }
+
+                if (data[1] === 'vmdelpass') {
+                    self.vmdelpass = data[0];
                 }
             });
         },
         methods: {
+            movedelicon() {
+                this.showdelicon = true;
+            },
+
+            stopdelicon() {
+                this.showdelicon = false;
+            },
+
             finduser() {
                 axios.get('api/findUser', {
                     params: {
@@ -259,7 +360,7 @@
                 })
             },
 
-            updatePass(){
+            updatePass() {
                 axios.post('api/updatePass', {
                     '_token': this.$csrfToken,
                     'pubkey': pubkey,
@@ -271,19 +372,19 @@
                     // TODO modificar url final
                     location.href = 'http://localhost/Sox-app/public/logout';
                 }).catch((error) => {
-                    if(error.response.data['error'] === 'validate'){
+                    if (error.response.data['error'] === 'validate') {
                         this.showErrorUpdatePass = true;
                     } else {
                         this.showErrorUpdatePass = false;
                     }
 
-                    if(error.response.data['error'] === 'new-conf'){
+                    if (error.response.data['error'] === 'new-conf') {
                         this.showErrorUpdatePassMatch = true;
                     } else {
                         this.showErrorUpdatePassMatch = false;
                     }
 
-                    if(error.response.data['error'] === 'curr'){
+                    if (error.response.data['error'] === 'curr') {
                         this.showErrorUpdatePassCurr = true;
                     } else {
                         this.showErrorUpdatePassCurr = false;
@@ -291,7 +392,7 @@
                 });
             },
 
-            updateInfo(){
+            updateInfo() {
                 axios.post('api/updateInfo', {
                     '_token': this.$csrfToken,
                     'pubkey': pubkey,
@@ -302,6 +403,40 @@
                     location.reload();
                 }).catch((error) => {
                     this.showErrorUpdateInfo = true;
+                });
+            },
+
+            checkpass(){
+                axios.post('api/checkPass', {
+                    '_token': this.$csrfToken,
+                    'pubkey': pubkey,
+                    'idUser': this.iduser,
+                    'pass': this.vmdelpass
+                }).then((response) => {
+                    $('#user-delete').modal('show');
+                }).catch((error) => {
+                    if (error.response.data['error'] === 'validate') {
+                        this.showErrorDelPassLen = true;
+                    } else {
+                        this.showErrorDelPassLen = false;
+                    }
+
+                    if (error.response.data['error'] === 'match') {
+                        this.showErrorDelPassMatch = true;
+                    } else {
+                        this.showErrorDelPassMatch = false;
+                    }
+                });
+            },
+
+            confirmDelUser(){
+                axios.post('api/deleteUser', {
+                    '_token': this.$csrfToken,
+                    'pubkey': pubkey,
+                    'idUser': this.iduser,
+                }).then((response) => {
+                    // TODO modificar url final
+                    location.href = 'http://localhost/Sox-app/public/logout';
                 });
             }
         }

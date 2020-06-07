@@ -64,5 +64,11 @@ return
         'lbpanuscurrerr'            => 'Error. Password must be at least 8 characters',
         'lbpanusnewerr'             => 'Error. New password and confirm password don\'t match',
         'lbpanusconferr'            => 'Error. Current password don\'t match',
+        'lbpanusdelmess'            => '¿Are you sure you want to delete your account?',
+        'lbpanusdelmess2'           => 'If you delete your account, you will not have access to your orders, your designs,
+                                        and you will not be able to make purchases in Sox or make any custom design.',
+        'lbpanusdelmess3'           => 'Enter your password to delete your account',
+        'lbpanusdelmess4'           => 'This process is irreversible',
+        'lbpanusdelbut'             => 'Cancel',
 
     ];

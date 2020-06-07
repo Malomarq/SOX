@@ -20375,6 +20375,11 @@ a[class*=linkpanad]:focus {
   font-size: 1.2em;
 }
 
+.panusdelic {
+  color: #F9F9F9;
+  background-color: crimson;
+}
+
 .fbcol {
   color: #3b5998;
 }

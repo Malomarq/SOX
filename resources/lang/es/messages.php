@@ -77,6 +77,12 @@ return
         'lbpanusnewerr'             => 'Datos incorrectos. Nueva contraseña y Confirmación de contraseña
                                         no coinciden',
         'lbpanusconferr'            => 'Datos incorrectos. Contraseña actual no coincide',
+        'lbpanusdelmess'            => '¿Estás seguro de que quieres eliminar tu cuenta?',
+        'lbpanusdelmess2'           => 'Si eliminas tu cuenta, no tendrás acceso a tus pedidos, tus diseños,
+                                        y no podrás realizar compras en Sox ni realizar ningún diseño personalizado.',
+        'lbpanusdelmess3'           => 'Introduce tu contraseña para eliminar tu cuenta',
+        'lbpanusdelmess4'           => 'Este proceso es irreversible',
+        'lbpanusdelbut'             => 'Cancelar',
 
 
     ];

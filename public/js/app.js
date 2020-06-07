@@ -3876,6 +3876,79 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3907,7 +3980,16 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     txtbut: '',
     uppasscurrerr: '',
     uppassnewerr: '',
-    uppassconferr: ''
+    uppassconferr: '',
+    // delete
+    deltext1: '',
+    deltext2: '',
+    deltext3: '',
+    deltext4: '',
+    mdelheader: '',
+    mdeltext1: '',
+    mdeltext2: '',
+    mdelbut: ''
   },
   computed: {
     iduser: function iduser() {
@@ -3921,17 +4003,21 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         lastname: '',
         email: ''
       }],
+      showdelicon: false,
       // models
       vmname: '',
       vmlastname: '',
       vmcurpass: '',
       vmnewpass: '',
       vmconfpass: '',
+      vmdelpass: '',
       // errors
       showErrorUpdateInfo: false,
       showErrorUpdatePass: false,
       showErrorUpdatePassMatch: false,
-      showErrorUpdatePassCurr: false
+      showErrorUpdatePassCurr: false,
+      showErrorDelPassLen: false,
+      showErrorDelPassMatch: false
     };
   },
   mounted: function mounted() {
@@ -3950,9 +4036,19 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       if (data[1] === 'vmconfpass') {
         self.vmconfpass = data[0];
       }
+
+      if (data[1] === 'vmdelpass') {
+        self.vmdelpass = data[0];
+      }
     });
   },
   methods: {
+    movedelicon: function movedelicon() {
+      this.showdelicon = true;
+    },
+    stopdelicon: function stopdelicon() {
+      this.showdelicon = false;
+    },
     finduser: function finduser() {
       var _this = this;
 
@@ -4013,6 +4109,40 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         location.reload();
       })["catch"](function (error) {
         _this3.showErrorUpdateInfo = true;
+      });
+    },
+    checkpass: function checkpass() {
+      var _this4 = this;
+
+      axios.post('api/checkPass', {
+        '_token': this.$csrfToken,
+        'pubkey': pubkey,
+        'idUser': this.iduser,
+        'pass': this.vmdelpass
+      }).then(function (response) {
+        $('#user-delete').modal('show');
+      })["catch"](function (error) {
+        if (error.response.data['error'] === 'validate') {
+          _this4.showErrorDelPassLen = true;
+        } else {
+          _this4.showErrorDelPassLen = false;
+        }
+
+        if (error.response.data['error'] === 'match') {
+          _this4.showErrorDelPassMatch = true;
+        } else {
+          _this4.showErrorDelPassMatch = false;
+        }
+      });
+    },
+    confirmDelUser: function confirmDelUser() {
+      axios.post('api/deleteUser', {
+        '_token': this.$csrfToken,
+        'pubkey': pubkey,
+        'idUser': this.iduser
+      }).then(function (response) {
+        // TODO modificar url final
+        location.href = 'http://localhost/Sox-app/public/logout';
       });
     }
   }
@@ -85164,7 +85294,12 @@ var render = function() {
                                         staticClass: "btn btn-primary",
                                         attrs: { type: "submit" }
                                       },
-                                      [_vm._v(_vm._s(_vm.txtbut))]
+                                      [
+                                        _vm._v(
+                                          _vm._s(_vm.txtbut) +
+                                            "\n                                                        "
+                                        )
+                                      ]
                                     )
                                   ])
                                 ]
@@ -85273,7 +85408,12 @@ var render = function() {
                                         staticClass: "btn btn-primary",
                                         attrs: { type: "submit" }
                                       },
-                                      [_vm._v(_vm._s(_vm.txtbut))]
+                                      [
+                                        _vm._v(
+                                          _vm._s(_vm.txtbut) +
+                                            "\n                                                        "
+                                        )
+                                      ]
                                     )
                                   ])
                                 ]
@@ -85338,9 +85478,113 @@ var render = function() {
                         }
                       },
                       [
-                        _vm._v(
-                          "delete account\n                                "
-                        )
+                        _c("div", { staticClass: "panuseracctit ml-3 mt-3" }, [
+                          _vm._v(_vm._s(_vm.deltext1))
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row my-3" }, [
+                          _c("div", { staticClass: "col-12 col-md-8" }, [
+                            _c(
+                              "div",
+                              { staticClass: "container text-justify" },
+                              [
+                                _c("div", [
+                                  _c("b", [_vm._v(_vm._s(_vm.deltext2))])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", [_vm._v(_vm._s(_vm.deltext3))])
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-6 col-md-3 mt-3 mt-md-0 mx-auto rounded text-center panusdelic",
+                              on: {
+                                mouseenter: _vm.movedelicon,
+                                mouseleave: _vm.stopdelicon
+                              }
+                            },
+                            [
+                              _c("span", { staticClass: "px-3" }, [
+                                _c("i", {
+                                  class: {
+                                    "my-4 fas fa-trash-alt fa-3x": true,
+                                    "fa-spin": _vm.showdelicon
+                                  }
+                                })
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row my-3" }, [
+                          _c("div", { staticClass: "col-12 col-md-6" }, [
+                            _c(
+                              "div",
+                              { staticClass: "container text-justify" },
+                              [
+                                _c("div", [
+                                  _c("b", [_vm._v(_vm._s(_vm.deltext4))])
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group mt-2" },
+                                  [
+                                    _c("eye-pass", {
+                                      attrs: {
+                                        customclass: "form-control",
+                                        modelprop: "vmdelpass"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _vm.showErrorDelPassLen
+                                  ? _c("div", { staticClass: "form-group" }, [
+                                      _c(
+                                        "small",
+                                        { staticClass: "text-danger" },
+                                        [_vm._v(_vm._s(_vm.uppasscurrerr))]
+                                      )
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.showErrorDelPassMatch
+                                  ? _c("div", { staticClass: "form-group" }, [
+                                      _c(
+                                        "small",
+                                        { staticClass: "text-danger" },
+                                        [_vm._v(_vm._s(_vm.uppassconferr))]
+                                      )
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "form-group" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-warning",
+                                      attrs: { type: "submit" },
+                                      on: { click: _vm.checkpass }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                        " +
+                                          _vm._s(_vm.txtbut) +
+                                          "\n                                                    "
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
+                          ])
+                        ])
                       ]
                     )
                   ]
@@ -85350,7 +85594,75 @@ var render = function() {
           ])
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "user-delete",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "modalCenterTitleDelete",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "exampleModalLongTitleDelete" }
+                  },
+                  [_vm._v(_vm._s(_vm.mdelheader))]
+                ),
+                _vm._v(" "),
+                _vm._m(7)
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("p", { staticClass: "font-weight-bold text-uppercase" }, [
+                  _vm._v(_vm._s(_vm.mdeltext1))
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.mdeltext2))])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v(_vm._s(_vm.mdelbut))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.confirmDelUser }
+                  },
+                  [_vm._v("Ok")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -85413,6 +85725,23 @@ var staticRenderFns = [
         _c("i", { staticClass: "fas fa-user-tag" })
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   }
 ]
 render._withStripped = true

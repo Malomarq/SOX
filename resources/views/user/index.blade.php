@@ -24,7 +24,12 @@
                 newpass="@lang('messages.lbpanusnewpass')" confirmpass="@lang('messages.lbpanusconfpass')"
                 txtbut="@lang('messages.lbsavebutton')" upinfoerr="@lang('messages.lbpanuserrinfo')"
                 uppasscurrerr="@lang('messages.lbpanuscurrerr')" uppassnewerr="@lang('messages.lbpanusnewerr')"
-                uppassconferr="@lang('messages.lbpanusconferr')"
+                uppassconferr="@lang('messages.lbpanusconferr')" deltext1="@lang('messages.lbpanusdel')"
+                deltext2="@lang('messages.lbpanusdelmess')" deltext3="@lang('messages.lbpanusdelmess2')"
+                deltext4="@lang('messages.lbpanusdelmess3')" mdelheader="@lang('messages.lbpanusdel')"
+                mdeltext1="@lang('messages.lbpanusdelmess')" mdeltext2="@lang('messages.lbpanusdelmess4')"
+                mdelbut="@lang('messages.lbpanusdelbut')"
+
     ></user-panel>
 
 @endsection
