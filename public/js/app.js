@@ -2561,7 +2561,7 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         'idad': this.idadmin
       }).then(function (response) {
         // TODO modificar url final
-        location.href = 'http://localhost/Sox-app/public/';
+        location.href = 'http://localhost/sox/public/';
       })["catch"](function (error) {
         console.log(error.message);
       });
@@ -2605,7 +2605,7 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       }).then(function (response) {
         if (response.data['pass'] == 'filled') {
           // TODO modificar url final
-          location.href = 'http://localhost/Sox-app/public/logout';
+          location.href = 'http://localhost/sox/public/logout';
         } else {
           location.reload();
         }
@@ -3651,6 +3651,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -4131,7 +4132,7 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         'confpass': this.vmconfpass
       }).then(function (response) {
         // TODO modificar url final
-        location.href = 'http://localhost/Sox-app/public/logout';
+        location.href = 'http://localhost/sox/public/logout';
       })["catch"](function (error) {
         if (error.response.data['error'] === 'validate') {
           _this2.showErrorUpdatePass = true;
@@ -4198,7 +4199,7 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         'idUser': this.iduser
       }).then(function (response) {
         // TODO modificar url final
-        location.href = 'http://localhost/Sox-app/public/logout';
+        location.href = 'http://localhost/sox/public/logout';
       });
     }
   }
@@ -85035,7 +85036,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container mx-auto py-2" }, [
-      _c("a", { attrs: { href: "#" } }, [
+      _c("a", { attrs: { href: "http://localhost/sox/public/bag" } }, [
         _c("i", { staticClass: "shopcarticon fas fa-shopping-basket fa-2x" })
       ]),
       _vm._v(" "),

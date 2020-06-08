@@ -323,7 +323,7 @@
 
                 }).then((response) => {
                     // TODO modificar url final
-                    location.href = 'http://localhost/Sox-app/public/';
+                    location.href = 'http://localhost/sox/public/';
 
                 }).catch(error => {
                     console.log(error.message);
@@ -371,7 +371,7 @@
 
                     if (response.data['pass'] == 'filled') {
                         // TODO modificar url final
-                        location.href = 'http://localhost/Sox-app/public/logout';
+                        location.href = 'http://localhost/sox/public/logout';
                     } else {
                         location.reload();
                     }

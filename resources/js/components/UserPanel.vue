@@ -370,7 +370,7 @@
                     'confpass': this.vmconfpass
                 }).then((response) => {
                     // TODO modificar url final
-                    location.href = 'http://localhost/Sox-app/public/logout';
+                    location.href = 'http://localhost/sox/public/logout';
                 }).catch((error) => {
                     if (error.response.data['error'] === 'validate') {
                         this.showErrorUpdatePass = true;
@@ -436,7 +436,7 @@
                     'idUser': this.iduser,
                 }).then((response) => {
                     // TODO modificar url final
-                    location.href = 'http://localhost/Sox-app/public/logout';
+                    location.href = 'http://localhost/sox/public/logout';
                 });
             }
         }
