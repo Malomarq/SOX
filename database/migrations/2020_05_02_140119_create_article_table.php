@@ -18,7 +18,6 @@ class CreateArticleTable extends Migration
             $table->string('name', 100);
             $table->string('image', 200);
             $table->float('price');
-            $table->integer('fav')->default(0);
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);
         });

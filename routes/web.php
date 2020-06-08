@@ -29,7 +29,7 @@ Route::get('product', 'ArticleController@find')->name('product');
 
 Route::get('bag', function(){
     return view('shoppingbag');
-})->name('bag');
+})->middleware(['auth', 'role:0'])->name('bag');
 
 Route::get('admin', 'AdminController@index')->middleware(['auth', 'role:1'])->name('admin');
 Route::get('home', 'UserController@index')->middleware(['auth', 'role:0'])->name('profile');

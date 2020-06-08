@@ -3513,6 +3513,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
@@ -3526,14 +3533,12 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     lbprodmod: ''
   },
   mounted: function mounted() {
-    console.log(this.user);
-    console.log(this.art);
     this.showProduct();
   },
   data: function data() {
     return {
       prod: [],
-      selectedradio: '',
+      selectedradio: '38-42',
       selectedsize: 1,
       optionselect: [{
         value: 1,
@@ -3568,7 +3573,18 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     addToCart: function addToCart() {
       if (this.user === '') {
         $('#modal-cart').modal('show');
-      } else {}
+      } else {
+        axios.post('api/addToCart', {
+          'pubkey': pubkey,
+          '_token': this.$csrfToken,
+          'iduser': this.user,
+          'idart': this.art,
+          'amount': this.selectedsize
+        })["catch"](function (error) {
+          //TODO modificar url
+          location.href = 'http://localhost/sox/public/logout';
+        });
+      }
     }
   }
 });
@@ -3652,7 +3668,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
+
+var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    iduser: ''
+  },
+  data: function data() {
+    return {
+      amount: null
+    };
+  },
+  mounted: function mounted() {
+    this.getItems();
+  },
+  methods: {
+    getItems: function getItems() {
+      axios.post('api/getItems', {
+        'pubkey': pubkey,
+        '_token': this.$csrfToken,
+        'iduser': this.iduser
+      }).then(function (response) {//this.amount = response.data
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -84836,9 +84877,20 @@ var render = function() {
                                     size: "lg",
                                     variant: "dark"
                                   },
-                                  on: { click: _vm.addToCart }
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.addToCart($event)
+                                    }
+                                  }
                                 },
-                                [_vm._v(_vm._s(_vm.lbprodbut))]
+                                [
+                                  _vm._v(
+                                    "\n                                " +
+                                      _vm._s(_vm.lbprodbut) +
+                                      "\n                            "
+                                  )
+                                ]
                               )
                             ],
                             1
@@ -85028,19 +85080,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container mx-auto py-2" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("span", { staticClass: "shopcartpill badge badge-danger" }, [
+      _vm._v(_vm._s(_vm.amount))
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container mx-auto py-2" }, [
-      _c("a", { attrs: { href: "http://localhost/sox/public/bag" } }, [
-        _c("i", { staticClass: "shopcarticon fas fa-shopping-basket fa-2x" })
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "shopcartpill badge badge-danger" })
+    return _c("a", { attrs: { href: "http://localhost/sox/public/bag" } }, [
+      _c("i", { staticClass: "shopcarticon fas fa-shopping-basket fa-2x" })
     ])
   }
 ]

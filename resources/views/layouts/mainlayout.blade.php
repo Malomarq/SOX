@@ -141,7 +141,7 @@
                     @auth
                         @if(!Auth::user()->adminRole())
                             <li class="nav-item">
-                                <shopping-bag></shopping-bag>
+                                <shopping-bag iduser="{{Auth::user()->idUser}}"></shopping-bag>
                             </li>
                         @endif
                     @endauth

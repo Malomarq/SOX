@@ -32,7 +32,8 @@
         </div>
 
         <product lbprodsize="@lang('messages.lbprodsize')" lbprodtot="@lang('messages.lbprodtot')"
-                 lbprodbut="@lang('messages.lbprodbut')" art="{{ $art }}" user="{{ Auth::user() }}"
+                 lbprodbut="@lang('messages.lbprodbut')" art="{{ $art }}"
+                 user="@auth{{ Auth::user()->idUser }}@endauth"
                  lbprodmod="@lang('messages.lbprodmodal')"
         ></product>
     </div>

@@ -19,6 +19,7 @@ class CreateSetTable extends Migration
             $table->unsignedInteger('idArt');
             $table->integer('amount');
             $table->float('setPrice')->default(null)->nullable();
+            $table->timestamps();
         });
 
         Schema::table('set', function (Blueprint $table) {

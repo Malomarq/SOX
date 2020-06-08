@@ -30,16 +30,22 @@
 
                             <b-row>
                                 <b-col>
-                                    <b-row><div class="rowprodsub">{{ lbprodtot }}</div></b-row>
-                                    <b-row><b-form-select v-model="selectedsize" :options="optionselect"
-                                                          size="sm" class="w-25"/></b-row>
+                                    <b-row>
+                                        <div class="rowprodsub">{{ lbprodtot }}</div>
+                                    </b-row>
+                                    <b-row>
+                                        <b-form-select v-model="selectedsize" :options="optionselect"
+                                                       size="sm" class="w-25"/>
+                                    </b-row>
                                 </b-col>
                             </b-row>
                         </b-col>
 
                         <b-col cols="4">
                             <b-row>
-                                <b-button type="button" size="lg" variant="dark" @click="addToCart">{{lbprodbut}}</b-button>
+                                <b-button type="button" size="lg" variant="dark" @click.prevent="addToCart">
+                                    {{lbprodbut}}
+                                </b-button>
                             </b-row>
                         </b-col>
                     </b-row>
@@ -47,7 +53,8 @@
             </b-row>
         </b-container>
 
-        <div class="modal fade" id="modal-cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="modal-cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -81,15 +88,13 @@
         },
 
         mounted() {
-            console.log(this.user);
-            console.log(this.art);
             this.showProduct();
         },
 
         data() {
             return {
                 prod: [],
-                selectedradio: '',
+                selectedradio: '38-42',
                 selectedsize: 1,
                 optionselect: [
                     {value: 1, text: '1'},
@@ -104,7 +109,7 @@
         methods: {
 
             showProduct() {
-                axios.get('api/product/'+ this.art, {
+                axios.get('api/product/' + this.art, {
                     params: {
                         'pubkey': pubkey,
                     }
@@ -113,11 +118,20 @@
                 });
             },
 
-            addToCart(){
-                if(this.user === ''){
+            addToCart() {
+                if (this.user === '') {
                     $('#modal-cart').modal('show');
                 } else {
-
+                    axios.post('api/addToCart', {
+                        'pubkey': pubkey,
+                        '_token': this.$csrfToken,
+                        'iduser': this.user,
+                        'idart': this.art,
+                        'amount': this.selectedsize,
+                    }).catch((error) => {
+                        //TODO modificar url
+                        location.href = 'http://localhost/sox/public/logout';
+                    });
                 }
             }
         }
