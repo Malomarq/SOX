@@ -12,4 +12,9 @@ class Set extends Model
     protected $fillable = [
         'idOrder', 'idArt', 'amount', 'setPrice',
     ];
+
+    public function getOrder(){
+
+        return $this->belongsTo('App\Models\Order', 'idOrder');
+    }
 }

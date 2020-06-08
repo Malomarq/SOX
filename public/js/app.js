@@ -2935,6 +2935,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
@@ -2962,6 +2966,7 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         to: 0,
         current_page: 1
       },
+      totalart: '',
 
       /**
        * Pagination
@@ -3026,6 +3031,7 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         }
       }).then(function (response) {
         _this.products = response.data;
+        _this.totalart = response.data.total;
       });
       window.scrollTo(0, 0);
     },
@@ -3682,6 +3688,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -3691,6 +3700,10 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Pagination: _Pagination_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: {
+    totalmess: '',
+    prodstext: ''
   },
   data: function data() {
     return {
@@ -3711,7 +3724,8 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
        * Filters
        */
       filter: 'default',
-      colorfilter: '-'
+      colorfilter: '-',
+      totalart: ''
     };
   },
   mounted: function mounted() {
@@ -3735,6 +3749,7 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         }
       }).then(function (response) {
         _this.products = response.data;
+        _this.totalart = response.data.total;
       });
       window.scrollTo(0, 0);
     }
@@ -83395,9 +83410,17 @@ var render = function() {
             _vm._m(0)
           ]),
           _vm._v(" "),
+          _c("div", { staticClass: "mt-5" }, [
+            _c("small", [
+              _vm._v(
+                "Mostrando un total de " + _vm._s(_vm.totalart) + " productos"
+              )
+            ])
+          ]),
+          _vm._v(" "),
           _c(
             "div",
-            { staticClass: "mt-5" },
+            { staticClass: "mt-1" },
             [
               _c(
                 "b-row",
@@ -85044,6 +85067,16 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("div", { staticClass: "mb-2" }, [
+        _c("small", [
+          _vm._v(
+            _vm._s(_vm.totalmess) +
+              _vm._s(_vm.totalart) +
+              _vm._s(" " + _vm.prodstext)
+          )
+        ])
+      ]),
+      _vm._v(" "),
       _c(
         "b-row",
         { staticClass: "justify-content-center" },

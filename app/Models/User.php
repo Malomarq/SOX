@@ -63,4 +63,10 @@ class User extends Authenticatable
     }
 
     // END
+
+    public function getOrders(){
+
+        return $this->hasMany('App\Models\Order', 'idUser')->get();
+    }
+
 }

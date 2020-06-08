@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div class="mb-2">
+            <small>{{totalmess}}{{totalart}}{{' ' + prodstext}}</small>
+        </div>
         <b-row class="justify-content-center">
             <b-col cols="12" md="4" v-for="item in products.data"
                    :key="item.id"
@@ -34,6 +37,11 @@
             Pagination
         },
 
+        props: {
+            totalmess: '',
+            prodstext: '',
+        },
+
         data() {
             return {
                 products: {
@@ -56,6 +64,7 @@
 
                 filter: 'default',
                 colorfilter: '-',
+                totalart: '',
             }
         },
 
@@ -80,6 +89,7 @@
                 })
                     .then((response) => {
                         this.products = response.data;
+                        this.totalart = response.data.total;
                     });
 
                 window.scrollTo(0, 0);

@@ -67,7 +67,9 @@
 
                         <!--<div class="row justify-content-center">
                             <div class="col-4">-->
-                        <products-index></products-index>
+                        <products-index totalmess="@lang('messages.lbtotalprods')"
+                                        prodstext="@php echo strtolower(__('messages.lbpanadprods')); @endphp">
+                        </products-index>
                         <!--</div>
                     </div>-->
 

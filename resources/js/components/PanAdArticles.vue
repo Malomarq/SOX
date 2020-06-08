@@ -25,6 +25,10 @@
             </ul>
 
             <div class="mt-5">
+                <small>Mostrando un total de {{totalart}} productos</small>
+            </div>
+
+            <div class="mt-1">
                 <b-row class="justify-content-center">
                     <b-col cols="12" md="3" v-for="item in products.data"
                            :key="item.idArt"
@@ -62,9 +66,9 @@
 
                 <!--<page-number align="center" :data="products" @pagination-change-page="allproducts">
                 </page-number>-->
-                <pagination  :pagination="products"
-                                 @paginate="allproducts()"
-                                 :offset="4">
+                <pagination :pagination="products"
+                            @paginate="allproducts()"
+                            :offset="4">
                 </pagination>
             </div>
 
@@ -276,6 +280,8 @@
                     current_page: 1
                 },
 
+                totalart: '',
+
                 /**
                  * Pagination
                  */
@@ -350,6 +356,7 @@
                 })
                     .then((response) => {
                         this.products = response.data;
+                        this.totalart = response.data.total;
                     });
 
                 window.scrollTo(0, 0);
@@ -511,10 +518,10 @@
 
             },
 
-            sortby(data){
+            sortby(data) {
                 this.filter = data;
                 this.allproducts();
-            }
+            },
         }
     }
 

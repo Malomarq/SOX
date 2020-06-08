@@ -84,6 +84,7 @@ return
         'lbpanusdelmess4'           => 'Este proceso es irreversible',
         'lbpanusdelbut'             => 'Cancelar',
         'lbprodmodal'               => 'Para poder comprar, primero tienes que iniciar sesión',
+        'lbtotalprods'              => 'Mostrando un total de ',
 
 
     ];

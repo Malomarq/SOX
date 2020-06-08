@@ -12,4 +12,14 @@ class Order extends Model
     protected $fillable = [
         'idUser', 'date', 'address', 'pay', 'open'
     ];
+
+    public function getSets(){
+
+        return $this->hasMany('App\Models\Set', 'idOrder')->get();
+    }
+
+    public function getUser(){
+
+        return $this->belongsTo('App\Models\User', 'idUser');
+    }
 }
