@@ -13,9 +13,9 @@
 
             <div class="col-12 bagborder col-md-7">
                 <div class="row" v-for="art in articles" :key="art.idSet">
-                    <div class="container m-3">
+                    <div class="container">
                         <div class="row">
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-6 p-0">
                                 <a v-bind:href="'product?id=' + art.idArt"><b-img :src="'storage/articles/' + art.image" fluid class="imgbag"/></a>
                             </div>
                             <div class="col-12 col-md-6">

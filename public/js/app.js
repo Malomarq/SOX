@@ -82723,9 +82723,9 @@ var render = function() {
             { staticClass: "col-12 bagborder col-md-7" },
             _vm._l(_vm.articles, function(art) {
               return _c("div", { key: art.idSet, staticClass: "row" }, [
-                _c("div", { staticClass: "container m-3" }, [
+                _c("div", { staticClass: "container" }, [
                   _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-12 col-md-6" }, [
+                    _c("div", { staticClass: "col-12 col-md-6 p-0" }, [
                       _c(
                         "a",
                         { attrs: { href: "product?id=" + art.idArt } },
