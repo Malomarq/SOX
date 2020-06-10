@@ -61,7 +61,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <p>{{lbprodmod}}</p>
+                        <p>{{modaltext}}</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
@@ -73,7 +73,7 @@
 </template>
 
 <script>
-
+    import EventBus from "../event-bus";
     const axios = require('axios').default;
     const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
@@ -85,6 +85,7 @@
             lbprodtot: {},
             lbprodbut: {},
             lbprodmod: '',
+            lbprodadded: '',
         },
 
         mounted() {
@@ -102,7 +103,8 @@
                     {value: 3, text: '3'},
                     {value: 4, text: '4'},
                     {value: 5, text: '5'}
-                ]
+                ],
+                modaltext: ''
             }
         },
 
@@ -120,17 +122,22 @@
 
             addToCart() {
                 if (this.user === '') {
+                    this.modaltext = this.lbprodmod;
                     $('#modal-cart').modal('show');
                 } else {
+                    this.modaltext = this.lbprodadded;
+                    $('#modal-cart').modal('show');
                     axios.post('api/addToCart', {
                         'pubkey': pubkey,
                         '_token': this.$csrfToken,
                         'iduser': this.user,
                         'idart': this.art,
                         'amount': this.selectedsize,
+                    }).then(function() {
+                        EventBus.$emit('newItem');
                     }).catch((error) => {
                         //TODO modificar url
-                        location.href = 'http://localhost/sox/public/logout';
+                        //location.href = 'http://localhost/sox/public/logout';
                     });
                 }
             }

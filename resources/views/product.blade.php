@@ -34,7 +34,7 @@
         <product lbprodsize="@lang('messages.lbprodsize')" lbprodtot="@lang('messages.lbprodtot')"
                  lbprodbut="@lang('messages.lbprodbut')" art="{{ $art }}"
                  user="@auth{{ Auth::user()->idUser }}@endauth"
-                 lbprodmod="@lang('messages.lbprodmodal')"
+                 lbprodmod="@lang('messages.lbprodmodal')" lbprodadded="@lang('messages.lbprodadded')"
         ></product>
     </div>
 @endsection

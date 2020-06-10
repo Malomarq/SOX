@@ -145,7 +145,7 @@
                             </li>
                         @endif
                     @endauth
-                    <li class="nav-item dropdown dropleft">
+                    <li class="nav-item dropdown">
                         <a class="nav-link text-dark infotag" href="#" id="navbarDropdownMenuLink"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-question-circle fa-2x"></i>

@@ -72,5 +72,7 @@ return
         'lbpanusdelbut'             => 'Cancel',
         'lbprodmodal'               => 'You have to log in before add Sox to the cart',
         'lbtotalprods'              => 'Showing a total of ',
+        'lbbagnav'                  => 'Bag',
+        'lbprodadded'               => 'Product added to your bag',
 
     ];

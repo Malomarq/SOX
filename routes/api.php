@@ -28,7 +28,7 @@ Route::middleware('api.auth')->group(function (){
     Route::post('/update', 'api\ArticleController@update');
 
     Route::get('/listUsers', 'api\UserController@listAll');
-    Route::get('findUser', 'api\UserController@findUser');
+    Route::get('/findUser', 'api\UserController@findUser');
     Route::post('/updatePass', 'api\UserController@updatePass');
     Route::post('/updateInfo', 'api\UserController@updateInfo');
     Route::post('/checkPass', 'api\UserController@checkPass');
@@ -42,7 +42,8 @@ Route::middleware('api.auth')->group(function (){
     Route::get('/checkEmail', 'api\AdminController@checkEmail');
 
     Route::post('/addToCart', 'api\ShoppingBagController@add');
-    Route::post('getItems', 'api\ShoppingBagController@getItems');
+    Route::post('/getItems', 'api\ShoppingBagController@getItems');
+    Route::post('/getBag', 'api\ShoppingBagController@getBag');
 
 });
 

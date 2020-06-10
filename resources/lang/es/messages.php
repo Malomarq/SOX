@@ -85,6 +85,7 @@ return
         'lbpanusdelbut'             => 'Cancelar',
         'lbprodmodal'               => 'Para poder comprar, primero tienes que iniciar sesión',
         'lbtotalprods'              => 'Mostrando un total de ',
-
+        'lbbagnav'                  => 'Cesta',
+        'lbprodadded'               => 'Producto añadido a tu cesta',
 
     ];
