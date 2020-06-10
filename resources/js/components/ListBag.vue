@@ -1,15 +1,43 @@
 <template>
-    <div class="container border rounded bg-light">
-        <div v-if="showBag" class="row">
-            <div class="col-12 col-md-8">
-                <div class="row" v-for="art in articles" :key="art.idArt">
+    <div class="container rounded mb-5">
 
+        <div v-if="showBag" class="row">
+
+            <div class="col-12 col-md-7">
+                <span class="rowprodsub">{{items}} items</span>
+            </div>
+
+            <div class="col-12 col-md-4 offset-md-1">
+                <span class="rowprodsub">{{ordertxt}}</span>
+            </div>
+
+            <div class="col-12 bagborder col-md-7">
+                <div class="row" v-for="art in articles" :key="art.idSet">
+                    <div class="container m-3">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <a v-bind:href="'product?id=' + art.idArt"><b-img :src="'storage/articles/' + art.image" fluid class="imgbag"/></a>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="row">
+                                    <p>{{art.name}}</p>
+                                </div>
+                                <div class="row">
+                                    <p>{{art.price}}€</p>
+                                </div>
+                                <div class="row">
+                                    <p>cant:</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4 border-left">
-                <p>Subtotal:</p>
-                <p>Gastos de envío:</p>
-                <p>TOTAL:</p>
+
+            <div class="col-12 col-md-4 offset-md-1 bagborder pricebag">
+                <p>Subtotal: {{setPrice}}€</p>
+                <p>Gastos de envío: 3.95€</p>
+                <p>TOTAL: {{totalPrice}}€</p>
             </div>
         </div>
         <div v-if="showEmpty" class="row">
@@ -28,16 +56,21 @@
     export default {
         props: {
             iduser: '',
+            ordertxt: '',
         },
         data() {
             return {
                 articles: {},
+                setPrice: null,
+                totalPrice: null,
                 showEmpty: false,
                 showBag: false,
+                items: '',
             }
         },
         mounted(){
             this.getBag();
+            this.getItems();
         },
         methods: {
             getBag(){
@@ -49,10 +82,23 @@
                     (response.data === 'empty')? this.showEmpty = true : this.showEmpty = false;
                      if(response.data !== 'empty') {
                         this.showBag = true;
-                        this.articles = response.data;
+                        this.articles = response.data['bag'];
+                        this.setPrice = response.data['totalp'];
+                        var tprice = this.setPrice + 3.95;
+                        this.totalPrice = tprice.toFixed(2);
                     }
                 });
-            }
+            },
+
+            getItems(){
+                axios.post('api/getItems', {
+                    'pubkey': pubkey,
+                    '_token': this.$csrfToken,
+                    'iduser': this.iduser,
+                }).then((response)=> {
+                    this.items = response.data
+                });
+            },
         }
     }
 

@@ -20,9 +20,10 @@ class ShoppingBagController extends Controller
         $prod = Article::find($req->idart);
         $user = User::find($req->iduser);
 
-        $price = $prod->price * $req->amount;
+        //$price = $prod->price * $req->amount;
 
-        if (empty($prod) || empty($user) || $req->amount < 1 || $req->amount > 5) {
+        //if (empty($prod) || empty($user) || $req->amount < 1 || $req->amount > 5) {
+        if (empty($prod) || empty($user)) {
             return response()->json('Product unavailable', 422);
         }
 
@@ -36,8 +37,10 @@ class ShoppingBagController extends Controller
                 [
                     'idOrder' => $idOrder[0],
                     'idArt' => $prod->idArt,
-                    'amount' => $req->amount,
-                    'setPrice' => $price,
+                    /*'amount' => $req->amount,
+                    'setPrice' => $price,*/
+                    'amount' => 1,
+                    'setPrice' => $prod->price,
                 ]);
 
             return response()->json('Product added to bag', 200);
@@ -61,8 +64,10 @@ class ShoppingBagController extends Controller
                 [
                     'idOrder' => $idOrder[0],
                     'idArt' => $prod->idArt,
-                    'amount' => $req->amount,
-                    'setPrice' => $price,
+                    /*'amount' => $req->amount,
+                    'setPrice' => $price,*/
+                    'amount' => 1,
+                    'setPrice' => $prod->price,
                 ]);
 
             return response()->json('Product added to bag', 200);
@@ -90,7 +95,8 @@ class ShoppingBagController extends Controller
                 ->join('order', 'set.idOrder', '=', 'order.idOrder')
                 ->join('user', 'user.idUser', '=', 'order.idUser')
                 ->join('article', 'article.idArt', '=', 'set.idArt')
-                ->select('article.image', 'article.name', 'article.price', 'set.amount')
+                //->select('article.idArt','article.image', 'article.name', 'article.price', 'set.amount')
+                ->select('article.idArt','article.image', 'article.name', 'article.price', 'set.idSet')
                 ->where('user.idUser', $req->iduser)
                 ->where('order.open', 1)
                 ->get();

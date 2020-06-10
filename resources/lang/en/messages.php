@@ -74,5 +74,6 @@ return
         'lbtotalprods'              => 'Showing a total of ',
         'lbbagnav'                  => 'Bag',
         'lbprodadded'               => 'Product added to your bag',
+        'lbordertxt'                => 'Order summary',
 
     ];

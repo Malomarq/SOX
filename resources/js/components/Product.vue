@@ -28,7 +28,7 @@
                                 </b-form-group>
                             </b-row>
 
-                            <b-row>
+                            <!--<b-row>
                                 <b-col>
                                     <b-row>
                                         <div class="rowprodsub">{{ lbprodtot }}</div>
@@ -38,7 +38,7 @@
                                                        size="sm" class="w-25"/>
                                     </b-row>
                                 </b-col>
-                            </b-row>
+                            </b-row>-->
                         </b-col>
 
                         <b-col cols="4">
@@ -82,7 +82,7 @@
             user: {},
             art: {},
             lbprodsize: {},
-            lbprodtot: {},
+            /*lbprodtot: {},*/
             lbprodbut: {},
             lbprodmod: '',
             lbprodadded: '',
@@ -96,14 +96,14 @@
             return {
                 prod: [],
                 selectedradio: '38-42',
-                selectedsize: 1,
+                /*selectedsize: 1,
                 optionselect: [
                     {value: 1, text: '1'},
                     {value: 2, text: '2'},
                     {value: 3, text: '3'},
                     {value: 4, text: '4'},
                     {value: 5, text: '5'}
-                ],
+                ],*/
                 modaltext: ''
             }
         },
@@ -132,12 +132,12 @@
                         '_token': this.$csrfToken,
                         'iduser': this.user,
                         'idart': this.art,
-                        'amount': this.selectedsize,
+                        //'amount': this.selectedsize,
                     }).then(function() {
                         EventBus.$emit('newItem');
                     }).catch((error) => {
                         //TODO modificar url
-                        //location.href = 'http://localhost/sox/public/logout';
+                        location.href = 'http://localhost/sox/public/logout';
                     });
                 }
             }

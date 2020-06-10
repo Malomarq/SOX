@@ -16,9 +16,9 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container prodtext mt-5 mb-3">
         <div class="row">
-            <div class="col-12 mt-5 small">
+            <!--<div class="col-12 mt-5 small">
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('index') }}">@lang('messages.lblilnav1')</a>
@@ -27,11 +27,12 @@
                         <a class="nav-link disabled" href="#">@lang('messages.lbbagnav')</a>
                     </li>
                 </ul>
-            </div>
+            </div>-->
+            <p>@lang('messages.lbbagnav')</p>
         </div>
     </div>
 
-    <bag iduser="{{Auth::user()->idUser}}"></bag>
+    <bag iduser="{{Auth::user()->idUser}}" ordertxt="@lang('messages.lbordertxt')"></bag>
 @endsection
 
 @section('footer')

@@ -2204,6 +2204,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
@@ -2211,17 +2239,22 @@ var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["d
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    iduser: ''
+    iduser: '',
+    ordertxt: ''
   },
   data: function data() {
     return {
       articles: {},
+      setPrice: null,
+      totalPrice: null,
       showEmpty: false,
-      showBag: false
+      showBag: false,
+      items: ''
     };
   },
   mounted: function mounted() {
     this.getBag();
+    this.getItems();
   },
   methods: {
     getBag: function getBag() {
@@ -2236,8 +2269,22 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
         if (response.data !== 'empty') {
           _this.showBag = true;
-          _this.articles = response.data;
+          _this.articles = response.data['bag'];
+          _this.setPrice = response.data['totalp'];
+          var tprice = _this.setPrice + 3.95;
+          _this.totalPrice = tprice.toFixed(2);
         }
+      });
+    },
+    getItems: function getItems() {
+      var _this2 = this;
+
+      axios.post('api/getItems', {
+        'pubkey': pubkey,
+        '_token': this.$csrfToken,
+        'iduser': this.iduser
+      }).then(function (response) {
+        _this2.items = response.data;
       });
     }
   }
@@ -3602,7 +3649,8 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     user: {},
     art: {},
     lbprodsize: {},
-    lbprodtot: {},
+
+    /*lbprodtot: {},*/
     lbprodbut: {},
     lbprodmod: '',
     lbprodadded: ''
@@ -3614,23 +3662,15 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     return {
       prod: [],
       selectedradio: '38-42',
-      selectedsize: 1,
-      optionselect: [{
-        value: 1,
-        text: '1'
-      }, {
-        value: 2,
-        text: '2'
-      }, {
-        value: 3,
-        text: '3'
-      }, {
-        value: 4,
-        text: '4'
-      }, {
-        value: 5,
-        text: '5'
-      }],
+
+      /*selectedsize: 1,
+      optionselect: [
+          {value: 1, text: '1'},
+          {value: 2, text: '2'},
+          {value: 3, text: '3'},
+          {value: 4, text: '4'},
+          {value: 5, text: '5'}
+      ],*/
       modaltext: ''
     };
   },
@@ -3657,12 +3697,13 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
           'pubkey': pubkey,
           '_token': this.$csrfToken,
           'iduser': this.user,
-          'idart': this.art,
-          'amount': this.selectedsize
+          'idart': this.art //'amount': this.selectedsize,
+
         }).then(function () {
           _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('newItem');
-        })["catch"](function (error) {//TODO modificar url
-          //location.href = 'http://localhost/sox/public/logout';
+        })["catch"](function (error) {
+          //TODO modificar url
+          location.href = 'http://localhost/sox/public/logout';
         });
       }
     }
@@ -82662,19 +82703,74 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container border rounded bg-light" }, [
+  return _c("div", { staticClass: "container rounded mb-5" }, [
     _vm.showBag
       ? _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12 col-md-7" }, [
+            _c("span", { staticClass: "rowprodsub" }, [
+              _vm._v(_vm._s(_vm.items) + " items")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-md-4 offset-md-1" }, [
+            _c("span", { staticClass: "rowprodsub" }, [
+              _vm._v(_vm._s(_vm.ordertxt))
+            ])
+          ]),
+          _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-12 col-md-8" },
+            { staticClass: "col-12 bagborder col-md-7" },
             _vm._l(_vm.articles, function(art) {
-              return _c("div", { key: art.idArt, staticClass: "row" })
+              return _c("div", { key: art.idSet, staticClass: "row" }, [
+                _c("div", { staticClass: "container m-3" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-12 col-md-6" }, [
+                      _c(
+                        "a",
+                        { attrs: { href: "product?id=" + art.idArt } },
+                        [
+                          _c("b-img", {
+                            staticClass: "imgbag",
+                            attrs: {
+                              src: "storage/articles/" + art.image,
+                              fluid: ""
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-12 col-md-6" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("p", [_vm._v(_vm._s(art.name))])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("p", [_vm._v(_vm._s(art.price) + "€")])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(0, true)
+                    ])
+                  ])
+                ])
+              ])
             }),
             0
           ),
           _vm._v(" "),
-          _vm._m(0)
+          _c(
+            "div",
+            { staticClass: "col-12 col-md-4 offset-md-1 bagborder pricebag" },
+            [
+              _c("p", [_vm._v("Subtotal: " + _vm._s(_vm.setPrice) + "€")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("Gastos de envío: 3.95€")]),
+              _vm._v(" "),
+              _c("p", [_vm._v("TOTAL: " + _vm._s(_vm.totalPrice) + "€")])
+            ]
+          )
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -82688,13 +82784,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-md-4 border-left" }, [
-      _c("p", [_vm._v("Subtotal:")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Gastos de envío:")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("TOTAL:")])
-    ])
+    return _c("div", { staticClass: "row" }, [_c("p", [_vm._v("cant:")])])
   }
 ]
 render._withStripped = true
@@ -84956,45 +85046,6 @@ var render = function() {
                                           )
                                         ]
                                       )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "b-row",
-                            [
-                              _c(
-                                "b-col",
-                                [
-                                  _c("b-row", [
-                                    _c("div", { staticClass: "rowprodsub" }, [
-                                      _vm._v(_vm._s(_vm.lbprodtot))
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "b-row",
-                                    [
-                                      _c("b-form-select", {
-                                        staticClass: "w-25",
-                                        attrs: {
-                                          options: _vm.optionselect,
-                                          size: "sm"
-                                        },
-                                        model: {
-                                          value: _vm.selectedsize,
-                                          callback: function($$v) {
-                                            _vm.selectedsize = $$v
-                                          },
-                                          expression: "selectedsize"
-                                        }
-                                      })
                                     ],
                                     1
                                   )

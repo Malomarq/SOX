@@ -20386,6 +20386,22 @@ a[class*=linkpanad]:focus {
   top: 5px;
 }
 
+.imgbag {
+  width: 8rem;
+  height: 10rem;
+}
+
+.pricebag {
+  max-height: 25rem;
+  background-color: lightgrey;
+}
+
+.bagborder {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #343A40;
+}
+
 .fbcol {
   color: #3b5998;
 }

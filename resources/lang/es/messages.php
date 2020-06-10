@@ -87,5 +87,6 @@ return
         'lbtotalprods'              => 'Mostrando un total de ',
         'lbbagnav'                  => 'Cesta',
         'lbprodadded'               => 'Producto añadido a tu cesta',
+        'lbordertxt'                => 'Resumen del pedido',
 
     ];
