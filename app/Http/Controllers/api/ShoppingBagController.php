@@ -77,26 +77,27 @@ class ShoppingBagController extends Controller
     public function getItems(Request $req)
     {
         $tot = DB::table('set')
-                ->join('order', 'set.idOrder', '=', 'order.idOrder')
-                ->join('user', 'user.idUser', '=', 'order.idUser')
-                ->select('idSet')
-                ->where('user.idUser', $req->iduser)
-                ->where('order.open', 1)
-                ->count();
+            ->join('order', 'set.idOrder', '=', 'order.idOrder')
+            ->join('user', 'user.idUser', '=', 'order.idUser')
+            ->select('idSet')
+            ->where('user.idUser', $req->iduser)
+            ->where('order.open', 1)
+            ->count();
 
         return response()->json($tot, 200);
     }
 
-    public function getBag(Request $req){
+    public function getBag(Request $req)
+    {
 
-        if(Order::where('idUser', $req->iduser)->where('open', 1)->exists()) {
+        if (Order::where('idUser', $req->iduser)->where('open', 1)->exists()) {
 
             $bag = DB::table('set')
                 ->join('order', 'set.idOrder', '=', 'order.idOrder')
                 ->join('user', 'user.idUser', '=', 'order.idUser')
                 ->join('article', 'article.idArt', '=', 'set.idArt')
                 //->select('article.idArt','article.image', 'article.name', 'article.price', 'set.amount')
-                ->select('article.idArt','article.image', 'article.name', 'article.price', 'set.idSet')
+                ->select('article.idArt', 'article.image', 'article.name', 'article.price', 'set.idSet', 'set.amount')
                 ->where('user.idUser', $req->iduser)
                 ->where('order.open', 1)
                 ->get();
@@ -108,6 +109,30 @@ class ShoppingBagController extends Controller
             return response()->json(['bag' => $bag, 'totalp' => round($totalp, 2)], 200);
         } else {
             return response()->json('empty', 200);
+        }
+
+    }
+
+    public function amountchange(Request $req)
+    {
+
+        $set = Set::find($req->idSet);
+
+        if ($set != null) {
+
+            $idArt = $set->idArt;
+            $art = Article::find($idArt);
+
+            $set->amount = $req->amount;
+            $set->setPrice = $art->price * $req->amount;
+
+            $set->save();
+
+            return response()->json('ok', 200);
+
+        } else {
+
+            return response()->json('error', 200);
         }
 
     }

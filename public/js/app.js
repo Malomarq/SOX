@@ -2266,6 +2266,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
@@ -2285,7 +2290,8 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       totalPrice: null,
       showEmpty: false,
       showBag: false,
-      items: ''
+      items: '',
+      amselected: ''
     };
   },
   mounted: function mounted() {
@@ -2321,6 +2327,23 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         'iduser': this.iduser
       }).then(function (response) {
         _this2.items = response.data;
+      });
+    },
+    amountchange: function amountchange(data) {
+      axios.post('api/amountchange', {
+        'pubkey': pubkey,
+        '_token': this.$csrfToken,
+        'idSet': data,
+        'amount': this.amselected
+      }).then(function (response) {
+        if (response.data === 'ok') {
+          location.reload();
+        }
+
+        if (response.data === 'error') {
+          // TODO modificar url final
+          location.href = 'http://localhost/sox/public/logout';
+        }
       });
     }
   }
@@ -82791,7 +82814,72 @@ var render = function() {
                         _c("span", [_vm._v(_vm._s(art.price) + "€")])
                       ]),
                       _vm._v(" "),
-                      _vm._m(0, true)
+                      _c("div", { staticClass: "row px-2 my-2" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.amselected,
+                                expression: "amselected"
+                              }
+                            ],
+                            staticClass: "custom-select custom-select-sm col-2",
+                            on: {
+                              change: [
+                                function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.amselected = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                },
+                                function($event) {
+                                  return _vm.amountchange(art.idSet)
+                                }
+                              ]
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "", selected: "" } },
+                              [_vm._v(_vm._s(art.amount))]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "1" } }, [
+                              _vm._v("1")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "2" } }, [
+                              _vm._v("2")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "3" } }, [
+                              _vm._v("3")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "4" } }, [
+                              _vm._v("4")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "5" } }, [
+                              _vm._v("5")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(0, true)
+                      ])
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-2 col-md-2" })
@@ -82876,29 +82964,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row px-2 my-2" }, [
-      _c(
-        "select",
-        {
-          staticClass: "custom-select custom-select-sm col-2",
-          attrs: { id: "sizeselected" }
-        },
-        [
-          _c("option", { attrs: { value: "1", selected: "" } }, [_vm._v("1")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "2" } }, [_vm._v("2")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "4" } }, [_vm._v("4")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "5" } }, [_vm._v("5")])
-        ]
-      ),
-      _vm._v(" "),
-      _c("span", { staticClass: "deleteicon ml-4" }, [
-        _c("i", { staticClass: "far fa-trash-alt fa-2x" })
-      ])
+    return _c("span", { staticClass: "deleteicon ml-4" }, [
+      _c("i", { staticClass: "far fa-trash-alt fa-2x" })
     ])
   }
 ]

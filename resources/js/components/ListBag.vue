@@ -29,9 +29,14 @@
                                 <div class="row littleprice px-2">
                                     <span>{{art.price}}€</span>
                                 </div>
+                                <!--<div class="row px-2">
+                                    <small>x {{art.amount}}</small>
+                                </div>-->
                                 <div class="row px-2 my-2">
-                                    <select class="custom-select custom-select-sm col-2" id="sizeselected">
-                                        <option value="1" selected>1</option>
+                                    <select class="custom-select custom-select-sm col-2" v-model="amselected"
+                                    @change="amountchange(art.idSet)">
+                                        <option value="" selected>{{art.amount}}</option>
+                                        <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
@@ -102,6 +107,7 @@
                 showEmpty: false,
                 showBag: false,
                 items: '',
+                amselected: '',
             }
         },
         mounted() {
@@ -135,6 +141,24 @@
                     this.items = response.data
                 });
             },
+
+            amountchange(data){
+                axios.post('api/amountchange', {
+                    'pubkey': pubkey,
+                    '_token': this.$csrfToken,
+                    'idSet': data,
+                    'amount': this.amselected,
+                }).then((response) => {
+                    if(response.data === 'ok'){
+                        location.reload();
+                    }
+
+                    if(response.data === 'error'){
+                        // TODO modificar url final
+                        location.href = 'http://localhost/sox/public/logout';
+                    }
+                });
+            }
         }
     }
 
