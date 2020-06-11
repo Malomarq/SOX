@@ -43,7 +43,8 @@
                                         <option value="5">5</option>
                                     </select>
 
-                                    <span class="deleteicon ml-4"><i class="far fa-trash-alt fa-2x"></i></span>
+                                    <span class="deleteicon ml-4"><i class="far fa-trash-alt fa-2x"
+                                    @click="deleteSet(art.idSet, art.idOrder)"></i></span>
                                 </div>
                             </div>
                             <div class="col-2 col-md-2">
@@ -72,7 +73,8 @@
                             </div>
                         </div>
                         <div class="row px-5 mt-4">
-                            <button type="button" class="btn btn-dark btn-lg btn-block">{{butbuytxt}}</button>
+                            <!--TODO cambiar ruta -->
+                            <a href="http://localhost/sox/public/buy" class="btn btn-dark btn-lg btn-block">{{butbuytxt}}</a>
                         </div>
                     </div>
                 </div>
@@ -148,6 +150,24 @@
                     '_token': this.$csrfToken,
                     'idSet': data,
                     'amount': this.amselected,
+                }).then((response) => {
+                    if(response.data === 'ok'){
+                        location.reload();
+                    }
+
+                    if(response.data === 'error'){
+                        // TODO modificar url final
+                        location.href = 'http://localhost/sox/public/logout';
+                    }
+                });
+            },
+
+            deleteSet(idSet, idOrder){
+                axios.post('api/deleteSet', {
+                    'pubkey': pubkey,
+                    '_token': this.$csrfToken,
+                    'idSet': idSet,
+                    'idOrder': idOrder,
                 }).then((response) => {
                     if(response.data === 'ok'){
                         location.reload();

@@ -26,8 +26,7 @@ class CreateSetTable extends Migration
             $table->foreign('idOrder')
                 ->references('idOrder')
                 ->on('order')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onUpdate('cascade');
         });
 
         Schema::table('set', function (Blueprint $table) {

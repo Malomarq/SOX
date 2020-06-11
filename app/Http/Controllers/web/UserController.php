@@ -24,4 +24,13 @@ class UserController extends Controller
     public function bag() {
         return view('shoppingbag');
     }
+
+    /**
+     * Shows buy view
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function buy(){
+        return view('buy');
+    }
 }

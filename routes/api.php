@@ -45,6 +45,7 @@ Route::middleware('api.auth')->group(function (){
     Route::post('/getItems', 'api\ShoppingBagController@getItems');
     Route::post('/getBag', 'api\ShoppingBagController@getBag');
     Route::post('/amountchange', 'api\ShoppingBagController@amountchange');
+    Route::post('/deleteSet', 'api\ShoppingBagController@deleteSet');
 
 });
 

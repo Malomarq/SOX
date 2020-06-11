@@ -97,7 +97,8 @@ class ShoppingBagController extends Controller
                 ->join('user', 'user.idUser', '=', 'order.idUser')
                 ->join('article', 'article.idArt', '=', 'set.idArt')
                 //->select('article.idArt','article.image', 'article.name', 'article.price', 'set.amount')
-                ->select('article.idArt', 'article.image', 'article.name', 'article.price', 'set.idSet', 'set.amount')
+                ->select('article.idArt', 'article.image', 'article.name', 'article.price', 'set.idSet',
+                    'set.amount', 'set.idOrder')
                 ->where('user.idUser', $req->iduser)
                 ->where('order.open', 1)
                 ->get();
@@ -135,5 +136,31 @@ class ShoppingBagController extends Controller
             return response()->json('error', 200);
         }
 
+    }
+
+    public function deleteSet(Request $req){
+
+        $set = Set::find($req->idSet);
+
+        if ($set != null) {
+
+            $query = Set::where('idOrder', $req->idOrder)->get();
+            $rows = count($query);
+
+            if($rows > 1){
+                // el order tiene más de 1 set -> se elimina ese set
+                $set->delete();
+            } else {
+                // el order sólo tiene 1 set -> se elimina el order
+                $set->delete();
+                $order = Order::find($req->idOrder);
+                $order->delete();
+            }
+
+            return response()->json('ok', 200);
+
+        } else {
+            return response()->json('error', 200);
+        }
     }
 }

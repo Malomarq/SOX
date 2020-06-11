@@ -28,6 +28,7 @@ Route::get('{url}', function (Request $req){
 Route::get('product', 'ArticleController@find')->name('product');
 
 Route::get('bag', 'UserController@bag')->middleware(['auth', 'role:0'])->name('bag');
+Route::get('buy', 'UserController@buy')->middleware(['auth', 'role:0'])->name('buy');
 
 Route::get('admin', 'AdminController@index')->middleware(['auth', 'role:1'])->name('admin');
 Route::get('home', 'UserController@index')->middleware(['auth', 'role:0'])->name('profile');

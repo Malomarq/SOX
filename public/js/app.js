@@ -2271,6 +2271,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
@@ -2335,6 +2337,23 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         '_token': this.$csrfToken,
         'idSet': data,
         'amount': this.amselected
+      }).then(function (response) {
+        if (response.data === 'ok') {
+          location.reload();
+        }
+
+        if (response.data === 'error') {
+          // TODO modificar url final
+          location.href = 'http://localhost/sox/public/logout';
+        }
+      });
+    },
+    deleteSet: function deleteSet(idSet, idOrder) {
+      axios.post('api/deleteSet', {
+        'pubkey': pubkey,
+        '_token': this.$csrfToken,
+        'idSet': idSet,
+        'idOrder': idOrder
       }).then(function (response) {
         if (response.data === 'ok') {
           location.reload();
@@ -82878,7 +82897,16 @@ var render = function() {
                           ]
                         ),
                         _vm._v(" "),
-                        _vm._m(0, true)
+                        _c("span", { staticClass: "deleteicon ml-4" }, [
+                          _c("i", {
+                            staticClass: "far fa-trash-alt fa-2x",
+                            on: {
+                              click: function($event) {
+                                return _vm.deleteSet(art.idSet, art.idOrder)
+                              }
+                            }
+                          })
+                        ])
                       ])
                     ]),
                     _vm._v(" "),
@@ -82939,10 +82967,10 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "row px-5 mt-4" }, [
                     _c(
-                      "button",
+                      "a",
                       {
                         staticClass: "btn btn-dark btn-lg btn-block",
-                        attrs: { type: "button" }
+                        attrs: { href: "http://localhost/sox/public/buy" }
                       },
                       [_vm._v(_vm._s(_vm.butbuytxt))]
                     )
@@ -82959,16 +82987,7 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "deleteicon ml-4" }, [
-      _c("i", { staticClass: "far fa-trash-alt fa-2x" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
