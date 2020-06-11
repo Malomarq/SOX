@@ -2232,6 +2232,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
@@ -2240,7 +2274,9 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     iduser: '',
-    ordertxt: ''
+    ordertxt: '',
+    shipmtxt: '',
+    butbuytxt: ''
   },
   data: function data() {
     return {
@@ -82706,26 +82742,30 @@ var render = function() {
   return _c("div", { staticClass: "container rounded mb-5" }, [
     _vm.showBag
       ? _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 col-md-7" }, [
+          _c("div", { staticClass: "col-12 col-md-7 order-1 order-md-1" }, [
             _c("span", { staticClass: "rowprodsub" }, [
               _vm._v(_vm._s(_vm.items) + " items")
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-4 offset-md-1" }, [
-            _c("span", { staticClass: "rowprodsub" }, [
-              _vm._v(_vm._s(_vm.ordertxt))
-            ])
-          ]),
+          _c(
+            "div",
+            { staticClass: "col-12 col-md-4 offset-md-1 order-md-2 order-3" },
+            [
+              _c("span", { staticClass: "rowprodsub" }, [
+                _vm._v(_vm._s(_vm.ordertxt))
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-12 bagborder col-md-7" },
+            { staticClass: "col-12 col-md-7 bagborder order-md-3 order-2" },
             _vm._l(_vm.articles, function(art) {
-              return _c("div", { key: art.idSet, staticClass: "row" }, [
+              return _c("div", { key: art.idSet, staticClass: "row my-4" }, [
                 _c("div", { staticClass: "container" }, [
                   _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-12 col-md-6 p-0" }, [
+                    _c("div", { staticClass: "col-4 col-md-4 p-2 p-md-0" }, [
                       _c(
                         "a",
                         { attrs: { href: "product?id=" + art.idArt } },
@@ -82742,17 +82782,19 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-12 col-md-6" }, [
-                      _c("div", { staticClass: "row" }, [
-                        _c("p", [_vm._v(_vm._s(art.name))])
+                    _c("div", { staticClass: "col-6 col-md-6 pt-md-4" }, [
+                      _c("div", { staticClass: "row panuseraccsubtit px-2" }, [
+                        _c("span", [_vm._v(_vm._s(art.name))])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "row" }, [
-                        _c("p", [_vm._v(_vm._s(art.price) + "€")])
+                      _c("div", { staticClass: "row littleprice px-2" }, [
+                        _c("span", [_vm._v(_vm._s(art.price) + "€")])
                       ]),
                       _vm._v(" "),
                       _vm._m(0, true)
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-2 col-md-2" })
                   ])
                 ])
               ])
@@ -82762,13 +82804,63 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-12 col-md-4 offset-md-1 bagborder pricebag" },
+            {
+              staticClass:
+                "col-12 col-md-4 offset-md-1 bagborder pricebag order-md-4 order-4 pt-md-4"
+            },
             [
-              _c("p", [_vm._v("Subtotal: " + _vm._s(_vm.setPrice) + "€")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Gastos de envío: 3.95€")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("TOTAL: " + _vm._s(_vm.totalPrice) + "€")])
+              _c("div", { staticClass: "row my-4" }, [
+                _c("div", { staticClass: "col-12" }, [
+                  _c("div", { staticClass: "row px-2" }, [
+                    _c("div", { staticClass: "col-12 text-right prodtext3" }, [
+                      _vm._v("\n                            Subtotal:   "),
+                      _c("span", { staticClass: "littleprice" }, [
+                        _vm._v(_vm._s(_vm.setPrice) + "€")
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row px-2 mb-5" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-12 text-right panuseraccsubtit" },
+                      [
+                        _c("span", { staticClass: "mr-4" }, [
+                          _vm._v(_vm._s(_vm.shipmtxt) + ":")
+                        ]),
+                        _vm._v("      3.95€\n                        ")
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row px-2" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "col-12 border-top border-dark text-right prodtext2"
+                      },
+                      [
+                        _vm._v("\n                            TOTAL:   "),
+                        _c("span", { staticClass: "littleprice" }, [
+                          _vm._v(_vm._s(_vm.totalPrice) + "€")
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row px-5 mt-4" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-dark btn-lg btn-block",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v(_vm._s(_vm.butbuytxt))]
+                    )
+                  ])
+                ])
+              ])
             ]
           )
         ])
@@ -82784,7 +82876,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [_c("p", [_vm._v("cant:")])])
+    return _c("div", { staticClass: "row px-2 my-2" }, [
+      _c(
+        "select",
+        {
+          staticClass: "custom-select custom-select-sm col-2",
+          attrs: { id: "sizeselected" }
+        },
+        [
+          _c("option", { attrs: { value: "1", selected: "" } }, [_vm._v("1")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2" } }, [_vm._v("2")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "4" } }, [_vm._v("4")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "5" } }, [_vm._v("5")])
+        ]
+      ),
+      _vm._v(" "),
+      _c("span", { staticClass: "deleteicon ml-4" }, [
+        _c("i", { staticClass: "far fa-trash-alt fa-2x" })
+      ])
+    ])
   }
 ]
 render._withStripped = true

@@ -131,6 +131,16 @@ div.card.text-center.cardindex:hover {
     font-size: 3.5em;
 }
 
+.prodtext2 {
+    font-family: "Bebas Neue";
+    font-size: 3em;
+}
+
+.prodtext3 {
+    font-family: "Bebas Neue";
+    font-size: 2em;
+}
+
 .prodprice {
     font-family: "Bebas Neue";
     color: #ae1c17;
@@ -291,7 +301,21 @@ a[class*="linkpanad"]:focus {
 }
 
 .bagborder {
-    border-top-style:solid;
+    border-top-style: solid;
     border-top-width: 3px;
     border-top-color: #343A40;
+}
+
+.littleprice {
+    font-family: "Bebas Neue";
+    font-size: 1.2em;
+    color: #ae1c17;
+}
+
+.deleteicon {
+    color: lightgrey;
+}
+
+.deleteicon:hover {
+    color: darkgrey;
 }

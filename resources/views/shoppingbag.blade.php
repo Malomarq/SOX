@@ -28,11 +28,12 @@
                     </li>
                 </ul>
             </div>-->
-            <p>@lang('messages.lbbagnav')</p>
+            <p class="p-2 p-md-0">@lang('messages.lbbagnav')</p>
         </div>
     </div>
 
-    <bag iduser="{{Auth::user()->idUser}}" ordertxt="@lang('messages.lbordertxt')"></bag>
+    <bag iduser="{{Auth::user()->idUser}}" ordertxt="@lang('messages.lbordertxt')"
+         shipmtxt="@lang('messages.lbshippmentcost')" butbuytxt="@lang('messages.lbcompra')"></bag>
 @endsection
 
 @section('footer')

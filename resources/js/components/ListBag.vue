@@ -3,43 +3,77 @@
 
         <div v-if="showBag" class="row">
 
-            <div class="col-12 col-md-7">
+            <div class="col-12 col-md-7 order-1 order-md-1">
                 <span class="rowprodsub">{{items}} items</span>
             </div>
 
-            <div class="col-12 col-md-4 offset-md-1">
+            <div class="col-12 col-md-4 offset-md-1 order-md-2 order-3">
                 <span class="rowprodsub">{{ordertxt}}</span>
             </div>
 
-            <div class="col-12 bagborder col-md-7">
-                <div class="row" v-for="art in articles" :key="art.idSet">
+            <div class="col-12 col-md-7 bagborder order-md-3 order-2">
+
+                <div class="row my-4" v-for="art in articles" :key="art.idSet">
                     <div class="container">
                         <div class="row">
-                            <div class="col-12 col-md-6 p-0">
-                                <a v-bind:href="'product?id=' + art.idArt"><b-img :src="'storage/articles/' + art.image" fluid class="imgbag"/></a>
+                            <div class="col-4 col-md-4 p-2 p-md-0">
+                                <a v-bind:href="'product?id=' + art.idArt">
+                                    <b-img :src="'storage/articles/' + art.image" fluid class="imgbag"/>
+                                </a>
                             </div>
-                            <div class="col-12 col-md-6">
-                                <div class="row">
-                                    <p>{{art.name}}</p>
+
+                            <div class="col-6 col-md-6 pt-md-4">
+                                <div class="row panuseraccsubtit px-2">
+                                    <span>{{art.name}}</span>
                                 </div>
-                                <div class="row">
-                                    <p>{{art.price}}€</p>
+                                <div class="row littleprice px-2">
+                                    <span>{{art.price}}€</span>
                                 </div>
-                                <div class="row">
-                                    <p>cant:</p>
+                                <div class="row px-2 my-2">
+                                    <select class="custom-select custom-select-sm col-2" id="sizeselected">
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+
+                                    <span class="deleteicon ml-4"><i class="far fa-trash-alt fa-2x"></i></span>
                                 </div>
+                            </div>
+                            <div class="col-2 col-md-2">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-md-4 offset-md-1 bagborder pricebag">
-                <p>Subtotal: {{setPrice}}€</p>
-                <p>Gastos de envío: 3.95€</p>
-                <p>TOTAL: {{totalPrice}}€</p>
+            <div class="col-12 col-md-4 offset-md-1 bagborder pricebag order-md-4 order-4 pt-md-4">
+                <div class="row my-4">
+                    <div class="col-12">
+                        <div class="row px-2">
+                            <div class="col-12 text-right prodtext3">
+                                Subtotal:&nbsp;&nbsp; <span class="littleprice">{{setPrice}}€</span>
+                            </div>
+                        </div>
+                        <div class="row px-2 mb-5">
+                            <div class="col-12 text-right panuseraccsubtit">
+                                <span class="mr-4">{{shipmtxt}}:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.95€
+                            </div>
+                        </div>
+                        <div class="row px-2">
+                            <div class="col-12 border-top border-dark text-right prodtext2">
+                                TOTAL:&nbsp;&nbsp; <span class="littleprice">{{totalPrice}}€</span>
+                            </div>
+                        </div>
+                        <div class="row px-5 mt-4">
+                            <button type="button" class="btn btn-dark btn-lg btn-block">{{butbuytxt}}</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
         <div v-if="showEmpty" class="row">
             <p>Bag vacía</p>
         </div>
@@ -57,6 +91,8 @@
         props: {
             iduser: '',
             ordertxt: '',
+            shipmtxt: '',
+            butbuytxt: '',
         },
         data() {
             return {
@@ -68,19 +104,19 @@
                 items: '',
             }
         },
-        mounted(){
+        mounted() {
             this.getBag();
             this.getItems();
         },
         methods: {
-            getBag(){
+            getBag() {
                 axios.post('api/getBag', {
                     'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'iduser': this.iduser,
                 }).then((response) => {
-                    (response.data === 'empty')? this.showEmpty = true : this.showEmpty = false;
-                     if(response.data !== 'empty') {
+                    (response.data === 'empty') ? this.showEmpty = true : this.showEmpty = false;
+                    if (response.data !== 'empty') {
                         this.showBag = true;
                         this.articles = response.data['bag'];
                         this.setPrice = response.data['totalp'];
@@ -90,12 +126,12 @@
                 });
             },
 
-            getItems(){
+            getItems() {
                 axios.post('api/getItems', {
                     'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'iduser': this.iduser,
-                }).then((response)=> {
+                }).then((response) => {
                     this.items = response.data
                 });
             },

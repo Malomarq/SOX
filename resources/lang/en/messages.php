@@ -75,5 +75,7 @@ return
         'lbbagnav'                  => 'Bag',
         'lbprodadded'               => 'Product added to your bag',
         'lbordertxt'                => 'Order summary',
+        'lbshippmentcost'           => 'Shippment costs',
+        'lbcompra'                  => 'Buy',
 
     ];

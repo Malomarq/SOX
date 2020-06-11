@@ -88,5 +88,7 @@ return
         'lbbagnav'                  => 'Cesta',
         'lbprodadded'               => 'Producto añadido a tu cesta',
         'lbordertxt'                => 'Resumen del pedido',
+        'lbshippmentcost'           => 'Gastos de envío',
+        'lbcompra'                  => 'Comprar',
 
     ];
