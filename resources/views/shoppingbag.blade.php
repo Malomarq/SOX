@@ -33,7 +33,8 @@
     </div>
 
     <bag iduser="{{Auth::user()->idUser}}" ordertxt="@lang('messages.lbordertxt')"
-         shipmtxt="@lang('messages.lbshippmentcost')" butbuytxt="@lang('messages.lbcompra')"></bag>
+         shipmtxt="@lang('messages.lbshippmentcost')" butbuytxt="@lang('messages.lbcompra')"
+         bagemptytxt="@lang('messages.lbemptybag')"></bag>
 @endsection
 
 @section('footer')

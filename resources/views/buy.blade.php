@@ -16,7 +16,13 @@
 @endsection
 
 @section('content')
-    <p>comprar</p>
+    <div class="container prodtext mt-5 mb-3">
+        <div class="row">
+            <p class="p-2 p-md-0">@lang('messages.lbbuyform')</p>
+        </div>
+    </div>
+
+    <buy></buy>
 @endsection
 
 @section('footer')

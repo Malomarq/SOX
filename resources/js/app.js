@@ -51,6 +51,7 @@ Vue.component('user-panel', require('./components/UserPanel.vue').default);
 Vue.component('pagination', require('./components/Pagination.vue').default);
 Vue.component('shopping-bag', require('./components/ShoppingBag.vue').default);
 Vue.component('bag', require('./components/ListBag.vue').default);
+Vue.component('buy', require('./components/BuyForm.vue').default);
 
 //Vue.component('page-number', require('laravel-vue-pagination'));
 

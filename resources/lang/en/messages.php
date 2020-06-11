@@ -77,5 +77,7 @@ return
         'lbordertxt'                => 'Order summary',
         'lbshippmentcost'           => 'Shippment costs',
         'lbcompra'                  => 'Buy',
+        'lbemptybag'                => 'Your bag is empty',
+        'lbbuyform'                 => 'Buy form',
 
     ];

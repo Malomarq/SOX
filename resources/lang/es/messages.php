@@ -90,5 +90,7 @@ return
         'lbordertxt'                => 'Resumen del pedido',
         'lbshippmentcost'           => 'Gastos de envío',
         'lbcompra'                  => 'Comprar',
+        'lbemptybag'                => 'Tu cesta está vacía',
+        'lbbuyform'                 => 'Formulario de compra',
 
     ];

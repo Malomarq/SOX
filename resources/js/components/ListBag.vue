@@ -29,9 +29,6 @@
                                 <div class="row littleprice px-2">
                                     <span>{{art.price}}€</span>
                                 </div>
-                                <!--<div class="row px-2">
-                                    <small>x {{art.amount}}</small>
-                                </div>-->
                                 <div class="row px-2 my-2">
                                     <select class="custom-select custom-select-sm col-2" v-model="amselected"
                                     @change="amountchange(art.idSet)">
@@ -82,7 +79,13 @@
         </div>
 
         <div v-if="showEmpty" class="row">
-            <p>Bag vacía</p>
+            <div class="col-12 col-md-7">
+                <span class="rowprodsub">{{items}} items</span>
+            </div>
+
+            <div class="col-12 col-md-7 bagborder">
+                <div class="my-5 panuseraccsubtit">{{bagemptytxt}}</div>
+            </div>
         </div>
     </div>
 </template>
@@ -100,6 +103,7 @@
             ordertxt: '',
             shipmtxt: '',
             butbuytxt: '',
+            bagemptytxt: '',
         },
         data() {
             return {
