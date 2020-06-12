@@ -92,5 +92,12 @@ return
         'lbcompra'                  => 'Comprar',
         'lbemptybag'                => 'Tu cesta está vacía',
         'lbbuyform'                 => 'Formulario de compra',
+        'lbshipmtxt'                => 'Detalles del envío',
+        'lbshipmadd'                => 'dirección',
+        'lbshipmcity'               => 'municipio',
+        'lbpaymtxt'                 => 'Datos de pago',
+        'lbpaymcredtxt'             => 'número de tarjeta',
+        'lbpaymcadtxt'              => 'MM/YY',
+        'lbpaymcvctxt'              => 'CVC',
 
     ];

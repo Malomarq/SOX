@@ -79,5 +79,12 @@ return
         'lbcompra'                  => 'Buy',
         'lbemptybag'                => 'Your bag is empty',
         'lbbuyform'                 => 'Buy form',
+        'lbshipmtxt'                => 'Shipment details',
+        'lbshipmadd'                => 'address',
+        'lbshipmcity'               => 'town',
+        'lbpaymtxt'                 => 'Payment details',
+        'lbpaymcredtxt'             => 'card number',
+        'lbpaymcadtxt'              => 'MM/YY',
+        'lbpaymcvctxt'              => 'CVC',
 
     ];

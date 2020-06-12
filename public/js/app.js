@@ -2086,9 +2086,11 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BuyForm.vue?vue&type=script&lang=js& ***!
   \******************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -2100,6 +2102,95 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    shipmtxt: '',
+    shipmnametxt: '',
+    shipmlastnametxt: '',
+    shipmaddtxt: '',
+    shipmcitytxt: '',
+    paymtxt: '',
+    paymcredtxt: '',
+    paymcadtxt: '',
+    paymcvctxt: '',
+    butbuy: ''
+  }
+});
 
 /***/ }),
 
@@ -82684,18 +82775,162 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container mb-5" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 col-md-6 col-sm-12 bagborder" }, [
+        _c("div", { staticClass: "row my-4" }, [
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row my-2" }, [
+              _c("span", { staticClass: "prodtext3 p-2" }, [
+                _vm._v(_vm._s(_vm.shipmtxt))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row mt-4 ml-3 mx-3" }, [
+              _c("div", { staticClass: "col-12 col-md-5" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { staticClass: "panadprodstxt" }, [
+                    _vm._v(_vm._s(_vm.shipmnametxt))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control form-control-sm rounded-0",
+                    attrs: { type: "text" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-12 col-md-5" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { staticClass: "panadprodstxt" }, [
+                    _vm._v(_vm._s(_vm.shipmlastnametxt))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control form-control-sm rounded-0",
+                    attrs: { type: "text" }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row mx-3" }, [
+              _c("div", { staticClass: "col-6 col-md-6" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { staticClass: "panadprodstxt" }, [
+                    _vm._v(_vm._s(_vm.shipmaddtxt))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control form-control-sm rounded-0",
+                    attrs: { type: "text" }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-6 col-md-4" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { staticClass: "panadprodstxt" }, [
+                    _vm._v(_vm._s(_vm.shipmcitytxt))
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "form-control form-control-sm rounded-0",
+                    attrs: { type: "text" }
+                  })
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12 col-md-4 bagborder offset-md-1" }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "col-12 col-md-5 col-sm-12 bg-light bagborder pt-4 my-4"
+        },
+        [
+          _c("div", { staticClass: "row mb-4" }, [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row my-2" }, [
+                _c("span", { staticClass: "prodtext3 p-2" }, [
+                  _vm._v(_vm._s(_vm.paymtxt))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mt-4 ml-3 mx-3" }, [
+                _c("div", { staticClass: "col-10 col-md-10 col-sm-10" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-12 col-md-12 col-sm-12" }, [
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: { type: "text", placeholder: _vm.paymcredtxt }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row mt-2" }, [
+                    _c("div", { staticClass: "col-6 col-md-6 col-sm-6" }, [
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: { type: "text", placeholder: _vm.paymcadtxt }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-6 col-md-6 col-sm-6" }, [
+                      _c("input", {
+                        staticClass: "form-control",
+                        attrs: { type: "text", placeholder: _vm.paymcvctxt }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row my-4" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary btn-block",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v(_vm._s(_vm.butbuy))]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container mb-5" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12 col-md-7" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 col-md-4 offset-md-1" })
+    return _c("div", { staticClass: "row mb-2" }, [
+      _c("div", { staticClass: "col-12 col-md-12 col-sm-12" }, [
+        _c("span", [
+          _c("i", { staticClass: "fab fa-cc-visa fa-2x deleteicon" })
+        ]),
+        _vm._v(" \n                                    "),
+        _c("span", [
+          _c("i", { staticClass: "fab fa-cc-mastercard fa-2x deleteicon" })
+        ]),
+        _vm._v(" \n                                    "),
+        _c("span", [
+          _c("i", { staticClass: "fab fa-cc-amex fa-2x deleteicon" })
+        ]),
+        _vm._v(" \n                                    "),
+        _c("span", [
+          _c("i", { staticClass: "fab fa-cc-paypal fa-2x deleteicon" })
+        ])
       ])
     ])
   }
@@ -98882,9 +99117,7 @@ component.options.__file = "resources/js/components/BuyForm.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BuyForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./BuyForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BuyForm.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BuyForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BuyForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BuyForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BuyForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BuyForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BuyForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

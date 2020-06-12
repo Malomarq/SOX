@@ -22,7 +22,11 @@
         </div>
     </div>
 
-    <buy></buy>
+    <buy shipmtxt="@lang('messages.lbshipmtxt')" shipmnametxt="@lang('messages.lbregname')"
+         shipmlastnametxt="@lang('messages.lbreglastname')" shipmaddtxt="@lang('messages.lbshipmadd')"
+         shipmcitytxt="@lang('messages.lbshipmcity')" paymtxt="@lang('messages.lbpaymtxt')"
+         paymcredtxt="@lang('messages.lbpaymcredtxt')" paymcadtxt="@lang('messages.lbpaymcadtxt')"
+         paymcvctxt="@lang('messages.lbpaymcvctxt')" butbuy="@lang('messages.lbcompra')"></buy>
 @endsection
 
 @section('footer')
