@@ -24,9 +24,10 @@
 
     <buy shipmtxt="@lang('messages.lbshipmtxt')" shipmnametxt="@lang('messages.lbregname')"
          shipmlastnametxt="@lang('messages.lbreglastname')" shipmaddtxt="@lang('messages.lbshipmadd')"
-         shipmcitytxt="@lang('messages.lbshipmcity')" paymtxt="@lang('messages.lbpaymtxt')"
+         shipmphonetxt="@lang('messages.lbphone')" paymtxt="@lang('messages.lbpaymtxt')"
          paymcredtxt="@lang('messages.lbpaymcredtxt')" paymcadtxt="@lang('messages.lbpaymcadtxt')"
-         paymcvctxt="@lang('messages.lbpaymcvctxt')" butbuy="@lang('messages.lbcompra')"></buy>
+         paymcvctxt="@lang('messages.lbpaymcvctxt')" butbuy="@lang('messages.lbcompra')"
+         ordertxt="@lang('messages.lbordertxt')" iduser="{{Auth::user()->idUser}}"></buy>
 @endsection
 
 @section('footer')

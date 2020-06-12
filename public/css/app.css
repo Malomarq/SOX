@@ -20412,6 +20412,12 @@ a[class*=linkpanad]:focus {
   border-top-color: #343A40;
 }
 
+.paymborder {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: #227DC7;
+}
+
 .littleprice {
   font-family: "Bebas Neue";
   font-size: 1.2em;

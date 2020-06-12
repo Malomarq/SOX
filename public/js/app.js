@@ -2177,18 +2177,83 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
+
+var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
+    iduser: null,
     shipmtxt: '',
     shipmnametxt: '',
     shipmlastnametxt: '',
     shipmaddtxt: '',
-    shipmcitytxt: '',
+    shipmphonetxt: '',
     paymtxt: '',
     paymcredtxt: '',
     paymcadtxt: '',
     paymcvctxt: '',
-    butbuy: ''
+    butbuy: '',
+    ordertxt: ''
+  },
+  data: function data() {
+    return {
+      order: {},
+      setPrice: null,
+      totalPrice: null
+    };
+  },
+  mounted: function mounted() {
+    this.getOrders();
+  },
+  methods: {
+    getOrders: function getOrders() {
+      var _this = this;
+
+      axios.post('api/getBag', {
+        'pubkey': pubkey,
+        '_token': this.$csrfToken,
+        'iduser': this.iduser
+      }).then(function (response) {
+        if (response.data !== 'empty') {
+          _this.order = response.data['bag'];
+          _this.setPrice = response.data['totalp'];
+          var tprice = _this.setPrice + 3.95;
+          _this.totalPrice = tprice.toFixed(2);
+        }
+      });
+    }
   }
 });
 
@@ -82781,7 +82846,7 @@ var render = function() {
         _c("div", { staticClass: "row my-4" }, [
           _c("div", { staticClass: "container" }, [
             _c("div", { staticClass: "row my-2" }, [
-              _c("span", { staticClass: "prodtext3 p-2" }, [
+              _c("span", { staticClass: "prodtext3 ml-5" }, [
                 _vm._v(_vm._s(_vm.shipmtxt))
               ])
             ]),
@@ -82831,7 +82896,7 @@ var render = function() {
               _c("div", { staticClass: "col-6 col-md-4" }, [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { staticClass: "panadprodstxt" }, [
-                    _vm._v(_vm._s(_vm.shipmcitytxt))
+                    _vm._v(_vm._s(_vm.shipmphonetxt))
                   ]),
                   _vm._v(" "),
                   _c("input", {
@@ -82845,18 +82910,94 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-12 col-md-4 bagborder offset-md-1" }),
+      _c("div", { staticClass: "col-12 col-md-4 bagborder offset-md-1 pt-4" }, [
+        _c("div", { staticClass: "row mb-4" }, [
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row my-2" }, [
+              _c("span", { staticClass: "prodtext3 ml-5" }, [
+                _vm._v(_vm._s(_vm.ordertxt))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row mt-4" }, [
+              _c(
+                "div",
+                { staticClass: "col-12 col-md-12" },
+                _vm._l(_vm.order, function(ord) {
+                  return _c("div", { key: ord.idSet, staticClass: "row" }, [
+                    _c("div", { staticClass: "col-6 col-md-6 panadprodstxt" }, [
+                      _vm._v(_vm._s(ord.name))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-6 col-md-6 littleprice text-right" },
+                      [_vm._v(_vm._s(ord.price) + "€")]
+                    )
+                  ])
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row mt-3" }, [
+              _c("div", { staticClass: "col-12 col-md-12" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "col-6 col-md-6 border-top pt-3 panadprodstxt"
+                    },
+                    [_vm._v("Subtotal:")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-6 col-md-6 panadprodstxt text-right" },
+                    [_vm._v(_vm._s(_vm.setPrice) + "€")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6 col-md-6 panadprodstxt" }, [
+                    _vm._v(_vm._s(_vm.shipmtxt) + ":")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-6 col-md-6 panadprodstxt text-right" },
+                    [_vm._v("3.95€")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-6 col-md-6 panadprodstxt" }, [
+                    _vm._v("TOTAL:")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-6 col-md-6 littleprice text-right" },
+                    [_vm._v(_vm._s(_vm.totalPrice) + "€")]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c(
         "div",
         {
-          staticClass: "col-12 col-md-5 col-sm-12 bg-light bagborder pt-4 my-4"
+          staticClass: "col-12 col-md-5 col-sm-12 bg-light paymborder pt-4 my-4"
         },
         [
           _c("div", { staticClass: "row mb-4" }, [
             _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "row my-2" }, [
-                _c("span", { staticClass: "prodtext3 p-2" }, [
+                _c("span", { staticClass: "prodtext3 ml-5" }, [
                   _vm._v(_vm._s(_vm.paymtxt))
                 ])
               ]),
@@ -82917,19 +83058,19 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row mb-2" }, [
       _c("div", { staticClass: "col-12 col-md-12 col-sm-12" }, [
         _c("span", [
-          _c("i", { staticClass: "fab fa-cc-visa fa-2x deleteicon" })
+          _c("i", { staticClass: "fab fa-cc-visa fa-3x deleteicon" })
         ]),
         _vm._v(" \n                                    "),
         _c("span", [
-          _c("i", { staticClass: "fab fa-cc-mastercard fa-2x deleteicon" })
+          _c("i", { staticClass: "fab fa-cc-mastercard fa-3x deleteicon" })
         ]),
         _vm._v(" \n                                    "),
         _c("span", [
-          _c("i", { staticClass: "fab fa-cc-amex fa-2x deleteicon" })
+          _c("i", { staticClass: "fab fa-cc-amex fa-3x deleteicon" })
         ]),
         _vm._v(" \n                                    "),
         _c("span", [
-          _c("i", { staticClass: "fab fa-cc-paypal fa-2x deleteicon" })
+          _c("i", { staticClass: "fab fa-cc-paypal fa-3x deleteicon" })
         ])
       ])
     ])
@@ -99073,15 +99214,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************!*\
   !*** ./resources/js/components/BuyForm.vue ***!
   \*********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BuyForm_vue_vue_type_template_id_9ded9e62___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BuyForm.vue?vue&type=template&id=9ded9e62& */ "./resources/js/components/BuyForm.vue?vue&type=template&id=9ded9e62&");
 /* harmony import */ var _BuyForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BuyForm.vue?vue&type=script&lang=js& */ "./resources/js/components/BuyForm.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _BuyForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _BuyForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -99111,7 +99251,7 @@ component.options.__file = "resources/js/components/BuyForm.vue"
 /*!**********************************************************************!*\
   !*** ./resources/js/components/BuyForm.vue?vue&type=script&lang=js& ***!
   \**********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
