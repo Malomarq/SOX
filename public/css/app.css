@@ -20432,6 +20432,16 @@ a[class*=linkpanad]:focus {
   color: darkgrey;
 }
 
+.shipmban {
+  background-color: #FF9F1C;
+}
+
+.buygift {
+  color: #227DC7;
+  font-family: "Bebas Neue";
+  font-size: 1.2em;
+}
+
 .fbcol {
   color: #3b5998;
 }

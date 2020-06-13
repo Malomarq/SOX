@@ -3,7 +3,7 @@
     <div class="container mb-5">
         <div class="row">
 
-            <div class="col-12 col-md-6 col-sm-12 bagborder border">
+            <div class="col-12 col-md-6 col-sm-12 border mb-4 bg-light">
                 <div class="row my-4">
                     <div class="container">
                         <div class="row my-2">
@@ -38,7 +38,21 @@
                             </div>
                         </div>
 
-                        <div class="row mt-4 mx-3 bg-danger py-4">
+                        <div class="row my-5 mx-4">
+                            <div class="col-6 col-md-6 buygift">¿Quieres que lo envolvamos para regalo?</div>
+                            <div class="col-6 col-md-6">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="gift" type="radio" value="1">
+                                    <label class="form-check-label panadprodstxt">Sí!</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" name="gift" type="radio" value="0">
+                                    <label class="form-check-label panadprodstxt">No</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-5 mx-4 shipmban py-4 rounded shadow text-light">
                             <div class="col-12 col-md-12">
                                 <div class="row">
                                     <div class="col-12 col-md-2 offset-md-1 text-center">
@@ -70,74 +84,78 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-4 bagborder offset-md-1 pt-4">
-                <div class="row mb-4">
-                    <div class="container">
-                        <div class="row my-2">
-                            <span class="prodtext3 ml-5">{{ordertxt}}</span>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-12 col-md-12">
-                                <div class="row" v-for="ord in order" :key="ord.idSet">
-                                    <div class="col-6 col-md-6 panadprodstxt">{{ord.name}}</div>
-                                    <div class="col-6 col-md-6 littleprice text-right">{{ord.price}}€</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-12 col-md-12">
-                                <div class="row">
-                                    <div class="col-6 col-md-6 border-top pt-3 panadprodstxt">Subtotal:</div>
-                                    <div class="col-6 col-md-6 panadprodstxt text-right">{{setPrice}}€</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6 col-md-6 panadprodstxt">{{shipmtxt}}:</div>
-                                    <div class="col-6 col-md-6 panadprodstxt text-right">3.95€</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6 col-md-6 panadprodstxt">TOTAL:</div>
-                                    <div class="col-6 col-md-6 littleprice text-right">{{totalPrice}}€</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="col-12 col-md-4 offset-md-1">
 
-            <div class="col-12 offset-md-7 col-md-4 col-sm-12 bg-light paymborder pt-4 mb-4">
-                <div class="row mb-4">
-                    <div class="container">
-                        <div class="row my-2">
-                            <span class="prodtext3 ml-5">{{paymtxt}}</span>
-                        </div>
-                        <div class="row mt-4 ml-3 mx-3">
-                            <div class="col-12 col-md-12 col-sm-12">
-                                <div class="col-12 col-md-12 col-sm-12 mb-2 text-center">
-                                    <span><i class="fab fa-cc-visa fa-3x deleteicon"></i></span>&nbsp;
-                                    <span><i class="fab fa-cc-mastercard fa-3x deleteicon"></i></span>&nbsp;
-                                    <span><i class="fab fa-cc-amex fa-3x deleteicon"></i></span>&nbsp;
-                                    <span><i class="fab fa-cc-paypal fa-3x deleteicon"></i></span>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" :placeholder="paymcredtxt">
+                <div class="col-12 col-md-12 bagborder pt-4 mb-4">
+                    <div class="row mb-4">
+                        <div class="container">
+                            <div class="row my-2">
+                                <span class="prodtext3 ml-5">{{ordertxt}}</span>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-12 col-md-12">
+                                    <div class="row" v-for="ord in order" :key="ord.idSet">
+                                        <div class="col-6 col-md-6 panadprodstxt">{{ord.name}}</div>
+                                        <div class="col-6 col-md-6 littleprice text-right">{{ord.price}}€</div>
                                     </div>
                                 </div>
-                                <div class="row mt-2">
-                                    <div class="col-6 col-md-6 col-sm-6">
-                                        <input type="text" class="form-control" :placeholder="paymcadtxt">
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-6 col-md-6 border-top pt-3 panadprodstxt">Subtotal:</div>
+                                        <div class="col-6 col-md-6 panadprodstxt pt-3 text-right">{{setPrice}}€</div>
                                     </div>
-                                    <div class="col-6 col-md-6 col-sm-6">
-                                        <input type="text" class="form-control" :placeholder="paymcvctxt">
+                                    <div class="row">
+                                        <div class="col-6 col-md-6 panadprodstxt">{{shipmtxt}}:</div>
+                                        <div class="col-6 col-md-6 panadprodstxt text-right">3.95€</div>
                                     </div>
-                                </div>
-                                <div class="row my-4">
-                                    <button type="button" class="btn btn-primary btn-block">{{butbuy}}</button>
+                                    <div class="row">
+                                        <div class="col-6 col-md-6 panadprodstxt">TOTAL:</div>
+                                        <div class="col-6 col-md-6 littleprice text-right">{{totalPrice}}€</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="col-12 col-md-12 bg-light paymborder pt-4 mb-4">
+                    <div class="row mb-4">
+                        <div class="container">
+                            <div class="row my-2">
+                                <span class="prodtext3 ml-5">{{paymtxt}}</span>
+                            </div>
+                            <div class="row mt-4 ml-3 mx-3">
+                                <div class="col-12 col-md-12 col-sm-12">
+                                    <div class="col-12 col-md-12 col-sm-12 mb-2 text-center">
+                                        <span><i class="fab fa-cc-visa fa-3x deleteicon"></i></span>&nbsp;
+                                        <span><i class="fab fa-cc-mastercard fa-3x deleteicon"></i></span>&nbsp;
+                                        <span><i class="fab fa-cc-amex fa-3x deleteicon"></i></span>&nbsp;
+                                        <span><i class="fab fa-cc-paypal fa-3x deleteicon"></i></span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-md-12 col-sm-12">
+                                            <input type="text" class="form-control" :placeholder="paymcredtxt">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-6 col-md-6 col-sm-6">
+                                            <input type="text" class="form-control" :placeholder="paymcadtxt">
+                                        </div>
+                                        <div class="col-6 col-md-6 col-sm-6">
+                                            <input type="text" class="form-control" :placeholder="paymcvctxt">
+                                        </div>
+                                    </div>
+                                    <div class="row my-4">
+                                        <button type="button" class="btn btn-primary btn-block">{{butbuy}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>

@@ -2238,6 +2238,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
@@ -82871,214 +82889,228 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mb-5" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12 col-md-6 col-sm-12 bagborder border" }, [
-        _c("div", { staticClass: "row my-4" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row my-2" }, [
-              _c("span", { staticClass: "prodtext3 ml-5" }, [
-                _vm._v(_vm._s(_vm.shipmtxt))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row mt-4 mx-3" }, [
-              _c("div", { staticClass: "col-12 col-md-5" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { staticClass: "panadprodstxt" }, [
-                    _vm._v(_vm._s(_vm.shipmnametxt))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control form-control-sm",
-                    attrs: { type: "text" }
-                  })
+      _c(
+        "div",
+        { staticClass: "col-12 col-md-6 col-sm-12 border mb-4 bg-light" },
+        [
+          _c("div", { staticClass: "row my-4" }, [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row my-2" }, [
+                _c("span", { staticClass: "prodtext3 ml-5" }, [
+                  _vm._v(_vm._s(_vm.shipmtxt))
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-12 col-md-5" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { staticClass: "panadprodstxt" }, [
-                    _vm._v(_vm._s(_vm.shipmlastnametxt))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control form-control-sm",
-                    attrs: { type: "text" }
-                  })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row mx-3" }, [
-              _c("div", { staticClass: "col-6 col-md-6" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { staticClass: "panadprodstxt" }, [
-                    _vm._v(_vm._s(_vm.shipmaddtxt))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control form-control-sm",
-                    attrs: { type: "text" }
-                  })
+              _c("div", { staticClass: "row mt-4 mx-3" }, [
+                _c("div", { staticClass: "col-12 col-md-5" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { staticClass: "panadprodstxt" }, [
+                      _vm._v(_vm._s(_vm.shipmnametxt))
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control form-control-sm",
+                      attrs: { type: "text" }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-12 col-md-5" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { staticClass: "panadprodstxt" }, [
+                      _vm._v(_vm._s(_vm.shipmlastnametxt))
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control form-control-sm",
+                      attrs: { type: "text" }
+                    })
+                  ])
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-6 col-md-4" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { staticClass: "panadprodstxt" }, [
-                    _vm._v(_vm._s(_vm.shipmphonetxt))
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control form-control-sm",
-                    attrs: { type: "text" }
-                  })
+              _c("div", { staticClass: "row mx-3" }, [
+                _c("div", { staticClass: "col-6 col-md-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { staticClass: "panadprodstxt" }, [
+                      _vm._v(_vm._s(_vm.shipmaddtxt))
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control form-control-sm",
+                      attrs: { type: "text" }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6 col-md-4" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { staticClass: "panadprodstxt" }, [
+                      _vm._v(_vm._s(_vm.shipmphonetxt))
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control form-control-sm",
+                      attrs: { type: "text" }
+                    })
+                  ])
                 ])
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._m(0)
+              ]),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
           ])
-        ])
-      ]),
+        ]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-12 col-md-4 bagborder offset-md-1 pt-4" }, [
-        _c("div", { staticClass: "row mb-4" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row my-2" }, [
-              _c("span", { staticClass: "prodtext3 ml-5" }, [
-                _vm._v(_vm._s(_vm.ordertxt))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row mt-4" }, [
-              _c(
-                "div",
-                { staticClass: "col-12 col-md-12" },
-                _vm._l(_vm.order, function(ord) {
-                  return _c("div", { key: ord.idSet, staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 col-md-4 offset-md-1" }, [
+        _c("div", { staticClass: "col-12 col-md-12 bagborder pt-4 mb-4" }, [
+          _c("div", { staticClass: "row mb-4" }, [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row my-2" }, [
+                _c("span", { staticClass: "prodtext3 ml-5" }, [
+                  _vm._v(_vm._s(_vm.ordertxt))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mt-4" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-12 col-md-12" },
+                  _vm._l(_vm.order, function(ord) {
+                    return _c("div", { key: ord.idSet, staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "col-6 col-md-6 panadprodstxt" },
+                        [_vm._v(_vm._s(ord.name))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-6 col-md-6 littleprice text-right"
+                        },
+                        [_vm._v(_vm._s(ord.price) + "€")]
+                      )
+                    ])
+                  }),
+                  0
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mt-3" }, [
+                _c("div", { staticClass: "col-12 col-md-12" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "col-6 col-md-6 border-top pt-3 panadprodstxt"
+                      },
+                      [_vm._v("Subtotal:")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "col-6 col-md-6 panadprodstxt pt-3 text-right"
+                      },
+                      [_vm._v(_vm._s(_vm.setPrice) + "€")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "col-6 col-md-6 panadprodstxt" }, [
-                      _vm._v(_vm._s(ord.name))
+                      _vm._v(_vm._s(_vm.shipmtxt) + ":")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-6 col-md-6 panadprodstxt text-right"
+                      },
+                      [_vm._v("3.95€")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-6 col-md-6 panadprodstxt" }, [
+                      _vm._v("TOTAL:")
                     ]),
                     _vm._v(" "),
                     _c(
                       "div",
                       { staticClass: "col-6 col-md-6 littleprice text-right" },
-                      [_vm._v(_vm._s(ord.price) + "€")]
+                      [_vm._v(_vm._s(_vm.totalPrice) + "€")]
                     )
                   ])
-                }),
-                0
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row mt-3" }, [
-              _c("div", { staticClass: "col-12 col-md-12" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col-6 col-md-6 border-top pt-3 panadprodstxt"
-                    },
-                    [_vm._v("Subtotal:")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-6 col-md-6 panadprodstxt text-right" },
-                    [_vm._v(_vm._s(_vm.setPrice) + "€")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-6 col-md-6 panadprodstxt" }, [
-                    _vm._v(_vm._s(_vm.shipmtxt) + ":")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-6 col-md-6 panadprodstxt text-right" },
-                    [_vm._v("3.95€")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-6 col-md-6 panadprodstxt" }, [
-                    _vm._v("TOTAL:")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-6 col-md-6 littleprice text-right" },
-                    [_vm._v(_vm._s(_vm.totalPrice) + "€")]
-                  )
                 ])
               ])
             ])
           ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "col-12 offset-md-7 col-md-4 col-sm-12 bg-light paymborder pt-4 mb-4"
-        },
-        [
-          _c("div", { staticClass: "row mb-4" }, [
-            _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "row my-2" }, [
-                _c("span", { staticClass: "prodtext3 ml-5" }, [
-                  _vm._v(_vm._s(_vm.paymtxt))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row mt-4 ml-3 mx-3" }, [
-                _c("div", { staticClass: "col-12 col-md-12 col-sm-12" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-12 col-md-12 col-sm-12" }, [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: { type: "text", placeholder: _vm.paymcredtxt }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row mt-2" }, [
-                    _c("div", { staticClass: "col-6 col-md-6 col-sm-6" }, [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: { type: "text", placeholder: _vm.paymcadtxt }
-                      })
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-12 col-md-12 bg-light paymborder pt-4 mb-4" },
+          [
+            _c("div", { staticClass: "row mb-4" }, [
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "row my-2" }, [
+                  _c("span", { staticClass: "prodtext3 ml-5" }, [
+                    _vm._v(_vm._s(_vm.paymtxt))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row mt-4 ml-3 mx-3" }, [
+                  _c("div", { staticClass: "col-12 col-md-12 col-sm-12" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-12 col-md-12 col-sm-12" }, [
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: { type: "text", placeholder: _vm.paymcredtxt }
+                        })
+                      ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-6 col-md-6 col-sm-6" }, [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: { type: "text", placeholder: _vm.paymcvctxt }
-                      })
+                    _c("div", { staticClass: "row mt-2" }, [
+                      _c("div", { staticClass: "col-6 col-md-6 col-sm-6" }, [
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: { type: "text", placeholder: _vm.paymcadtxt }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-6 col-md-6 col-sm-6" }, [
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: { type: "text", placeholder: _vm.paymcvctxt }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row my-4" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-block",
+                          attrs: { type: "button" }
+                        },
+                        [_vm._v(_vm._s(_vm.butbuy))]
+                      )
                     ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row my-4" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary btn-block",
-                        attrs: { type: "button" }
-                      },
-                      [_vm._v(_vm._s(_vm.butbuy))]
-                    )
                   ])
                 ])
               ])
             ])
-          ])
-        ]
-      )
+          ]
+        )
+      ])
     ])
   ])
 }
@@ -83087,45 +83119,83 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mt-4 mx-3 bg-danger py-4" }, [
-      _c("div", { staticClass: "col-12 col-md-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-12 col-md-2 offset-md-1 text-center" },
-            [_c("span", [_c("i", { staticClass: "fas fa-check fa-2x" })])]
-          ),
+    return _c("div", { staticClass: "row my-5 mx-4" }, [
+      _c("div", { staticClass: "col-6 col-md-6 buygift" }, [
+        _vm._v("¿Quieres que lo envolvamos para regalo?")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6 col-md-6" }, [
+        _c("div", { staticClass: "form-check form-check-inline" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: { name: "gift", type: "radio", value: "1" }
+          }),
           _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-8" }, [
-            _c("span", [_vm._v("Pago seguro en nuestra plataforma")])
+          _c("label", { staticClass: "form-check-label panadprodstxt" }, [
+            _vm._v("Sí!")
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-12 col-md-2 offset-md-1 text-center" },
-            [_c("span", [_c("i", { staticClass: "fas fa-check fa-2x" })])]
-          ),
+        _c("div", { staticClass: "form-check form-check-inline" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: { name: "gift", type: "radio", value: "0" }
+          }),
           _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-8" }, [
-            _c("span", [_vm._v("Con todos los estándares de calidad")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-12 col-md-2 offset-md-1 text-center" },
-            [_c("span", [_c("i", { staticClass: "fas fa-check fa-2x" })])]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-md-8" }, [
-            _c("span", [_vm._v("Recibe tu Sox en casa!")])
+          _c("label", { staticClass: "form-check-label panadprodstxt" }, [
+            _vm._v("No")
           ])
         ])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "row mt-5 mx-4 shipmban py-4 rounded shadow text-light" },
+      [
+        _c("div", { staticClass: "col-12 col-md-12" }, [
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-12 col-md-2 offset-md-1 text-center" },
+              [_c("span", [_c("i", { staticClass: "fas fa-check fa-2x" })])]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12 col-md-8" }, [
+              _c("span", [_vm._v("Pago seguro en nuestra plataforma")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-12 col-md-2 offset-md-1 text-center" },
+              [_c("span", [_c("i", { staticClass: "fas fa-check fa-2x" })])]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12 col-md-8" }, [
+              _c("span", [_vm._v("Con todos los estándares de calidad")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-12 col-md-2 offset-md-1 text-center" },
+              [_c("span", [_c("i", { staticClass: "fas fa-check fa-2x" })])]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12 col-md-8" }, [
+              _c("span", [_vm._v("Recibe tu Sox en casa!")])
+            ])
+          ])
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -83138,15 +83208,15 @@ var staticRenderFns = [
         _c("span", [
           _c("i", { staticClass: "fab fa-cc-visa fa-3x deleteicon" })
         ]),
-        _vm._v(" \n                                "),
+        _vm._v(" \n                                    "),
         _c("span", [
           _c("i", { staticClass: "fab fa-cc-mastercard fa-3x deleteicon" })
         ]),
-        _vm._v(" \n                                "),
+        _vm._v(" \n                                    "),
         _c("span", [
           _c("i", { staticClass: "fab fa-cc-amex fa-3x deleteicon" })
         ]),
-        _vm._v(" \n                                "),
+        _vm._v(" \n                                    "),
         _c("span", [
           _c("i", { staticClass: "fab fa-cc-paypal fa-3x deleteicon" })
         ])
