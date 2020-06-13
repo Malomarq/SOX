@@ -99,5 +99,11 @@ return
         'lbpaymcredtxt'             => 'número de tarjeta',
         'lbpaymcadtxt'              => 'MM/YY',
         'lbpaymcvctxt'              => 'CVC',
+        'lbgifttxt'                 => '¿Quieres que lo envolvamos para regalo?',
+        'lbgiftyes'                 => 'Sí!',
+        'lbgiftno'                  => 'No',
+        'lbban1'                    => 'Pago seguro en nuestra plataforma',
+        'lbban2'                    => 'Con todos los estándares de calidad',
+        'lbban3'                    => 'Recibe tu Sox en casa!',
 
     ];

@@ -86,5 +86,11 @@ return
         'lbpaymcredtxt'             => 'card number',
         'lbpaymcadtxt'              => 'MM/YY',
         'lbpaymcvctxt'              => 'CVC',
+        'lbgifttxt'                 => 'Is this order a gift?',
+        'lbgiftyes'                 => 'Yes!',
+        'lbgiftno'                  => 'No',
+        'lbban1'                    => 'Secure payment in our app',
+        'lbban2'                    => 'With all quality standards',
+        'lbban3'                    => 'Receive your Sox at home!',
 
     ];

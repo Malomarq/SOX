@@ -27,7 +27,10 @@
          shipmphonetxt="@lang('messages.lbphone')" paymtxt="@lang('messages.lbpaymtxt')"
          paymcredtxt="@lang('messages.lbpaymcredtxt')" paymcadtxt="@lang('messages.lbpaymcadtxt')"
          paymcvctxt="@lang('messages.lbpaymcvctxt')" butbuy="@lang('messages.lbcompra')"
-         ordertxt="@lang('messages.lbordertxt')" iduser="{{Auth::user()->idUser}}"></buy>
+         ordertxt="@lang('messages.lbordertxt')" iduser="{{Auth::user()->idUser}}"
+         gifttxt="@lang('messages.lbgifttxt')" giftyes="@lang('messages.lbgiftyes')"
+         giftno="@lang('messages.lbgiftno')" ban1="@lang('messages.lbban1')" ban2="@lang('messages.lbban2')"
+         ban3="@lang('messages.lbban3')"></buy>
 
 @endsection
 

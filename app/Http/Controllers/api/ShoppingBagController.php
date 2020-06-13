@@ -163,4 +163,16 @@ class ShoppingBagController extends Controller
             return response()->json('error', 200);
         }
     }
+
+    public function buybag(Request $req){
+
+        $order = Order::where('idUser', $req->iduser)->where('open', 1)->first();
+
+        $order->address = $req->address;
+        $order->pay = date("Y-m-d");
+        $order->open = 0;
+        $order->save();
+
+        return response()->json('ok', 200);
+    }
 }
