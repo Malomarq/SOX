@@ -28,6 +28,7 @@
          paymcredtxt="@lang('messages.lbpaymcredtxt')" paymcadtxt="@lang('messages.lbpaymcadtxt')"
          paymcvctxt="@lang('messages.lbpaymcvctxt')" butbuy="@lang('messages.lbcompra')"
          ordertxt="@lang('messages.lbordertxt')" iduser="{{Auth::user()->idUser}}"></buy>
+
 @endsection
 
 @section('footer')

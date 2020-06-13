@@ -2209,6 +2209,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
@@ -82842,7 +82871,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mb-5" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12 col-md-6 col-sm-12 bagborder" }, [
+      _c("div", { staticClass: "col-12 col-md-6 col-sm-12 bagborder border" }, [
         _c("div", { staticClass: "row my-4" }, [
           _c("div", { staticClass: "container" }, [
             _c("div", { staticClass: "row my-2" }, [
@@ -82851,7 +82880,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "row mt-4 ml-3 mx-3" }, [
+            _c("div", { staticClass: "row mt-4 mx-3" }, [
               _c("div", { staticClass: "col-12 col-md-5" }, [
                 _c("div", { staticClass: "form-group" }, [
                   _c("label", { staticClass: "panadprodstxt" }, [
@@ -82859,7 +82888,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("input", {
-                    staticClass: "form-control form-control-sm rounded-0",
+                    staticClass: "form-control form-control-sm",
                     attrs: { type: "text" }
                   })
                 ])
@@ -82872,7 +82901,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("input", {
-                    staticClass: "form-control form-control-sm rounded-0",
+                    staticClass: "form-control form-control-sm",
                     attrs: { type: "text" }
                   })
                 ])
@@ -82887,7 +82916,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("input", {
-                    staticClass: "form-control form-control-sm rounded-0",
+                    staticClass: "form-control form-control-sm",
                     attrs: { type: "text" }
                   })
                 ])
@@ -82900,12 +82929,14 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("input", {
-                    staticClass: "form-control form-control-sm rounded-0",
+                    staticClass: "form-control form-control-sm",
                     attrs: { type: "text" }
                   })
                 ])
               ])
-            ])
+            ]),
+            _vm._v(" "),
+            _vm._m(0)
           ])
         ])
       ]),
@@ -82991,7 +83022,8 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "col-12 col-md-5 col-sm-12 bg-light paymborder pt-4 my-4"
+          staticClass:
+            "col-12 offset-md-7 col-md-4 col-sm-12 bg-light paymborder pt-4 mb-4"
         },
         [
           _c("div", { staticClass: "row mb-4" }, [
@@ -83003,8 +83035,8 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "row mt-4 ml-3 mx-3" }, [
-                _c("div", { staticClass: "col-10 col-md-10 col-sm-10" }, [
-                  _vm._m(0),
+                _c("div", { staticClass: "col-12 col-md-12 col-sm-12" }, [
+                  _vm._m(1),
                   _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "col-12 col-md-12 col-sm-12" }, [
@@ -83055,25 +83087,71 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mb-2" }, [
-      _c("div", { staticClass: "col-12 col-md-12 col-sm-12" }, [
-        _c("span", [
-          _c("i", { staticClass: "fab fa-cc-visa fa-3x deleteicon" })
+    return _c("div", { staticClass: "row mt-4 mx-3 bg-danger py-4" }, [
+      _c("div", { staticClass: "col-12 col-md-12" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-12 col-md-2 offset-md-1 text-center" },
+            [_c("span", [_c("i", { staticClass: "fas fa-check fa-2x" })])]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-md-8" }, [
+            _c("span", [_vm._v("Pago seguro en nuestra plataforma")])
+          ])
         ]),
-        _vm._v(" \n                                    "),
-        _c("span", [
-          _c("i", { staticClass: "fab fa-cc-mastercard fa-3x deleteicon" })
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-12 col-md-2 offset-md-1 text-center" },
+            [_c("span", [_c("i", { staticClass: "fas fa-check fa-2x" })])]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-md-8" }, [
+            _c("span", [_vm._v("Con todos los estándares de calidad")])
+          ])
         ]),
-        _vm._v(" \n                                    "),
-        _c("span", [
-          _c("i", { staticClass: "fab fa-cc-amex fa-3x deleteicon" })
-        ]),
-        _vm._v(" \n                                    "),
-        _c("span", [
-          _c("i", { staticClass: "fab fa-cc-paypal fa-3x deleteicon" })
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-12 col-md-2 offset-md-1 text-center" },
+            [_c("span", [_c("i", { staticClass: "fas fa-check fa-2x" })])]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-md-8" }, [
+            _c("span", [_vm._v("Recibe tu Sox en casa!")])
+          ])
         ])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-12 col-md-12 col-sm-12 mb-2 text-center" },
+      [
+        _c("span", [
+          _c("i", { staticClass: "fab fa-cc-visa fa-3x deleteicon" })
+        ]),
+        _vm._v(" \n                                "),
+        _c("span", [
+          _c("i", { staticClass: "fab fa-cc-mastercard fa-3x deleteicon" })
+        ]),
+        _vm._v(" \n                                "),
+        _c("span", [
+          _c("i", { staticClass: "fab fa-cc-amex fa-3x deleteicon" })
+        ]),
+        _vm._v(" \n                                "),
+        _c("span", [
+          _c("i", { staticClass: "fab fa-cc-paypal fa-3x deleteicon" })
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

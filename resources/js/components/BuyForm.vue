@@ -2,23 +2,24 @@
 
     <div class="container mb-5">
         <div class="row">
-            <div class="col-12 col-md-6 col-sm-12 bagborder">
+
+            <div class="col-12 col-md-6 col-sm-12 bagborder border">
                 <div class="row my-4">
                     <div class="container">
                         <div class="row my-2">
                             <span class="prodtext3 ml-5">{{shipmtxt}}</span>
                         </div>
-                        <div class="row mt-4 ml-3 mx-3">
+                        <div class="row mt-4 mx-3">
                             <div class="col-12 col-md-5">
                                 <div class="form-group">
                                     <label class="panadprodstxt">{{shipmnametxt}}</label>
-                                    <input type="text" class="form-control form-control-sm rounded-0">
+                                    <input type="text" class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="col-12 col-md-5">
                                 <div class="form-group">
                                     <label class="panadprodstxt">{{shipmlastnametxt}}</label>
-                                    <input type="text" class="form-control form-control-sm rounded-0">
+                                    <input type="text" class="form-control form-control-sm">
                                 </div>
                             </div>
                         </div>
@@ -26,13 +27,42 @@
                             <div class="col-6 col-md-6">
                                 <div class="form-group">
                                     <label class="panadprodstxt">{{shipmaddtxt}}</label>
-                                    <input type="text" class="form-control form-control-sm rounded-0">
+                                    <input type="text" class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="col-6 col-md-4">
                                 <div class="form-group">
                                     <label class="panadprodstxt">{{shipmphonetxt}}</label>
-                                    <input type="text" class="form-control form-control-sm rounded-0">
+                                    <input type="text" class="form-control form-control-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4 mx-3 bg-danger py-4">
+                            <div class="col-12 col-md-12">
+                                <div class="row">
+                                    <div class="col-12 col-md-2 offset-md-1 text-center">
+                                        <span><i class="fas fa-check fa-2x"></i></span>
+                                    </div>
+                                    <div class="col-12 col-md-8">
+                                        <span>Pago seguro en nuestra plataforma</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-2 offset-md-1 text-center">
+                                        <span><i class="fas fa-check fa-2x"></i></span>
+                                    </div>
+                                    <div class="col-12 col-md-8">
+                                        <span>Con todos los estándares de calidad</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-2 offset-md-1 text-center">
+                                        <span><i class="fas fa-check fa-2x"></i></span>
+                                    </div>
+                                    <div class="col-12 col-md-8">
+                                        <span>Recibe tu Sox en casa!</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -74,21 +104,19 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-5 col-sm-12 bg-light paymborder pt-4 my-4">
+            <div class="col-12 offset-md-7 col-md-4 col-sm-12 bg-light paymborder pt-4 mb-4">
                 <div class="row mb-4">
                     <div class="container">
                         <div class="row my-2">
                             <span class="prodtext3 ml-5">{{paymtxt}}</span>
                         </div>
                         <div class="row mt-4 ml-3 mx-3">
-                            <div class="col-10 col-md-10 col-sm-10">
-                                <div class="row mb-2">
-                                    <div class="col-12 col-md-12 col-sm-12">
-                                        <span><i class="fab fa-cc-visa fa-3x deleteicon"></i></span>&nbsp;
-                                        <span><i class="fab fa-cc-mastercard fa-3x deleteicon"></i></span>&nbsp;
-                                        <span><i class="fab fa-cc-amex fa-3x deleteicon"></i></span>&nbsp;
-                                        <span><i class="fab fa-cc-paypal fa-3x deleteicon"></i></span>
-                                    </div>
+                            <div class="col-12 col-md-12 col-sm-12">
+                                <div class="col-12 col-md-12 col-sm-12 mb-2 text-center">
+                                    <span><i class="fab fa-cc-visa fa-3x deleteicon"></i></span>&nbsp;
+                                    <span><i class="fab fa-cc-mastercard fa-3x deleteicon"></i></span>&nbsp;
+                                    <span><i class="fab fa-cc-amex fa-3x deleteicon"></i></span>&nbsp;
+                                    <span><i class="fab fa-cc-paypal fa-3x deleteicon"></i></span>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-12 col-sm-12">
@@ -111,6 +139,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
