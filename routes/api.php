@@ -48,6 +48,9 @@ Route::middleware('api.auth')->group(function (){
     Route::post('/deleteSet', 'api\ShoppingBagController@deleteSet');
     Route::post('/buybag', 'api\ShoppingBagController@buybag');
 
+    Route::post('/orders', 'api\OrderController@listOrders');
+    Route::post('/findOrders', 'api\OrderController@findOrders');
+
 });
 
 

@@ -17,4 +17,8 @@ class Set extends Model
 
         return $this->belongsTo('App\Models\Order', 'idOrder');
     }
+
+    public function getArticles(){
+        return $this->hasMany('App\Models\Article', 'idArt');
+    }
 }

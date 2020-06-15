@@ -61,9 +61,6 @@
                                         <a href="{{ url('/home') }}"
                                            class="dropdown-item">@lang('messages.lbhome')</a>
                                 @endif
-                                <!-- TODO logged -->
-                                    <a class="dropdown-item" href="#">...</a>
-                                    <a class="dropdown-item" href="#">...</a>
                                     <a class="dropdown-item igcol"
                                        href="{{ route('logout') }}">@lang('messages.lblogout')</a>
                                 </div>

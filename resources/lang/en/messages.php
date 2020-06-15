@@ -92,5 +92,6 @@ return
         'lbban1'                    => 'Secure payment in our app',
         'lbban2'                    => 'With all quality standards',
         'lbban3'                    => 'Receive your Sox at home!',
+        'lbpanusnotiftxt1'          => 'You have no notifications',
 
     ];

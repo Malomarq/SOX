@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-12 col-md-4 my-2 my-md-5">
                         <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action active" id="list-account-list"
+                            <a class="list-group-item list-group-item-action " id="list-account-list"
                                data-toggle="list" href="#list-account" role="tab" aria-controls="account">
                                 <span class="mr-3 panusernav"><i class="fas fa-user-circle fa-lg"/></span>
                                 {{account}}
@@ -15,7 +15,8 @@
                                 <span class="mr-3 panusernav"><i class="fas fa-dolly fa-lg"/></span>
                                 {{orders}}
                             </a>
-                            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
+                            <a class="list-group-item list-group-item-action active" id="list-messages-list"
+                               data-toggle="list"
                                href="#list-messages" role="tab" aria-controls="messages">
                                 <span class="mr-3 panusernav"><i class="fas fa-envelope fa-lg"/></span>
                                 {{notif}}
@@ -39,10 +40,10 @@
                                 <div class="tab-content" id="nav-tabContent">
 
                                     <!--ACCOUNT-->
-                                    <div class="tab-pane fade show active" id="list-account" role="tabpanel"
+                                    <div class="tab-pane fade" id="list-account" role="tabpanel"
                                          aria-labelledby="list-account-list">
 
-                                        <div class="panuseracctit ml-3 mt-3">{{accounttext1}}</div>
+                                        <div class="panuseracctit ml-3 mt-3">{{account}}</div>
                                         <div class="row my-3">
 
                                             <div class="col-12 col-md-6 text-center">
@@ -145,12 +146,35 @@
 
                                     <!--ORDERS-->
                                     <div class="tab-pane fade" id="list-orders" role="tabpanel"
-                                         aria-labelledby="list-orders-list">orders
+                                         aria-labelledby="list-orders-list">
+
+                                        <div class="panuseracctit ml-3 mt-3">{{orders}}</div>
+                                        <div class="row my-3">
+                                            <div class="col-12 col-md-12">
+
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <!--NOTIFICATIONS-->
-                                    <div class="tab-pane fade" id="list-messages" role="tabpanel"
-                                         aria-labelledby="list-messages-list">notifications
+                                    <div class="tab-pane fade show active px-3" id="list-messages" role="tabpanel"
+                                         aria-labelledby="list-messages-list">
+                                        <div class="panuseracctit mt-3">{{notif}}</div>
+
+                                        <div class="row mt-4 mb-5 border bg-light mx-md-5 py-3">
+                                            <div class="col-12 col-md-12">
+                                                <div class="row pt-3">
+                                                    <div class="col-12 col-md-6 panadprodstxt text-center">
+                                                        <span class="pl-3">{{notiftxt1}}</span>
+                                                    </div>
+                                                    <div class="col-12 col-md-6 mt-2 mt-md-0 text-center">
+                                                        <span>
+                                                            <i class="far fa-check-square fa-2x deleteicon"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <!--DESIGNS-->
@@ -192,7 +216,8 @@
                                                         <small class="text-danger">{{uppassconferr}}</small>
                                                     </div>
                                                     <div class="form-group">
-                                                        <button type="submit" class="btn btn-warning" @click="checkpass">
+                                                        <button type="submit" class="btn btn-warning"
+                                                                @click="checkpass">
                                                             {{txtbut}}
                                                         </button>
                                                     </div>
@@ -230,7 +255,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -258,7 +282,6 @@
             delaccount: '',
 
             // account
-            accounttext1: '',
             name: '',
             lastname: '',
             accounttext2: '',
@@ -281,6 +304,9 @@
             mdeltext1: '',
             mdeltext2: '',
             mdelbut: '',
+
+            // notif
+            notiftxt1: '',
         },
         computed: {
             iduser() {
@@ -314,6 +340,9 @@
                 showErrorUpdatePassCurr: false,
                 showErrorDelPassLen: false,
                 showErrorDelPassMatch: false,
+
+                // orders
+                orders: [],
             }
         },
         mounted() {
@@ -406,7 +435,7 @@
                 });
             },
 
-            checkpass(){
+            checkpass() {
                 axios.post('api/checkPass', {
                     '_token': this.$csrfToken,
                     'pubkey': pubkey,
@@ -429,7 +458,7 @@
                 });
             },
 
-            confirmDelUser(){
+            confirmDelUser() {
                 axios.post('api/deleteUser', {
                     '_token': this.$csrfToken,
                     'pubkey': pubkey,

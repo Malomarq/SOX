@@ -4506,6 +4506,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4525,7 +4549,6 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     designs: '',
     delaccount: '',
     // account
-    accounttext1: '',
     name: '',
     lastname: '',
     accounttext2: '',
@@ -4546,7 +4569,9 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     mdelheader: '',
     mdeltext1: '',
     mdeltext2: '',
-    mdelbut: ''
+    mdelbut: '',
+    // notif
+    notiftxt1: ''
   },
   computed: {
     iduser: function iduser() {
@@ -4574,7 +4599,9 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       showErrorUpdatePassMatch: false,
       showErrorUpdatePassCurr: false,
       showErrorDelPassLen: false,
-      showErrorDelPassMatch: false
+      showErrorDelPassMatch: false,
+      // orders
+      orders: []
     };
   },
   mounted: function mounted() {
@@ -86304,8 +86331,7 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass:
-                      "list-group-item list-group-item-action active",
+                    staticClass: "list-group-item list-group-item-action ",
                     attrs: {
                       id: "list-account-list",
                       "data-toggle": "list",
@@ -86349,7 +86375,8 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "list-group-item list-group-item-action",
+                    staticClass:
+                      "list-group-item list-group-item-action active",
                     attrs: {
                       id: "list-messages-list",
                       "data-toggle": "list",
@@ -86428,7 +86455,7 @@ var render = function() {
                     _c(
                       "div",
                       {
-                        staticClass: "tab-pane fade show active",
+                        staticClass: "tab-pane fade",
                         attrs: {
                           id: "list-account",
                           role: "tabpanel",
@@ -86437,7 +86464,7 @@ var render = function() {
                       },
                       [
                         _c("div", { staticClass: "panuseracctit ml-3 mt-3" }, [
-                          _vm._v(_vm._s(_vm.accounttext1))
+                          _vm._v(_vm._s(_vm.account))
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "row my-3" }, [
@@ -86761,13 +86788,19 @@ var render = function() {
                           "aria-labelledby": "list-orders-list"
                         }
                       },
-                      [_vm._v("orders\n                                ")]
+                      [
+                        _c("div", { staticClass: "panuseracctit ml-3 mt-3" }, [
+                          _vm._v(_vm._s(_vm.orders))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(7)
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
                       "div",
                       {
-                        staticClass: "tab-pane fade",
+                        staticClass: "tab-pane fade show active px-3",
                         attrs: {
                           id: "list-messages",
                           role: "tabpanel",
@@ -86775,8 +86808,36 @@ var render = function() {
                         }
                       },
                       [
-                        _vm._v(
-                          "notifications\n                                "
+                        _c("div", { staticClass: "panuseracctit mt-3" }, [
+                          _vm._v(_vm._s(_vm.notif))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "row mt-4 mb-5 border bg-light mx-md-5 py-3"
+                          },
+                          [
+                            _c("div", { staticClass: "col-12 col-md-12" }, [
+                              _c("div", { staticClass: "row pt-3" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "col-12 col-md-6 panadprodstxt text-center"
+                                  },
+                                  [
+                                    _c("span", { staticClass: "pl-3" }, [
+                                      _vm._v(_vm._s(_vm.notiftxt1))
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _vm._m(8)
+                              ])
+                            ])
+                          ]
                         )
                       ]
                     ),
@@ -86954,7 +87015,7 @@ var render = function() {
                   [_vm._v(_vm._s(_vm.mdelheader))]
                 ),
                 _vm._v(" "),
-                _vm._m(7)
+                _vm._m(9)
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
@@ -87052,6 +87113,28 @@ var staticRenderFns = [
         _c("i", { staticClass: "fas fa-user-tag" })
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row my-3" }, [
+      _c("div", { staticClass: "col-12 col-md-12" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-12 col-md-6 mt-2 mt-md-0 text-center" },
+      [
+        _c("span", [
+          _c("i", { staticClass: "far fa-check-square fa-2x deleteicon" })
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this

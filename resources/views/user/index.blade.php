@@ -18,7 +18,7 @@
     <user-panel idu="{{ Auth::user()->idUser }}" account="@lang('messages.lbpanusacc')"
                 orders="@lang('messages.lbpanusord')" notif="@lang('messages.lbpanusnot')"
                 designs="@lang('messages.lbpanusdes')" delaccount="@lang('messages.lbpanusdel')"
-                accounttext1="@lang('messages.lbpanusacc')" name="@lang('messages.lbregname')"
+                name="@lang('messages.lbregname')" notiftxt1="@lang('messages.lbpanusnotiftxt1')"
                 lastname="@lang('messages.lbreglastname')" accounttext2="@lang('messages.lbpanusacc1')"
                 accounttext3="@lang('messages.lbpanusacc2')" currentpass="@lang('messages.lbpanuscurpass')"
                 newpass="@lang('messages.lbpanusnewpass')" confirmpass="@lang('messages.lbpanusconfpass')"
