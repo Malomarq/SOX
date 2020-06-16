@@ -50,6 +50,7 @@ Route::middleware('api.auth')->group(function (){
 
     Route::post('/orders', 'api\OrderController@listOrders');
     Route::post('/findOrders', 'api\OrderController@findOrders');
+    Route::post('/sets', 'api\SetController@listSets');
 
 });
 

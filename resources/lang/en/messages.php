@@ -93,5 +93,6 @@ return
         'lbban2'                    => 'With all quality standards',
         'lbban3'                    => 'Receive your Sox at home!',
         'lbpanusnotiftxt1'          => 'You have no notifications',
+        'lbpanusernooders'          => 'You have no orders yet',
 
     ];

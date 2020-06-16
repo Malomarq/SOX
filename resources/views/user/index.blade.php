@@ -28,7 +28,7 @@
                 deltext2="@lang('messages.lbpanusdelmess')" deltext3="@lang('messages.lbpanusdelmess2')"
                 deltext4="@lang('messages.lbpanusdelmess3')" mdelheader="@lang('messages.lbpanusdel')"
                 mdeltext1="@lang('messages.lbpanusdelmess')" mdeltext2="@lang('messages.lbpanusdelmess4')"
-                mdelbut="@lang('messages.lbpanusdelbut')"
+                mdelbut="@lang('messages.lbpanusdelbut')" noorderstxt1="@lang('messages.lbpanusernooders')"
 
     ></user-panel>
 

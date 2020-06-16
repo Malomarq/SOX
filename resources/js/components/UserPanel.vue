@@ -10,12 +10,13 @@
                                 <span class="mr-3 panusernav"><i class="fas fa-user-circle fa-lg"/></span>
                                 {{account}}
                             </a>
-                            <a class="list-group-item list-group-item-action" id="list-orders-list" data-toggle="list"
+                            <a class="list-group-item list-group-item-action active" id="list-orders-list"
+                               data-toggle="list"
                                href="#list-orders" role="tab" aria-controls="orders">
                                 <span class="mr-3 panusernav"><i class="fas fa-dolly fa-lg"/></span>
                                 {{orders}}
                             </a>
-                            <a class="list-group-item list-group-item-action active" id="list-messages-list"
+                            <a class="list-group-item list-group-item-action" id="list-messages-list"
                                data-toggle="list"
                                href="#list-messages" role="tab" aria-controls="messages">
                                 <span class="mr-3 panusernav"><i class="fas fa-envelope fa-lg"/></span>
@@ -145,23 +146,59 @@
                                     </div>
 
                                     <!--ORDERS-->
-                                    <div class="tab-pane fade" id="list-orders" role="tabpanel"
+                                    <div class="tab-pane fade show active" id="list-orders" role="tabpanel"
                                          aria-labelledby="list-orders-list">
 
                                         <div class="panuseracctit ml-3 mt-3">{{orders}}</div>
-                                        <div class="row my-3">
-                                            <div class="col-12 col-md-12">
+                                        <div class="row my-4 mx-5">
+
+                                            <div v-if="emptyOrder" class="col-12 col-md-12 border bg-light py-3 mb-3">
+                                                <div class="row pt-3">
+                                                    <div class="col-12 col-md-6 panadprodstxt text-center">
+                                                        <span class="pl-md-3">{{noorderstxt1}}</span>
+                                                    </div>
+                                                    <div class="col-12 col-md-6 mt-2 mt-md-0 text-center">
+                                                        <span>
+                                                            <i class="far fa-check-square fa-2x deleteicon"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div v-if="fullOrder" class="col-12 col-md-12">
+
+                                                <div class="card mb-4" v-for="item in ordersinfo"
+                                                     :key="item.idOrder">
+                                                    <div class="card-header">
+                                                        <div class="col-12">
+                                                            <div class="row">
+                                                                <div class="col-6 text-left">
+                                                                    <span>ref: {{item.idOrder}}</span>
+                                                                </div>
+                                                                <div class="col-6 text-right">
+                                                                    <span>date: {{item.pay}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <order-details :idorder="item.idOrder"></order-details>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <p class="card-text">address: {{item.address}}</p>
+                                                    </div>
+                                                </div>
 
                                             </div>
                                         </div>
                                     </div>
 
                                     <!--NOTIFICATIONS-->
-                                    <div class="tab-pane fade show active px-3" id="list-messages" role="tabpanel"
+                                    <div class="tab-pane fade px-3" id="list-messages" role="tabpanel"
                                          aria-labelledby="list-messages-list">
                                         <div class="panuseracctit mt-3">{{notif}}</div>
 
-                                        <div class="row mt-4 mb-5 border bg-light mx-md-5 py-3">
+                                        <div class="row mt-4 mb-5 border bg-light mx-md-5 py-2">
                                             <div class="col-12 col-md-12">
                                                 <div class="row pt-3">
                                                     <div class="col-12 col-md-6 panadprodstxt text-center">
@@ -262,13 +299,14 @@
 
     import EventBus from "../event-bus";
     import EyePassLogin from "./EyePassLogin";
+    import OrderDetails from "./OrderDetails";
 
     const axios = require('axios').default;
     const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
         components: {
-            EyePassLogin
+            EyePassLogin, OrderDetails
         },
         props: {
 
@@ -307,6 +345,9 @@
 
             // notif
             notiftxt1: '',
+
+            // orders
+            noorderstxt1: '',
         },
         computed: {
             iduser() {
@@ -342,7 +383,9 @@
                 showErrorDelPassMatch: false,
 
                 // orders
-                orders: [],
+                ordersinfo: [],
+                emptyOrder: false,
+                fullOrder: false,
             }
         },
         mounted() {
@@ -366,6 +409,7 @@
                     self.vmdelpass = data[0];
                 }
             });
+            this.getOrders();
         },
         methods: {
             movedelicon() {
@@ -466,6 +510,21 @@
                 }).then((response) => {
                     // TODO modificar url final
                     location.href = 'http://localhost/sox/public/logout';
+                });
+            },
+
+            getOrders() {
+                axios.post('api/findOrders', {
+                    '_token': this.$csrfToken,
+                    'pubkey': pubkey,
+                    'idUser': this.iduser,
+                }).then((response) => {
+                    if (response.data === "empty") {
+                        this.emptyOrder = true;
+                    } else {
+                        this.fullOrder = true;
+                        this.ordersinfo = response.data;
+                    }
                 });
             }
         }

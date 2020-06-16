@@ -106,5 +106,6 @@ return
         'lbban2'                    => 'Con todos los estándares de calidad',
         'lbban3'                    => 'Recibe tu Sox en casa!',
         'lbpanusnotiftxt1'          => 'No tienes notificaciones',
+        'lbpanusernooders'          => 'No has realizado ningún pedido',
 
     ];
