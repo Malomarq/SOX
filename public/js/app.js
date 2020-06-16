@@ -2633,6 +2633,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
@@ -3744,6 +3755,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -83831,7 +83844,32 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      { staticClass: "col-12 col-md-12" },
+      _vm._l(_vm.sets, function(item) {
+        return _c("div", { key: item.idSet, staticClass: "row" }, [
+          _c("div", { staticClass: "col-12 col-md-6" }, [
+            _c(
+              "a",
+              { attrs: { href: "product?id=" + item.idArt } },
+              [
+                _c("b-img", {
+                  staticClass: "imgbag",
+                  attrs: { src: "storage/articles/" + item.image, fluid: "" }
+                })
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-md-6" })
+        ])
+      }),
+      0
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

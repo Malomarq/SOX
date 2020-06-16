@@ -1,5 +1,16 @@
 <template>
-
+<div class="container">
+    <div class="col-12 col-md-12">
+        <div class="row" v-for="item in sets" :key="item.idSet">
+            <div class="col-12 col-md-6">
+                <a v-bind:href="'product?id=' + item.idArt">
+                    <b-img :src="'storage/articles/' + item.image" fluid class="imgbag"/>
+                </a>
+            </div>
+            <div class="col-12 col-md-6"></div>
+        </div>
+    </div>
+</div>
 </template>
 
 <script>

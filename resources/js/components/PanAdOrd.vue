@@ -1,6 +1,8 @@
 <template>
     <div v-if="showed">
         <h3>Orders</h3>
+
+        <!--listOrders()-->
     </div>
 </template>
 

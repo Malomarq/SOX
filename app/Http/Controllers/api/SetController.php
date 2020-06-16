@@ -13,7 +13,8 @@ class SetController extends Controller
 
         $sets = DB::table('set')
             ->join('article', 'article.idArt', '=', 'set.idArt')
-            ->select('article.image', 'article.name', 'article.price', 'set.amount', 'set.setPrice')
+            ->select('article.image', 'article.name', 'article.idArt', 'article.price',
+                    'set.idSet', 'set.amount', 'set.setPrice')
             ->where('idOrder', $req->idOrder)
             ->get();
 
