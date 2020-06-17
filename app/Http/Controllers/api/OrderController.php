@@ -30,4 +30,13 @@ class OrderController extends Controller
         $orders = Order::where('idUser', $req->idUser)->orderBy('pay')->get();
         return response()->json($orders, 200);
     }
+
+    public function orderPrice(Request $req){
+
+        $price = DB::table('set')
+                ->where('idOrder', $req->idOrder)
+                ->sum('setPrice');
+
+        return response()->json($price, 200);
+    }
 }

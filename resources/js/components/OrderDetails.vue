@@ -1,13 +1,22 @@
 <template>
 <div class="container">
     <div class="col-12 col-md-12">
-        <div class="row" v-for="item in sets" :key="item.idSet">
-            <div class="col-12 col-md-6">
+        <div class="row py-3" v-for="item in sets" :key="item.idSet">
+            <div class="col-12 col-md-6 text-md-right text-center">
                 <a v-bind:href="'product?id=' + item.idArt">
-                    <b-img :src="'storage/articles/' + item.image" fluid class="imgbag"/>
+                    <b-img :src="'storage/articles/' + item.image" fluid class="imgord"/>
                 </a>
             </div>
-            <div class="col-12 col-md-6"></div>
+            <div class="col-12 col-md-6 pt-4 text-md-left text-center">
+                <!--<div class="row">-->
+                    <span class="panadprodstxt">{{item.name}}</span>
+                <!--</div>
+                <div class="row">-->
+                    <span class="littleprice">{{item.setPrice}}€</span>
+                <!--</div>-->
+                <br>
+                <span>x {{item.amount}}</span>
+            </div>
         </div>
     </div>
 </div>

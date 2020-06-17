@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-8 my-2 my-md-5">
-                        <div class="card">
+                        <div class="card bg-light">
                             <div class="card-body">
                                 <div class="tab-content" id="nav-tabContent">
 
@@ -150,12 +150,12 @@
                                          aria-labelledby="list-orders-list">
 
                                         <div class="panuseracctit ml-3 mt-3">{{orders}}</div>
-                                        <div class="row my-4 mx-5">
 
-                                            <div v-if="emptyOrder" class="col-12 col-md-12 border bg-light py-3 mb-3">
+                                        <div v-if="emptyOrder" class="row mt-4 mb-5 border bg-white mx-md-5 py-2">
+                                            <div class="col-12 col-md-12">
                                                 <div class="row pt-3">
                                                     <div class="col-12 col-md-6 panadprodstxt text-center">
-                                                        <span class="pl-md-3">{{noorderstxt1}}</span>
+                                                        <span class="pl-3">{{noorderstxt1}}</span>
                                                     </div>
                                                     <div class="col-12 col-md-6 mt-2 mt-md-0 text-center">
                                                         <span>
@@ -164,32 +164,34 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div v-if="fullOrder" class="col-12 col-md-12">
-
-                                                <div class="card mb-4" v-for="item in ordersinfo"
-                                                     :key="item.idOrder">
-                                                    <div class="card-header">
-                                                        <div class="col-12">
-                                                            <div class="row">
-                                                                <div class="col-6 text-left">
-                                                                    <span>ref: {{item.idOrder}}</span>
-                                                                </div>
-                                                                <div class="col-6 text-right">
-                                                                    <span>date: {{item.pay}}</span>
-                                                                </div>
-                                                            </div>
+                                        <div v-if="fullOrder" class="container mt-4 mb-5">
+                                            <div class="row mx-md-3 mb-3" v-for="item in ordersinfo"
+                                                 :key="item.idOrder" @mouseover="emitidorder(item.idOrder)">
+                                                <div class="col-12 col-md-12 border">
+                                                    <div class="row bg-warning border-bottom py-2">
+                                                        <div class="col-12 col-sm-12 col-md-6 text-left">
+                                                            <span class="panadprodstxt">ref: {{item.idOrder}}</span>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 text-md-right">
+                                                            <span class="panadprodstxt">date: {{item.pay}}</span>
                                                         </div>
                                                     </div>
-                                                    <div class="card-body">
+                                                    <div class="row bg-white py-2">
                                                         <order-details :idorder="item.idOrder"></order-details>
                                                     </div>
-                                                    <div class="card-footer">
-                                                        <p class="card-text">address: {{item.address}}</p>
+                                                    <div class="row bg-warning border-top py-2">
+                                                        <div class="col-12 col-sm-12 col-md-6 text-left">
+                                                            <span class="panadprodstxt"><i class="fas fa-truck mr-2"></i>{{item.address}}</span>
+                                                        </div>
+                                                        <div class="col-12 col-sm-12 col-md-6 text-md-right">
+                                                            <span class="littleprice">{{orderPrice}}€</span>
+                                                        </div>
                                                     </div>
                                                 </div>
-
                                             </div>
+
                                         </div>
                                     </div>
 
@@ -198,7 +200,7 @@
                                          aria-labelledby="list-messages-list">
                                         <div class="panuseracctit mt-3">{{notif}}</div>
 
-                                        <div class="row mt-4 mb-5 border bg-light mx-md-5 py-2">
+                                        <div class="row mt-4 mb-5 border bg-white mx-md-5 py-2">
                                             <div class="col-12 col-md-12">
                                                 <div class="row pt-3">
                                                     <div class="col-12 col-md-6 panadprodstxt text-center">
@@ -352,7 +354,7 @@
         computed: {
             iduser() {
                 return this.idu;
-            }
+            },
         },
         data() {
             return {
@@ -386,6 +388,8 @@
                 ordersinfo: [],
                 emptyOrder: false,
                 fullOrder: false,
+                //idOrd: null,
+                orderPrice: null,
             }
         },
         mounted() {
@@ -410,6 +414,8 @@
                 }
             });
             this.getOrders();
+            this.emitidorder();
+            this.getOrderPrice();
         },
         methods: {
             movedelicon() {
@@ -525,6 +531,26 @@
                         this.fullOrder = true;
                         this.ordersinfo = response.data;
                     }
+                });
+            },
+
+            emitidorder(data){
+                console.log(data);
+                //this.idOrd = data;
+            },
+
+            getOrderPrice(){
+                axios.post('api/orderPrice', {
+                    '_token': this.$csrfToken,
+                    'pubkey': pubkey,
+                    //'idOrder': this.id,
+                }).then((response) => {
+                    /*if (response.data === "empty") {
+                        this.emptyOrder = true;
+                    } else {
+                        this.fullOrder = true;
+                        this.ordersinfo = response.data;
+                    }*/
                 });
             }
         }

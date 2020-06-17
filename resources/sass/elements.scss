@@ -295,6 +295,12 @@ a[class*="linkpanad"]:focus {
     height: 10rem;
 }
 
+.imgord {
+    width: 6rem;
+    height: 8rem;
+    filter: grayscale(70%);
+}
+
 .pricebag {
     max-height: 25rem;
     background-color: lightgrey;
