@@ -168,14 +168,14 @@
 
                                         <div v-if="fullOrder" class="container mt-4 mb-5">
                                             <div class="row mx-md-3 mb-3" v-for="item in ordersinfo"
-                                                 :key="item.idOrder" @mouseover="emitidorder(item.idOrder)">
+                                                 :key="item.idOrder">
                                                 <div class="col-12 col-md-12 border">
                                                     <div class="row bg-warning border-bottom py-2">
                                                         <div class="col-12 col-sm-12 col-md-6 text-left">
                                                             <span class="panadprodstxt">ref: {{item.idOrder}}</span>
                                                         </div>
                                                         <div class="col-12 col-sm-12 col-md-6 text-md-right">
-                                                            <span class="panadprodstxt">date: {{item.pay}}</span>
+                                                            <span class="panadprodstxt">{{item.pay}}</span>
                                                         </div>
                                                     </div>
                                                     <div class="row bg-white py-2">
@@ -185,8 +185,8 @@
                                                         <div class="col-12 col-sm-12 col-md-6 text-left">
                                                             <span class="panadprodstxt"><i class="fas fa-truck mr-2"></i>{{item.address}}</span>
                                                         </div>
-                                                        <div class="col-12 col-sm-12 col-md-6 text-md-right">
-                                                            <span class="littleprice">{{orderPrice}}€</span>
+                                                        <div class="col-12 col-sm-12 col-md-6 text-md-right text-center">
+                                                            <span class="littleprice">{{(item.totalPrice + 3.95).toFixed(2)}}€</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -388,8 +388,6 @@
                 ordersinfo: [],
                 emptyOrder: false,
                 fullOrder: false,
-                //idOrd: null,
-                orderPrice: null,
             }
         },
         mounted() {
@@ -414,8 +412,6 @@
                 }
             });
             this.getOrders();
-            this.emitidorder();
-            this.getOrderPrice();
         },
         methods: {
             movedelicon() {
@@ -534,25 +530,6 @@
                 });
             },
 
-            emitidorder(data){
-                console.log(data);
-                //this.idOrd = data;
-            },
-
-            getOrderPrice(){
-                axios.post('api/orderPrice', {
-                    '_token': this.$csrfToken,
-                    'pubkey': pubkey,
-                    //'idOrder': this.id,
-                }).then((response) => {
-                    /*if (response.data === "empty") {
-                        this.emptyOrder = true;
-                    } else {
-                        this.fullOrder = true;
-                        this.ordersinfo = response.data;
-                    }*/
-                });
-            }
         }
     }
 </script>

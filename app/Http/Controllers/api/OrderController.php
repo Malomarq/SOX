@@ -27,16 +27,15 @@ class OrderController extends Controller
             return response()->json('empty', 200);
         }
 
-        $orders = Order::where('idUser', $req->idUser)->orderBy('pay')->get();
+        $orders = DB::table('order')
+                    ->join('set', 'set.idOrder', '=', 'order.idOrder')
+                    ->select(DB::raw('sum(set.setPrice) as totalPrice'), 'order.pay', 'order.idOrder', 'order.address')
+                    ->where('order.idUser', $req->idUser)
+                    ->groupBy('order.idOrder', 'order.pay', 'order.address')
+                    ->orderBy('order.pay')
+                    ->get();
+
         return response()->json($orders, 200);
     }
 
-    public function orderPrice(Request $req){
-
-        $price = DB::table('set')
-                ->where('idOrder', $req->idOrder)
-                ->sum('setPrice');
-
-        return response()->json($price, 200);
-    }
 }

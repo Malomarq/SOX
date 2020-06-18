@@ -12,10 +12,10 @@
                     <span class="panadprodstxt">{{item.name}}</span>
                 <!--</div>
                 <div class="row">-->
-                    <span class="littleprice">{{item.setPrice}}€</span>
+                    <span class="littleprice">{{item.price}}€</span>
                 <!--</div>-->
                 <br>
-                <span>x {{item.amount}}</span>
+                <span class="panadprodstxt">x {{item.amount}}</span>
             </div>
         </div>
     </div>

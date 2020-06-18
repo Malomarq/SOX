@@ -4714,9 +4714,7 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       // orders
       ordersinfo: [],
       emptyOrder: false,
-      fullOrder: false,
-      //idOrd: null,
-      orderPrice: null
+      fullOrder: false
     };
   },
   mounted: function mounted() {
@@ -4741,8 +4739,6 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       }
     });
     this.getOrders();
-    this.emitidorder();
-    this.getOrderPrice();
   },
   methods: {
     movedelicon: function movedelicon() {
@@ -4861,23 +4857,6 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
           _this5.fullOrder = true;
           _this5.ordersinfo = response.data;
         }
-      });
-    },
-    emitidorder: function emitidorder(data) {
-      console.log(data); //this.idOrd = data;
-    },
-    getOrderPrice: function getOrderPrice() {
-      axios.post('api/orderPrice', {
-        '_token': this.$csrfToken,
-        'pubkey': pubkey //'idOrder': this.id,
-
-      }).then(function (response) {
-        /*if (response.data === "empty") {
-            this.emptyOrder = true;
-        } else {
-            this.fullOrder = true;
-            this.ordersinfo = response.data;
-        }*/
       });
     }
   }
@@ -83909,12 +83888,14 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "littleprice" }, [
-                _vm._v(_vm._s(item.setPrice) + "€")
+                _vm._v(_vm._s(item.price) + "€")
               ]),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
-              _c("span", [_vm._v("x " + _vm._s(item.amount))])
+              _c("span", { staticClass: "panadprodstxt" }, [
+                _vm._v("x " + _vm._s(item.amount))
+              ])
             ]
           )
         ])
@@ -87052,12 +87033,7 @@ var render = function() {
                                   "div",
                                   {
                                     key: item.idOrder,
-                                    staticClass: "row mx-md-3 mb-3",
-                                    on: {
-                                      mouseover: function($event) {
-                                        return _vm.emitidorder(item.idOrder)
-                                      }
-                                    }
+                                    staticClass: "row mx-md-3 mb-3"
                                   },
                                   [
                                     _c(
@@ -87107,12 +87083,7 @@ var render = function() {
                                                   {
                                                     staticClass: "panadprodstxt"
                                                   },
-                                                  [
-                                                    _vm._v(
-                                                      "date: " +
-                                                        _vm._s(item.pay)
-                                                    )
-                                                  ]
+                                                  [_vm._v(_vm._s(item.pay))]
                                                 )
                                               ]
                                             )
@@ -87164,7 +87135,7 @@ var render = function() {
                                               "div",
                                               {
                                                 staticClass:
-                                                  "col-12 col-sm-12 col-md-6 text-md-right"
+                                                  "col-12 col-sm-12 col-md-6 text-md-right text-center"
                                               },
                                               [
                                                 _c(
@@ -87174,8 +87145,11 @@ var render = function() {
                                                   },
                                                   [
                                                     _vm._v(
-                                                      _vm._s(_vm.orderPrice) +
-                                                        "€"
+                                                      _vm._s(
+                                                        (
+                                                          item.totalPrice + 3.95
+                                                        ).toFixed(2)
+                                                      ) + "€"
                                                     )
                                                   ]
                                                 )
