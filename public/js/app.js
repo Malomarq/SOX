@@ -2652,7 +2652,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
@@ -4637,6 +4636,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4682,7 +4692,10 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     // notif
     notiftxt1: '',
     // orders
-    noorderstxt1: ''
+    noorderstxt1: '',
+    datetxt: '',
+    pricetxt: '',
+    btntxt: ''
   },
   computed: {
     iduser: function iduser() {
@@ -4714,7 +4727,8 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       // orders
       ordersinfo: [],
       emptyOrder: false,
-      fullOrder: false
+      fullOrder: false,
+      setorder: null
     };
   },
   mounted: function mounted() {
@@ -4858,6 +4872,9 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
           _this5.ordersinfo = response.data;
         }
       });
+    },
+    displayOrder: function displayOrder(data) {
+      this.setorder == data ? this.setorder = null : this.setorder = data;
     }
   }
 });
@@ -83855,54 +83872,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticClass: "col-12 col-md-12" },
-      _vm._l(_vm.sets, function(item) {
-        return _c("div", { key: item.idSet, staticClass: "row py-3" }, [
+  return _c(
+    "div",
+    { staticClass: "container" },
+    _vm._l(_vm.sets, function(item) {
+      return _c("div", { key: item.idSet, staticClass: "row py-3 border" }, [
+        _c("div", { staticClass: "col-md-3 py-3 text-center" }, [
           _c(
-            "div",
-            { staticClass: "col-12 col-md-6 text-md-right text-center" },
+            "a",
+            { attrs: { href: "product?id=" + item.idArt } },
             [
-              _c(
-                "a",
-                { attrs: { href: "product?id=" + item.idArt } },
-                [
-                  _c("b-img", {
-                    staticClass: "imgord",
-                    attrs: { src: "storage/articles/" + item.image, fluid: "" }
-                  })
-                ],
-                1
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-12 col-md-6 pt-4 text-md-left text-center" },
-            [
-              _c("span", { staticClass: "panadprodstxt" }, [
-                _vm._v(_vm._s(item.name))
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "littleprice" }, [
-                _vm._v(_vm._s(item.price) + "€")
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "panadprodstxt" }, [
-                _vm._v("x " + _vm._s(item.amount))
-              ])
-            ]
+              _c("b-img", {
+                staticClass: "imgord",
+                attrs: { src: "storage/articles/" + item.image, fluid: "" }
+              })
+            ],
+            1
           )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 py-3 text-center" }, [
+          _vm._v("\n                    " + _vm._s(item.name))
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 py-3 text-center" }, [
+          _vm._v(
+            "\n                x " + _vm._s(item.amount) + "\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 py-3 text-center" }, [
+          _vm._v("\n                    " + _vm._s(item.price) + "€")
         ])
-      }),
-      0
-    )
-  ])
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -86644,7 +86649,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-12 col-md-8 my-2 my-md-5" }, [
-            _c("div", { staticClass: "card bg-light" }, [
+            _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-body" }, [
                 _c(
                   "div",
@@ -86999,7 +87004,7 @@ var render = function() {
                               "div",
                               {
                                 staticClass:
-                                  "row mt-4 mb-5 border bg-white mx-md-5 py-2"
+                                  "row mt-4 mb-5 border bg-light mx-md-5 py-2"
                               },
                               [
                                 _c("div", { staticClass: "col-12 col-md-12" }, [
@@ -87027,142 +87032,190 @@ var render = function() {
                         _vm.fullOrder
                           ? _c(
                               "div",
-                              { staticClass: "container mt-4 mb-5" },
-                              _vm._l(_vm.ordersinfo, function(item) {
-                                return _c(
+                              { staticClass: "container my-5" },
+                              [
+                                _c(
                                   "div",
                                   {
-                                    key: item.idOrder,
-                                    staticClass: "row mx-md-3 mb-3"
+                                    staticClass:
+                                      "col-md-12 mx-md-3 d-none d-sm-block"
                                   },
                                   [
                                     _c(
                                       "div",
                                       {
-                                        staticClass: "col-12 col-md-12 border"
+                                        staticClass:
+                                          "row mr-md-3 bg-light bagborder"
                                       },
                                       [
                                         _c(
                                           "div",
                                           {
                                             staticClass:
-                                              "row bg-warning border-bottom py-2"
+                                              "col-sm-3 py-sm-3 text-center panadprodstxt"
                                           },
                                           [
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "col-12 col-sm-12 col-md-6 text-left"
-                                              },
-                                              [
-                                                _c(
-                                                  "span",
-                                                  {
-                                                    staticClass: "panadprodstxt"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "ref: " +
-                                                        _vm._s(item.idOrder)
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "col-12 col-sm-12 col-md-6 text-md-right"
-                                              },
-                                              [
-                                                _c(
-                                                  "span",
-                                                  {
-                                                    staticClass: "panadprodstxt"
-                                                  },
-                                                  [_vm._v(_vm._s(item.pay))]
-                                                )
-                                              ]
+                                            _vm._v(
+                                              "\n                                                    ref\n                                                "
                                             )
                                           ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "row bg-white py-2" },
-                                          [
-                                            _c("order-details", {
-                                              attrs: { idorder: item.idOrder }
-                                            })
-                                          ],
-                                          1
                                         ),
                                         _vm._v(" "),
                                         _c(
                                           "div",
                                           {
                                             staticClass:
-                                              "row bg-warning border-top py-2"
+                                              "col-sm-3 py-sm-3 text-center panadprodstxt"
                                           },
                                           [
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "col-12 col-sm-12 col-md-6 text-left"
-                                              },
-                                              [
-                                                _c(
-                                                  "span",
-                                                  {
-                                                    staticClass: "panadprodstxt"
-                                                  },
-                                                  [
-                                                    _c("i", {
-                                                      staticClass:
-                                                        "fas fa-truck mr-2"
-                                                    }),
-                                                    _vm._v(_vm._s(item.address))
-                                                  ]
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "col-12 col-sm-12 col-md-6 text-md-right text-center"
-                                              },
-                                              [
-                                                _c(
-                                                  "span",
-                                                  {
-                                                    staticClass: "littleprice"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(
-                                                        (
-                                                          item.totalPrice + 3.95
-                                                        ).toFixed(2)
-                                                      ) + "€"
-                                                    )
-                                                  ]
-                                                )
-                                              ]
+                                            _vm._v(
+                                              "\n                                                    " +
+                                                _vm._s(_vm.datetxt) +
+                                                "\n                                                "
                                             )
                                           ]
-                                        )
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-sm-3 py-sm-3 text-center panadprodstxt"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                    " +
+                                                _vm._s(_vm.pricetxt) +
+                                                "\n                                                "
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("div", {
+                                          staticClass:
+                                            "col-sm-3 py-sm-3 text-center"
+                                        })
                                       ]
                                     )
                                   ]
-                                )
-                              }),
-                              0
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.ordersinfo, function(item) {
+                                  return _c(
+                                    "div",
+                                    {
+                                      key: item.idOrder,
+                                      staticClass:
+                                        "row mx-md-3 py-3 py-md-0 border-bottom bg-white"
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "col-6 d-block d-sm-none py-sm-3 text-sm-center text-right panadprodstxt"
+                                        },
+                                        [_vm._v("ref")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "col-6 col-sm-3 col-md-3 py-sm-3 text-sm-center text-left txtlight"
+                                        },
+                                        [_vm._v(_vm._s(item.idOrder))]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "col-6 d-block d-sm-none py-sm-3 text-sm-center text-right panadprodstxt"
+                                        },
+                                        [_vm._v(_vm._s(_vm.datetxt))]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "col-6 col-sm-3 col-md-3 py-sm-3 text-sm-center text-left txtlight"
+                                        },
+                                        [_vm._v(_vm._s(item.pay))]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "col-6 d-block d-sm-none py-sm-3 text-sm-center text-right panadprodstxt"
+                                        },
+                                        [_vm._v(_vm._s(_vm.pricetxt))]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "col-6 col-sm-3 col-md-3 py-sm-3 text-sm-center text-left littleprice"
+                                        },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              (item.totalPrice + 3.95).toFixed(
+                                                2
+                                              )
+                                            ) + "€"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "col-12 col-sm-3 col-md-3 py-sm-3 py-3 text-center"
+                                        },
+                                        [
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass: "btn btn-primary",
+                                              attrs: { type: "button" },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.displayOrder(
+                                                    item.idOrder
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [_vm._v(_vm._s(_vm.btntxt))]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _vm.setorder === item.idOrder
+                                        ? _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "row mx-md-3 py-3 py-md-0"
+                                            },
+                                            [
+                                              _c("order-details", {
+                                                attrs: { idorder: item.idOrder }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ]
+                                  )
+                                })
+                              ],
+                              2
                             )
                           : _vm._e()
                       ]
@@ -87187,7 +87240,7 @@ var render = function() {
                           "div",
                           {
                             staticClass:
-                              "row mt-4 mb-5 border bg-white mx-md-5 py-2"
+                              "row mt-4 mb-5 border bg-light mx-md-5 py-2"
                           },
                           [
                             _c("div", { staticClass: "col-12 col-md-12" }, [

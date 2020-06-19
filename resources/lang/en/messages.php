@@ -94,5 +94,8 @@ return
         'lbban3'                    => 'Receive your Sox at home!',
         'lbpanusnotiftxt1'          => 'You have no notifications',
         'lbpanusernooders'          => 'You have no orders yet',
+        'lbordfecha'                => 'Date',
+        'lbordprecio'               => 'Price',
+        'lbordbtnres'               => 'Display',
 
     ];

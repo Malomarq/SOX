@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-8 my-2 my-md-5">
-                        <div class="card bg-light">
+                        <div class="card">
                             <div class="card-body">
                                 <div class="tab-content" id="nav-tabContent">
 
@@ -151,7 +151,7 @@
 
                                         <div class="panuseracctit ml-3 mt-3">{{orders}}</div>
 
-                                        <div v-if="emptyOrder" class="row mt-4 mb-5 border bg-white mx-md-5 py-2">
+                                        <div v-if="emptyOrder" class="row mt-4 mb-5 border bg-light mx-md-5 py-2">
                                             <div class="col-12 col-md-12">
                                                 <div class="row pt-3">
                                                     <div class="col-12 col-md-6 panadprodstxt text-center">
@@ -166,30 +166,41 @@
                                             </div>
                                         </div>
 
-                                        <div v-if="fullOrder" class="container mt-4 mb-5">
-                                            <div class="row mx-md-3 mb-3" v-for="item in ordersinfo"
-                                                 :key="item.idOrder">
-                                                <div class="col-12 col-md-12 border">
-                                                    <div class="row bg-warning border-bottom py-2">
-                                                        <div class="col-12 col-sm-12 col-md-6 text-left">
-                                                            <span class="panadprodstxt">ref: {{item.idOrder}}</span>
-                                                        </div>
-                                                        <div class="col-12 col-sm-12 col-md-6 text-md-right">
-                                                            <span class="panadprodstxt">{{item.pay}}</span>
-                                                        </div>
+                                        <div v-if="fullOrder" class="container my-5">
+
+                                            <div class="col-md-12 mx-md-3 d-none d-sm-block">
+                                                <div class="row mr-md-3 bg-light bagborder">
+                                                    <div class="col-sm-3 py-sm-3 text-center panadprodstxt">
+                                                        ref
                                                     </div>
-                                                    <div class="row bg-white py-2">
-                                                        <order-details :idorder="item.idOrder"></order-details>
+                                                    <div class="col-sm-3 py-sm-3 text-center panadprodstxt">
+                                                        {{datetxt}}
                                                     </div>
-                                                    <div class="row bg-warning border-top py-2">
-                                                        <div class="col-12 col-sm-12 col-md-6 text-left">
-                                                            <span class="panadprodstxt"><i class="fas fa-truck mr-2"></i>{{item.address}}</span>
-                                                        </div>
-                                                        <div class="col-12 col-sm-12 col-md-6 text-md-right text-center">
-                                                            <span class="littleprice">{{(item.totalPrice + 3.95).toFixed(2)}}€</span>
-                                                        </div>
+                                                    <div class="col-sm-3 py-sm-3 text-center panadprodstxt">
+                                                        {{pricetxt}}
                                                     </div>
+                                                    <div class="col-sm-3 py-sm-3 text-center"></div>
                                                 </div>
+                                            </div>
+
+                                            <div class="row mx-md-3 py-3 py-md-0 border-bottom bg-white" v-for="item in ordersinfo"
+                                                 :key="item.idOrder">
+
+                                                <div class="col-6 d-block d-sm-none py-sm-3 text-sm-center text-right panadprodstxt">ref</div>
+                                                <div class="col-6 col-sm-3 col-md-3 py-sm-3 text-sm-center text-left txtlight">{{item.idOrder}}</div>
+                                                <div class="col-6 d-block d-sm-none py-sm-3 text-sm-center text-right panadprodstxt">{{datetxt}}</div>
+                                                <div class="col-6 col-sm-3 col-md-3 py-sm-3 text-sm-center text-left txtlight">{{item.pay}}</div>
+                                                <div class="col-6 d-block d-sm-none py-sm-3 text-sm-center text-right panadprodstxt">{{pricetxt}}</div>
+                                                <div class="col-6 col-sm-3 col-md-3 py-sm-3 text-sm-center text-left littleprice">{{(item.totalPrice + 3.95).toFixed(2)}}€</div>
+
+                                                <div class="col-12 col-sm-3 col-md-3 py-sm-3 py-3 text-center">
+                                                    <button class="btn btn-primary" type="button" @click="displayOrder(item.idOrder)">{{btntxt}}</button>
+                                                </div>
+
+                                                <div v-if="setorder === item.idOrder" class="row mx-md-3 py-3 py-md-0">
+                                                    <order-details :idorder="item.idOrder"></order-details>
+                                                </div>
+
                                             </div>
 
                                         </div>
@@ -200,7 +211,7 @@
                                          aria-labelledby="list-messages-list">
                                         <div class="panuseracctit mt-3">{{notif}}</div>
 
-                                        <div class="row mt-4 mb-5 border bg-white mx-md-5 py-2">
+                                        <div class="row mt-4 mb-5 border bg-light mx-md-5 py-2">
                                             <div class="col-12 col-md-12">
                                                 <div class="row pt-3">
                                                     <div class="col-12 col-md-6 panadprodstxt text-center">
@@ -350,6 +361,9 @@
 
             // orders
             noorderstxt1: '',
+            datetxt: '',
+            pricetxt: '',
+            btntxt: '',
         },
         computed: {
             iduser() {
@@ -388,6 +402,7 @@
                 ordersinfo: [],
                 emptyOrder: false,
                 fullOrder: false,
+                setorder: null,
             }
         },
         mounted() {
@@ -529,6 +544,10 @@
                     }
                 });
             },
+
+            displayOrder(data){
+                (this.setorder == data)? this.setorder = null : this.setorder = data;
+            }
 
         }
     }

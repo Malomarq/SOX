@@ -29,6 +29,8 @@
                 deltext4="@lang('messages.lbpanusdelmess3')" mdelheader="@lang('messages.lbpanusdel')"
                 mdeltext1="@lang('messages.lbpanusdelmess')" mdeltext2="@lang('messages.lbpanusdelmess4')"
                 mdelbut="@lang('messages.lbpanusdelbut')" noorderstxt1="@lang('messages.lbpanusernooders')"
+                datetxt="@lang('messages.lbordfecha')" pricetxt="@lang('messages.lbordprecio')"
+                btntxt="@lang('messages.lbordbtnres')"
 
     ></user-panel>
 

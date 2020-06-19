@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap);@import url(https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap);@import url(https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap);@import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);@charset "UTF-8";
 
 /*$body-bg: #f8fafc;*/
 
@@ -20402,8 +20402,8 @@ a[class*=linkpanad]:focus {
 }
 
 .imgord {
-  width: 6rem;
-  height: 8rem;
+  width: 4rem;
+  height: 6.5rem;
   -webkit-filter: grayscale(70%);
           filter: grayscale(70%);
 }
@@ -20447,6 +20447,11 @@ a[class*=linkpanad]:focus {
   color: #227DC7;
   font-family: "Bebas Neue";
   font-size: 1.2em;
+}
+
+.txtlight {
+  font-family: "Open Sans";
+  font-size: 0.8em;
 }
 
 .fbcol {

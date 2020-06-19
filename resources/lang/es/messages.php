@@ -107,5 +107,8 @@ return
         'lbban3'                    => 'Recibe tu Sox en casa!',
         'lbpanusnotiftxt1'          => 'No tienes notificaciones',
         'lbpanusernooders'          => 'No has realizado ningún pedido',
+        'lbordfecha'                => 'Fecha',
+        'lbordprecio'               => 'Precio',
+        'lbordbtnres'               => 'Desplegar',
 
     ];

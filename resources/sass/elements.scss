@@ -296,8 +296,8 @@ a[class*="linkpanad"]:focus {
 }
 
 .imgord {
-    width: 6rem;
-    height: 8rem;
+    width: 4rem;
+    height: 6.5rem;
     filter: grayscale(70%);
 }
 
@@ -340,4 +340,9 @@ a[class*="linkpanad"]:focus {
     color: #227DC7;
     font-family: "Bebas Neue";
     font-size: 1.2em;
+}
+
+.txtlight {
+    font-family: $font-family-open-sans;
+    font-size: 0.8em;
 }
