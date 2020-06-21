@@ -2,11 +2,27 @@
     <div v-if="showed">
         <div class="mt-2">
 
-            <ul class="nav justify-content-end py-3 bg-light"></ul>
+            <ul class="nav py-3 bg-light">
+                <li class="navbar-brand ml-3">{{title}}</li>
+                <li class="nav-item ml-auto mr-3">
+                    <b-form @submit.prevent="searchUs">
+                        <b-input-group>
+                            <template v-slot:prepend>
+                                <b-input-group-text>
+                                    <i class="fas fa-search"></i>
+                                </b-input-group-text>
+                            </template>
+                            <b-form-input type="text" class="form-control rounded-right" placeholder="Buscar..."
+                                          v-model="searchuser"/>
+                        </b-input-group>
+                    </b-form>
+                </li>
+            </ul>
 
+            <div v-if="search">holi</div>
 
-            <div class="container-fluid mt-5 w-100">
-            <!--<div id="panadustab" class="mt-5 w-100 px-5">-->
+            <div class="container-fluid mt-5">
+
                 <b-table
                     :items="items"
                     :fields="fields"
@@ -33,10 +49,6 @@
                 />
             </div>
 
-            <div class="w-25 border">
-                <p>Prueba</p>
-            </div>
-
         </div>
     </div>
 </template>
@@ -49,7 +61,13 @@
     export default {
 
         props: {
-            showed: false
+            showed: false,
+
+            /**
+             *  Title
+             */
+
+            title: '',
         },
 
         mounted() {
@@ -71,8 +89,8 @@
                 items: [],
                 perPage: 10,
                 currentPage: 1,
-
-
+                searchuser: '',
+                search: true,
             }
         },
 
@@ -93,6 +111,16 @@
                     this.items = response.data;
                 })
             },
+
+            searchUs() {
+                axios.post('api/searchUser', {
+                    'pubkey': pubkey,
+                    '_token': this.$csrfToken,
+                    'search': this.searchuser
+                }).then((response) => {
+                    
+                })
+            }
         }
     }
 

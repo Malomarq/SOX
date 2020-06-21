@@ -62,15 +62,15 @@
 
             <home :showed="comps.showHome"></home>
 
-            <account :idad="idad" :showed="comps.showAccount"></account>
+            <account :idad="idad" :showed="comps.showAccount" :title="account"></account>
 
-            <users :showed="comps.showUsers"></users>
+            <users :showed="comps.showUsers" :title="users"></users>
 
-            <articles :showed="comps.showProds"></articles>
+            <articles :showed="comps.showProds" :title="articles"></articles>
 
-            <orders :showed="comps.showOrd"></orders>
+            <orders :showed="comps.showOrd" :title="orders"></orders>
 
-            <contacts :showed="comps.showCon"></contacts>
+            <contacts :showed="comps.showCon" :title="contact"></contacts>
 
         </div>
 
@@ -109,8 +109,8 @@
                 comps: {
                     showHome: false,
                     showAccount: false,
-                    showUsers: false,
-                    showProds: true,
+                    showUsers: true,
+                    showProds: false,
                     showOrd: false,
                     showCon: false,
                 },

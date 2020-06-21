@@ -2,7 +2,8 @@
     <div v-if="showed">
         <div class="mt-2">
             <ul class="nav py-3 bg-light">
-                <li class="nav-item mr-auto ml-3 dropdown show">
+                <li class="navbar-brand ml-3">{{title}}</li>
+                <li class="nav-item ml-auto mr-2 dropdown show">
 
                     <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -16,7 +17,7 @@
                     </div>
 
                 </li>
-                <li class="nav-item ml-auto">
+                <li class="nav-item mt-1">
                     <button type="button" class="btn btn-success btn-sm mr-3" data-toggle="modal"
                             data-target="#product-new">
                         <span><i class="fas fa-plus fa-1x"></i></span>
@@ -262,7 +263,13 @@
              *  Component visible
              */
 
-            showed: false
+            showed: false,
+
+            /**
+             *  Title
+             */
+
+            title: '',
         },
 
         data() {

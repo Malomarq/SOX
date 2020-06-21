@@ -2,19 +2,20 @@
     <div v-if="showed">
 
         <div class="mt-2">
-            <ul class="nav justify-content-end py-3 bg-light">
-                <li class="nav-item ">
+            <ul class="nav py-3 bg-light">
+                <li class="navbar-brand ml-3">{{title}}</li>
+                <li class="nav-item ml-auto">
                     <button type="button" class="btn btn-success rounded-circle mr-2 px-2" data-toggle="modal"
                             data-target="#modal-new">
                         <span><i class="fas fa-user-plus fa-1x"></i></span>
                     </button>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item">
                     <button type="button" class="btn btn-primary rounded-circle mr-2 px-2" @click="showUpdate">
                         <span><i class="fas fa-user-cog fa-1x"></i></span>
                     </button>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item">
                     <button type="button" class="btn btn-danger rounded-circle mr-3 px-2" data-toggle="modal"
                             data-target="#modal-delete">
                         <span><i class="fas fa-user-times fa-1x"></i></span>
@@ -204,6 +205,12 @@
              */
 
             showed: false,
+
+            /**
+             *  Title
+             */
+
+            title: '',
 
             /**
              *  Admin's id

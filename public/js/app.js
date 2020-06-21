@@ -2025,8 +2025,8 @@ __webpack_require__.r(__webpack_exports__);
       comps: {
         showHome: false,
         showAccount: false,
-        showUsers: false,
-        showProds: true,
+        showUsers: true,
+        showProds: false,
         showOrd: false,
         showCon: false
       }
@@ -2955,6 +2955,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2970,6 +2971,11 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
      *  Component visible
      */
     showed: false,
+
+    /**
+     *  Title
+     */
+    title: '',
 
     /**
      *  Admin's id
@@ -3449,6 +3455,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
@@ -3462,7 +3469,12 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     /**
      *  Component visible
      */
-    showed: false
+    showed: false,
+
+    /**
+     *  Title
+     */
+    title: ''
   },
   data: function data() {
     return {
@@ -3835,12 +3847,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    showed: false
+    showed: false,
+
+    /**
+     *  Title
+     */
+    title: ''
   },
   mounted: function mounted() {
     console.log('users montado');
@@ -3865,7 +3894,9 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       }],
       items: [],
       perPage: 10,
-      currentPage: 1
+      currentPage: 1,
+      searchuser: '',
+      search: true
     };
   },
   computed: {
@@ -3884,6 +3915,13 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       }).then(function (response) {
         _this.items = response.data;
       });
+    },
+    searchUs: function searchUs() {
+      axios.post('api/searchUser', {
+        'pubkey': pubkey,
+        '_token': this.$csrfToken,
+        'search': this.searchuser
+      }).then(function (response) {});
     }
   }
 });
@@ -83045,16 +83083,28 @@ var render = function() {
         _c("home", { attrs: { showed: _vm.comps.showHome } }),
         _vm._v(" "),
         _c("account", {
-          attrs: { idad: _vm.idad, showed: _vm.comps.showAccount }
+          attrs: {
+            idad: _vm.idad,
+            showed: _vm.comps.showAccount,
+            title: _vm.account
+          }
         }),
         _vm._v(" "),
-        _c("users", { attrs: { showed: _vm.comps.showUsers } }),
+        _c("users", {
+          attrs: { showed: _vm.comps.showUsers, title: _vm.users }
+        }),
         _vm._v(" "),
-        _c("articles", { attrs: { showed: _vm.comps.showProds } }),
+        _c("articles", {
+          attrs: { showed: _vm.comps.showProds, title: _vm.articles }
+        }),
         _vm._v(" "),
-        _c("orders", { attrs: { showed: _vm.comps.showOrd } }),
+        _c("orders", {
+          attrs: { showed: _vm.comps.showOrd, title: _vm.orders }
+        }),
         _vm._v(" "),
-        _c("contacts", { attrs: { showed: _vm.comps.showCon } })
+        _c("contacts", {
+          attrs: { showed: _vm.comps.showCon, title: _vm.contact }
+        })
       ],
       1
     )
@@ -84064,10 +84114,14 @@ var render = function() {
   return _vm.showed
     ? _c("div", [
         _c("div", { staticClass: "mt-2" }, [
-          _c("ul", { staticClass: "nav justify-content-end py-3 bg-light" }, [
+          _c("ul", { staticClass: "nav py-3 bg-light" }, [
+            _c("li", { staticClass: "navbar-brand ml-3" }, [
+              _vm._v(_vm._s(_vm.title))
+            ]),
+            _vm._v(" "),
             _vm._m(0),
             _vm._v(" "),
-            _c("li", { staticClass: "nav-item " }, [
+            _c("li", { staticClass: "nav-item" }, [
               _c(
                 "button",
                 {
@@ -84551,7 +84605,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item " }, [
+    return _c("li", { staticClass: "nav-item ml-auto" }, [
       _c(
         "button",
         {
@@ -84576,7 +84630,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item " }, [
+    return _c("li", { staticClass: "nav-item" }, [
       _c(
         "button",
         {
@@ -84776,7 +84830,11 @@ var render = function() {
     ? _c("div", [
         _c("div", { staticClass: "mt-2" }, [
           _c("ul", { staticClass: "nav py-3 bg-light" }, [
-            _c("li", { staticClass: "nav-item mr-auto ml-3 dropdown show" }, [
+            _c("li", { staticClass: "navbar-brand ml-3" }, [
+              _vm._v(_vm._s(_vm.title))
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item ml-auto mr-2 dropdown show" }, [
               _c(
                 "a",
                 {
@@ -85598,7 +85656,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item ml-auto" }, [
+    return _c("li", { staticClass: "nav-item mt-1" }, [
       _c(
         "button",
         {
@@ -85829,11 +85887,77 @@ var render = function() {
   return _vm.showed
     ? _c("div", [
         _c("div", { staticClass: "mt-2" }, [
-          _c("ul", { staticClass: "nav justify-content-end py-3 bg-light" }),
+          _c("ul", { staticClass: "nav py-3 bg-light" }, [
+            _c("li", { staticClass: "navbar-brand ml-3" }, [
+              _vm._v(_vm._s(_vm.title))
+            ]),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item ml-auto mr-3" },
+              [
+                _c(
+                  "b-form",
+                  {
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.searchUs($event)
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "b-input-group",
+                      {
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "prepend",
+                              fn: function() {
+                                return [
+                                  _c("b-input-group-text", [
+                                    _c("i", { staticClass: "fas fa-search" })
+                                  ])
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ],
+                          null,
+                          false,
+                          3231536899
+                        )
+                      },
+                      [
+                        _vm._v(" "),
+                        _c("b-form-input", {
+                          staticClass: "form-control rounded-right",
+                          attrs: { type: "text", placeholder: "Buscar..." },
+                          model: {
+                            value: _vm.searchuser,
+                            callback: function($$v) {
+                              _vm.searchuser = $$v
+                            },
+                            expression: "searchuser"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm.search ? _c("div", [_vm._v("holi")]) : _vm._e(),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "container-fluid mt-5 w-100" },
+            { staticClass: "container-fluid mt-5" },
             [
               _c("b-table", {
                 attrs: {
@@ -85884,23 +86008,12 @@ var render = function() {
               })
             ],
             1
-          ),
-          _vm._v(" "),
-          _vm._m(0)
+          )
         ])
       ])
     : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-25 border" }, [
-      _c("p", [_vm._v("Prueba")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -86574,7 +86687,8 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "list-group-item list-group-item-action ",
+                    staticClass:
+                      "list-group-item list-group-item-action active",
                     attrs: {
                       id: "list-account-list",
                       "data-toggle": "list",
@@ -86596,8 +86710,7 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass:
-                      "list-group-item list-group-item-action active",
+                    staticClass: "list-group-item list-group-item-action",
                     attrs: {
                       id: "list-orders-list",
                       "data-toggle": "list",
@@ -86698,7 +86811,7 @@ var render = function() {
                     _c(
                       "div",
                       {
-                        staticClass: "tab-pane fade",
+                        staticClass: "tab-pane fade show active",
                         attrs: {
                           id: "list-account",
                           role: "tabpanel",
@@ -87024,7 +87137,7 @@ var render = function() {
                     _c(
                       "div",
                       {
-                        staticClass: "tab-pane fade show active",
+                        staticClass: "tab-pane fade",
                         attrs: {
                           id: "list-orders",
                           role: "tabpanel",

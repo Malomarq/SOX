@@ -40,6 +40,7 @@ Route::middleware('api.auth')->group(function (){
     Route::post('/updateAdmin', 'api\AdminController@updateAdmin');
     Route::post('/createAdmin', 'api\AdminController@createAdmin');
     Route::get('/checkEmail', 'api\AdminController@checkEmail');
+    Route::post('/searchUser', 'api\AdminController@searchUser');
 
     Route::post('/addToCart', 'api\ShoppingBagController@add');
     Route::post('/getItems', 'api\ShoppingBagController@getItems');

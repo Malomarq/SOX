@@ -89,4 +89,8 @@ class AdminController extends Controller
 
         return response()->json('Ok', 200);
     }
+
+    public function searchUser(Request $req){
+
+    }
 }

@@ -5,12 +5,12 @@
                 <div class="row">
                     <div class="col-12 col-md-4 my-2 my-md-5">
                         <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action " id="list-account-list"
+                            <a class="list-group-item list-group-item-action active" id="list-account-list"
                                data-toggle="list" href="#list-account" role="tab" aria-controls="account">
                                 <span class="mr-3 panusernav"><i class="fas fa-user-circle fa-lg"/></span>
                                 {{account}}
                             </a>
-                            <a class="list-group-item list-group-item-action active" id="list-orders-list"
+                            <a class="list-group-item list-group-item-action" id="list-orders-list"
                                data-toggle="list"
                                href="#list-orders" role="tab" aria-controls="orders">
                                 <span class="mr-3 panusernav"><i class="fas fa-dolly fa-lg"/></span>
@@ -41,7 +41,7 @@
                                 <div class="tab-content" id="nav-tabContent">
 
                                     <!--ACCOUNT-->
-                                    <div class="tab-pane fade" id="list-account" role="tabpanel"
+                                    <div class="tab-pane fade show active" id="list-account" role="tabpanel"
                                          aria-labelledby="list-account-list">
 
                                         <div class="panuseracctit ml-3 mt-3">{{account}}</div>
@@ -146,7 +146,7 @@
                                     </div>
 
                                     <!--ORDERS-->
-                                    <div class="tab-pane fade show active" id="list-orders" role="tabpanel"
+                                    <div class="tab-pane fade" id="list-orders" role="tabpanel"
                                          aria-labelledby="list-orders-list">
 
                                         <div class="panuseracctit ml-3 mt-3">{{orders}}</div>
