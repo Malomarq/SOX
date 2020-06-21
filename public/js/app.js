@@ -2650,8 +2650,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
@@ -2661,7 +2659,8 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
   },
   data: function data() {
     return {
-      sets: []
+      sets: [],
+      address: ''
     };
   },
   mounted: function mounted() {
@@ -2676,6 +2675,7 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         'pubkey': pubkey,
         'idOrder': this.idorder
       }).then(function (response) {
+        _this.address = response.data[0]['address'];
         _this.sets = response.data;
       });
     }
@@ -4647,6 +4647,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4695,7 +4704,8 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     noorderstxt1: '',
     datetxt: '',
     pricetxt: '',
-    btntxt: ''
+    btntxt: '',
+    banntxt: ''
   },
   computed: {
     iduser: function iduser() {
@@ -83874,39 +83884,66 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
-    _vm._l(_vm.sets, function(item) {
-      return _c("div", { key: item.idSet, staticClass: "row py-3 border" }, [
-        _c("div", { staticClass: "col-md-3 py-3 text-center" }, [
-          _c(
-            "a",
-            { attrs: { href: "product?id=" + item.idArt } },
-            [
-              _c("b-img", {
-                staticClass: "imgord",
-                attrs: { src: "storage/articles/" + item.image, fluid: "" }
-              })
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3 py-3 text-center" }, [
-          _vm._v("\n                    " + _vm._s(item.name))
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3 py-3 text-center" }, [
-          _vm._v(
-            "\n                x " + _vm._s(item.amount) + "\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3 py-3 text-center" }, [
-          _vm._v("\n                    " + _vm._s(item.price) + "€")
+    [
+      _c("div", { staticClass: "col-12 py-3 bg-light" }, [
+        _c("span", { staticClass: "panadprodstxt" }, [
+          _c("i", { staticClass: "fas fa-truck mr-2" }),
+          _vm._v(_vm._s(_vm.address))
         ])
-      ])
-    }),
-    0
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.sets, function(item) {
+        return _c("div", { key: item.idSet, staticClass: "row py-3" }, [
+          _c(
+            "div",
+            { staticClass: "col-12 col-md-3 offset-md-3 py-3 text-center" },
+            [
+              _c(
+                "a",
+                { attrs: { href: "product?id=" + item.idArt } },
+                [
+                  _c("b-img", {
+                    staticClass: "imgord",
+                    attrs: { src: "storage/articles/" + item.image, fluid: "" }
+                  })
+                ],
+                1
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 col-md-6 py-4" }, [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "row justify-content-md-start justify-content-center panadprodstxt"
+              },
+              [_vm._v(_vm._s(item.name))]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "row justify-content-md-start justify-content-center txtlight"
+              },
+              [_vm._v("x " + _vm._s(item.amount))]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "row justify-content-md-start justify-content-center littleprice"
+              },
+              [_vm._v(_vm._s(item.price) + "€")]
+            )
+          ])
+        ])
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -87199,10 +87236,7 @@ var render = function() {
                                       _vm.setorder === item.idOrder
                                         ? _c(
                                             "div",
-                                            {
-                                              staticClass:
-                                                "row mx-md-3 py-3 py-md-0"
-                                            },
+                                            { staticClass: "col-12" },
                                             [
                                               _c("order-details", {
                                                 attrs: { idorder: item.idOrder }
@@ -87213,7 +87247,51 @@ var render = function() {
                                         : _vm._e()
                                     ]
                                   )
-                                })
+                                }),
+                                _vm._v(" "),
+                                _vm.fullOrder
+                                  ? _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "row mx-md-3 my-5 shipmban p-3 shadow"
+                                      },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-12 col-sm-6 text-center"
+                                          },
+                                          [
+                                            _c("b-card-img-lazy", {
+                                              staticClass: "littlesox",
+                                              attrs: {
+                                                fluid: "",
+                                                src: "./img/logo2.svg"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-12 col-sm-6 py-sm-5 pb-4 text-center text-sm-left panadprodstxt"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                " +
+                                                _vm._s(_vm.banntxt) +
+                                                "\n                                            "
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
                               ],
                               2
                             )

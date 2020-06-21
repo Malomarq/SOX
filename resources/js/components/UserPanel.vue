@@ -197,10 +197,19 @@
                                                     <button class="btn btn-primary" type="button" @click="displayOrder(item.idOrder)">{{btntxt}}</button>
                                                 </div>
 
-                                                <div v-if="setorder === item.idOrder" class="row mx-md-3 py-3 py-md-0">
+                                                <div v-if="setorder === item.idOrder" class="col-12">
                                                     <order-details :idorder="item.idOrder"></order-details>
                                                 </div>
 
+                                            </div>
+
+                                            <div v-if="fullOrder" class="row mx-md-3 my-5 shipmban p-3 shadow">
+                                                <div class="col-12 col-sm-6 text-center">
+                                                    <b-card-img-lazy fluid :src="'./img/logo2.svg'" class="littlesox"/>
+                                                </div>
+                                                <div class="col-12 col-sm-6 py-sm-5 pb-4 text-center text-sm-left panadprodstxt">
+                                                    {{banntxt}}
+                                                </div>
                                             </div>
 
                                         </div>
@@ -364,6 +373,7 @@
             datetxt: '',
             pricetxt: '',
             btntxt: '',
+            banntxt: '',
         },
         computed: {
             iduser() {

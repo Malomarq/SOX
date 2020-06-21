@@ -110,5 +110,6 @@ return
         'lbordfecha'                => 'Fecha',
         'lbordprecio'               => 'Precio',
         'lbordbtnres'               => 'Desplegar',
+        'lbordbann'                 => 'Todos los precios llevan incluidos los gastos de envío (3.95€)',
 
     ];

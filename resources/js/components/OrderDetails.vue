@@ -1,24 +1,22 @@
 <template>
-<div class="container">
-    <!--<div class="col-12 col-md-12">
-    <div class="row">-->
-        <div class="row py-3 border" v-for="item in sets" :key="item.idSet">
-            <div class="col-md-3 py-3 text-center">
+    <div>
+
+        <div class="col-12 py-3 bg-light">
+            <span class="panadprodstxt"><i class="fas fa-truck mr-2"></i>{{address}}</span>
+        </div>
+        <div class="row py-3" v-for="item in sets" :key="item.idSet">
+            <div class="col-12 col-md-3 offset-md-3 py-3 text-center">
                 <a v-bind:href="'product?id=' + item.idArt">
                     <b-img :src="'storage/articles/' + item.image" fluid class="imgord"/>
                 </a>
             </div>
-
-            <div class="col-md-3 py-3 text-center">
-                    {{item.name}}</div>
-            <div class="col-md-3 py-3 text-center">
-                x {{item.amount}}
+            <div class="col-12 col-md-6 py-4">
+                <div class="row justify-content-md-start justify-content-center panadprodstxt">{{item.name}}</div>
+                <div class="row justify-content-md-start justify-content-center txtlight">x {{item.amount}}</div>
+                <div class="row justify-content-md-start justify-content-center littleprice">{{item.price}}€</div>
             </div>
-            <div class="col-md-3 py-3 text-center">
-                    {{item.price}}€</div>
         </div>
-    <!--</div>-->
-</div>
+    </div>
 </template>
 
 <script>
@@ -30,21 +28,23 @@
         props: {
             idorder: ''
         },
-        data(){
-          return {
-              sets: [],
-          }
+        data() {
+            return {
+                sets: [],
+                address: '',
+            }
         },
         mounted() {
             this.getSets();
         },
         methods: {
-            getSets(){
+            getSets() {
                 axios.post('api/sets', {
                     '_token': this.$csrfToken,
                     'pubkey': pubkey,
                     'idOrder': this.idorder,
                 }).then((response) => {
+                    this.address = response.data[0]['address'];
                     this.sets = response.data;
                 });
             }

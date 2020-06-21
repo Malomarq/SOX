@@ -97,5 +97,6 @@ return
         'lbordfecha'                => 'Date',
         'lbordprecio'               => 'Price',
         'lbordbtnres'               => 'Display',
+        'lbordbann'                 => 'All prices include shipping costs (3.95€)',
 
     ];
