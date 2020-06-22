@@ -13,13 +13,24 @@
                                 </b-input-group-text>
                             </template>
                             <b-form-input type="text" class="form-control rounded-right" placeholder="Buscar..."
-                                          v-model="searchuser"/>
+                                          v-model="searchuser" @keyup="searchUs"/>
                         </b-input-group>
                     </b-form>
                 </li>
             </ul>
 
-            <div v-if="search">holi</div>
+            <div v-for="item in selected">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="col-6 col-md-8">
+                            <p>{{item.name}}</p>
+                        </div>
+                        <div class="col-6 col-md-3 rounded text-center panusdelic">
+                            <span class="px-3"><i class="fas fa-trash-alt fa-3x"/></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="container-fluid mt-5">
 
@@ -32,11 +43,14 @@
                     id="tableUsers"
                     :per-page="perPage"
                     :current-page="currentPage"
-                    small
+
                     responsive="sm"
                     outlined
                     hover
                     selectable
+                    select-mode="single"
+                    @row-selected="onRowSelected"
+                    ref="selectableTable"
                 />
 
                 <b-pagination
@@ -90,7 +104,7 @@
                 perPage: 10,
                 currentPage: 1,
                 searchuser: '',
-                search: true,
+                selected: [],
             }
         },
 
@@ -118,8 +132,16 @@
                     '_token': this.$csrfToken,
                     'search': this.searchuser
                 }).then((response) => {
-                    
+                    this.items = response.data['search'];
                 })
+            },
+
+            onRowSelected(items){
+                this.selected = items;
+            },
+
+            clearSelected() {
+                this.$refs.selectableTable.clearSelected()
             }
         }
     }

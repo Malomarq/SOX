@@ -92,5 +92,11 @@ class AdminController extends Controller
 
     public function searchUser(Request $req){
 
+        $val = $req->search;
+
+        $user = User::where('idUser', 'like', '%' . $val . '%')->orWhere('name', 'like', '%' . $val . '%')
+                ->orWhere('lastname', 'like', '%' . $val . '%')->orWhere('email', 'like', '%' . $val . '%')
+                ->get();
+        return response()->json(['search' => $user],200);
     }
 }

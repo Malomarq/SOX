@@ -3859,6 +3859,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
@@ -3896,7 +3910,7 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       perPage: 10,
       currentPage: 1,
       searchuser: '',
-      search: true
+      selected: []
     };
   },
   computed: {
@@ -3917,11 +3931,21 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       });
     },
     searchUs: function searchUs() {
+      var _this2 = this;
+
       axios.post('api/searchUser', {
         'pubkey': pubkey,
         '_token': this.$csrfToken,
         'search': this.searchuser
-      }).then(function (response) {});
+      }).then(function (response) {
+        _this2.items = response.data['search'];
+      });
+    },
+    onRowSelected: function onRowSelected(items) {
+      this.selected = items;
+    },
+    clearSelected: function clearSelected() {
+      this.$refs.selectableTable.clearSelected();
     }
   }
 });
@@ -85886,134 +85910,169 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.showed
     ? _c("div", [
-        _c("div", { staticClass: "mt-2" }, [
-          _c("ul", { staticClass: "nav py-3 bg-light" }, [
-            _c("li", { staticClass: "navbar-brand ml-3" }, [
-              _vm._v(_vm._s(_vm.title))
+        _c(
+          "div",
+          { staticClass: "mt-2" },
+          [
+            _c("ul", { staticClass: "nav py-3 bg-light" }, [
+              _c("li", { staticClass: "navbar-brand ml-3" }, [
+                _vm._v(_vm._s(_vm.title))
+              ]),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item ml-auto mr-3" },
+                [
+                  _c(
+                    "b-form",
+                    {
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.searchUs($event)
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "b-input-group",
+                        {
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "prepend",
+                                fn: function() {
+                                  return [
+                                    _c("b-input-group-text", [
+                                      _c("i", { staticClass: "fas fa-search" })
+                                    ])
+                                  ]
+                                },
+                                proxy: true
+                              }
+                            ],
+                            null,
+                            false,
+                            3231536899
+                          )
+                        },
+                        [
+                          _vm._v(" "),
+                          _c("b-form-input", {
+                            staticClass: "form-control rounded-right",
+                            attrs: { type: "text", placeholder: "Buscar..." },
+                            on: { keyup: _vm.searchUs },
+                            model: {
+                              value: _vm.searchuser,
+                              callback: function($$v) {
+                                _vm.searchuser = $$v
+                              },
+                              expression: "searchuser"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ]),
             _vm._v(" "),
+            _vm._l(_vm.selected, function(item) {
+              return _c("div", [
+                _c("div", { staticClass: "card" }, [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "col-6 col-md-8" }, [
+                      _c("p", [_vm._v(_vm._s(item.name))])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0, true)
+                  ])
+                ])
+              ])
+            }),
+            _vm._v(" "),
             _c(
-              "li",
-              { staticClass: "nav-item ml-auto mr-3" },
+              "div",
+              { staticClass: "container-fluid mt-5" },
               [
-                _c(
-                  "b-form",
-                  {
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.searchUs($event)
-                      }
-                    }
+                _c("b-table", {
+                  ref: "selectableTable",
+                  attrs: {
+                    items: _vm.items,
+                    fields: _vm.fields,
+                    "sort-by": _vm.sortBy,
+                    "sort-desc": _vm.sortDesc,
+                    id: "tableUsers",
+                    "per-page": _vm.perPage,
+                    "current-page": _vm.currentPage,
+                    responsive: "sm",
+                    outlined: "",
+                    hover: "",
+                    selectable: "",
+                    "select-mode": "single"
                   },
-                  [
-                    _c(
-                      "b-input-group",
-                      {
-                        scopedSlots: _vm._u(
-                          [
-                            {
-                              key: "prepend",
-                              fn: function() {
-                                return [
-                                  _c("b-input-group-text", [
-                                    _c("i", { staticClass: "fas fa-search" })
-                                  ])
-                                ]
-                              },
-                              proxy: true
-                            }
-                          ],
-                          null,
-                          false,
-                          3231536899
-                        )
-                      },
-                      [
-                        _vm._v(" "),
-                        _c("b-form-input", {
-                          staticClass: "form-control rounded-right",
-                          attrs: { type: "text", placeholder: "Buscar..." },
-                          model: {
-                            value: _vm.searchuser,
-                            callback: function($$v) {
-                              _vm.searchuser = $$v
-                            },
-                            expression: "searchuser"
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
+                  on: {
+                    "update:sortBy": function($event) {
+                      _vm.sortBy = $event
+                    },
+                    "update:sort-by": function($event) {
+                      _vm.sortBy = $event
+                    },
+                    "update:sortDesc": function($event) {
+                      _vm.sortDesc = $event
+                    },
+                    "update:sort-desc": function($event) {
+                      _vm.sortDesc = $event
+                    },
+                    "row-selected": _vm.onRowSelected
+                  }
+                }),
+                _vm._v(" "),
+                _c("b-pagination", {
+                  attrs: {
+                    "total-rows": _vm.rows,
+                    "per-page": _vm.perPage,
+                    "aria-controls": "tableUsers",
+                    size: "sm",
+                    align: "center"
+                  },
+                  model: {
+                    value: _vm.currentPage,
+                    callback: function($$v) {
+                      _vm.currentPage = $$v
+                    },
+                    expression: "currentPage"
+                  }
+                })
               ],
               1
             )
-          ]),
-          _vm._v(" "),
-          _vm.search ? _c("div", [_vm._v("holi")]) : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "container-fluid mt-5" },
-            [
-              _c("b-table", {
-                attrs: {
-                  items: _vm.items,
-                  fields: _vm.fields,
-                  "sort-by": _vm.sortBy,
-                  "sort-desc": _vm.sortDesc,
-                  id: "tableUsers",
-                  "per-page": _vm.perPage,
-                  "current-page": _vm.currentPage,
-                  small: "",
-                  responsive: "sm",
-                  outlined: "",
-                  hover: "",
-                  selectable: ""
-                },
-                on: {
-                  "update:sortBy": function($event) {
-                    _vm.sortBy = $event
-                  },
-                  "update:sort-by": function($event) {
-                    _vm.sortBy = $event
-                  },
-                  "update:sortDesc": function($event) {
-                    _vm.sortDesc = $event
-                  },
-                  "update:sort-desc": function($event) {
-                    _vm.sortDesc = $event
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("b-pagination", {
-                attrs: {
-                  "total-rows": _vm.rows,
-                  "per-page": _vm.perPage,
-                  "aria-controls": "tableUsers",
-                  size: "sm",
-                  align: "center"
-                },
-                model: {
-                  value: _vm.currentPage,
-                  callback: function($$v) {
-                    _vm.currentPage = $$v
-                  },
-                  expression: "currentPage"
-                }
-              })
-            ],
-            1
-          )
-        ])
+          ],
+          2
+        )
       ])
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-6 col-md-3 rounded text-center panusdelic" },
+      [
+        _c("span", { staticClass: "px-3" }, [
+          _c("i", { staticClass: "fas fa-trash-alt fa-3x" })
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
