@@ -23,11 +23,14 @@
                 <button class="btn btn-dark mt-5" @click="getSets(item.idOrder)">Ver detalles</button>
             </div>
 
-            <div v-if="showselectedinfo">
+            <div v-if="show">
                 <div class="card mt-5 border-dark bg-light">
                     <div class="card-body">
                         <p class="card-title prodtext3 text-center">Resumen del pedido</p>
-                        <p class="panadprodstxt text-center" v-for="item in selectedinfo">{{item.name}}</p>
+                        <div class="row" v-for="item in selectedinfo">
+                            <p class="panadprodstxt text-center" >{{item.name}}</p>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -97,7 +100,7 @@
                 searchorder: '',
                 selected: [],
                 selectedinfo: [],
-                showselectedinfo: false,
+                show: false,
             }
         },
 
@@ -108,7 +111,6 @@
         },
 
         mounted() {
-            console.log('orders montado');
             this.listOrders();
         },
 
@@ -133,8 +135,8 @@
             },
 
             onRowSelected(items) {
+                this.show = false;
                 this.selected = items;
-                this.getSets();
             },
 
             clearSelected() {
@@ -148,9 +150,9 @@
                     'idOrder': data,
                 }).then((response) => {
                     this.selectedinfo = response.data;
-                    this.showselectedinfo = true;
+                    (this.show)? this.show = false : this.show = true;
                 })
-            }
+            },
         }
     }
 

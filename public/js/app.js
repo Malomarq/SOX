@@ -3844,6 +3844,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
@@ -3878,7 +3881,7 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       searchorder: '',
       selected: [],
       selectedinfo: [],
-      showselectedinfo: false
+      show: false
     };
   },
   computed: {
@@ -3887,7 +3890,6 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     }
   },
   mounted: function mounted() {
-    console.log('orders montado');
     this.listOrders();
   },
   methods: {
@@ -3913,8 +3915,8 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       });
     },
     onRowSelected: function onRowSelected(items) {
+      this.show = false;
       this.selected = items;
-      this.getSets();
     },
     clearSelected: function clearSelected() {
       this.$refs.selectableTable.clearSelected();
@@ -3928,7 +3930,7 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
         'idOrder': data
       }).then(function (response) {
         _this3.selectedinfo = response.data;
-        _this3.showselectedinfo = true;
+        _this3.show ? _this3.show = false : _this3.show = true;
       });
     }
   }
@@ -86124,7 +86126,7 @@ var render = function() {
               ])
             }),
             _vm._v(" "),
-            _vm.showselectedinfo
+            _vm.show
               ? _c("div", [
                   _c("div", { staticClass: "card mt-5 border-dark bg-light" }, [
                     _c(
@@ -86138,11 +86140,13 @@ var render = function() {
                         ),
                         _vm._v(" "),
                         _vm._l(_vm.selectedinfo, function(item) {
-                          return _c(
-                            "p",
-                            { staticClass: "panadprodstxt text-center" },
-                            [_vm._v(_vm._s(item.name))]
-                          )
+                          return _c("div", { staticClass: "row" }, [
+                            _c(
+                              "p",
+                              { staticClass: "panadprodstxt text-center" },
+                              [_vm._v(_vm._s(item.name))]
+                            )
+                          ])
                         })
                       ],
                       2
@@ -87756,49 +87760,47 @@ var render = function() {
                                   )
                                 }),
                                 _vm._v(" "),
-                                _vm.fullOrder
-                                  ? _c(
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "row mx-md-3 my-5 shipmban p-3 shadow"
+                                  },
+                                  [
+                                    _c(
                                       "div",
                                       {
                                         staticClass:
-                                          "row mx-md-3 my-5 shipmban p-3 shadow"
+                                          "col-12 col-sm-6 text-center"
                                       },
                                       [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-12 col-sm-6 text-center"
-                                          },
-                                          [
-                                            _c("b-card-img-lazy", {
-                                              staticClass: "littlesox",
-                                              attrs: {
-                                                fluid: "",
-                                                src: "./img/logo2.svg"
-                                              }
-                                            })
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-12 col-sm-6 py-sm-5 pb-4 text-center text-sm-left panadprodstxt"
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                                " +
-                                                _vm._s(_vm.banntxt) +
-                                                "\n                                            "
-                                            )
-                                          ]
+                                        _c("b-card-img-lazy", {
+                                          staticClass: "littlesox",
+                                          attrs: {
+                                            fluid: "",
+                                            src: "./img/logo2.svg"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "col-12 col-sm-6 py-sm-5 pb-4 text-center text-sm-left panadprodstxt"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                " +
+                                            _vm._s(_vm.banntxt) +
+                                            "\n                                            "
                                         )
                                       ]
                                     )
-                                  : _vm._e()
+                                  ]
+                                )
                               ],
                               2
                             )

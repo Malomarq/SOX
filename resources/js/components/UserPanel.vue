@@ -203,7 +203,7 @@
 
                                             </div>
 
-                                            <div v-if="fullOrder" class="row mx-md-3 my-5 shipmban p-3 shadow">
+                                            <div class="row mx-md-3 my-5 shipmban p-3 shadow">
                                                 <div class="col-12 col-sm-6 text-center">
                                                     <b-card-img-lazy fluid :src="'./img/logo2.svg'" class="littlesox"/>
                                                 </div>
