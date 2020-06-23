@@ -2025,9 +2025,9 @@ __webpack_require__.r(__webpack_exports__);
       comps: {
         showHome: false,
         showAccount: false,
-        showUsers: true,
+        showUsers: false,
         showProds: false,
-        showOrd: false,
+        showOrd: true,
         showCon: false
       }
     };
@@ -3783,14 +3783,110 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
+
+var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    showed: false
+    showed: false,
+    title: ''
+  },
+  data: function data() {
+    return {
+      sortBy: 'age',
+      sortDesc: false,
+      fields: [{
+        key: 'idOrder',
+        sortable: true
+      }, {
+        key: 'idUser',
+        sortable: true
+      }, {
+        key: 'address',
+        sortable: true
+      }, {
+        key: 'pay',
+        sortable: true
+      }, {
+        key: 'totalPrice',
+        sortable: true
+      }],
+      items: [],
+      perPage: 10,
+      currentPage: 1,
+      searchorder: '',
+      selected: []
+    };
+  },
+  computed: {
+    rows: function rows() {
+      return this.items.length;
+    }
   },
   mounted: function mounted() {
     console.log('orders montado');
+    this.listOrders();
   },
-  methods: {}
+  methods: {
+    listOrders: function listOrders() {
+      var _this = this;
+
+      axios.post('api/orders', {
+        'pubkey': pubkey
+      }).then(function (response) {
+        _this.items = response.data;
+      });
+    },
+    searchOrd: function searchOrd() {}
+  }
 });
 
 /***/ }),
@@ -3946,6 +4042,15 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     },
     clearSelected: function clearSelected() {
       this.$refs.selectableTable.clearSelected();
+    },
+    deleteUser: function deleteUser(data) {
+      axios.post('api/deleteUser', {
+        'pubkey': pubkey,
+        '_token': this.$csrfToken,
+        'idUser': data
+      }).then(function (response) {
+        location.reload();
+      });
     }
   }
 });
@@ -85884,7 +85989,133 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.showed ? _c("div", [_c("h3", [_vm._v("Orders")])]) : _vm._e()
+  return _vm.showed
+    ? _c("div", [
+        _c("div", { staticClass: "mt-2" }, [
+          _c("ul", { staticClass: "nav py-3 bg-light" }, [
+            _c("li", { staticClass: "navbar-brand ml-3" }, [
+              _vm._v(_vm._s(_vm.title))
+            ]),
+            _vm._v(" "),
+            _c(
+              "li",
+              { staticClass: "nav-item ml-auto mr-3" },
+              [
+                _c(
+                  "b-form",
+                  {
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.searchOrd($event)
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "b-input-group",
+                      {
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "prepend",
+                              fn: function() {
+                                return [
+                                  _c("b-input-group-text", [
+                                    _c("i", { staticClass: "fas fa-search" })
+                                  ])
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ],
+                          null,
+                          false,
+                          3231536899
+                        )
+                      },
+                      [
+                        _vm._v(" "),
+                        _c("b-form-input", {
+                          staticClass: "form-control rounded-right",
+                          attrs: { type: "text", placeholder: "Buscar..." },
+                          on: { keyup: _vm.searchOrd },
+                          model: {
+                            value: _vm.searchorder,
+                            callback: function($$v) {
+                              _vm.searchorder = $$v
+                            },
+                            expression: "searchorder"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "container-fluid mt-5" },
+            [
+              _c("b-table", {
+                attrs: {
+                  items: _vm.items,
+                  fields: _vm.fields,
+                  "sort-by": _vm.sortBy,
+                  "sort-desc": _vm.sortDesc,
+                  id: "tableOrders",
+                  "per-page": _vm.perPage,
+                  "current-page": _vm.currentPage,
+                  responsive: "sm",
+                  outlined: "",
+                  hover: "",
+                  selectable: "",
+                  "select-mode": "single"
+                },
+                on: {
+                  "update:sortBy": function($event) {
+                    _vm.sortBy = $event
+                  },
+                  "update:sort-by": function($event) {
+                    _vm.sortBy = $event
+                  },
+                  "update:sortDesc": function($event) {
+                    _vm.sortDesc = $event
+                  },
+                  "update:sort-desc": function($event) {
+                    _vm.sortDesc = $event
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("b-pagination", {
+                attrs: {
+                  "total-rows": _vm.rows,
+                  "per-page": _vm.perPage,
+                  "aria-controls": "tableOrders",
+                  size: "sm",
+                  align: "center"
+                },
+                model: {
+                  value: _vm.currentPage,
+                  callback: function($$v) {
+                    _vm.currentPage = $$v
+                  },
+                  expression: "currentPage"
+                }
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -85983,13 +86214,36 @@ var render = function() {
             _vm._v(" "),
             _vm._l(_vm.selected, function(item) {
               return _c("div", [
-                _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card mt-5 border-danger bg-light" }, [
                   _c("div", { staticClass: "card-body" }, [
-                    _c("div", { staticClass: "col-6 col-md-8" }, [
-                      _c("p", [_vm._v(_vm._s(item.name))])
+                    _c(
+                      "p",
+                      { staticClass: "card-title prodtext3 text-center" },
+                      [_vm._v("Eliminar usuario")]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "panadprodstxt text-center" }, [
+                      _vm._v(
+                        "¿Estás seguro de que deseas eliminar la cuenta de usuario\n                        con el identificador " +
+                          _vm._s(item.idUser) +
+                          "? Este proceso será irreversible."
+                      )
                     ]),
                     _vm._v(" "),
-                    _vm._m(0, true)
+                    _c("div", { staticClass: "text-center" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteUser(item.idUser)
+                            }
+                          }
+                        },
+                        [_vm._v("Eliminar")]
+                      )
+                    ])
                   ])
                 ])
               ])
@@ -86057,22 +86311,7 @@ var render = function() {
       ])
     : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-6 col-md-3 rounded text-center panusdelic" },
-      [
-        _c("span", { staticClass: "px-3" }, [
-          _c("i", { staticClass: "fas fa-trash-alt fa-3x" })
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

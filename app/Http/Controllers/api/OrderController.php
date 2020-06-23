@@ -12,11 +12,14 @@ class OrderController extends Controller
 {
     public function listOrders()
     {
-        $orders = [];
-        $list = Order::all();
-        foreach ($list as $item) {
-            array_push($orders, $item->getSets());
-        }
+        $orders = DB::table('order')
+            ->join('set', 'set.idOrder', '=', 'order.idOrder')
+            ->select(DB::raw('sum(set.setPrice) as totalPrice'), 'order.pay', 'order.idOrder', 'order.address',
+                    'order.idUser')
+            ->where('open', 0)
+            ->groupBy('order.idOrder', 'order.pay', 'order.address', 'order.idUser')
+            ->orderBy('order.pay')
+            ->get();
 
         return response()->json($orders, 200);
     }
@@ -31,6 +34,7 @@ class OrderController extends Controller
                     ->join('set', 'set.idOrder', '=', 'order.idOrder')
                     ->select(DB::raw('sum(set.setPrice) as totalPrice'), 'order.pay', 'order.idOrder', 'order.address')
                     ->where('order.idUser', $req->idUser)
+                    ->where('open', 0)
                     ->groupBy('order.idOrder', 'order.pay', 'order.address')
                     ->orderBy('order.pay')
                     ->get();

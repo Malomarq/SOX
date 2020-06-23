@@ -20,13 +20,13 @@
             </ul>
 
             <div v-for="item in selected">
-                <div class="card">
+                <div class="card mt-5 border-danger bg-light">
                     <div class="card-body">
-                        <div class="col-6 col-md-8">
-                            <p>{{item.name}}</p>
-                        </div>
-                        <div class="col-6 col-md-3 rounded text-center panusdelic">
-                            <span class="px-3"><i class="fas fa-trash-alt fa-3x"/></span>
+                        <p class="card-title prodtext3 text-center">Eliminar usuario</p>
+                        <p class="panadprodstxt text-center">¿Estás seguro de que deseas eliminar la cuenta de usuario
+                            con el identificador {{item.idUser}}? Este proceso será irreversible.</p>
+                        <div class="text-center">
+                            <button class="btn btn-danger" @click="deleteUser(item.idUser)">Eliminar</button>
                         </div>
                     </div>
                 </div>
@@ -136,12 +136,22 @@
                 })
             },
 
-            onRowSelected(items){
+            onRowSelected(items) {
                 this.selected = items;
             },
 
             clearSelected() {
                 this.$refs.selectableTable.clearSelected()
+            },
+
+            deleteUser(data){
+                axios.post('api/deleteUser', {
+                    'pubkey': pubkey,
+                    '_token': this.$csrfToken,
+                    'idUser': data,
+                }).then((response) => {
+                    location.reload();
+                })
             }
         }
     }

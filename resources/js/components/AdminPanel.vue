@@ -109,9 +109,9 @@
                 comps: {
                     showHome: false,
                     showAccount: false,
-                    showUsers: true,
+                    showUsers: false,
                     showProds: false,
-                    showOrd: false,
+                    showOrd: true,
                     showCon: false,
                 },
             }
