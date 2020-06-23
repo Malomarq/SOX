@@ -4,7 +4,9 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -98,5 +100,25 @@ class AdminController extends Controller
                 ->orWhere('lastname', 'like', '%' . $val . '%')->orWhere('email', 'like', '%' . $val . '%')
                 ->get();
         return response()->json(['search' => $user],200);
+    }
+
+    public function searchOrder(Request $req){
+
+        $val = $req->search;
+
+        $order = DB::table('order')
+            ->join('set', 'set.idOrder', '=', 'order.idOrder')
+            ->select(DB::raw('sum(set.setPrice) as totalPrice'), 'order.pay', 'order.idOrder', 'order.address',
+                'order.idUser')
+            ->where('open', 0)
+            ->where('order.idUser', 'like', '%' . $val . '%')
+            ->orWhere('order.idOrder', 'like', '%' . $val . '%')
+            ->orWhere('order.address', 'like', '%' . $val . '%')
+            ->orWhere('order.pay', 'like', '%' . $val . '%')
+            ->groupBy('order.idOrder', 'order.pay', 'order.address', 'order.idUser')
+            ->orderBy('order.pay')
+            ->get();
+
+        return response()->json(['search' => $order],200);
     }
 }

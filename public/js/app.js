@@ -3831,6 +3831,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
@@ -3863,7 +3876,9 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       perPage: 10,
       currentPage: 1,
       searchorder: '',
-      selected: []
+      selected: [],
+      selectedinfo: [],
+      showselectedinfo: false
     };
   },
   computed: {
@@ -3880,12 +3895,42 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       var _this = this;
 
       axios.post('api/orders', {
-        'pubkey': pubkey
+        'pubkey': pubkey,
+        '_token': this.$csrfToken
       }).then(function (response) {
         _this.items = response.data;
       });
     },
-    searchOrd: function searchOrd() {}
+    searchOrd: function searchOrd() {
+      var _this2 = this;
+
+      axios.post('api/searchOrder', {
+        'pubkey': pubkey,
+        '_token': this.$csrfToken,
+        'search': this.searchorder
+      }).then(function (response) {
+        _this2.items = response.data['search'];
+      });
+    },
+    onRowSelected: function onRowSelected(items) {
+      this.selected = items;
+      this.getSets();
+    },
+    clearSelected: function clearSelected() {
+      this.$refs.selectableTable.clearSelected();
+    },
+    getSets: function getSets(data) {
+      var _this3 = this;
+
+      axios.post('api/sets', {
+        'pubkey': pubkey,
+        '_token': this.$csrfToken,
+        'idOrder': data
+      }).then(function (response) {
+        _this3.selectedinfo = response.data;
+        _this3.showselectedinfo = true;
+      });
+    }
   }
 });
 
@@ -85991,129 +86036,180 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.showed
     ? _c("div", [
-        _c("div", { staticClass: "mt-2" }, [
-          _c("ul", { staticClass: "nav py-3 bg-light" }, [
-            _c("li", { staticClass: "navbar-brand ml-3" }, [
-              _vm._v(_vm._s(_vm.title))
+        _c(
+          "div",
+          { staticClass: "mt-2" },
+          [
+            _c("ul", { staticClass: "nav py-3 bg-light" }, [
+              _c("li", { staticClass: "navbar-brand ml-3" }, [
+                _vm._v(_vm._s(_vm.title))
+              ]),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item ml-auto mr-3" },
+                [
+                  _c(
+                    "b-form",
+                    {
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.searchOrd($event)
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "b-input-group",
+                        {
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "prepend",
+                                fn: function() {
+                                  return [
+                                    _c("b-input-group-text", [
+                                      _c("i", { staticClass: "fas fa-search" })
+                                    ])
+                                  ]
+                                },
+                                proxy: true
+                              }
+                            ],
+                            null,
+                            false,
+                            3231536899
+                          )
+                        },
+                        [
+                          _vm._v(" "),
+                          _c("b-form-input", {
+                            staticClass: "form-control rounded-right",
+                            attrs: { type: "text", placeholder: "Buscar..." },
+                            on: { keyup: _vm.searchOrd },
+                            model: {
+                              value: _vm.searchorder,
+                              callback: function($$v) {
+                                _vm.searchorder = $$v
+                              },
+                              expression: "searchorder"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ]),
             _vm._v(" "),
-            _c(
-              "li",
-              { staticClass: "nav-item ml-auto mr-3" },
-              [
+            _vm._l(_vm.selected, function(item) {
+              return _c("div", [
                 _c(
-                  "b-form",
+                  "button",
                   {
+                    staticClass: "btn btn-dark mt-5",
                     on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.searchOrd($event)
+                      click: function($event) {
+                        return _vm.getSets(item.idOrder)
                       }
                     }
                   },
-                  [
+                  [_vm._v("Ver detalles")]
+                )
+              ])
+            }),
+            _vm._v(" "),
+            _vm.showselectedinfo
+              ? _c("div", [
+                  _c("div", { staticClass: "card mt-5 border-dark bg-light" }, [
                     _c(
-                      "b-input-group",
-                      {
-                        scopedSlots: _vm._u(
-                          [
-                            {
-                              key: "prepend",
-                              fn: function() {
-                                return [
-                                  _c("b-input-group-text", [
-                                    _c("i", { staticClass: "fas fa-search" })
-                                  ])
-                                ]
-                              },
-                              proxy: true
-                            }
-                          ],
-                          null,
-                          false,
-                          3231536899
-                        )
-                      },
+                      "div",
+                      { staticClass: "card-body" },
                       [
+                        _c(
+                          "p",
+                          { staticClass: "card-title prodtext3 text-center" },
+                          [_vm._v("Resumen del pedido")]
+                        ),
                         _vm._v(" "),
-                        _c("b-form-input", {
-                          staticClass: "form-control rounded-right",
-                          attrs: { type: "text", placeholder: "Buscar..." },
-                          on: { keyup: _vm.searchOrd },
-                          model: {
-                            value: _vm.searchorder,
-                            callback: function($$v) {
-                              _vm.searchorder = $$v
-                            },
-                            expression: "searchorder"
-                          }
+                        _vm._l(_vm.selectedinfo, function(item) {
+                          return _c(
+                            "p",
+                            { staticClass: "panadprodstxt text-center" },
+                            [_vm._v(_vm._s(item.name))]
+                          )
                         })
                       ],
-                      1
+                      2
                     )
-                  ],
-                  1
-                )
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "container-fluid mt-5" },
+              [
+                _c("b-table", {
+                  ref: "selectableTable",
+                  attrs: {
+                    items: _vm.items,
+                    fields: _vm.fields,
+                    "sort-by": _vm.sortBy,
+                    "sort-desc": _vm.sortDesc,
+                    id: "tableOrders",
+                    "per-page": _vm.perPage,
+                    "current-page": _vm.currentPage,
+                    responsive: "sm",
+                    outlined: "",
+                    hover: "",
+                    selectable: "",
+                    "select-mode": "single"
+                  },
+                  on: {
+                    "update:sortBy": function($event) {
+                      _vm.sortBy = $event
+                    },
+                    "update:sort-by": function($event) {
+                      _vm.sortBy = $event
+                    },
+                    "update:sortDesc": function($event) {
+                      _vm.sortDesc = $event
+                    },
+                    "update:sort-desc": function($event) {
+                      _vm.sortDesc = $event
+                    },
+                    "row-selected": _vm.onRowSelected
+                  }
+                }),
+                _vm._v(" "),
+                _c("b-pagination", {
+                  attrs: {
+                    "total-rows": _vm.rows,
+                    "per-page": _vm.perPage,
+                    "aria-controls": "tableOrders",
+                    size: "sm",
+                    align: "center"
+                  },
+                  model: {
+                    value: _vm.currentPage,
+                    callback: function($$v) {
+                      _vm.currentPage = $$v
+                    },
+                    expression: "currentPage"
+                  }
+                })
               ],
               1
             )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "container-fluid mt-5" },
-            [
-              _c("b-table", {
-                attrs: {
-                  items: _vm.items,
-                  fields: _vm.fields,
-                  "sort-by": _vm.sortBy,
-                  "sort-desc": _vm.sortDesc,
-                  id: "tableOrders",
-                  "per-page": _vm.perPage,
-                  "current-page": _vm.currentPage,
-                  responsive: "sm",
-                  outlined: "",
-                  hover: "",
-                  selectable: "",
-                  "select-mode": "single"
-                },
-                on: {
-                  "update:sortBy": function($event) {
-                    _vm.sortBy = $event
-                  },
-                  "update:sort-by": function($event) {
-                    _vm.sortBy = $event
-                  },
-                  "update:sortDesc": function($event) {
-                    _vm.sortDesc = $event
-                  },
-                  "update:sort-desc": function($event) {
-                    _vm.sortDesc = $event
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("b-pagination", {
-                attrs: {
-                  "total-rows": _vm.rows,
-                  "per-page": _vm.perPage,
-                  "aria-controls": "tableOrders",
-                  size: "sm",
-                  align: "center"
-                },
-                model: {
-                  value: _vm.currentPage,
-                  callback: function($$v) {
-                    _vm.currentPage = $$v
-                  },
-                  expression: "currentPage"
-                }
-              })
-            ],
-            1
-          )
-        ])
+          ],
+          2
+        )
       ])
     : _vm._e()
 }
@@ -101747,8 +101843,8 @@ var EventBus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\sox\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\sox\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\FINAL-SOX\sox\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\FINAL-SOX\sox\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

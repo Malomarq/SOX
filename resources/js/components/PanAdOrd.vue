@@ -19,6 +19,19 @@
                 </li>
             </ul>
 
+            <div v-for="item in selected">
+                <button class="btn btn-dark mt-5" @click="getSets(item.idOrder)">Ver detalles</button>
+            </div>
+
+            <div v-if="showselectedinfo">
+                <div class="card mt-5 border-dark bg-light">
+                    <div class="card-body">
+                        <p class="card-title prodtext3 text-center">Resumen del pedido</p>
+                        <p class="panadprodstxt text-center" v-for="item in selectedinfo">{{item.name}}</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="container-fluid mt-5">
 
                 <b-table
@@ -35,10 +48,10 @@
                     outlined
                     hover
                     selectable
-                    select-mode="single"/>
-                    <!--@row-selected="onRowSelected"
+                    select-mode="single"
+                    @row-selected="onRowSelected"
                     ref="selectableTable"
-                />-->
+                />
 
                 <b-pagination
                     v-model="currentPage"
@@ -66,8 +79,8 @@
             title: '',
         },
 
-        data(){
-            return{
+        data() {
+            return {
                 sortBy: 'age',
                 sortDesc: false,
                 fields: [
@@ -83,6 +96,8 @@
 
                 searchorder: '',
                 selected: [],
+                selectedinfo: [],
+                showselectedinfo: false,
             }
         },
 
@@ -100,15 +115,42 @@
         methods: {
             listOrders() {
                 axios.post('api/orders', {
-                    'pubkey': pubkey
+                    'pubkey': pubkey,
+                    '_token': this.$csrfToken,
                 }).then((response) => {
                     this.items = response.data;
                 })
             },
 
-            searchOrd(){
-
+            searchOrd() {
+                axios.post('api/searchOrder', {
+                    'pubkey': pubkey,
+                    '_token': this.$csrfToken,
+                    'search': this.searchorder
+                }).then((response) => {
+                    this.items = response.data['search'];
+                })
             },
+
+            onRowSelected(items) {
+                this.selected = items;
+                this.getSets();
+            },
+
+            clearSelected() {
+                this.$refs.selectableTable.clearSelected()
+            },
+
+            getSets(data) {
+                axios.post('api/sets', {
+                    'pubkey': pubkey,
+                    '_token': this.$csrfToken,
+                    'idOrder': data,
+                }).then((response) => {
+                    this.selectedinfo = response.data;
+                    this.showselectedinfo = true;
+                })
+            }
         }
     }
 
