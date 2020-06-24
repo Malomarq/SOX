@@ -19,18 +19,86 @@
                 </li>
             </ul>
 
-            <div v-for="item in selected">
+            <div v-for="item in selected" class="pl-3">
                 <button class="btn btn-dark mt-5" @click="getSets(item.idOrder)">Ver detalles</button>
             </div>
 
-            <div v-if="show">
-                <div class="card mt-5 border-dark bg-light">
-                    <div class="card-body">
-                        <p class="card-title prodtext3 text-center">Resumen del pedido</p>
-                        <div class="row" v-for="item in selectedinfo">
-                            <p class="panadprodstxt text-center" >{{item.name}}</p>
-                        </div>
+            <div v-if="show" class="px-md-5">
+                <div class="card mt-5" v-for="item in selected">
+                    <div class="card-header">
+                        <div class="nav flex-column flex-sm-row">
+                            <div class="nav-item flex-sm-fill">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <small><b>PEDIDO REALIZADO</b></small>
+                                    </div>
+                                    <div class="row">
+                                        <small>{{item.pay}}</small>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="nav-item mt-sm-0 mt-2 flex-sm-fill">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <small><b>TOTAL</b></small>
+                                    </div>
+                                    <div class="row">
+                                        <small>{{item.totalPrice}}€</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nav-item mt-sm-0 mt-2 flex-sm-fill">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <small><b>IDENT. CUENTA</b></small>
+                                    </div>
+                                    <div class="row">
+                                        <small>{{item.idUser}}</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nav-item ml-sm-auto mt-sm-0 mt-2 flex-sm-fill">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <small><b>REF. PEDIDO</b></small>
+                                    </div>
+                                    <div class="row">
+                                        <small>{{item.idOrder}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                <div class="row" v-for="item in selectedinfo">
+                                    <div class="col-12 col-md-5 py-3 text-center">
+                                        <a v-bind:href="'product?id=' + item.idArt">
+                                            <b-img :src="'storage/articles/' + item.image" fluid class="imgord"/>
+                                        </a>
+                                    </div>
+                                    <div class="col-12 col-md-7 py-4">
+                                        <div class="row justify-content-md-start justify-content-center panadprodstxt">
+                                            {{item.name}}
+                                        </div>
+                                        <div class="row justify-content-md-start justify-content-center txtlight">x
+                                            {{item.amount}}
+                                        </div>
+                                        <div class="row justify-content-md-start justify-content-center littleprice">
+                                            {{item.price}}€
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 py-0 py-md-3">
+                                <button type="button" class="btn btn-warning btn-lg btn-block">Localizar pedido</button>
+                                <button type="button" class="btn btn-secondary btn-lg btn-block">Imprimir detalles</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -87,11 +155,11 @@
                 sortBy: 'age',
                 sortDesc: false,
                 fields: [
-                    {key: 'idOrder', sortable: true},
-                    {key: 'idUser', sortable: true},
-                    {key: 'address', sortable: true},
-                    {key: 'pay', sortable: true},
-                    {key: 'totalPrice', sortable: true},
+                    {key: 'idOrder', label: 'ref. pedido', sortable: true},
+                    {key: 'idUser', label: 'ident. cuenta', sortable: true},
+                    {key: 'address', label: 'envío', sortable: true},
+                    {key: 'pay', label: 'fecha de pago', sortable: true},
+                    {key: 'totalPrice', label: 'precio (sin envío)', sortable: true},
                 ],
                 items: [],
                 perPage: 10,
@@ -150,7 +218,7 @@
                     'idOrder': data,
                 }).then((response) => {
                     this.selectedinfo = response.data;
-                    (this.show)? this.show = false : this.show = true;
+                    (this.show) ? this.show = false : this.show = true;
                 })
             },
         }

@@ -3847,6 +3847,74 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 
 var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
@@ -3861,18 +3929,23 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       sortDesc: false,
       fields: [{
         key: 'idOrder',
+        label: 'ref. pedido',
         sortable: true
       }, {
         key: 'idUser',
+        label: 'ident. cuenta',
         sortable: true
       }, {
         key: 'address',
+        label: 'envío',
         sortable: true
       }, {
         key: 'pay',
+        label: 'fecha de pago',
         sortable: true
       }, {
         key: 'totalPrice',
+        label: 'precio (sin envío)',
         sortable: true
       }],
       items: [],
@@ -4038,15 +4111,19 @@ var pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
       sortDesc: false,
       fields: [{
         key: 'idUser',
+        label: 'ident. cuenta',
         sortable: true
       }, {
         key: 'name',
+        label: 'nombre',
         sortable: true
       }, {
         key: 'lastname',
+        label: 'apellido',
         sortable: true
       }, {
         key: 'email',
+        label: 'email',
         sortable: true
       }],
       items: [],
@@ -86110,7 +86187,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _vm._l(_vm.selected, function(item) {
-              return _c("div", [
+              return _c("div", { staticClass: "pl-3" }, [
                 _c(
                   "button",
                   {
@@ -86127,32 +86204,184 @@ var render = function() {
             }),
             _vm._v(" "),
             _vm.show
-              ? _c("div", [
-                  _c("div", { staticClass: "card mt-5 border-dark bg-light" }, [
-                    _c(
-                      "div",
-                      { staticClass: "card-body" },
-                      [
+              ? _c(
+                  "div",
+                  { staticClass: "px-md-5" },
+                  _vm._l(_vm.selected, function(item) {
+                    return _c("div", { staticClass: "card mt-5" }, [
+                      _c("div", { staticClass: "card-header" }, [
                         _c(
-                          "p",
-                          { staticClass: "card-title prodtext3 text-center" },
-                          [_vm._v("Resumen del pedido")]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(_vm.selectedinfo, function(item) {
-                          return _c("div", { staticClass: "row" }, [
+                          "div",
+                          { staticClass: "nav flex-column flex-sm-row" },
+                          [
                             _c(
-                              "p",
-                              { staticClass: "panadprodstxt text-center" },
-                              [_vm._v(_vm._s(item.name))]
+                              "div",
+                              { staticClass: "nav-item flex-sm-fill" },
+                              [
+                                _c("div", { staticClass: "col-12" }, [
+                                  _vm._m(0, true),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "row" }, [
+                                    _c("small", [_vm._v(_vm._s(item.pay))])
+                                  ])
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "nav-item mt-sm-0 mt-2 flex-sm-fill"
+                              },
+                              [
+                                _c("div", { staticClass: "col-12" }, [
+                                  _vm._m(1, true),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "row" }, [
+                                    _c("small", [
+                                      _vm._v(_vm._s(item.totalPrice) + "€")
+                                    ])
+                                  ])
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "nav-item mt-sm-0 mt-2 flex-sm-fill"
+                              },
+                              [
+                                _c("div", { staticClass: "col-12" }, [
+                                  _vm._m(2, true),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "row" }, [
+                                    _c("small", [_vm._v(_vm._s(item.idUser))])
+                                  ])
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "nav-item ml-sm-auto mt-sm-0 mt-2 flex-sm-fill"
+                              },
+                              [
+                                _c("div", { staticClass: "col-12" }, [
+                                  _vm._m(3, true),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "row" }, [
+                                    _c("small", [_vm._v(_vm._s(item.idOrder))])
+                                  ])
+                                ])
+                              ]
                             )
-                          ])
-                        })
-                      ],
-                      2
-                    )
-                  ])
-                ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col-12 col-md-8" },
+                            _vm._l(_vm.selectedinfo, function(item) {
+                              return _c("div", { staticClass: "row" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "col-12 col-md-5 py-3 text-center"
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: {
+                                          href: "product?id=" + item.idArt
+                                        }
+                                      },
+                                      [
+                                        _c("b-img", {
+                                          staticClass: "imgord",
+                                          attrs: {
+                                            src:
+                                              "storage/articles/" + item.image,
+                                            fluid: ""
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-12 col-md-7 py-4" },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "row justify-content-md-start justify-content-center panadprodstxt"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(item.name) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "row justify-content-md-start justify-content-center txtlight"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "x\n                                        " +
+                                            _vm._s(item.amount) +
+                                            "\n                                    "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "row justify-content-md-start justify-content-center littleprice"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                        " +
+                                            _vm._s(item.price) +
+                                            "€\n                                    "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
+                            }),
+                            0
+                          ),
+                          _vm._v(" "),
+                          _vm._m(4, true)
+                        ])
+                      ])
+                    ])
+                  }),
+                  0
+                )
               : _vm._e(),
             _vm._v(" "),
             _c(
@@ -86217,7 +86446,64 @@ var render = function() {
       ])
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("small", [_c("b", [_vm._v("PEDIDO REALIZADO")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("small", [_c("b", [_vm._v("TOTAL")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("small", [_c("b", [_vm._v("IDENT. CUENTA")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("small", [_c("b", [_vm._v("REF. PEDIDO")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12 col-md-4 py-0 py-md-3" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-warning btn-lg btn-block",
+          attrs: { type: "button" }
+        },
+        [_vm._v("Localizar pedido")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary btn-lg btn-block",
+          attrs: { type: "button" }
+        },
+        [_vm._v("Imprimir detalles")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
