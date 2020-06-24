@@ -323,6 +323,7 @@
     import EyePassLogin from "./EyePassLogin";
     import OrderDetails from "./OrderDetails";
 
+    var moment = require('moment');
     const axios = require('axios').default;
     const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
@@ -551,13 +552,22 @@
                     } else {
                         this.fullOrder = true;
                         this.ordersinfo = response.data;
+
+                        let i = null;
+                        for(i=0; i<this.ordersinfo.length; i++){
+                            this.ordersinfo[i].pay = this.moment(this.ordersinfo[i].pay);
+                        }
                     }
                 });
             },
 
             displayOrder(data){
                 (this.setorder == data)? this.setorder = null : this.setorder = data;
-            }
+            },
+
+            moment(date) {
+                return moment(date).format('DD/MM/YYYY');
+            },
 
         }
     }

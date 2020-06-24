@@ -44,7 +44,7 @@
                                         <small><b>TOTAL</b></small>
                                     </div>
                                     <div class="row">
-                                        <small>{{item.totalPrice}}€</small>
+                                        <small>{{item.totalPrice}}</small>
                                     </div>
                                 </div>
                             </div>
@@ -140,6 +140,7 @@
 
 <script>
 
+    var moment = require('moment');
     const axios = require('axios').default;
     const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
@@ -189,6 +190,12 @@
                     '_token': this.$csrfToken,
                 }).then((response) => {
                     this.items = response.data;
+
+                    let i = null;
+                    for(i=0; i<this.items.length; i++){
+                        this.items[i].totalPrice = this.items[i].totalPrice + '€';
+                        this.items[i].pay = this.moment(this.items[i].pay);
+                    }
                 })
             },
 
@@ -220,6 +227,10 @@
                     this.selectedinfo = response.data;
                     (this.show) ? this.show = false : this.show = true;
                 })
+            },
+
+            moment(date) {
+                return moment(date).format('DD/MM/YYYY');
             },
         }
     }
