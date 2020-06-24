@@ -13,12 +13,14 @@ class Order extends Model
         'idUser', 'date', 'address', 'pay', 'open'
     ];
 
-    public function getSets(){
+    public function getSets()
+    {
 
         return $this->hasMany('App\Models\Set', 'idOrder')->get();
     }
 
-    public function getUser(){
+    public function getUser()
+    {
 
         return $this->belongsTo('App\Models\User', 'idUser');
     }
