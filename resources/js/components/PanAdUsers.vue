@@ -32,35 +32,40 @@
                 </div>
             </div>
 
-            <div class="container-fluid mt-5">
+            <!--<div class="container-fluid mt-5">-->
+            <div class="card mt-5">
+                <div class="card-header">
+                    <span><i class="fas fa-table mr-2"></i><b>Cuentas de usuario actuales</b></span>
+                </div>
 
-                <b-table
-                    :items="items"
-                    :fields="fields"
-                    :sort-by.sync="sortBy"
-                    :sort-desc.sync="sortDesc"
+                    <b-table
+                        :items="items"
+                        :fields="fields"
+                        :sort-by.sync="sortBy"
+                        :sort-desc.sync="sortDesc"
 
-                    id="tableUsers"
-                    :per-page="perPage"
-                    :current-page="currentPage"
+                        id="tableUsers"
+                        :per-page="perPage"
+                        :current-page="currentPage"
 
-                    responsive="sm"
-                    outlined
-                    hover
-                    selectable
-                    select-mode="single"
-                    @row-selected="onRowSelected"
-                    ref="selectableTable"
-                />
+                        responsive="sm"
+                        outlined
+                        hover
+                        bordered
+                        selectable
+                        select-mode="single"
+                        @row-selected="onRowSelected"
+                        ref="selectableTable"
+                    />
 
-                <b-pagination
-                    v-model="currentPage"
-                    :total-rows="rows"
-                    :per-page="perPage"
-                    aria-controls="tableUsers"
-                    size="sm"
-                    align="center"
-                />
+                    <b-pagination
+                        v-model="currentPage"
+                        :total-rows="rows"
+                        :per-page="perPage"
+                        aria-controls="tableUsers"
+                        size="sm"
+                        align="center"
+                    />
             </div>
 
         </div>
@@ -144,7 +149,7 @@
                 this.$refs.selectableTable.clearSelected()
             },
 
-            deleteUser(data){
+            deleteUser(data) {
                 axios.post('api/deleteUser', {
                     'pubkey': pubkey,
                     '_token': this.$csrfToken,

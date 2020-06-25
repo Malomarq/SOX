@@ -1,6 +1,6 @@
 <template>
     <div v-if="showed">
-        <h3>Contacts</h3>
+        <h3>{{title}}</h3>
     </div>
 </template>
 
@@ -9,7 +9,8 @@
     export default {
 
         props: {
-            showed: false
+            showed: false,
+            title: '',
         },
 
         mounted() {

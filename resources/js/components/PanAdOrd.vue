@@ -103,7 +103,11 @@
                 </div>
             </div>
 
-            <div class="container-fluid mt-5">
+            <!--<div class="container-fluid mt-5">-->
+            <div class="card mt-5">
+                <div class="card-header">
+                    <span><i class="fas fa-table mr-2"></i><b>Pedidos realizados</b></span>
+                </div>
 
                 <b-table
                     :items="items"
@@ -118,6 +122,7 @@
                     responsive="sm"
                     outlined
                     hover
+                    bordered
                     selectable
                     select-mode="single"
                     @row-selected="onRowSelected"

@@ -43,7 +43,7 @@ return
         'lbpanadprods'              => 'Products',
         'lbpanadord'                => 'Orders',
         'lbpanadnewad'              => 'Admins',
-        'lbpanadcont'               => 'Contact',
+        'lbpanadcont'               => 'Notifications',
         'lbpanusacc'                => 'Your account',
         'lbpanusord'                => 'Your orders',
         'lbpanusnot'                => 'Notifications',
