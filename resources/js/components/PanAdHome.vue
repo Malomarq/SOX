@@ -10,6 +10,7 @@
                     <div class="card">
                         <div class="card-header">
                             <span><i class="fas fa-chart-area mr-2"></i><b>Pedidos</b></span>
+                            <canvas id="myChart" height="400" width="400"></canvas>
                         </div>
                     </div>
                 </div>
@@ -27,6 +28,8 @@
 
 <script>
 
+    import Chart from 'chart.js';
+
     export default {
 
         props: {
@@ -34,9 +37,27 @@
         },
 
         mounted() {
+            this.drawOrdersChart();
         },
 
         methods: {
+            drawOrdersChart(){
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Primera', 'Segunda', 'Tercera', 'Cuarta'],
+                        datasets: [{
+                            label: 'Primeros valores',
+                            backgroundColor: 'rgb(255, 90, 34)',
+                            data: [34,23,1,67]
+                        }]
+                    },
+                    options: {
+                        responsive: false
+                    }
+                });
+            }
         }
     }
 
