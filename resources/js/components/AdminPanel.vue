@@ -82,6 +82,8 @@
 
 <script>
 
+    import EventBus from "../event-bus";
+
     import PanAdAccount from "./PanAdAccount";
     import PanAdArticles from "./PanAdArticles";
     import PanAdCon from "./PanAdCon";
@@ -132,7 +134,10 @@
                 (this.pushed) ? this.pushed = false : this.pushed = true;
             },
 
-            showAndHide: function (comp) {
+            showAndHide(comp) {
+
+                EventBus.$emit('sectioncalled', comp);
+
                 var i;
                 for (i in this.comps) {
                     this.comps[i] = false;
@@ -159,7 +164,6 @@
                         break;
                 }
             },
-
         }
     }
 </script>

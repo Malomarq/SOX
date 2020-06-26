@@ -42,4 +42,15 @@ class OrderController extends Controller
         return response()->json($orders, 200);
     }
 
+    public function getSales(){
+
+        $sales = DB::table('order')
+                    ->select(DB::raw('count(idOrder) as sales'), DB::raw('extract(month from pay) as month'))
+                    ->where('open', 0)
+                    ->groupBy('month')
+                    ->get();
+
+        return response()->json($sales, 200);
+    }
+
 }

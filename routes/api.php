@@ -53,6 +53,7 @@ Route::middleware('api.auth')->group(function (){
     Route::post('/orders', 'api\OrderController@listOrders');
     Route::post('/findOrders', 'api\OrderController@findOrders');
     Route::post('/orderPrice', 'api\OrderController@orderPrice');
+    Route::post('/getSales', 'api\OrderController@getSales');
 
     Route::post('/sets', 'api\SetController@listSets');
 
