@@ -33,6 +33,7 @@ Route::middleware('api.auth')->group(function (){
     Route::post('/updateInfo', 'api\UserController@updateInfo');
     Route::post('/checkPass', 'api\UserController@checkPass');
     Route::post('/deleteUser', 'api\UserController@deleteUser');
+    Route::post('/getUsers', 'api\UserController@getUsers');
 
     Route::get('/listAdmins', 'api\AdminController@listAdmins');
     Route::get('/findAdmin', 'api\AdminController@findAdmin');

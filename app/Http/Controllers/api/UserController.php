@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -104,5 +105,15 @@ class UserController extends Controller
 
         return response()->json('Ok', 200);
 
+    }
+
+    public function getUsers(){
+
+        $users = DB::table('user')
+            ->select(DB::raw('count(idUser) as "values"'), DB::raw('extract(month from created_at) as "month"'))
+            ->groupBy('month')
+            ->get();
+
+        return response()->json($users, 200);
     }
 }

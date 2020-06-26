@@ -46,6 +46,10 @@
                 data: [],
                 labels: [],
                 values: [],
+
+                users: [],
+                labelsU: [],
+                valuesU: [],
             }
         },
 
@@ -77,7 +81,7 @@
 
                     let i = null;
                     for (i = 0; i < this.data.length; i++) {
-                        this.labels.push(this.data[i].month);
+                        (this.data[i].month >= 10) ? this.labels.push(this.data[i].month) : this.labels.push('0'+this.data[i].month);
                         this.values.push(this.data[i].sales);
                     }
 
@@ -89,18 +93,93 @@
                             datasets: [{
                                 label: 'Ventas',
                                 backgroundColor: 'rgb(255, 90, 34)',
+                                hoverBackgroundColor: 'rgb(26, 51, 248)',
                                 data: this.values
                             }]
                         },
                         options: {
-                            responsive: true
+                            responsive: true,
+                            layout: {
+                                padding: {
+                                    left: 20,
+                                    right: 20,
+                                    top: 20,
+                                    bottom: 20
+                                }
+                            },
+                            scales: {
+                                yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Cant.'
+                                    }
+                                }],
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Meses'
+                                    }
+                                }]
+                            },
                         }
                     });
                 });
             },
 
             getUsers(){
+                axios.post('api/getUsers', {
+                    'pubkey': pubkey,
+                    '_token': this.$csrfToken,
+                }).then((response) => {
+                    this.users = response.data;
 
+                    this.labelsU = [];
+                    this.valuesU = [];
+
+                    let i = null;
+                    for (i = 0; i < this.users.length; i++) {
+                        (this.users[i].month >= 10) ? this.labelsU.push(this.users[i].month) : this.labelsU.push('0'+this.users[i].month);
+                        this.valuesU.push(this.users[i].values);
+                    }
+
+                    var ctxu = document.getElementById('myChartUsers').getContext('2d');
+                    var myChartUsers = new Chart(ctxu, {
+                        type: 'bar',
+                        data: {
+                            labels: this.labelsU,
+                            datasets: [{
+                                label: 'Nuevas cuentas',
+                                backgroundColor: '#3490dc',
+                                data: this.valuesU
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            layout: {
+                                padding: {
+                                    left: 20,
+                                    right: 20,
+                                    top: 20,
+                                    bottom: 20
+                                }
+                            },
+                            scales: {
+                                yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Cant.'
+                                    }
+                                }],
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Meses'
+                                    }
+                                }]
+                            },
+                        }
+                    });
+                });
             }
         }
     }
