@@ -20360,7 +20360,7 @@ a[class*=linkpanad]:focus {
 }
 
 #contentpanad {
-  min-height: 100vh;
+  min-height: 86vh;
   transition: all 0.5s;
 }
 

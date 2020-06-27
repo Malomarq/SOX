@@ -109,23 +109,30 @@
             return {
                 pushed: true,
                 comps: {
-                    showHome: true,
+                    showHome: false,
                     showAccount: false,
                     showUsers: false,
                     showProds: false,
                     showOrd: false,
-                    showCon: false,
+                    showCon: true,
                 },
             }
         },
 
         mounted() {
 
+            var self = this;
+
             $(document).ready(function () {
                 $('#sidebarCollapse').on('click', function () {
                     $('#sidebar').toggleClass('active');
                     $(this).toggleClass('active');
                 });
+            });
+
+            EventBus.$on('mail', function (data) {
+                self.comps.showHome = false;
+                self.comps.showCon = true;
             });
         },
 

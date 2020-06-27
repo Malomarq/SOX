@@ -3,22 +3,26 @@
         <div class="mb-2">
             <small>{{totalmess}}{{totalart}}{{' ' + prodstext}}</small>
         </div>
+
         <b-row class="justify-content-center">
             <b-col cols="12" md="4" v-for="item in products.data"
                    :key="item.id"
                    class="mb-5"
             >
                 <b-card class="text-center cardindex">
-                    <a v-bind:href="'product?id=' + item.idArt"><b-card-img-lazy fluid top :src="'storage/articles/' + item.image" class="imgindex"/></a>
+                    <a v-bind:href="'product?id=' + item.idArt">
+                        <b-card-img-lazy fluid top :src="'storage/articles/' + item.image" class="imgindex"/>
+                    </a>
                 </b-card>
             </b-col>
         </b-row>
 
+
         <!--<page-number align="center" :data="products" @pagination-change-page="allproducts">
         </page-number>-->
-        <pagination  :pagination="products"
-                     @paginate="allproducts()"
-                     :offset="4">
+        <pagination :pagination="products"
+                    @paginate="allproducts()"
+                    :offset="4">
         </pagination>
     </div>
 </template>
@@ -65,16 +69,19 @@
                 filter: 'default',
                 colorfilter: '-',
                 totalart: '',
+
             }
         },
 
         mounted() {
+
             var self = this;
             EventBus.$on('colorfilter', function (data) {
                 self.colorfilter = data;
                 self.products.current_page = 1;
                 self.allproducts();
             });
+
             this.allproducts();
         },
 

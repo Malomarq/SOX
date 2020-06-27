@@ -3,6 +3,12 @@
         <div class="mt-2">
             <ul class="nav py-3 bg-light">
                 <li class="navbar-brand ml-3">Home</li>
+                <li class="nav-item ml-auto mr-3">
+                    <button type="button" class="btn btn-primary" @click="getToNotif()">
+                        <span><i class="fas fa-paper-plane mr-2"></i></span>
+                        <span class="badge badge-light">0</span>
+                    </button>
+                </li>
             </ul>
 
             <div class="row mt-5">
@@ -54,6 +60,8 @@
         },
 
         mounted() {
+            this.getSales();
+            this.getUsers();
 
             var self = this;
             EventBus.$on('sectioncalled', function (data) {
@@ -63,8 +71,6 @@
                 }
             });
 
-            this.getSales();
-            this.getUsers();
         },
 
         methods: {
@@ -85,44 +91,46 @@
                         this.values.push(this.data[i].sales);
                     }
 
-                    var ctx = document.getElementById('myChartOrders').getContext('2d');
-                    var myChartOrders = new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                            labels: this.labels,
-                            datasets: [{
-                                label: 'Ventas',
-                                backgroundColor: 'rgb(255, 90, 34)',
-                                hoverBackgroundColor: 'rgb(26, 51, 248)',
-                                data: this.values
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            layout: {
-                                padding: {
-                                    left: 20,
-                                    right: 20,
-                                    top: 20,
-                                    bottom: 20
-                                }
-                            },
-                            scales: {
-                                yAxes: [{
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Cant.'
-                                    }
-                                }],
-                                xAxes: [{
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Meses'
-                                    }
+                    if(this.showed) {
+                        var ctx = document.getElementById('myChartOrders').getContext('2d');
+                        var myChartOrders = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: this.labels,
+                                datasets: [{
+                                    label: 'Ventas',
+                                    backgroundColor: 'rgb(255, 90, 34)',
+                                    hoverBackgroundColor: 'rgb(26, 51, 248)',
+                                    data: this.values
                                 }]
                             },
-                        }
-                    });
+                            options: {
+                                responsive: true,
+                                layout: {
+                                    padding: {
+                                        left: 20,
+                                        right: 20,
+                                        top: 20,
+                                        bottom: 20
+                                    }
+                                },
+                                scales: {
+                                    yAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Cant.'
+                                        }
+                                    }],
+                                    xAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Meses'
+                                        }
+                                    }]
+                                },
+                            }
+                        });
+                    }
                 });
             },
 
@@ -142,44 +150,50 @@
                         this.valuesU.push(this.users[i].values);
                     }
 
-                    var ctxu = document.getElementById('myChartUsers').getContext('2d');
-                    var myChartUsers = new Chart(ctxu, {
-                        type: 'bar',
-                        data: {
-                            labels: this.labelsU,
-                            datasets: [{
-                                label: 'Nuevas cuentas',
-                                backgroundColor: '#3490dc',
-                                data: this.valuesU
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            layout: {
-                                padding: {
-                                    left: 20,
-                                    right: 20,
-                                    top: 20,
-                                    bottom: 20
-                                }
-                            },
-                            scales: {
-                                yAxes: [{
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Cant.'
-                                    }
-                                }],
-                                xAxes: [{
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Meses'
-                                    }
+                    if(this.showed) {
+                        var ctxu = document.getElementById('myChartUsers').getContext('2d');
+                        var myChartUsers = new Chart(ctxu, {
+                            type: 'bar',
+                            data: {
+                                labels: this.labelsU,
+                                datasets: [{
+                                    label: 'Nuevas cuentas',
+                                    backgroundColor: '#3490dc',
+                                    data: this.valuesU
                                 }]
                             },
-                        }
-                    });
+                            options: {
+                                responsive: true,
+                                layout: {
+                                    padding: {
+                                        left: 20,
+                                        right: 20,
+                                        top: 20,
+                                        bottom: 20
+                                    }
+                                },
+                                scales: {
+                                    yAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Cant.'
+                                        }
+                                    }],
+                                    xAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Meses'
+                                        }
+                                    }]
+                                },
+                            }
+                        });
+                    }
                 });
+            },
+
+            getToNotif(){
+                EventBus.$emit('mail');
             }
         }
     }
