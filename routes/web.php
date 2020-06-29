@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'ArticleController@index')->name('index');
+Route::get('design', 'ArticleController@design')->name('design');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('{url}', function (Request $req){

@@ -38,11 +38,13 @@
                             <panelf header="@lang('messages.lbpanelfheader')"></panelf>
 
                             <!-- TODO enlace a panel de diseño -->
+                            <a href="{{route('design')}}">
                                 <div class="card my-5 cardsox border-light">
-                                    <div class="card-body">
-                                        @lang('messages.lbdesign')
+                                    <div class="card-body text-center">
+                                        <span class="mock">@lang('messages.lbdesign')</span>
                                     </div>
                                 </div>
+                            </a>
 
                         </div>
                     </div>

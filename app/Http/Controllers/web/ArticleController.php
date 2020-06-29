@@ -18,6 +18,11 @@ class ArticleController extends Controller
         return view('index');
     }
 
+    public function design() {
+
+        return view('design');
+    }
+
     /**
      * Render product view with a particular article data by its id
      * @param Request $req

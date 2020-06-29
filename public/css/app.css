@@ -20218,8 +20218,17 @@ div.card.text-center.cardindex:hover {
   font-family: "Bebas Neue";
   font-size: 4.5em;
   font-weight: 800;
+  color: #343A40;
   padding: 0.5em 1em;
   background: -webkit-linear-gradient(70deg, #fff810 30%, rgba(0, 0, 0, 0) 30%), -webkit-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+}
+
+.cardsox:hover,
+.cardsox:link,
+.cardsox:visited,
+.cardsox:active {
+  -webkit-text-decoration: solid underline #343A40;
+          text-decoration: solid underline #343A40;
 }
 
 .colimgshowprod {
