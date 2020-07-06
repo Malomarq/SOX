@@ -20468,6 +20468,10 @@ a[class*=linkpanad]:focus {
   font-size: 0.8em;
 }
 
+#found404:hover {
+  cursor: pointer;
+}
+
 .fbcol {
   color: #3b5998;
 }
