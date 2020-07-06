@@ -37,7 +37,6 @@
                         <div class="col-12">
                             <panelf header="@lang('messages.lbpanelfheader')"></panelf>
 
-                            <!-- TODO enlace a panel de diseño -->
                             <a href="{{route('design')}}">
                                 <div class="card my-5 cardsox border-light">
                                     <div class="card-body text-center">
