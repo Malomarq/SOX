@@ -5,11 +5,11 @@
         </div>
 
         <b-row class="justify-content-center">
-            <b-col cols="12" md="4" v-for="item in products.data"
+            <b-col cols="12" md="4" sm="6" v-for="item in products.data"
                    :key="item.id"
                    class="mb-5"
             >
-                <b-card class="text-center cardindex">
+                <b-card class="text-center cardindex rounded-0">
                     <a v-bind:href="'product?id=' + item.idArt">
                         <b-card-img-lazy fluid top :src="'storage/articles/' + item.image" class="imgindex"/>
                     </a>
@@ -17,9 +17,6 @@
             </b-col>
         </b-row>
 
-
-        <!--<page-number align="center" :data="products" @pagination-change-page="allproducts">
-        </page-number>-->
         <pagination :pagination="products"
                     @paginate="allproducts()"
                     :offset="4">

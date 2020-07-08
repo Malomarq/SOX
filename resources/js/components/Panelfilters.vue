@@ -1,11 +1,17 @@
 <template>
-    <b-card
-        bg-variant="light"
-        :header="header"
-        header-class="font-weight-bold"
-        class="shadow-sm"
-    >
-        <b-card-text>
+    <div class="card bg-light shadow">
+        <div class="card-header">
+            <ul class="nav">
+                <li class="nav-item"><span class="littleprice">{{header}}</span></li>
+                <li v-if="nofilter" class="nav-item ml-auto">
+                    <!--TODO cambiar ruta final -->
+                    <a href="http://localhost/FINAL-SOX/sox/public/" class="badge badge-info">
+                        <span><i class="far fa-times-circle mr-2 p-1 text-white"></i></span>Quitar filtro
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
             <div class="col-12">
                 <div class="row justify-content-center">
                     <a @click="filter('azul')" class="mx-1"><i class="fas fa-square fa-2x colazu"></i></a>
@@ -16,11 +22,10 @@
                     <a @click="filter('blanco')" class="mx-1"><i class="fas fa-square fa-2x colbla"></i></a>
                     <a @click="filter('rojo')" class="mx-1"><i class="fas fa-square fa-2x colro"></i></a>
                     <a @click="filter('colores')" class="mx-1"><i class="fas fa-square fa-2x colmulti"></i></a>
-                    <!--TODO última opción para quitar los filtros-->
                 </div>
             </div>
-        </b-card-text>
-    </b-card>
+        </div>
+    </div>
 
 </template>
 
@@ -33,7 +38,8 @@
         },
         data() {
           return {
-              colorfilter: ''
+              colorfilter: '',
+              nofilter: false,
           }
         },
         mounted() {
@@ -41,6 +47,7 @@
         },
         methods: {
             filter(data){
+                this.nofilter = true;
                 this.colorfilter = data;
                 EventBus.$emit('colorfilter', this.colorfilter);
             }

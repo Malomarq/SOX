@@ -34,7 +34,7 @@ return
         'lbfooter'                  => 'Todos los derechos reservados',
         'lbspanish'                 => 'Español',
         'lbenglish'                 => 'Inglés',
-        'lbpanelfheader'            => 'Filtros',
+        'lbpanelfheader'            => 'Elige tu color!',
         'lbdesign'                  => 'DISEÑA TU PROPIO SOX',
         'lblilnav1'                 => 'Productos',
         'lblilnav2'                 => 'Artículo',

@@ -24,7 +24,7 @@ return
         'lbfooter'                  => 'All rights reserved',
         'lbspanish'                 => 'Spanish',
         'lbenglish'                 => 'English',
-        'lbpanelfheader'            => 'Filters',
+        'lbpanelfheader'            => 'Choose your color!',
         'lbdesign'                  => 'DESIGN YOUR SOX',
         'lblilnav1'                 => 'Products',
         'lblilnav2'                 => 'Product',

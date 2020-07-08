@@ -29,15 +29,6 @@ class UserTableSeeder extends Seeder
                 ]);
         }
 
-        // TODO borrar: pruebas
-        array_push($users, [
-            'name' => 'Pepe',
-            'lastname' => 'López',
-            'email' => 'pepe@pepe.com',
-            'password' => Hash::make('pepe1234'),
-            'role' => 0
-        ]);
-
         array_push($users, [
             'name' => 'admin',
             'lastname' => 'Admin',
@@ -45,8 +36,6 @@ class UserTableSeeder extends Seeder
             'password' => Hash::make('admin1234'),
             'role' => 1
         ]);
-
-        // END
 
         DB::table('user')->insert($users);
     }
