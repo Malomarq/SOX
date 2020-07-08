@@ -109,12 +109,12 @@
             return {
                 pushed: true,
                 comps: {
-                    showHome: false,
+                    showHome: true,
                     showAccount: false,
                     showUsers: false,
                     showProds: false,
                     showOrd: false,
-                    showCon: true,
+                    showCon: false,
                 },
             }
         },

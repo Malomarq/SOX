@@ -86,7 +86,7 @@
                                                                         class="fas fa-user"></i></span>
                                                                 </div>
                                                                 <input v-model="vmname" type="text" class="form-control"
-                                                                       :placeholder="name">
+                                                                       :placeholder="user[0].name">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -97,7 +97,7 @@
                                                                         class="fas fa-user-tag"></i></span>
                                                                 </div>
                                                                 <input v-model="vmlastname" type="text"
-                                                                       class="form-control" :placeholder="lastname">
+                                                                       class="form-control" :placeholder="user[0].lastname">
                                                             </div>
                                                         </div>
                                                         <div v-if="showErrorUpdateInfo" class="form-group">

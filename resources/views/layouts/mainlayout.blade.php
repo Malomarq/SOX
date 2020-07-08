@@ -55,12 +55,22 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
                                     @if(Auth::user()->adminRole())
-                                        <a href="{{ url('/admin') }}"
-                                           class="dropdown-item">@lang('messages.lbhome')</a>
+                                        @if(url()->current() == route('index'))
+                                            <a href="{{ url('/admin') }}"
+                                               class="dropdown-item">@lang('messages.lbhome')</a>
+                                        @else
+                                            <a href="{{ url('/') }}"
+                                               class="dropdown-item">Index</a>
+                                        @endif
                                     @else
-                                        <a href="{{ url('/home') }}"
-                                           class="dropdown-item">@lang('messages.lbhome')</a>
-                                @endif
+                                        @if(url()->current() == route('index'))
+                                            <a href="{{ url('/home') }}"
+                                               class="dropdown-item">@lang('messages.lbhome')</a>
+                                        @else
+                                            <a href="{{ url('/') }}"
+                                               class="dropdown-item">Index</a>
+                                        @endif
+                                    @endif
                                     <a class="dropdown-item igcol"
                                        href="{{ route('logout') }}">@lang('messages.lblogout')</a>
                                 </div>
