@@ -84,12 +84,10 @@
 
         methods: {
             allproducts(page) {
-                axios.get(`api/products?page=${this.products.current_page}`, {
-                    params: {
+                axios.post(`api/products?page=${this.products.current_page}`, {
                         'pubkey': pubkey,
                         'order': this.filter,
                         'colorfilter': this.colorfilter,
-                    }
                 })
                     .then((response) => {
                         this.products = response.data;

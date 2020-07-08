@@ -28,22 +28,14 @@
                                 </b-form-group>
                             </b-row>
 
-                            <!--<b-row>
-                                <b-col>
-                                    <b-row>
-                                        <div class="rowprodsub">{{ lbprodtot }}</div>
-                                    </b-row>
-                                    <b-row>
-                                        <b-form-select v-model="selectedsize" :options="optionselect"
-                                                       size="sm" class="w-25"/>
-                                    </b-row>
-                                </b-col>
-                            </b-row>-->
                         </b-col>
 
                         <b-col cols="4">
                             <b-row>
-                                <b-button type="button" size="lg" variant="dark" @click.prevent="addToCart">
+                                <b-button v-if="user === '1'" disabled type="button" size="lg" variant="dark">
+                                    {{lbprodbut}}
+                                </b-button>
+                                <b-button v-if="user !== '1'" type="button" size="lg" variant="dark" @click.prevent="addToCart">
                                     {{lbprodbut}}
                                 </b-button>
                             </b-row>
@@ -82,7 +74,6 @@
             user: {},
             art: {},
             lbprodsize: {},
-            /*lbprodtot: {},*/
             lbprodbut: {},
             lbprodmod: '',
             lbprodadded: '',
@@ -90,31 +81,22 @@
 
         mounted() {
             this.showProduct();
+            this.adminUser();
         },
 
         data() {
             return {
                 prod: [],
                 selectedradio: '38-42',
-                /*selectedsize: 1,
-                optionselect: [
-                    {value: 1, text: '1'},
-                    {value: 2, text: '2'},
-                    {value: 3, text: '3'},
-                    {value: 4, text: '4'},
-                    {value: 5, text: '5'}
-                ],*/
-                modaltext: ''
+                modaltext: '',
             }
         },
 
         methods: {
 
             showProduct() {
-                axios.get('api/product/' + this.art, {
-                    params: {
+                axios.post('api/product/' + this.art, {
                         'pubkey': pubkey,
-                    }
                 }).then((response) => {
                     this.prod = response.data;
                 });
@@ -132,7 +114,6 @@
                         '_token': this.$csrfToken,
                         'iduser': this.user,
                         'idart': this.art,
-                        //'amount': this.selectedsize,
                     }).then(function() {
                         EventBus.$emit('newItem');
                     }).catch((error) => {
@@ -140,7 +121,7 @@
                         location.href = 'http://localhost/sox/public/logout';
                     });
                 }
-            }
+            },
         }
     }
 </script>

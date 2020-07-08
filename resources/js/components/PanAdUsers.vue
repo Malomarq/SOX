@@ -122,10 +122,8 @@
         methods: {
 
             listUsers() {
-                axios.get('api/listUsers', {
-                    params: {
+                axios.post('api/listUsers', {
                         'pubkey': pubkey
-                    }
                 }).then((response) => {
                     this.items = response.data;
                 })

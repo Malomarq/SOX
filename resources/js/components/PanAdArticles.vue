@@ -355,11 +355,9 @@
              */
 
             allproducts() {
-                axios.get(`api/products?page=${this.products.current_page}`, {
-                    params: {
+                axios.post(`api/products?page=${this.products.current_page}`, {
                         'pubkey': pubkey,
                         'order': this.filter
-                    }
                 })
                     .then((response) => {
                         this.products = response.data;
@@ -385,10 +383,8 @@
             productUp(data) {
                 this.idArt = data;
 
-                axios.get('api/product/' + this.idArt, {
-                    params: {
+                axios.post('api/product/' + this.idArt, {
                         'pubkey': pubkey
-                    }
                 }).then((response) => {
                     this.placeupimage = response.data.image;
                     this.placeupname = response.data.name;

@@ -40,11 +40,9 @@
 
         methods: {
             search() {
-                axios.get('api/search', {
-                    params: {
+                axios.post('api/search', {
                         'pubkey': pubkey,
                         'search': $('input[name=search]').val(),
-                    }
                 }).then((response) => {
                     this.result = response.data;
                 })

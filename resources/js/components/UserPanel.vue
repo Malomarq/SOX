@@ -449,11 +449,9 @@
             },
 
             finduser() {
-                axios.get('api/findUser', {
-                    params: {
+                axios.post('api/findUser', {
                         'pubkey': pubkey,
                         'iduser': this.iduser
-                    }
                 }).then((response) => {
                     this.user[0].name = response.data[0].name;
                     this.user[0].lastname = response.data[0].lastname;

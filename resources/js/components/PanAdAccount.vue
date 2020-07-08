@@ -299,10 +299,8 @@
              */
 
             listAdmins() {
-                axios.get('api/listAdmins', {
-                    params: {
+                axios.post('api/listAdmins', {
                         'pubkey': pubkey
-                    }
                 }).then((response) => {
                     this.itemsAd = response.data;
                 })
@@ -344,11 +342,9 @@
 
             showUpdate() {
 
-                axios.get('api/findAdmin', {
-                    params: {
+                axios.post('api/findAdmin', {
                         'pubkey': pubkey,
                         'idad': this.idadmin,
-                    }
                 }).then((response) => {
                     this.placename = response.data[0].name;
                     this.placelastname = response.data[0].lastname;
@@ -389,11 +385,9 @@
             },
 
             checkEmail() {
-                axios.get('api/checkEmail', {
-                    params: {
+                axios.post('api/checkEmail', {
                         'pubkey': pubkey,
                         'check': $('input[name=inpemail]').val(),
-                    }
                 }).then((response) => {
                     if (response.data == true) {
                         this.showErrEmail = true;
