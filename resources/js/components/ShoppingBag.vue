@@ -1,7 +1,7 @@
 <template>
-    <div class="container mx-auto py-2 d-block">
+    <div class="container py-2 d-block">
         <!--TODO cambiar ruta -->
-        <a href="http://localhost/FINAL-SOX/sox/public/bag"><i class="shopcarticon fas fa-shopping-basket fa-2x"/></a>
+        <a href="http://localhost/FINAL-SOX/sox/public/bag"><i class="shopcarticon fas fa-shopping-basket fa-lg"/></a>
         <span class="shopcartpill badge badge-danger">{{amount}}</span>
     </div>
 </template>

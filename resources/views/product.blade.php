@@ -33,9 +33,13 @@
 
         <product lbprodsize="@lang('messages.lbprodsize')" lbprodtot="@lang('messages.lbprodtot')"
                  lbprodbut="@lang('messages.lbprodbut')" art="{{ $art }}"
-                 @if(Auth::user()->adminRole())user="1"
-                 @else user="@auth{{ Auth::user()->idUser }}@endauth"
-                 @endif
+                 @auth
+                    @if(Auth::user()->adminRole())user="1"
+                    @else user="{{ Auth::user()->idUser }}"
+                    @endif
+                 @else
+                 user=""
+                 @endauth
                  lbprodmod="@lang('messages.lbprodmodal')" lbprodadded="@lang('messages.lbprodadded')"
         ></product>
     </div>

@@ -20406,8 +20406,8 @@ a[class*=linkpanad]:focus {
 
 .shopcartpill {
   position: relative;
-  left: -27.5px;
-  top: 5px;
+  left: -22px;
+  top: 8px;
 }
 
 .imgbag {
@@ -20573,6 +20573,14 @@ a[class*=linkpanad]:focus {
   background: -webkit-linear-gradient(#d3d3d3 0%, #d3d3d3 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.shopcarticon {
+  color: #F9F9F9;
+}
+
+.shopcarticon:hover {
+  color: #6c757d;
 }
 
 /*.panusernav {

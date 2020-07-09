@@ -23,73 +23,96 @@
 <div id="app">
 
     <!-- NAVBAR -->
-    <!-- TODO intentar navbar centrado al minimizar -->
     @section('navbar')
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-column flex-md-row" id="mainNav">
-            <div class="container">
-                <div class="navbar-nav">
-                    <div class="nav-item dropdown">
-                        <a class="navbar-brand nav-link" href="#" id="navbarDropdownMenuLink3"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-language fa-lg langho"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-                            <a class="dropdown-item"
-                               href="{{ route('language', ['url' => 'es']) }}">@lang('messages.lbspanish')</a>
-                            <a class="dropdown-item"
-                               href="{{ route('language', ['url' => 'en']) }}">@lang('messages.lbenglish')</a>
-                        </div>
-                    </div>
-                    <a class="navbar-brand js-scroll-trigger" href="{{ route('index') }}">SOX</a>
-                </div>
 
-                <ul class="navbar-nav ml-auto">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-                    @if (Route::has('login'))
-                        @auth
+                <a class="navbar-brand" href="{{ route('index') }}">
+                    <img src="{{ asset('img/lillogo.png') }}" width="30" height="30" class="d-inline-block align-top mr-1" alt="" loading="lazy">
+                    SOX
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSox" aria-controls="navbarSox" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    @lang('messages.lbwelcome'), {{ Auth::user()->name }}!
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                                    @if(Auth::user()->adminRole())
-                                        @if(url()->current() == route('admin'))
-                                            <a href="{{ url('/') }}"
-                                               class="dropdown-item">Index</a>
+                <div class="collapse navbar-collapse" id="navbarSox">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter2"
+                               href="#">@lang('messages.lbshipping')<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter"
+                               href="#">@lang('messages.lbcontact')</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        @if (Route::has('login'))
+                            @auth
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        @lang('messages.lbwelcome'), {{ Auth::user()->name }}!
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                        @if(Auth::user()->adminRole())
+                                            @if(url()->current() == route('admin'))
+                                                <a href="{{ url('/') }}"
+                                                   class="dropdown-item">Index</a>
+                                            @else
+                                                <a href="{{ url('/admin') }}"
+                                                   class="dropdown-item">@lang('messages.lbhome')</a>
+                                            @endif
                                         @else
-                                            <a href="{{ url('/admin') }}"
-                                               class="dropdown-item">@lang('messages.lbhome')</a>
+                                            @if(url()->current() == route('profile'))
+                                                <a href="{{ url('/') }}"
+                                                   class="dropdown-item">Index</a>
+                                            @else
+                                                <a href="{{ url('/home') }}"
+                                                   class="dropdown-item">@lang('messages.lbhome')</a>
+                                            @endif
                                         @endif
-                                    @else
-                                        @if(url()->current() == route('profile'))
-                                            <a href="{{ url('/') }}"
-                                               class="dropdown-item">Index</a>
-                                        @else
-                                            <a href="{{ url('/home') }}"
-                                               class="dropdown-item">@lang('messages.lbhome')</a>
-                                        @endif
+                                        <a class="dropdown-item igcol"
+                                           href="{{ route('logout') }}">@lang('messages.lblogout')</a>
+                                    </div>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="btn btn-outline color-sox"
+                                       href="{{ route('login') }}">@lang('messages.lblogin')</a>
+
+                                    @if (Route::has('register'))
+                                        <a class="btn btn-outline-light"
+                                           href="{{ route('register') }}">@lang('messages.lbregister')</a>
                                     @endif
-                                    <a class="dropdown-item igcol"
-                                       href="{{ route('logout') }}">@lang('messages.lblogout')</a>
-                                </div>
-                            </li>
-                        @else
-                            <li class="nav-item">
-                                <a class="btn btn-outline color-sox"
-                                   href="{{ route('login') }}">@lang('messages.lblogin')</a>
+                                </li>
+                            @endauth
+                        @endif
 
-                                @if (Route::has('register'))
-                                    <a class="btn btn-outline-light"
-                                       href="{{ route('register') }}">@lang('messages.lbregister')</a>
-                                @endif
-                            </li>
+                        @auth
+                            @if(!Auth::user()->adminRole())
+                                <li class="nav-item">
+                                    <shopping-bag iduser="{{Auth::user()->idUser}}"></shopping-bag>
+                                </li>
+                            @endif
                         @endauth
-                    @endif
-                </ul>
-            </div>
-        </nav>
+
+                            <div class="nav-item dropdown">
+                                <a class="navbar-brand nav-link ml-md-2" href="#" id="navbarDropdownMenuLink3"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-language fa-lg langho"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdownMenuLink3">
+                                    <a class="dropdown-item"
+                                       href="{{ route('language', ['url' => 'es']) }}">@lang('messages.lbspanish')</a>
+                                    <a class="dropdown-item"
+                                       href="{{ route('language', ['url' => 'en']) }}">@lang('messages.lbenglish')</a>
+                                </div>
+                            </div>
+                    </ul>
+                </div>
+            </nav>
 
         <!-- MODAL CONTACTO -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -137,14 +160,13 @@
 <!-- END NAVBAR -->
 
     @section('navbar2')
-        <nav class="navbar navbar-expand-lg navbar-dark bg-light flex-column flex-md-row secnav shadow-sm"
+        <!--<nav class="navbar navbar-expand-lg navbar-dark bg-light flex-column flex-md-row secnav shadow-sm"
              id="secNav">
             <div class="container">
                 <ul class="nav navbar-nav mx-auto searchbar py-2">
                     <searchbar searchtext="@lang('messages.lbsearch')"></searchbar>
-                </ul>
-                <!--TODO ordenar al minimizar -->
-                <ul class="navbar-nav ml-auto">
+                </ul>-->
+                <!--<ul class="navbar-nav ml-auto">
                     @auth
                         @if(!Auth::user()->adminRole())
                             <li class="nav-item">
@@ -173,7 +195,7 @@
                     </li>
                 </ul>
             </div>
-        </nav>
+        </nav>-->
     @show
 
 
