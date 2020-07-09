@@ -81,7 +81,6 @@
 
         mounted() {
             this.showProduct();
-            this.adminUser();
         },
 
         data() {
