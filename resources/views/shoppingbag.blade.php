@@ -16,18 +16,26 @@
 @endsection
 
 @section('content')
-    <div class="container prodtext mt-5 mb-3">
+
+    <div class="container">
+
         <div class="row">
-            <!--<div class="col-12 mt-5 small">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('index') }}">@lang('messages.lblilnav1')</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">@lang('messages.lbbagnav')</a>
-                    </li>
-                </ul>
-            </div>-->
+            <div class="col-12 mt-5">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('index') }}">@lang('messages.lblilnav1')</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">@lang('messages.lbbagnav')</li>
+                        <li class="ml-auto">
+                            <searchbar searchtext="@lang('messages.lbsearch')"></searchbar>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row prodtext mt-2 mb-3 px-5">
             <p class="p-2 p-md-0">@lang('messages.lbbagnav')</p>
         </div>
     </div>

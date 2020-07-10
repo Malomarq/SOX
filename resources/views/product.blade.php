@@ -19,24 +19,27 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-12 mt-5 small">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('index') }}">@lang('messages.lblilnav1')</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">@lang('messages.lblilnav2')</a>
-                    </li>
-                </ul>
+            <div class="col-12 mt-5">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('index') }}">@lang('messages.lblilnav1')</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">@lang('messages.lblilnav2')</li>
+                        <li class="ml-auto">
+                            <searchbar searchtext="@lang('messages.lbsearch')"></searchbar>
+                        </li>
+                    </ol>
+                </nav>
             </div>
         </div>
 
         <product lbprodsize="@lang('messages.lbprodsize')" lbprodtot="@lang('messages.lbprodtot')"
                  lbprodbut="@lang('messages.lbprodbut')" art="{{ $art }}"
                  @auth
-                    @if(Auth::user()->adminRole())user="1"
-                    @else user="{{ Auth::user()->idUser }}"
-                    @endif
+                 @if(Auth::user()->adminRole())user="1"
+                 @else user="{{ Auth::user()->idUser }}"
+                 @endif
                  @else
                  user=""
                  @endauth

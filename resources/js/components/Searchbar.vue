@@ -6,8 +6,7 @@
                     <i class="fas fa-search"></i>
                 </b-input-group-text>
             </template>
-            <b-form-input type="text" list="input-list" id="input-large" name="prod"
-                          size="lg" class="searchbar rounded-right" :placeholder="searchtext + '...'" @keydown="search"/>
+            <b-form-input size="sm" type="text" list="input-list" id="input-large" name="prod" class="searchbar rounded-right" :placeholder="searchtext + '...'" @keydown="search"/>
                 <datalist id="input-list">
                     <option name="opt" v-for="item in result" :key="item.idArt">
                         <a :href="'product?id='+item.idArt">{{item.name}}</a>

@@ -20,12 +20,13 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-12 mt-5 small">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">@lang('messages.lblilnav1')</a>
-                    </li>
-                </ul>
+            <div class="col-12 mt-5">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page">@lang('messages.lblilnav1')</li>
+                            <li class="ml-auto"><searchbar searchtext="@lang('messages.lbsearch')"></searchbar></li>
+                        </ol>
+                    </nav>
             </div>
         </div>
 
