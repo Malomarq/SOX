@@ -259,6 +259,7 @@ a[class*="linkpanad"]:focus {
 }
 
 #contentpanad {
+    //min-height: 100vh;
     min-height: 86vh;
     transition: all 0.5s;
 }
@@ -363,4 +364,8 @@ a[class*="linkpanad"]:focus {
 
 .breadcrumb {
     //background-color: red;
+}
+
+.mainfooter {
+    background-color: #E9ECEF;
 }

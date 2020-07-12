@@ -16,9 +16,31 @@
 @endsection
 
 @section('content')
-    <div class="container prodtext mt-5 mb-3">
+
+    <div class="container mt-5">
         <div class="row">
-            <p class="p-2 p-md-0">@lang('messages.lbbuyform')</p>
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('index') }}">@lang('messages.lblilnav1')</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('bag') }}">@lang('messages.lbbagnav')</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">@lang('messages.lbbuyform')</li>
+                        <li class="ml-auto">
+                            <searchbar searchtext="@lang('messages.lbsearch')"></searchbar>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container prodtext mt-5 mb-3">
+        <div class="row pl-5">
+            <p class="p-md-0">@lang('messages.lbbuyform')</p>
         </div>
     </div>
 

@@ -17,10 +17,10 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container mb-5">
 
         <div class="row">
-            <div class="col-12 mt-5">
+            <div class="col-12 mt-5 mb-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <div class="row prodtext mt-2 mb-3 px-5">
+        <div class="row prodtext mt-4 mb-3 px-5">
             <p class="p-2 p-md-0">@lang('messages.lbbagnav')</p>
         </div>
     </div>

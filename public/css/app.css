@@ -20472,6 +20472,10 @@ a[class*=linkpanad]:focus {
   cursor: pointer;
 }
 
+.mainfooter {
+  background-color: #E9ECEF;
+}
+
 .fbcol {
   color: #3b5998;
 }
@@ -20598,10 +20602,6 @@ a[class*=linkpanad]:focus {
 .mg-log {
   margin: 5%;
 }
-
-/*div.row.align-items-center.mg-reg {
-    padding: 2%;
-}*/
 
 .mg-reg {
   margin-top: 5%;

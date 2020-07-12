@@ -19,7 +19,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container my-5">
         <div class="row justify-content-center">
 
             <div class="col-md-12 mg-log">
@@ -64,7 +64,7 @@
                     </div>
 
 
-                    <div class="col-md-1"></div>
+                    <div class="col-md-1 mt-5 mt-md-0"></div>
 
                     <div class="col-md-6">
 
