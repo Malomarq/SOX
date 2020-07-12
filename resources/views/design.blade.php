@@ -8,22 +8,17 @@
     @parent
 @endsection
 
-@section('navbar2')
-    @parent
-@endsection
-
 @section('hero')
-    @parent
 @endsection
 
 @section('content')
-    <!--<div class="container my-5">
-        <div class="row">
+    <div class="container my-5 designer">
+        <!--<div class="row">
             <div class="col-12 text-center">
                 <designer></designer>
             </div>
-        </div>
-    </div>-->
+        </div>-->
+    </div>
 @endsection
 
 @section('footer')

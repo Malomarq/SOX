@@ -8,9 +8,6 @@
     @parent
 @endsection
 
-@section('navbar2')
-@endsection
-
 @section('hero')
 @endsection
 

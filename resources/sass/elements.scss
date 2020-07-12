@@ -277,6 +277,11 @@ a[class*="linkpanad"]:focus {
 
 .usersox {
     background: -webkit-linear-gradient(70deg, #fff810 30%, rgba(0, 0, 0, 0) 30%), -webkit-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
+    min-height: 80vh;
+}
+
+.designer {
+    min-height: 63vh;
 }
 
 .panuseracctit {
@@ -368,4 +373,8 @@ a[class*="linkpanad"]:focus {
 
 .mainfooter {
     background-color: #E9ECEF;
+}
+
+.jumbonav {
+    background: -webkit-linear-gradient(top, rgba(52,58,64,1) 0%, rgba(255,126,227,1) 100%);
 }
