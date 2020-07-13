@@ -65,8 +65,6 @@
                     </b-col>
                 </b-row>
 
-                <!--<page-number align="center" :data="products" @pagination-change-page="allproducts">
-                </page-number>-->
                 <pagination :pagination="products"
                             @paginate="allproducts()"
                             :offset="4">
@@ -81,7 +79,7 @@
              aria-labelledby="modalCenterTitleNew" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header bg-success text-light">
                         <h5 class="modal-title" id="modalLongTitleProductNew">Nuevo producto</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -90,18 +88,18 @@
                     <div class="modal-body">
 
                         <form id="newform" enctype="multipart/form-data" @submit.prevent="newproduct">
-                            <div class="form-group">
+                            <div class="form-group px-3">
                                 <label>Imagen</label>
                                 <input id="newimage" type="file" class="form-control-file" ref="newimage"
                                        @change="handleFileUpload" required>
                                 <small v-if="showErrnewimage" class="text-danger">{{errNewimage}}</small>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group px-3">
                                 <label>Nombre</label>
                                 <input v-model="newname" type="text" class="form-control" required>
                                 <small v-if="showErrnewname" class="text-danger">{{errNewname}}</small>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group px-3">
                                 <p>Precio</p>
                                 <div class="form-check form-check-inline">
                                     <input v-model="newprice" class="form-check-input" name="radios" type="radio"
@@ -126,7 +124,7 @@
                                 </div>
                                 <small v-if="showErrnewprice" class="text-danger">{{errNewprice}}</small>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group ml-3">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-success">Subir</button>
                             </div>
@@ -145,7 +143,7 @@
              aria-labelledby="exampleModalCenterTitleUpdate" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header bg-info text-light">
                         <h5 class="modal-title" id="exampleModalLongTitleUpdate">Actualizar producto</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -219,7 +217,7 @@
              aria-labelledby="exampleModalCenterTitleDelete" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header bg-danger text-light">
                         <h5 class="modal-title" id="exampleModalLongTitleDelete">Eliminar producto</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>

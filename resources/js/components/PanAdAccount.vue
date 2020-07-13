@@ -39,7 +39,7 @@
                  aria-labelledby="exampleModalCenterTitleNew" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header bg-success text-light">
                             <h5 class="modal-title" id="exampleModalLongTitleNew">Nuevo admin</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -48,28 +48,28 @@
                         <div class="modal-body">
 
                             <form id="createform" @submit.prevent="createAd">
-                                <div class="form-group">
+                                <div class="form-group px-3">
                                     <label>Nombre</label>
                                     <input v-model="mdcrename" type="text" class="form-control" required>
                                     <small v-if="showErrName" class="text-danger">{{errName}}</small>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group px-3">
                                     <label>Apellido</label>
                                     <input v-model="mdcrelastname" type="text" class="form-control" required>
                                     <small v-if="showErrLastname" class="text-danger">{{errLastname}}</small>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group px-3">
                                     <label>Email</label>
                                     <input name="inpemail" v-model="mdcreemail" type="email" class="form-control"
                                            aria-describedby="emailHelp" required @blur="checkEmail">
                                     <small v-if="showErrEmail" class="form-text text-danger">{{errEmail}}</small>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group px-3">
                                     <label>Contraseña</label>
                                     <eye-pass customclass="form-control" modelprop="mdcrepass"></eye-pass>
                                     <small v-if="showErrPass" class="text-danger">{{errPass}}</small>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group ml-3">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
@@ -88,7 +88,7 @@
                  aria-labelledby="exampleModalCenterTitleUpdate" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header bg-info text-light">
                             <h5 class="modal-title" id="exampleModalLongTitleUpdate">Actualizar admin</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -97,28 +97,28 @@
                         <div class="modal-body">
 
                             <form id="updateform" @submit.prevent="updateAd">
-                                <div class="form-group">
+                                <div class="form-group px-3">
                                     <label for="exampleInputText1">Nombre</label>
                                     <input type="text" v-model="mdupname" class="form-control" id="exampleInputText1"
                                            aria-describedby="emailHelp" :placeholder="placename">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group px-3">
                                     <label for="exampleInputText2">Apellido</label>
                                     <input type="text" v-model="mduplastname" class="form-control"
                                            id="exampleInputText2" aria-describedby="emailHelp"
                                            :placeholder="placelastname">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group px-3">
                                     <label>Contraseña</label>
                                     <eye-pass customclass="form-control" modelprop="mduppass"></eye-pass>
 
                                 </div>
-                                <div v-if="showErrorUpdate" class="form-group">
-                                    <small class="text-danger">Datos incorrectos. Recuerda que name y lastname deben
+                                <div v-if="showErrorUpdate" class="form-group px-3">
+                                    <small class="text-danger">Datos incorrectos. Recuerda que nombre y apellido deben
                                         tener como máximo 50 caracteres. La contraseña debe ser mínimo de 8</small>
                                 </div>
 
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-danger ml-3" data-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-primary">Actualizar</button>
                             </form>
 
@@ -135,7 +135,7 @@
                  aria-labelledby="exampleModalCenterTitleDelete" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header bg-danger text-light">
                             <h5 class="modal-title" id="exampleModalLongTitleDelete">Eliminar admin</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>

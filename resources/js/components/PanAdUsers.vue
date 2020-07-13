@@ -32,7 +32,6 @@
                 </div>
             </div>
 
-            <!--<div class="container-fluid mt-5">-->
             <div class="card mt-5">
                 <div class="card-header">
                     <span><i class="fas fa-table mr-2"></i><b>Cuentas de usuario actuales</b></span>
