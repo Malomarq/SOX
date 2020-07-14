@@ -12,15 +12,17 @@
 @endsection
 
 @section('content')
-    <!--<div class="container-fluid designer">
-        <div class="col-12 text-center">
-            <video id="videosox" controls>
-                <source src="{{asset('media/video.mp4')}}" type="video/mp4">
-            </video>
+    <div class="container designer my-5">
+        <div class="row align-items-center">
+            <div class="col-sm-6 col-12 my-4">
+                <video id="videosox" controls class="shadow">
+                    <source src="{{asset('media/video.mp4')}}" type="video/mp4">
+                </video>
+            </div>
+            <div class="col-sm-4 col-12 offset-sm-2 text-center text-sm-left">
+                <span class="prodtext"><i>@lang('messages.lbdesignerprox')</i></span>
+            </div>
         </div>
-    </div>-->
-    <div class="embed-responsive embed-responsive-16by9 designer">
-        <iframe class="embed-responsive-item" src="{{asset('media/video.mp4')}}" allowfullscreen></iframe>
     </div>
 @endsection
 

@@ -20485,6 +20485,11 @@ a[class*=linkpanad]:focus {
   background: -webkit-linear-gradient(top, #343a40 0%, #ff7ee3 100%);
 }
 
+#videosox {
+  width: 100% !important;
+  height: auto !important;
+}
+
 .fbcol {
   color: #3b5998;
 }
