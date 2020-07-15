@@ -26,12 +26,20 @@
         mounted() {
             var self = this;
             this.getItems();
+
+            /**
+             * Listens to "newItem" event. Everytime the component pick up this event, a bell sound is played
+             */
             EventBus.$on('newItem', function () {
                 itemAdded.play();
                 self.getItems();
             });
         },
         methods: {
+
+            /**
+             * Gets de amount of items in the shopping bag
+             */
             getItems(){
                 axios.post('api/getItems', {
                     'pubkey': pubkey,

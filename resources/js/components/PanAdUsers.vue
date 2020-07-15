@@ -89,7 +89,6 @@
         },
 
         mounted() {
-            console.log('users montado');
             this.listUsers();
 
         },
@@ -120,6 +119,9 @@
 
         methods: {
 
+            /**
+             * Gets all users's info
+             */
             listUsers() {
                 axios.post('api/listUsers', {
                         'pubkey': pubkey
@@ -128,6 +130,9 @@
                 })
             },
 
+            /**
+             * Gets a determinate user by an input's value, searching by name, lastname, email or id
+             */
             searchUs() {
                 axios.post('api/searchUser', {
                     'pubkey': pubkey,
@@ -138,14 +143,25 @@
                 })
             },
 
+            /**
+             * Bootstrap-Vue method, for selecting a determinate row
+             * @param items
+             */
             onRowSelected(items) {
                 this.selected = items;
             },
 
+            /**
+             * Bootstrap-Vue method, for clear selected row
+             */
             clearSelected() {
                 this.$refs.selectableTable.clearSelected()
             },
 
+            /**
+             * Deletes a determinate user and reloads the page
+             * @param data
+             */
             deleteUser(data) {
                 axios.post('api/deleteUser', {
                     'pubkey': pubkey,

@@ -34,10 +34,13 @@
         },
 
         mounted() {
-            console.log('searchbar montado');
         },
 
         methods: {
+
+            /**
+             * Gets a list of products by the input's value. This value must be a part of a name's product
+             */
             search() {
                 axios.post('api/search', {
                         'pubkey': pubkey,

@@ -93,6 +93,9 @@
 
         methods: {
 
+            /**
+             * Gets a determinate product's info
+             */
             showProduct() {
                 axios.post('api/product/' + this.art, {
                         'pubkey': pubkey,
@@ -101,6 +104,10 @@
                 });
             },
 
+            /**
+             * Adds to the shopping bag the product showed. User has to be registered and logged in to add
+             * "newItem" event is emitted and picked up in shoppingBag component
+             */
             addToCart() {
                 if (this.user === '') {
                     this.modaltext = this.lbprodmod;

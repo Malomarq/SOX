@@ -53,16 +53,10 @@
                     current_page: 1
                 },
 
-                /**
-                 * Pagination
-                 */
-
+                // Pagination
                 offset: 4,
 
-                /**
-                 * Filters
-                 */
-
+                // Filters
                 filter: 'default',
                 colorfilter: '-',
                 totalart: '',
@@ -74,6 +68,8 @@
 
             var self = this;
             EventBus.$on('colorfilter', function (data) {
+
+                // Listening to this event, the allproducts() method can get products filtered by the color chosen
                 self.colorfilter = data;
                 self.products.current_page = 1;
                 self.allproducts();
@@ -83,6 +79,11 @@
         },
 
         methods: {
+
+            /**
+             * Gets all products ordered by pagination (and filtered by color), and the total amount of them
+             * @param page
+             */
             allproducts(page) {
                 axios.post(`api/products?page=${this.products.current_page}`, {
                         'pubkey': pubkey,

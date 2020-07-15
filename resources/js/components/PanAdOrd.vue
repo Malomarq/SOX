@@ -103,7 +103,6 @@
                 </div>
             </div>
 
-            <!--<div class="container-fluid mt-5">-->
             <div class="card mt-5">
                 <div class="card-header">
                     <span><i class="fas fa-table mr-2"></i><b>Pedidos realizados</b></span>
@@ -189,6 +188,10 @@
         },
 
         methods: {
+
+            /**
+             * Gets info of all orders
+             */
             listOrders() {
                 axios.post('api/orders', {
                     'pubkey': pubkey,
@@ -204,6 +207,9 @@
                 })
             },
 
+            /**
+             * Gets a determinate order by an input's value, searching by id, user id, address, or date
+             */
             searchOrd() {
                 axios.post('api/searchOrder', {
                     'pubkey': pubkey,
@@ -214,15 +220,26 @@
                 })
             },
 
+            /**
+             * Bootstrap-Vue method, for selecting a determinate row
+             * @param items
+             */
             onRowSelected(items) {
                 this.show = false;
                 this.selected = items;
             },
 
+            /**
+             * Bootstrap-Vue method, for clear selected row
+             */
             clearSelected() {
                 this.$refs.selectableTable.clearSelected()
             },
 
+            /**
+             * Gets set's info of an order
+             * @param data
+             */
             getSets(data) {
                 axios.post('api/sets', {
                     'pubkey': pubkey,
@@ -234,6 +251,9 @@
                 })
             },
 
+            /**
+             * Formats a date
+             */
             moment(date) {
                 return moment(date).format('DD/MM/YYYY');
             },

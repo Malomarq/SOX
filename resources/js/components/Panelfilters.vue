@@ -43,9 +43,14 @@
           }
         },
         mounted() {
-            console.log('montado');
         },
         methods: {
+
+            /**
+             * Emits "colorfilter" event and the value of de color chosen,
+             * that will be picked up in Showproducts component
+             * @param data
+             */
             filter(data){
                 this.nofilter = true;
                 this.colorfilter = data;
