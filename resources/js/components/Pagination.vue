@@ -48,6 +48,11 @@
             }
         },
         methods : {
+
+            /**
+             * Changes the page of showed info
+             * @param page
+             */
             changePage(page) {
                 this.pagination.current_page = page;
                 this.$emit('paginate');

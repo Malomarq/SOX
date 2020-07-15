@@ -207,6 +207,10 @@
             this.getOrders();
         },
         methods: {
+
+            /**
+             * Gets a summary of shopping bag for the buy form
+             */
             getOrders() {
                 axios.post('api/getBag', {
                     'pubkey': pubkey,
@@ -221,6 +225,10 @@
                     }
                 });
             },
+
+            /**
+             * Ends the purchase process and redirects to index
+             */
             buybag() {
                 axios.post('api/buybag', {
                     'pubkey': pubkey,

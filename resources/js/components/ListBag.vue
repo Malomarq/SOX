@@ -121,6 +121,10 @@
             this.getItems();
         },
         methods: {
+
+            /**
+             * Gets info of the shopping bag (sets and price). It also shows if bag is empty
+             */
             getBag() {
                 axios.post('api/getBag', {
                     'pubkey': pubkey,
@@ -138,6 +142,9 @@
                 });
             },
 
+            /**
+             * Gets the number of items in the bag
+             */
             getItems() {
                 axios.post('api/getItems', {
                     'pubkey': pubkey,
@@ -148,6 +155,10 @@
                 });
             },
 
+            /**
+             * Updates amount of an item of the bag and reload the page
+             * @param data
+             */
             amountchange(data){
                 axios.post('api/amountchange', {
                     'pubkey': pubkey,
@@ -166,6 +177,11 @@
                 });
             },
 
+            /**
+             * Deletes an item (set) of the bag (order) and reloads the page
+             * @param idSet
+             * @param idOrder
+             */
             deleteSet(idSet, idOrder){
                 axios.post('api/deleteSet', {
                     'pubkey': pubkey,

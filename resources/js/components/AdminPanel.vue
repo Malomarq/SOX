@@ -123,6 +123,9 @@
 
             var self = this;
 
+            /**
+             * Expand the sidebar
+             */
             $(document).ready(function () {
                 $('#sidebarCollapse').on('click', function () {
                     $('#sidebar').toggleClass('active');
@@ -130,6 +133,9 @@
                 });
             });
 
+            /**
+             * Listen to "mail" event, showing "Notifications" section
+             */
             EventBus.$on('mail', function (data) {
                 self.comps.showHome = false;
                 self.comps.showCon = true;
@@ -137,12 +143,22 @@
         },
 
         methods: {
+
+            /**
+             * Flips the toggle icon of the sidebar
+             */
             flipclick() {
                 (this.pushed) ? this.pushed = false : this.pushed = true;
             },
 
+            /**
+             * Shows the section clicked
+             * @param comp
+             */
             showAndHide(comp) {
 
+                // Everytime a new section is clicked, "sectioncalled" event is emitted.
+                // It can be seen at PanAdHome component
                 EventBus.$emit('sectioncalled', comp);
 
                 var i;

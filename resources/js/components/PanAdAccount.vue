@@ -200,22 +200,13 @@
 
         props: {
 
-            /**
-             *  Component visible
-             */
-
+            // Component visible
             showed: false,
 
-            /**
-             *  Title
-             */
-
+            //Title
             title: '',
 
-            /**
-             *  Admin's id
-             */
-
+            //Admin's id
             idad: '',
         },
 
@@ -281,11 +272,18 @@
         mounted() {
             var self = this;
             this.listAdmins();
+
+            /**
+             * Listen to the event "inputval" and takes its value
+             */
             EventBus.$on('inputval', function(data){
+
+                // for new account's password
                 if(data[1] === 'mdcrepass') {
                     self.mdcrepass = data[0];
                 }
 
+                // for updating password of an existing admin's account
                 if(data[1] === 'mduppass') {
                     self.mduppass = data[0];
                 }
@@ -383,6 +381,10 @@
                     this.showErrorUpdate = true;
                 });
             },
+
+            /**
+             * Checks if the email input of a new account already exists
+             */
 
             checkEmail() {
                 axios.post('api/checkEmail', {

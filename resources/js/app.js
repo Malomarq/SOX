@@ -53,7 +53,6 @@ Vue.component('shopping-bag', require('./components/ShoppingBag.vue').default);
 Vue.component('bag', require('./components/ListBag.vue').default);
 Vue.component('buy', require('./components/BuyForm.vue').default);
 Vue.component('order-details', require('./components/OrderDetails.vue').default);
-Vue.component('designer', require('./components/Designer.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

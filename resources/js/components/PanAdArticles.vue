@@ -257,26 +257,17 @@
 
         props: {
 
-            /**
-             *  Component visible
-             */
-
+            // Component visible
             showed: false,
 
-            /**
-             *  Title
-             */
-
+            // Title
             title: '',
         },
 
         data() {
             return {
 
-                /**
-                 *  Products's info
-                 */
-
+                // Products's info
                 products: {
                     total: 0,
                     per_page: 2,
@@ -287,27 +278,16 @@
 
                 totalart: '',
 
-                /**
-                 * Pagination
-                 */
-
+                // Pagination
                 offset: 4,
 
-                /**
-                 * Filter
-                 */
-
+                // Filter
                 filter: 'default',
 
-                /**
-                 * Product's id
-                 */
-
+                // Product's id
                 idArt: null,
 
-                /**
-                 * New product's form
-                 */
+                // * New product's form
 
                 // inputs values
                 newimage: null,
@@ -322,9 +302,7 @@
                 showErrnewimage: false,
                 errNewimage: '',
 
-                /**
-                 * Update product's form
-                 */
+                // * Update product's form
 
                 // input values
                 upname: '',
@@ -408,7 +386,7 @@
             },
 
             /**
-             * Adds a new product to database
+             * Adds a new product to database and reloads the page. It also manages every validation error
              */
 
             newproduct() {
@@ -454,7 +432,7 @@
             },
 
             /**
-             * Deletes a product by its id
+             * Deletes a product by its id and reloads the page
              * @param data
              */
 
@@ -474,6 +452,9 @@
                 });
             },
 
+            /**
+             * Updates image, name or price of a product by id. It also manages every validation error
+             */
             updateProd() {
 
                 const data = new FormData();
@@ -519,6 +500,10 @@
 
             },
 
+            /**
+             * Sorts products by the filter choosen
+             * @param data
+             */
             sortby(data) {
                 this.filter = data;
                 this.allproducts();

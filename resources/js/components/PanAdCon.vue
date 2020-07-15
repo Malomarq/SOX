@@ -60,6 +60,10 @@
         },
 
         methods: {
+
+            /**
+             * Shows current date
+             */
             getDate(){
                 this.date = moment().format('DD/MM/YYYY');
             }

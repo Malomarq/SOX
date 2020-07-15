@@ -64,6 +64,10 @@
             this.getUsers();
 
             var self = this;
+
+            /**
+             * Listen to "sectioncalled" event, that refresh the graphics in order to be seen correctly
+             */
             EventBus.$on('sectioncalled', function (data) {
                 if(data === 'Home'){
                     self.getSales();
@@ -75,6 +79,9 @@
 
         methods: {
 
+            /**
+             * Gets sales per month and shows a graphic
+             */
             getSales() {
                 axios.post('api/getSales', {
                     'pubkey': pubkey,
@@ -134,6 +141,9 @@
                 });
             },
 
+            /**
+             * Gets how many accounts per month are active at the app and shows a graphic
+             */
             getUsers(){
                 axios.post('api/getUsers', {
                     'pubkey': pubkey,
@@ -192,6 +202,9 @@
                 });
             },
 
+            /**
+             * Emits the "mail" event if clicked
+             */
             getToNotif(){
                 EventBus.$emit('mail');
             }
