@@ -3,7 +3,7 @@
             <div class="container">
                 <div class="col-12 col-md-12">
                     <div class="row">
-                        <div class="col-12 col-md-4 my-2 my-md-5">
+                        <div class="col-12 col-md-4 my-5">
                             <div class="list-group" id="list-tab" role="tablist">
                                 <a class="list-group-item list-group-item-action active" id="list-account-list"
                                    data-toggle="list" href="#list-account" role="tab" aria-controls="account">
@@ -35,7 +35,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-12 col-md-8 my-2 my-md-5">
+                        <div class="col-12 col-md-8 my-5">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="tab-content" id="nav-tabContent">
@@ -237,8 +237,24 @@
                                     </div>
 
                                     <!--DESIGNS-->
-                                    <div class="tab-pane fade" id="list-designs" role="tabpanel"
-                                         aria-labelledby="list-designs-list">designs
+                                    <div class="tab-pane fade px-3" id="list-designs" role="tabpanel"
+                                         aria-labelledby="list-designs-list">
+                                        <div class="panuseracctit mt-3">{{designs}}</div>
+
+                                        <div class="row mt-4 mb-5 border bg-light mx-md-5 py-2">
+                                            <div class="col-12 col-md-12">
+                                                <div class="row pt-3">
+                                                    <div class="col-12 col-md-6 panadprodstxt text-center">
+                                                        <span class="pl-3">{{designtxt}}</span>
+                                                    </div>
+                                                    <div class="col-12 col-md-6 mt-2 mt-md-0 text-center">
+                                                        <span>
+                                                            <i class="far fa-check-square fa-2x deleteicon"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <!--DELETE-->
@@ -368,6 +384,9 @@
 
             // notif
             notiftxt1: '',
+
+            // designs
+            designtxt: '',
 
             // orders
             noorderstxt1: '',
