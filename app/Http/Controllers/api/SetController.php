@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 class SetController extends Controller
 {
 
+    /**
+     * Gets sets of an order
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function listSets(Request $req){
 
         $sets = DB::table('set')

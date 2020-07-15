@@ -14,6 +14,7 @@ import EventBus from './event-bus';
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)
+
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
@@ -35,7 +36,6 @@ window.EventBus = new Vue();
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('eye-pass', require('./components/EyePassLogin.vue').default);
-Vue.component('hero', require('./components/Hero.vue').default);
 Vue.component('searchbar', require('./components/Searchbar.vue').default);
 Vue.component('products-index', require('./components/Showproducts.vue').default);
 Vue.component('product', require('./components/Product.vue').default);
@@ -54,8 +54,6 @@ Vue.component('bag', require('./components/ListBag.vue').default);
 Vue.component('buy', require('./components/BuyForm.vue').default);
 Vue.component('order-details', require('./components/OrderDetails.vue').default);
 Vue.component('designer', require('./components/Designer.vue').default);
-
-//Vue.component('page-number', require('laravel-vue-pagination'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

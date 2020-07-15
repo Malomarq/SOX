@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+    /**
+     * Gets orders and their info
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function listOrders()
     {
         $orders = DB::table('order')
@@ -23,6 +27,12 @@ class OrderController extends Controller
 
         return response()->json($orders, 200);
     }
+
+    /**
+     * Finds orders and their info by user id
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
 
     public function findOrders(Request $req){
 
@@ -42,6 +52,10 @@ class OrderController extends Controller
         return response()->json($orders, 200);
     }
 
+    /**
+     * Gets sales per month
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getSales(){
 
         $sales = DB::table('order')

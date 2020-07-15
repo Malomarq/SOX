@@ -12,12 +12,21 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    /**
+     * Gets info of all users
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function listAll()
     {
 
         return response()->json(User::select('idUser', 'name', 'lastname', 'email')->get());
     }
 
+    /**
+     * Finds an user by id
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function findUser(Request $req)
     {
 
@@ -25,6 +34,11 @@ class UserController extends Controller
             ->where('idUser', $req->iduser)->get());
     }
 
+    /**
+     * Updates user's password checking current and confirmation password
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function updatePass(Request $req)
     {
 
@@ -54,6 +68,11 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Updates user's name and lastname
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function updateInfo(Request $req)
     {
 
@@ -77,6 +96,11 @@ class UserController extends Controller
         return response()->json('User updated', 200);
     }
 
+    /**
+     * Checks input password and current password (in order to complete other actions)
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function checkPass(Request $req){
 
         $validate = Validator::make($req->all(),
@@ -98,6 +122,11 @@ class UserController extends Controller
 
     }
 
+    /**
+     * Deletes an user by id
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function deleteUser(Request $req){
 
         $user = User::find($req->idUser);
@@ -107,6 +136,10 @@ class UserController extends Controller
 
     }
 
+    /**
+     * Gets how many accounts per month are active at the app
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getUsers(){
 
         $users = DB::table('user')

@@ -17,12 +17,14 @@
 
         <div class="row">
             <div class="col-12 mt-5 mb-4">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page">@lang('messages.lblilnav1')</li>
-                            <li class="ml-auto"><searchbar searchtext="@lang('messages.lbsearch')"></searchbar></li>
-                        </ol>
-                    </nav>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">@lang('messages.lblilnav1')</li>
+                        <li class="ml-auto">
+                            <searchbar searchtext="@lang('messages.lbsearch')"></searchbar>
+                        </li>
+                    </ol>
+                </nav>
             </div>
         </div>
 

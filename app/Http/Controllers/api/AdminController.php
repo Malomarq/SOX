@@ -12,11 +12,20 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
+    /**
+     * Gets info about all admins
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function listAdmins(){
 
         return response()->json(User::select('name', 'lastname', 'email')->where('role', 'like', 1)->get());
     }
 
+    /**
+     * Deletes an admin by id
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function deleteAdmin(Request $req){
 
         $user = User::where('idUser', 'like', $req->idad);
@@ -26,11 +35,21 @@ class AdminController extends Controller
         return response()->json('Ok', 200);
     }
 
+    /**
+     * Gets an admin by id
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function findAdmin(Request $req){
 
         return response()->json(User::where('idUser', 'like', $req->idad)->get());
     }
 
+    /**
+     * Updates name, lastname or password of an admin
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function updateAdmin(Request $req){
 
         $validate = Validator::make($req->all(),
@@ -60,6 +79,11 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Checks if a email exists
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function checkEmail(Request $req){
 
         $val = $req->input('check');
@@ -68,6 +92,11 @@ class AdminController extends Controller
 
     }
 
+    /**
+     * Creates an admin account
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function createAdmin(Request $req){
 
         $req->validate(['name' => 'string|max:50|filled']);
@@ -92,6 +121,11 @@ class AdminController extends Controller
         return response()->json('Ok', 200);
     }
 
+    /**
+     * Finds users by id, name, lastname or email
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function searchUser(Request $req){
 
         $val = $req->search;
@@ -102,6 +136,11 @@ class AdminController extends Controller
         return response()->json(['search' => $user],200);
     }
 
+    /**
+     * Finds orders and their info by id, user id, address, or date
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function searchOrder(Request $req){
 
         $val = $req->search;

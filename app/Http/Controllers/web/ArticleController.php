@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class ArticleController extends Controller
 {
     /**
-     * Render index view
+     * Renders index view
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
@@ -18,13 +18,17 @@ class ArticleController extends Controller
         return view('index');
     }
 
+    /**
+     * Renders designer view
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function design() {
 
         return view('design');
     }
 
     /**
-     * Render product view with a particular article data by its id
+     * Renders product view with a particular article data by its id
      * @param Request $req
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

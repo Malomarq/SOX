@@ -169,7 +169,6 @@
                 <img src="{{ asset('img/logo2.svg') }}" class="logo">
             </div>
         </div>
-        <!--<hero></hero>-->
     @show
 
 <!--  END HERO -->
@@ -180,21 +179,21 @@
 
     @section('footer')
 
-            <div class="row mainfooter py-4 no-gutters px-sm-2">
-                <div class="col-sm-6 col-12 text-center text-sm-left">
-                    ®2020&nbsp;<strong>SOX S.A.</strong> @lang('messages.lbfooter')
-                </div>
-                <div class="col-sm-6 col-12 mt-sm-0 mt-4">
-                    <div class="row no-gutters justify-content-center justify-content-sm-end">
-                        <div class="col-1 text-center offset-sm-8 ml-2"><i
-                                class="fab fa-facebook fa-2x mg-icons fbcol"></i>
-                        </div>
-                        <div class="col-1 text-center ml-2"><i class="fab fa-instagram fa-2x mg-icons igcol"></i></div>
-                        <div class="col-1 text-center ml-2"><i class="fab fa-twitter fa-2x mg-icons twcol"></i></div>
-                        <div class="col-1 text-center ml-2"><i class="fab fa-whatsapp fa-2x mg-icons wacol"></i></div>
+        <div class="row mainfooter py-4 no-gutters px-sm-2">
+            <div class="col-sm-6 col-12 text-center text-sm-left">
+                ®2020&nbsp;<strong>SOX S.A.</strong> @lang('messages.lbfooter')
+            </div>
+            <div class="col-sm-6 col-12 mt-sm-0 mt-4">
+                <div class="row no-gutters justify-content-center justify-content-sm-end">
+                    <div class="col-1 text-center offset-sm-8 ml-2"><i
+                            class="fab fa-facebook fa-2x mg-icons fbcol"></i>
                     </div>
+                    <div class="col-1 text-center ml-2"><i class="fab fa-instagram fa-2x mg-icons igcol"></i></div>
+                    <div class="col-1 text-center ml-2"><i class="fab fa-twitter fa-2x mg-icons twcol"></i></div>
+                    <div class="col-1 text-center ml-2"><i class="fab fa-whatsapp fa-2x mg-icons wacol"></i></div>
                 </div>
             </div>
+        </div>
 
 @show
 

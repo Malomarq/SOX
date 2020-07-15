@@ -9,9 +9,13 @@ use Illuminate\Support\Facades\Validator;
 
 class ArticleController extends Controller
 {
+    /**
+     * Gets products ordered by name, price or id
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function listAll(Request $req)
     {
-        //var_dump($req->colorfilter);
 
         if ($req->order == 'name') {
             return response()->json(Article::orderBy('name', 'asc')->paginate(15));
@@ -27,12 +31,22 @@ class ArticleController extends Controller
 
     }
 
+    /**
+     * Gets a product by id
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function list($id)
     {
 
         return response()->json(Article::find($id));
     }
 
+    /**
+     * Searches products by name
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function search(Request $req)
     {
 
@@ -42,6 +56,11 @@ class ArticleController extends Controller
 
     }
 
+    /**
+     * Creates a new product
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function upload(Request $req)
     {
 
@@ -65,6 +84,11 @@ class ArticleController extends Controller
 
     }
 
+    /**
+     * Deletes a product
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function delete(Request $req)
     {
 
@@ -75,6 +99,11 @@ class ArticleController extends Controller
         return response()->json('Ok', 200);
     }
 
+    /**
+     * Updates name, image or price of a product
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function update(Request $req)
     {
         $req->validate(

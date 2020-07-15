@@ -43,8 +43,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // TODO refund
-
     /**
      * Checks if user has admin role
      * @return bool
@@ -62,7 +60,10 @@ class User extends Authenticatable
         return $this->role == $role;
     }
 
-    // END
+    /**
+     * Gets order of an user
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
 
     public function getOrders(){
 

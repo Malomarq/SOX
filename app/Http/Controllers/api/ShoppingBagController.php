@@ -15,22 +15,24 @@ use Illuminate\Support\Facades\Validator;
 
 class ShoppingBagController extends Controller
 {
+    /**
+     * Asociates a set to a determinate order, adding items to the shopping bag
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function add(Request $req)
     {
 
         $prod = Article::find($req->idart);
         $user = User::find($req->iduser);
 
-        //$price = $prod->price * $req->amount;
-
-        //if (empty($prod) || empty($user) || $req->amount < 1 || $req->amount > 5) {
         if (empty($prod) || empty($user)) {
             return response()->json('Product unavailable', 422);
         }
 
         if (Order::where('idUser', $user->idUser)->where('open', 1)->exists()) {
 
-            // si ese usuario tiene pedido abierto -> sumar lote al pedido
+            // if the user has an opened order -> adds set to the order
 
             $idOrder = Order::select('idOrder')->where('idUser', $user->idUser)->where('open', 1)->pluck('idOrder');
 
@@ -38,8 +40,6 @@ class ShoppingBagController extends Controller
                 [
                     'idOrder' => $idOrder[0],
                     'idArt' => $prod->idArt,
-                    /*'amount' => $req->amount,
-                    'setPrice' => $price,*/
                     'amount' => 1,
                     'setPrice' => $prod->price,
                 ]);
@@ -48,7 +48,7 @@ class ShoppingBagController extends Controller
 
         } else {
 
-            // si ese usuario no tiene pedido abierto -> crear pedido
+            // if the user has not an opened order -> creates an order and adds set to it
 
             Order::create(
                 [
@@ -65,8 +65,6 @@ class ShoppingBagController extends Controller
                 [
                     'idOrder' => $idOrder[0],
                     'idArt' => $prod->idArt,
-                    /*'amount' => $req->amount,
-                    'setPrice' => $price,*/
                     'amount' => 1,
                     'setPrice' => $prod->price,
                 ]);
@@ -75,6 +73,11 @@ class ShoppingBagController extends Controller
         }
     }
 
+    /**
+     * Counts how many items are in the shopping bag
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getItems(Request $req)
     {
         $tot = DB::table('set')
@@ -88,6 +91,12 @@ class ShoppingBagController extends Controller
         return response()->json($tot, 200);
     }
 
+    /**
+     * Gets the content of the shopping bag. If shopping bag is full, it gets its items and the total price.
+     * If shopping bag has no items it returns "empty"
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getBag(Request $req)
     {
 
@@ -97,7 +106,6 @@ class ShoppingBagController extends Controller
                 ->join('order', 'set.idOrder', '=', 'order.idOrder')
                 ->join('user', 'user.idUser', '=', 'order.idUser')
                 ->join('article', 'article.idArt', '=', 'set.idArt')
-                //->select('article.idArt','article.image', 'article.name', 'article.price', 'set.amount')
                 ->select('article.idArt', 'article.image', 'article.name', 'article.price', 'set.idSet',
                     'set.amount', 'set.idOrder')
                 ->where('user.idUser', $req->iduser)
@@ -114,6 +122,12 @@ class ShoppingBagController extends Controller
         }
 
     }
+
+    /**
+     * Adds the amounts of items and the price to the set
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
 
     public function amountchange(Request $req)
     {
@@ -139,6 +153,11 @@ class ShoppingBagController extends Controller
 
     }
 
+    /**
+     * Deletes a set of an opened order
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function deleteSet(Request $req){
 
         $set = Set::find($req->idSet);
@@ -149,10 +168,10 @@ class ShoppingBagController extends Controller
             $rows = count($query);
 
             if($rows > 1){
-                // el order tiene más de 1 set -> se elimina ese set
+                // if order has more than 1 set -> deletes the set
                 $set->delete();
             } else {
-                // el order sólo tiene 1 set -> se elimina el order
+                // if order has only 1 set -> deletes the order
                 $set->delete();
                 $order = Order::find($req->idOrder);
                 $order->delete();
@@ -165,6 +184,11 @@ class ShoppingBagController extends Controller
         }
     }
 
+    /**
+     * Closes an opened order, "buying" the shopping bag and ending the purchase process
+     * @param Request $req
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function buybag(Request $req){
 
         $order = Order::where('idUser', $req->iduser)->where('open', 1)->first();

@@ -12,11 +12,11 @@
 @endsection
 
 @section('content')
-<admin-panel idad="{{Auth::user()->idUser}}" account="@lang('messages.lbpanadacc')"
-             users="@lang('messages.lbpanadusers')" articles="@lang('messages.lbpanadprods')"
-             orders="@lang('messages.lbpanadord')" newadmin="@lang('messages.lbpanadnewad')"
-             contact="@lang('messages.lbpanadcont')">
-</admin-panel>
+    <admin-panel idad="{{Auth::user()->idUser}}" account="@lang('messages.lbpanadacc')"
+                 users="@lang('messages.lbpanadusers')" articles="@lang('messages.lbpanadprods')"
+                 orders="@lang('messages.lbpanadord')" newadmin="@lang('messages.lbpanadnewad')"
+                 contact="@lang('messages.lbpanadcont')">
+    </admin-panel>
 @endsection
 
 @section('footer')
