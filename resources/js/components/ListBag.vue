@@ -71,7 +71,7 @@
                         </div>
                         <div class="row px-5 mt-4">
                             <!--TODO cambiar ruta -->
-                            <a href="http://localhost/FINAL-SOX/sox/public/buy" class="btn btn-dark btn-lg btn-block">{{butbuytxt}}</a>
+                            <a href="http://localhost/sox/public/buy" class="btn btn-dark btn-lg btn-block">{{butbuytxt}}</a>
                         </div>
                     </div>
                 </div>

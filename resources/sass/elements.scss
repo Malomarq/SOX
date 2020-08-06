@@ -373,6 +373,11 @@ a[class*="linkpanad"]:focus {
 
 .mainfooter {
     background-color: #E9ECEF;
+    //top: 100vh;
+}
+
+.logincontainer {
+    min-height: 70vh;
 }
 
 .jumbonav {

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- TODO cambiar ruta en despliegue -->
-    <base href="http://localhost/FINAL-SOX/sox/public/"/>
+    <base href="http://localhost/sox/public/"/>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

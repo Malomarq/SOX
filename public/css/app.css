@@ -20481,6 +20481,10 @@ a[class*=linkpanad]:focus {
   background-color: #E9ECEF;
 }
 
+.logincontainer {
+  min-height: 70vh;
+}
+
 .jumbonav {
   background: -webkit-linear-gradient(top, #343a40 0%, #ff7ee3 100%);
 }
