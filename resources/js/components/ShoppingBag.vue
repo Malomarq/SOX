@@ -1,6 +1,5 @@
 <template>
     <div class="py-2 d-block">
-        <!--TODO cambiar ruta-->
         <a href="http://localhost/sox/public/bag"><i class="shopcarticon fas fa-shopping-basket fa-lg"/></a>
         <span class="shopcartpill badge badge-danger">{{amount}}</span>
     </div>

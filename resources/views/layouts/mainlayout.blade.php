@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- TODO cambiar ruta en despliegue -->
     <base href="http://localhost/sox/public/"/>
 
     <!-- CSRF Token -->

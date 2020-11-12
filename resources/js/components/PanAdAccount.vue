@@ -325,7 +325,6 @@
                     'idad': this.idadmin,
 
                 }).then((response) => {
-                    // TODO modificar url final
                     location.href = 'http://localhost/sox/public/';
 
                 }).catch(error => {
@@ -371,7 +370,6 @@
                 }).then((response) => {
 
                     if (response.data['pass'] == 'filled') {
-                        // TODO modificar url final
                         location.href = 'http://localhost/sox/public/logout';
                     } else {
                         location.reload();

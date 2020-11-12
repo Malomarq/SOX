@@ -22,9 +22,7 @@
             <div class="col-sm-5 col-12 offset-sm-1 text-center text-sm-left">
                 <div class="card border-0">
                     <img src="{{asset('img/comic2.png')}}" width="100%">
-
-                    <!-- TODO incluir enlace en la memoria
-                    <a href="https://www.freepik.es/fotos-vectores-gratis/vintage">Vector de Vintage creado por 0melapics - www.freepik.es</a>-->
+                    <!--<a href="https://www.freepik.es/fotos-vectores-gratis/vintage">Vector de Vintage creado por 0melapics - www.freepik.es</a>-->
                 </div>
 
             </div>

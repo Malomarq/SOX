@@ -123,7 +123,6 @@
                     }).then(function() {
                         EventBus.$emit('newItem');
                     }).catch((error) => {
-                        //TODO modificar url
                         location.href = 'http://localhost/sox/public/logout';
                     });
                 }

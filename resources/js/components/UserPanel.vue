@@ -500,7 +500,6 @@
                     'newpass': this.vmnewpass,
                     'confpass': this.vmconfpass
                 }).then((response) => {
-                    // TODO modificar url final
                     location.href = 'http://localhost/sox/public/logout';
                 }).catch((error) => {
                     if (error.response.data['error'] === 'validate') {
@@ -575,7 +574,6 @@
                     'pubkey': pubkey,
                     'idUser': this.iduser,
                 }).then((response) => {
-                    // TODO modificar url final
                     location.href = 'http://localhost/sox/public/logout';
                 });
             },

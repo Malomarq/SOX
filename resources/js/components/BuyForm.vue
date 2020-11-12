@@ -236,7 +236,6 @@
                     'iduser': this.iduser,
                     'address': this.address,
                 }).then((response) => {
-                    // TODO modificar url final
                     location.href = 'http://localhost/sox/public';
                 });
             }

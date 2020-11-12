@@ -4,7 +4,7 @@
             <ul class="nav">
                 <li class="nav-item"><span class="littleprice">{{header}}</span></li>
                 <li v-if="nofilter" class="nav-item ml-auto">
-                    <!--TODO cambiar ruta final -->
+                    
                     <a href="http://localhost/sox/public/" class="badge badge-info">
                         <span><i class="far fa-times-circle mr-2 p-1 text-white"></i></span>Quitar filtro
                     </a>
