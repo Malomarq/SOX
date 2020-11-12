@@ -68,7 +68,7 @@
 
         found.click(function () {
             // TODO: cambiar url final
-            window.location = "http://localhost/FINAL-SOX/sox/public/";
+            window.location = "http://localhost/sox/public/";
         });
 
         found.node.id = "found404";
