@@ -9,3 +9,6 @@ npm-debug.log
 yarn-error.log
 /.idea
 .env
+/.platform
+SoxAppKey.ppk
+sox.zip
