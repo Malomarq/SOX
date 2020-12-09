@@ -38,7 +38,6 @@ class ArticleController extends Controller
      */
     public function list($id)
     {
-
         return response()->json(Article::find($id));
     }
 
@@ -51,7 +50,7 @@ class ArticleController extends Controller
     {
 
         $val = $req->input('search');
-
+        
         return response()->json(Article::where('name', 'like', '%' . $val . '%')->get());
 
     }

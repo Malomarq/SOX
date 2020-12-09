@@ -19,7 +19,7 @@
                 </li>
             </ul>
 
-            <div v-for="item in selected">
+            <div v-for="item in selected" :key="item">
                 <div class="card mt-5 border-danger bg-light">
                     <div class="card-body">
                         <p class="card-title prodtext3 text-center">Eliminar usuario</p>
@@ -74,7 +74,6 @@
 <script>
 
     const axios = require('axios').default;
-    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
 
@@ -123,9 +122,7 @@
              * Gets all users's info
              */
             listUsers() {
-                axios.post('api/listUsers', {
-                        'pubkey': pubkey
-                }).then((response) => {
+                axios.post('api/listUsers').then((response) => {
                     this.items = response.data;
                 })
             },
@@ -135,7 +132,6 @@
              */
             searchUs() {
                 axios.post('api/searchUser', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'search': this.searchuser
                 }).then((response) => {
@@ -164,7 +160,6 @@
              */
             deleteUser(data) {
                 axios.post('api/deleteUser', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'idUser': data,
                 }).then((response) => {

@@ -156,7 +156,13 @@
 
                     let i = null;
                     for (i = 0; i < this.users.length; i++) {
-                        (this.users[i].month >= 10) ? this.labelsU.push(this.users[i].month) : this.labelsU.push('0'+this.users[i].month);
+                        if(this.users[i].month >= 10){
+                            this.labelsU.push(this.users[i].month)
+                        } else if(this.users[i].month == null) {
+                            continue
+                        } else {
+                            this.labelsU.push('0'+this.users[i].month);
+                        }
                         this.valuesU.push(this.users[i].values);
                     }
 

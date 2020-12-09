@@ -19,12 +19,12 @@
                 </li>
             </ul>
 
-            <div v-for="item in selected" class="pl-3">
+            <div v-for="item in selected" class="pl-3" :key="item">
                 <button class="btn btn-dark mt-5" @click="getSets(item.idOrder)">Ver detalles</button>
             </div>
 
             <div v-if="show" class="px-md-5">
-                <div class="card mt-5" v-for="item in selected">
+                <div class="card mt-5" v-for="item in selected" :key="item">
                     <div class="card-header">
                         <div class="nav flex-column flex-sm-row">
                             <div class="nav-item flex-sm-fill">
@@ -75,7 +75,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12 col-md-8">
-                                <div class="row" v-for="item in selectedinfo">
+                                <div class="row" v-for="item in selectedinfo" :key="item">
                                     <div class="col-12 col-md-5 py-3 text-center">
                                         <a v-bind:href="'product?id=' + item.idArt">
                                             <b-img :src="'storage/articles/' + item.image" fluid class="imgord"/>
@@ -146,7 +146,6 @@
 
     var moment = require('moment');
     const axios = require('axios').default;
-    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
 
@@ -194,7 +193,6 @@
              */
             listOrders() {
                 axios.post('api/orders', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                 }).then((response) => {
                     this.items = response.data;
@@ -212,7 +210,6 @@
              */
             searchOrd() {
                 axios.post('api/searchOrder', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'search': this.searchorder
                 }).then((response) => {
@@ -242,7 +239,6 @@
              */
             getSets(data) {
                 axios.post('api/sets', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'idOrder': data,
                 }).then((response) => {

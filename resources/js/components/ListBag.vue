@@ -94,7 +94,6 @@
     import EventBus from "../event-bus";
 
     const axios = require('axios').default;
-    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
         props: {
@@ -126,7 +125,6 @@
              */
             getBag() {
                 axios.post('api/getBag', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'iduser': this.iduser,
                 }).then((response) => {
@@ -146,7 +144,6 @@
              */
             getItems() {
                 axios.post('api/getItems', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'iduser': this.iduser,
                 }).then((response) => {
@@ -160,7 +157,6 @@
              */
             amountchange(data){
                 axios.post('api/amountchange', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'idSet': data,
                     'amount': this.amselected,
@@ -182,7 +178,6 @@
              */
             deleteSet(idSet, idOrder){
                 axios.post('api/deleteSet', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'idSet': idSet,
                     'idOrder': idOrder,

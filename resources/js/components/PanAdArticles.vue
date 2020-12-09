@@ -248,7 +248,6 @@
     import Pagination from './Pagination.vue';
 
     const axios = require('axios').default;
-    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
         components: {
@@ -332,7 +331,6 @@
 
             allproducts() {
                 axios.post(`api/products?page=${this.products.current_page}`, {
-                        'pubkey': pubkey,
                         'order': this.filter
                 })
                     .then((response) => {
@@ -359,9 +357,7 @@
             productUp(data) {
                 this.idArt = data;
 
-                axios.post('api/product/' + this.idArt, {
-                        'pubkey': pubkey
-                }).then((response) => {
+                axios.post('api/product/' + this.idArt).then((response) => {
                     this.placeupimage = response.data.image;
                     this.placeupname = response.data.name;
                     this.placeupprice = response.data.price;
@@ -394,7 +390,6 @@
                 const data = new FormData();
 
                 data.append('_token', this.$csrfToken);
-                data.append('pubkey', pubkey);
                 data.append('newimage', this.newimage);
                 data.append('newname', this.newname);
                 data.append('newprice', this.newprice);
@@ -440,7 +435,6 @@
 
                 axios.post('api/delete', {
                     '_token': this.$csrfToken,
-                    'pubkey': pubkey,
                     'idprod': this.idArt,
                 }).then((response) => {
                     if (response.data === "Ok") {
@@ -460,7 +454,6 @@
                 const data = new FormData();
 
                 data.append('_token', this.$csrfToken);
-                data.append('pubkey', pubkey);
                 data.append('idArt', this.idArt);
                 data.append('upimage', this.upimage);
                 data.append('upname', this.upname);

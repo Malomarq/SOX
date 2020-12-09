@@ -191,7 +191,6 @@
     import EventBus from "../event-bus";
 
     const axios = require('axios').default;
-    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
         components: {
@@ -297,9 +296,7 @@
              */
 
             listAdmins() {
-                axios.post('api/listAdmins', {
-                        'pubkey': pubkey
-                }).then((response) => {
+                axios.post('api/listAdmins').then((response) => {
                     this.itemsAd = response.data;
                 })
             },
@@ -321,7 +318,6 @@
 
                 axios.post('api/deleteAdmin', {
                     '_token': this.$csrfToken,
-                    'pubkey': pubkey,
                     'idad': this.idadmin,
 
                 }).then((response) => {
@@ -340,7 +336,6 @@
             showUpdate() {
 
                 axios.post('api/findAdmin', {
-                        'pubkey': pubkey,
                         'idad': this.idadmin,
                 }).then((response) => {
                     this.placename = response.data[0].name;
@@ -362,7 +357,6 @@
 
                 axios.post('api/updateAdmin', {
                     '_token': this.$csrfToken,
-                    'pubkey': pubkey,
                     'idad': this.idadmin,
                     'name': this.mdupname,
                     'lastname': this.mduplastname,
@@ -386,7 +380,6 @@
 
             checkEmail() {
                 axios.post('api/checkEmail', {
-                        'pubkey': pubkey,
                         'check': $('input[name=inpemail]').val(),
                 }).then((response) => {
                     if (response.data == true) {
@@ -409,7 +402,6 @@
 
                 axios.post('api/createAdmin', {
                     '_token': this.$csrfToken,
-                    'pubkey': pubkey,
                     'name': this.mdcrename,
                     'lastname': this.mdcrelastname,
                     'email': this.mdcreemail,

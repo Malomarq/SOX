@@ -18,7 +18,6 @@
 <script>
 
     const axios = require('axios').default;
-    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
 
@@ -43,7 +42,6 @@
              */
             search() {
                 axios.post('api/search', {
-                        'pubkey': pubkey,
                         'search': $('input[name=search]').val(),
                 }).then((response) => {
                     this.result = response.data;

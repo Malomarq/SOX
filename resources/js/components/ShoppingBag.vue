@@ -9,7 +9,6 @@
 
     import EventBus from "../event-bus";
     const axios = require('axios').default;
-    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
     var itemAdded = new Audio('media/bell.wav');
 
     export default {
@@ -41,7 +40,6 @@
              */
             getItems(){
                 axios.post('api/getItems', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'iduser': this.iduser,
                 }).then((response)=> {

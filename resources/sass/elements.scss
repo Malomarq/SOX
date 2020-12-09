@@ -367,10 +367,6 @@ a[class*="linkpanad"]:focus {
     cursor: pointer;
 }
 
-.breadcrumb {
-    //background-color: red;
-}
-
 .mainfooter {
     background-color: #E9ECEF;
     //top: 100vh;
@@ -387,4 +383,8 @@ a[class*="linkpanad"]:focus {
 #videosox {
     width: 100% !important;
     height: auto !important;
+}
+
+.form-control-file {
+    overflow: hidden;
 }

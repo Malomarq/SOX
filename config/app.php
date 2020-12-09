@@ -2,25 +2,6 @@
 
 return [
 
-
-
-    /*
-     * API authentication keys.
-     *
-     * - token, a string made of a sha256 encription of pubkey+privkey.
-     * - pubkey, used in front components. Is the key sent to middleware for API
-     *   authentication.
-     * - privkey and token, used in middleware for API authentication. Privkey is
-     *   converted to a string with pubkey to sha256. It has to be equal to token
-     *   key to continue to the endpoint.
-     */
-
-    'pubkey' => '6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a',
-    'privkey' => '7c73c74579cd91db623afd64b45c6e657cf4132ae946db31002f766b4539d6c6',
-    'token' => 'a2466e2fb81feec02e3a5b28346fc2c1b5af8527245b06a28c2f2e9609799918',
-
-
-
     /*
     |--------------------------------------------------------------------------
     | Application Name

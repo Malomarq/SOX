@@ -6,6 +6,7 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class ArticleController extends Controller
 {
@@ -36,7 +37,11 @@ class ArticleController extends Controller
 
         if($req->has('prod')){
             $id = DB::table('article')->where('name', 'like', $req->prod)->value('idArt');
-            return view('product', ['art' => $id]);
+            if($id != null){
+                return view('product', ['art' => $id]);
+            } else {
+                return redirect()->route('index');
+            }
         }
 
         return view('product', ['art' => $req->id]);

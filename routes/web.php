@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,6 @@ Route::get('buy', 'UserController@buy')->middleware(['auth', 'role:0'])->name('b
 
 Route::get('admin', 'AdminController@index')->middleware(['auth', 'role:1'])->name('admin');
 Route::get('home', 'UserController@index')->middleware(['auth', 'role:0'])->name('profile');
-
 
 Auth::routes();
 

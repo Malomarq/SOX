@@ -341,7 +341,6 @@
 
     var moment = require('moment');
     const axios = require('axios').default;
-    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
         components: {
@@ -479,7 +478,6 @@
              */
             finduser() {
                 axios.post('api/findUser', {
-                        'pubkey': pubkey,
                         'iduser': this.iduser
                 }).then((response) => {
                     this.user[0].name = response.data[0].name;
@@ -494,7 +492,6 @@
             updatePass() {
                 axios.post('api/updatePass', {
                     '_token': this.$csrfToken,
-                    'pubkey': pubkey,
                     'idUser': this.iduser,
                     'curpass': this.vmcurpass,
                     'newpass': this.vmnewpass,
@@ -528,7 +525,6 @@
             updateInfo() {
                 axios.post('api/updateInfo', {
                     '_token': this.$csrfToken,
-                    'pubkey': pubkey,
                     'idUser': this.iduser,
                     'name': this.vmname,
                     'lastname': this.vmlastname,
@@ -545,7 +541,6 @@
             checkpass() {
                 axios.post('api/checkPass', {
                     '_token': this.$csrfToken,
-                    'pubkey': pubkey,
                     'idUser': this.iduser,
                     'pass': this.vmdelpass
                 }).then((response) => {
@@ -571,7 +566,6 @@
             confirmDelUser() {
                 axios.post('api/deleteUser', {
                     '_token': this.$csrfToken,
-                    'pubkey': pubkey,
                     'idUser': this.iduser,
                 }).then((response) => {
                     location.href = 'http://localhost/sox/public/logout';
@@ -584,7 +578,6 @@
             getOrders() {
                 axios.post('api/findOrders', {
                     '_token': this.$csrfToken,
-                    'pubkey': pubkey,
                     'idUser': this.iduser,
                 }).then((response) => {
                     if (response.data === "empty") {

@@ -67,7 +67,6 @@
 <script>
     import EventBus from "../event-bus";
     const axios = require('axios').default;
-    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
         props: {
@@ -97,9 +96,7 @@
              * Gets a determinate product's info
              */
             showProduct() {
-                axios.post('api/product/' + this.art, {
-                        'pubkey': pubkey,
-                }).then((response) => {
+                axios.post('api/product/' + this.art).then((response) => {
                     this.prod = response.data;
                 });
             },
@@ -116,7 +113,6 @@
                     this.modaltext = this.lbprodadded;
                     $('#modal-cart').modal('show');
                     axios.post('api/addToCart', {
-                        'pubkey': pubkey,
                         '_token': this.$csrfToken,
                         'iduser': this.user,
                         'idart': this.art,

@@ -30,7 +30,6 @@
     import EventBus from "../event-bus";
 
     const axios = require('axios').default;
-    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
 
@@ -86,11 +85,11 @@
              */
             allproducts(page) {
                 axios.post(`api/products?page=${this.products.current_page}`, {
-                        'pubkey': pubkey,
                         'order': this.filter,
                         'colorfilter': this.colorfilter,
                 })
                     .then((response) => {
+                        //console.log(response.data.total)
                         this.products = response.data;
                         this.totalart = response.data.total;
                     });

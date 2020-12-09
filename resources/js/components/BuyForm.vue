@@ -170,7 +170,6 @@
 <script>
 
     const axios = require('axios').default;
-    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
         props: {
@@ -213,7 +212,6 @@
              */
             getOrders() {
                 axios.post('api/getBag', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'iduser': this.iduser,
                 }).then((response) => {
