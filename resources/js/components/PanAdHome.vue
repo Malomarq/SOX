@@ -39,7 +39,6 @@
     import EventBus from "../event-bus";
 
     const axios = require('axios').default;
-    const pubkey = "6d489dd5cfb6966122feaca117e324d5eccd4a3536a3de14a713d03892a7e22a";
 
     export default {
 
@@ -65,9 +64,7 @@
 
             var self = this;
 
-            /**
-             * Listen to "sectioncalled" event, that refresh the graphics in order to be seen correctly
-             */
+            // Listen to "sectioncalled" event, that refresh the graphics in order to be seen correctly
             EventBus.$on('sectioncalled', function (data) {
                 if(data === 'Home'){
                     self.getSales();
@@ -79,12 +76,10 @@
 
         methods: {
 
-            /**
-             * Gets sales per month and shows a graphic
-             */
+            // @vuese
+            // Gets sales per month and shows a graphic
             getSales() {
                 axios.post('api/getSales', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                 }).then((response) => {
                     this.data = response.data;
@@ -141,12 +136,10 @@
                 });
             },
 
-            /**
-             * Gets how many accounts per month are active at the app and shows a graphic
-             */
+            // @vuese
+            // Gets how many accounts per month are active at the app and shows a graphic
             getUsers(){
                 axios.post('api/getUsers', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                 }).then((response) => {
                     this.users = response.data;
@@ -208,9 +201,8 @@
                 });
             },
 
-            /**
-             * Emits the "mail" event if clicked
-             */
+            // @vuese
+            // Emits the "mail" event if clicked
             getToNotif(){
                 EventBus.$emit('mail');
             }

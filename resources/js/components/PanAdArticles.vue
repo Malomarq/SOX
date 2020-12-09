@@ -323,11 +323,10 @@
 
         methods: {
 
-            /**
-             * Finds products info and paginates it
-             * @param sorted
-             * @param page
-             */
+            // @vuese
+            // Finds products info and paginates it
+            // @arg sorted
+            // @arg page
 
             allproducts() {
                 axios.post(`api/products?page=${this.products.current_page}`, {
@@ -341,19 +340,17 @@
                 window.scrollTo(0, 0);
             },
 
-            /**
-             *  Save product's id to delete it
-             */
-
+            // @vuese
+            // Save product's id to delete it
+            // @arg data
             productDel(data) {
                 this.idArt = data;
                 $('#prod-delete').modal('show');
             },
 
-            /**
-             *  Save product's id to update it
-             */
-
+            // @vuese
+            // Save product's id to update it
+            // @arg data
             productUp(data) {
                 this.idArt = data;
 
@@ -369,9 +366,9 @@
                 $('#prod-update').modal('show');
             },
 
-            /**
-             * Handles a new file to add a new product or update it
-             */
+            // @vuese
+            // Handles a new file to add a new product or update it
+            // @arg e
 
             handleFileUpload(e) {
                 this.newimage = this.$refs.newimage.files[0];
@@ -381,9 +378,8 @@
                 this.upimage = this.$refs.upimage.files[0];
             },
 
-            /**
-             * Adds a new product to database and reloads the page. It also manages every validation error
-             */
+            // @vuese
+            // Adds a new product to database and reloads the page. It also manages every validation error
 
             newproduct() {
 
@@ -426,11 +422,8 @@
                 });
             },
 
-            /**
-             * Deletes a product by its id and reloads the page
-             * @param data
-             */
-
+            // @vuese
+            // Deletes a product by its id and reloads the page
             confirmDel() {
 
                 axios.post('api/delete', {
@@ -446,9 +439,8 @@
                 });
             },
 
-            /**
-             * Updates image, name or price of a product by id. It also manages every validation error
-             */
+            // @vuese
+            // Updates image, name or price of a product by id. It also manages every validation error
             updateProd() {
 
                 const data = new FormData();
@@ -493,10 +485,9 @@
 
             },
 
-            /**
-             * Sorts products by the filter choosen
-             * @param data
-             */
+            // @vuese
+            // Sorts products by the filter choosen
+            // @arg data
             sortby(data) {
                 this.filter = data;
                 this.allproducts();

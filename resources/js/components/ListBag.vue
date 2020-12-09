@@ -120,9 +120,8 @@
         },
         methods: {
 
-            /**
-             * Gets info of the shopping bag (sets and price). It also shows if bag is empty
-             */
+            // @vuese
+            // Gets info of the shopping bag (sets and price). It also shows if bag is empty
             getBag() {
                 axios.post('api/getBag', {
                     '_token': this.$csrfToken,
@@ -139,9 +138,8 @@
                 });
             },
 
-            /**
-             * Gets the number of items in the bag
-             */
+            // @vuese
+            // Gets the number of items in the bag
             getItems() {
                 axios.post('api/getItems', {
                     '_token': this.$csrfToken,
@@ -151,10 +149,9 @@
                 });
             },
 
-            /**
-             * Updates amount of an item of the bag and reload the page
-             * @param data
-             */
+            // @vuese
+            // Updates amount of an item of the bag and reload the page
+            // @arg data
             amountchange(data){
                 axios.post('api/amountchange', {
                     '_token': this.$csrfToken,
@@ -171,11 +168,10 @@
                 });
             },
 
-            /**
-             * Deletes an item (set) of the bag (order) and reloads the page
-             * @param idSet
-             * @param idOrder
-             */
+            // @vuese
+            // Deletes an item (set) of the bag (order) and reloads the page
+            // @arg idSet
+            // @arg idOrder
             deleteSet(idSet, idOrder){
                 axios.post('api/deleteSet', {
                     '_token': this.$csrfToken,

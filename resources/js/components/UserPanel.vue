@@ -438,10 +438,8 @@
             var self = this;
             this.finduser();
 
-            /**
-             * Listens to "inputval" events, that gets the inputs value for: current, new, confirmated password,
-             * and password for deleting the account
-             */
+            // Listens to "inputval" events, that gets the inputs value for: current, new, confirmated password,
+            // and password for deleting the account
             EventBus.$on('inputval', function (data) {
                 if (data[1] === 'vmcurpass') {
                     self.vmcurpass = data[0];
@@ -463,19 +461,20 @@
         },
         methods: {
 
+            // @vuese
             // Just decoration stuff
             movedelicon() {
                 this.showdelicon = true;
             },
 
+            // @vuese
             // Just decoration stuff
             stopdelicon() {
                 this.showdelicon = false;
             },
 
-            /**
-             * Gets user's info
-             */
+            // @vuese
+            // Gets user's info
             finduser() {
                 axios.post('api/findUser', {
                         'iduser': this.iduser
@@ -486,9 +485,8 @@
                 })
             },
 
-            /**
-             * Updates password's user and manages validation errors
-             */
+            // @vuese
+            // Updates password's user and manages validation errors
             updatePass() {
                 axios.post('api/updatePass', {
                     '_token': this.$csrfToken,
@@ -519,9 +517,8 @@
                 });
             },
 
-            /**
-             * Updates info's user and manages validation errors
-             */
+            // @vuese
+            // Updates info's user and manages validation errors
             updateInfo() {
                 axios.post('api/updateInfo', {
                     '_token': this.$csrfToken,
@@ -535,9 +532,8 @@
                 });
             },
 
-            /**
-             * Check's user's password in order to delete the account. It also manages validation errors
-             */
+            // @vuese
+            // Check's user's password in order to delete the account. It also manages validation errors
             checkpass() {
                 axios.post('api/checkPass', {
                     '_token': this.$csrfToken,
@@ -560,9 +556,8 @@
                 });
             },
 
-            /**
-             * Deletes an account and redirects to logout route to end the user session
-             */
+            // @vuese
+            // Deletes an account and redirects to logout route to end the user session
             confirmDelUser() {
                 axios.post('api/deleteUser', {
                     '_token': this.$csrfToken,
@@ -572,9 +567,8 @@
                 });
             },
 
-            /**
-             * Gets order's info of a determinate user
-             */
+            // @vuese
+            // Gets order's info of a determinate user
             getOrders() {
                 axios.post('api/findOrders', {
                     '_token': this.$csrfToken,
@@ -594,16 +588,16 @@
                 });
             },
 
+            // @vuese
             // Just decoration stuff
             displayOrder(data){
                 (this.setorder == data)? this.setorder = null : this.setorder = data;
             },
 
-            /**
-             * Formats a date
-             * @param date
-             * @returns {string}
-             */
+            // @vuese
+            // Formats a date
+            // @arg date
+            // @returns {string}
             moment(date) {
                 return moment(date).format('DD/MM/YYYY');
             },

@@ -37,9 +37,8 @@
 
         methods: {
 
-            /**
-             * Gets a list of products by the input's value. This value must be a part of a name's product
-             */
+            // @vuese
+            // Gets a list of products by the input's value. This value must be a part of a name's product
             search() {
                 axios.post('api/search', {
                         'search': $('input[name=search]').val(),

@@ -92,19 +92,17 @@
 
         methods: {
 
-            /**
-             * Gets a determinate product's info
-             */
+            // @vuese
+            // Gets a determinate product's info
             showProduct() {
                 axios.post('api/product/' + this.art).then((response) => {
                     this.prod = response.data;
                 });
             },
 
-            /**
-             * Adds to the shopping bag the product showed. User has to be registered and logged in to add
-             * "newItem" event is emitted and picked up in shoppingBag component
-             */
+            // @vuese
+            // Adds to the shopping bag the product showed. User has to be registered and logged in to add
+            // "newItem" event is emitted and picked up in shoppingBag component
             addToCart() {
                 if (this.user === '') {
                     this.modaltext = this.lbprodmod;

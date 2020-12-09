@@ -79,17 +79,15 @@
 
         methods: {
 
-            /**
-             * Gets all products ordered by pagination (and filtered by color), and the total amount of them
-             * @param page
-             */
+            // @vuese
+            // Gets all products ordered by pagination (and filtered by color), and the total amount of them
+            // @arg page
             allproducts(page) {
                 axios.post(`api/products?page=${this.products.current_page}`, {
                         'order': this.filter,
                         'colorfilter': this.colorfilter,
                 })
                     .then((response) => {
-                        //console.log(response.data.total)
                         this.products = response.data;
                         this.totalart = response.data.total;
                     });

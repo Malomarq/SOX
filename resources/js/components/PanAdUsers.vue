@@ -118,18 +118,16 @@
 
         methods: {
 
-            /**
-             * Gets all users's info
-             */
+            // @vuese
+            // Gets all users's info
             listUsers() {
                 axios.post('api/listUsers').then((response) => {
                     this.items = response.data;
                 })
             },
 
-            /**
-             * Gets a determinate user by an input's value, searching by name, lastname, email or id
-             */
+            // @vuese
+            // Gets a determinate user by an input's value, searching by name, lastname, email or id
             searchUs() {
                 axios.post('api/searchUser', {
                     '_token': this.$csrfToken,
@@ -139,25 +137,22 @@
                 })
             },
 
-            /**
-             * Bootstrap-Vue method, for selecting a determinate row
-             * @param items
-             */
+            // @vuese
+            // Bootstrap-Vue method, for selecting a determinate row
+            // @arg items
             onRowSelected(items) {
                 this.selected = items;
             },
 
-            /**
-             * Bootstrap-Vue method, for clear selected row
-             */
+            // @vuese
+            // Bootstrap-Vue method, for clear selected row
             clearSelected() {
                 this.$refs.selectableTable.clearSelected()
             },
 
-            /**
-             * Deletes a determinate user and reloads the page
-             * @param data
-             */
+            // @vuese
+            // Deletes a determinate user and reloads the page
+            // @arg data
             deleteUser(data) {
                 axios.post('api/deleteUser', {
                     '_token': this.$csrfToken,

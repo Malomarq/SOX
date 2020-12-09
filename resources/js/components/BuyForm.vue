@@ -207,9 +207,8 @@
         },
         methods: {
 
-            /**
-             * Gets a summary of shopping bag for the buy form
-             */
+            // @vuese
+            // Gets a summary of shopping bag for the buy form
             getOrders() {
                 axios.post('api/getBag', {
                     '_token': this.$csrfToken,
@@ -224,9 +223,8 @@
                 });
             },
 
-            /**
-             * Ends the purchase process and redirects to index
-             */
+            // @vuese
+            // Ends the purchase process and redirects to index
             buybag() {
                 axios.post('api/buybag', {
                     'pubkey': pubkey,

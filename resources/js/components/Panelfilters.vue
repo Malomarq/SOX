@@ -46,11 +46,10 @@
         },
         methods: {
 
-            /**
-             * Emits "colorfilter" event and the value of de color chosen,
-             * that will be picked up in Showproducts component
-             * @param data
-             */
+            // @vuese
+            // Emits "colorfilter" event and the value of de color chosen,
+            // that will be picked up in Showproducts component
+            // @arg data
             filter(data){
                 this.nofilter = true;
                 this.colorfilter = data;

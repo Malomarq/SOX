@@ -188,9 +188,8 @@
 
         methods: {
 
-            /**
-             * Gets info of all orders
-             */
+            // @vuese
+            // Gets info of all orders
             listOrders() {
                 axios.post('api/orders', {
                     '_token': this.$csrfToken,
@@ -205,9 +204,8 @@
                 })
             },
 
-            /**
-             * Gets a determinate order by an input's value, searching by id, user id, address, or date
-             */
+            // @vuese
+            // Gets a determinate order by an input's value, searching by id, user id, address, or date
             searchOrd() {
                 axios.post('api/searchOrder', {
                     '_token': this.$csrfToken,
@@ -217,26 +215,23 @@
                 })
             },
 
-            /**
-             * Bootstrap-Vue method, for selecting a determinate row
-             * @param items
-             */
+            // @vuese
+            // Bootstrap-Vue method, for selecting a determinate row
+            // @arg items
             onRowSelected(items) {
                 this.show = false;
                 this.selected = items;
             },
 
-            /**
-             * Bootstrap-Vue method, for clear selected row
-             */
+            // @vuese
+            // Bootstrap-Vue method, for clear selected row
             clearSelected() {
                 this.$refs.selectableTable.clearSelected()
             },
 
-            /**
-             * Gets set's info of an order
-             * @param data
-             */
+            // @vuese
+            // Gets set's info of an order
+            // @arg data
             getSets(data) {
                 axios.post('api/sets', {
                     '_token': this.$csrfToken,
@@ -247,9 +242,8 @@
                 })
             },
 
-            /**
-             * Formats a date
-             */
+            // @vuese
+            // Formats a date
             moment(date) {
                 return moment(date).format('DD/MM/YYYY');
             },

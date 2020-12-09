@@ -38,17 +38,15 @@
 
         methods: {
 
-            /**
-             * Shows password if clicked
-             */
+            // @vuese
+            // Shows password if clicked
             showPass: function () {
                 this.lock = !this.lock;
                 this.eyepass = (this.lock) ? 'password' : 'text';
             },
 
-            /**
-             * Emits "inputval" event with the password value
-             */
+            // @vuese
+            // Emits "inputval" event with the password value
             inputvalue() {
                 EventBus.$emit('inputval', [this.$refs.inputpass.value, this.getmodel]);
             }

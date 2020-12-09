@@ -123,9 +123,8 @@
 
             var self = this;
 
-            /**
-             * Expand the sidebar
-             */
+            
+            // Expand the sidebar
             $(document).ready(function () {
                 $('#sidebarCollapse').on('click', function () {
                     $('#sidebar').toggleClass('active');
@@ -133,9 +132,7 @@
                 });
             });
 
-            /**
-             * Listen to "mail" event, showing "Notifications" section
-             */
+            // Listen to "mail" event, showing "Notifications" section
             EventBus.$on('mail', function (data) {
                 self.comps.showHome = false;
                 self.comps.showCon = true;
@@ -144,17 +141,15 @@
 
         methods: {
 
-            /**
-             * Flips the toggle icon of the sidebar
-             */
+            // @vuese
+            // Flips the toggle icon of the sidebar
             flipclick() {
                 (this.pushed) ? this.pushed = false : this.pushed = true;
             },
 
-            /**
-             * Shows the section clicked
-             * @param comp
-             */
+            // @vuese
+            // Shows the section clicked
+            // @arg comp
             showAndHide(comp) {
 
                 // Everytime a new section is clicked, "sectioncalled" event is emitted.

@@ -49,10 +49,9 @@
         },
         methods : {
 
-            /**
-             * Changes the page of showed info
-             * @param page
-             */
+            // @vuese
+            // Changes the page of showed info
+            // @arg page
             changePage(page) {
                 this.pagination.current_page = page;
                 this.$emit('paginate');

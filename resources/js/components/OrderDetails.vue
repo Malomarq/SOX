@@ -38,9 +38,8 @@
         },
         methods: {
 
-            /**
-             * Gets a summary of an order
-             */
+            // @vuese
+            // Gets a summary of an order
             getSets() {
                 axios.post('api/sets', {
                     '_token': this.$csrfToken,

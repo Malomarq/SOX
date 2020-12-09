@@ -61,9 +61,8 @@
 
         methods: {
 
-            /**
-             * Shows current date
-             */
+            // @vuese
+            // Shows current date
             getDate(){
                 this.date = moment().format('DD/MM/YYYY');
             }

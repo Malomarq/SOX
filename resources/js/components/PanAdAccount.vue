@@ -211,10 +211,8 @@
 
         computed: {
 
-            /**
-             *  To use admin's id by axios
-             */
-
+            
+            //To use admin's id by axios
             idadmin() {
                 return this.idad;
             }
@@ -223,15 +221,11 @@
         data() {
             return {
 
-                /**
-                 *  Admin's info
-                 */
+                // Admin's info
 
                 itemsAd: [],
 
-                /**
-                 *  Update modal
-                 */
+                // Update modal
 
                 // placeholders called by axios
                 placename: '',
@@ -246,9 +240,7 @@
                 // axios errors
                 showErrorUpdate: false,
 
-                /**
-                 *  Create modal
-                 */
+                // Create modal
 
                 // input values
                 mdcrename: '',
@@ -272,9 +264,7 @@
             var self = this;
             this.listAdmins();
 
-            /**
-             * Listen to the event "inputval" and takes its value
-             */
+            // Listen to the event "inputval" and takes its value
             EventBus.$on('inputval', function(data){
 
                 // for new account's password
@@ -291,29 +281,23 @@
 
         methods: {
 
-            /**
-             *  Find admins info
-             */
-
+            // @vuese
+            // Find admins info
             listAdmins() {
                 axios.post('api/listAdmins').then((response) => {
                     this.itemsAd = response.data;
                 })
             },
 
-            /**
-             *  Hides first delete modal and show up confirm delete modal
-             */
-
+            // @vuese
+            // Hides first delete modal and show up confirm delete modal
             confirmDel() {
                 $('#modal-delete').modal('hide');
                 $('#modal-custom').modal('show');
             },
 
-            /**
-             *  Deletes an admin by its id and redirects to index
-             */
-
+            // @vuese
+            // Deletes an admin by its id and redirects to index
             deleteAd() {
 
                 axios.post('api/deleteAdmin', {
@@ -329,10 +313,8 @@
 
             },
 
-            /**
-             *  Show up update modal with admin info in placeholders
-             */
-
+            // @vuese
+            // Show up update modal with admin info in placeholders
             showUpdate() {
 
                 axios.post('api/findAdmin', {
@@ -346,13 +328,11 @@
                 $('#modal-update').modal('show');
             },
 
-            /**
-             * Updates admin info by inputs values.
-             *  - If values validation fails, it show up errors in modal
-             *  - If password is not updated, it reload the page in order to show new admin's info
-             *  - If password is also updated, it log out user
-             */
-
+            // @vuese
+            // Updates admin info by inputs values.
+            //  - If values validation fails, it show up errors in modal
+            //  - If password is not updated, it reload the page in order to show new admin's info
+            //  - If password is also updated, it log out user/
             updateAd() {
 
                 axios.post('api/updateAdmin', {
@@ -374,10 +354,8 @@
                 });
             },
 
-            /**
-             * Checks if the email input of a new account already exists
-             */
-
+            // @vuese
+            // Checks if the email input of a new account already exists
             checkEmail() {
                 axios.post('api/checkEmail', {
                         'check': $('input[name=inpemail]').val(),
@@ -392,12 +370,10 @@
                 })
             },
 
-            /**
-             * Creates a new admin account by inputs values.
-             * - If values validation fails, it show up errors in modal
-             * - Reloads the page in order to show new admin's info
-             */
-
+            // @vuese
+            // Creates a new admin account by inputs values.
+            // - If values validation fails, it show up errors in modal
+            // - Reloads the page in order to show new admin's info
             createAd() {
 
                 axios.post('api/createAdmin', {
