@@ -227,7 +227,6 @@
             // Ends the purchase process and redirects to index
             buybag() {
                 axios.post('api/buybag', {
-                    'pubkey': pubkey,
                     '_token': this.$csrfToken,
                     'iduser': this.iduser,
                     'address': this.address,
