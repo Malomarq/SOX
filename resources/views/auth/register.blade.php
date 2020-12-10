@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-    <div class="container mg-reg">
+    <div class="container mg-reg registercontainer">
         <div class="row shadow">
 
             <div class="col-md-7 p-0 d-none d-md-block">

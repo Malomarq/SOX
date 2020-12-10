@@ -277,11 +277,11 @@ a[class*="linkpanad"]:focus {
 
 .usersox {
     background: -webkit-linear-gradient(70deg, #fff810 30%, rgba(0, 0, 0, 0) 30%), -webkit-linear-gradient(30deg, #63e89e 60%, #ff7ee3 60%);
-    min-height: 80vh;
+    min-height: 100vh;
 }
 
 .designer {
-    min-height: 63vh;
+    min-height: 100vh;
 }
 
 .panuseracctit {
@@ -373,7 +373,11 @@ a[class*="linkpanad"]:focus {
 }
 
 .logincontainer {
-    min-height: 70vh;
+    min-height: 100vh;
+}
+
+.registercontainer {
+    min-height: 100vh;
 }
 
 .jumbonav {

@@ -1,5 +1,5 @@
 <template>
-    <div class="container rounded mt-3 mb-5 px-5">
+    <div class="container rounded mt-3 mb-5 px-5 logincontainer">
 
         <div v-if="showBag" class="row">
 
